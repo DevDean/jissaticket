@@ -1,0 +1,95 @@
+body {
+	background: #0f1015;
+}
+.jsn-master .jsn-es-app .btn[disabled] {
+	opacity: 0.4;
+}
+.jsn-master .jsn-es-app .btn {
+	border-radius: 2px;
+	border-width: 0;
+
+	-webkit-transition: all 300ms;
+	-moz-transition: all 300ms;
+	transition: all 300ms;
+}
+.jsn-master .jsn-es-app .btn:active {
+	-webkit-transition: none;
+	-moz-transition: none;
+	transition: none;
+}
+.jsn-master .jsn-es-app .btn-default {
+	color: #999ba6;
+	background: rgba(151, 155, 171, 0.2);
+	box-shadow: inset 1px 1px 0 rgba(181, 185, 203, 0.21), 1px 1px 1px rgba(22, 22, 26, 0.17);
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+	font-weight: bold;
+}
+
+.jsn-master .jsn-es-app .btn-default:hover,
+.jsn-master .jsn-es-app .btn-default:focus {
+	color: #dbdff1;
+	background: #494c58;
+}
+.jsn-master .jsn-es-app .btn-default:active,
+.jsn-master .jsn-es-app .btn-default.active {
+	color: #565761;
+	background: rgba(32, 33, 39, 0.61);
+	box-shadow: 1px 1px 0 rgba(255,255,255,0.05), inset 1px 1px 1px rgba(0, 0, 0, 0.15);
+}
+.jsn-master .jsn-es-app .btn-default.active {
+	color: #54d08f;
+	text-shadow: 1px 1px 0px #002112, 0 0 8px rgba(0, 159, 86, 0.5);
+	box-shadow: 1px 1px 0 rgba(255,255,255,0.05), inset 1px 1px 1px rgba(0,0,0,0.1), inset 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.jsn-master .jsn-es-app .btn-default[disabled],
+.jsn-master .jsn-es-app .btn-default.disabled {
+	background: rgba(90, 92, 103, 0.4);
+	opacity: 0.5;
+}
+
+.jsn-master .jsn-es-app .btn-default svg {
+	vertical-align: middle;
+}
+.jsn-master .jsn-es-app .btn-default svg path {
+	fill: rgba(153, 155, 166, 0.3);
+	stroke: #999ba6;
+}
+.jsn-master .jsn-es-app .btn-success {
+	color: #C0ECD8;
+	background: rgba(0, 159, 86, 0.8);
+	box-shadow: inset 1px 1px 0 rgba(255,255,255,0.15);
+	font-weight: bold;
+}
+.jsn-master .jsn-es-app .btn-success:focus,
+.jsn-master .jsn-es-app .btn-success:hover {
+	background: #07AB60;
+	color: #fff;
+}
+.jsn-master .jsn-es-app .btn-success:active,
+.jsn-master .jsn-es-app .btn-success.active {
+	color: #7CB59B;
+	background-color: #045F35;
+}
+.jsn-master .jsn-es-app .btn-success[disabled] {
+	background: rgba(0, 159, 86, 0.8);
+}
+.jsn-master .jsn-es-app .btn-danger:active,
+.jsn-master .jsn-es-app .btn-danger.active {
+	background-color: #BF2A26;
+}
+.jsn-master .jsn-es-app .btn-info {
+	background-color: #269CC5;
+	border-color: #269abc;
+	color: #FDFDFD;
+}
+.jsn-master .jsn-es-app .btn-info:focus,
+.jsn-master .jsn-es-app .btn-info:hover {
+	background-color: #31b0d5;
+	color: #FFF;
+}
+.jsn-master .jsn-es-app .btn-info:active,
+.jsn-master .jsn-es-app .btn-info.active {
+	color: #A8DBEC;
+	background-color: #03688C;
+}
