@@ -5,9 +5,24 @@
 		<title>Joomlapolis News</title>
 		<description>Joomla social networking and Subscription Management software. Community Builder is the top rated, best supported, most complete and reliable community system there is for Joomla!</description>
 		<link>http://www.joomlapolis.com:80/news</link>
-		<lastBuildDate>Mon, 02 Nov 2015 12:07:40 +0000</lastBuildDate>
+		<lastBuildDate>Wed, 04 Nov 2015 12:59:07 +0000</lastBuildDate>
 		<generator>Joomla! 1.5 - Open Source Content Management</generator>
 		<language>en-gb</language>
+		<item>
+			<title>CB 2.0.12 released and paving the way for GroupJive 3.0 RC</title>
+			<link>http://www.joomlapolis.com:80/news/18518-cb-2012-released-and-paving-the-way-for-groupjive-30-rc</link>
+			<guid>http://www.joomlapolis.com:80/news/18518-cb-2012-released-and-paving-the-way-for-groupjive-30-rc</guid>
+			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201511/cb2012_500.gif" alt="cb2012 500" width="500" height="179" />&nbsp;</p>
+<p style="text-align: center;"><a href="http://www.joomlapolis.com:80/community-builder">Community Builder 2.0.12</a> is here and is required for upcoming GroupJive 3.0 RC release<br /><a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=782&amp;Itemid=105">Download it now</a> - it's <strong>free</strong> and <strong>super stable</strong></p>
+<p><strong>Community Builder 2.0.12</strong> is a maintenance release that fixes <strong>14 bugs</strong> and adds <strong>4 new internal features</strong> (see forum discussion for full changelog) paving the way for the upcoming GroupJive 3.0 RC release.</p>
+<p>CB 2.0+ websites can be upgraded to latest CB 2.0.12 <strong>using the built-in Joomla upgrader</strong> or with a <strong>simple install over</strong> (precautionary backup always recommended) as all previous settings are kept.</p>
+<p>Community Builder 2.0.12 is released as a required upgrade for the upcoming GroupJive 3.0 RC release.</p>
+<p>The <a href="http://www.joomlapolis.com:80/component/docman/doc_details/753-cb-20-primer-book-101">CB Primer Book</a> is valid and the <a href="http://www.joomlapolis.com:80/cb-20-addon-status">CB 2.0 Add-on compatibility</a> chart has been updated. New CB 2.0.12 Language plugins are available in the <a href="http://www.joomlapolis.com:80/cb-solutions/languages">Language Download area</a>.</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231698-nov-2015-edit-cb-2012-released-and-paving-the-way-for-groupjive-30-rc">Discuss this on our forums</a> !</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Mon, 02 Nov 2015 02:16:21 +0000</pubDate>
+		</item>
 		<item>
 			<title>Critical Security Joomla 3.4.5 released</title>
 			<link>http://www.joomlapolis.com:80/news/18517-critical-security-joomla-345-released</link>
@@ -206,27 +221,6 @@
 			<author>nant@joomlapolis.com (Nick A.)</author>
 			<category>News</category>
 			<pubDate>Thu, 16 Jul 2015 10:27:44 +0000</pubDate>
-		</item>
-		<item>
-			<title>CBSubs GPL 4.0.1 released</title>
-			<link>http://www.joomlapolis.com:80/news/18508-cbsubs-gpl-401-released</link>
-			<guid>http://www.joomlapolis.com:80/news/18508-cbsubs-gpl-401-released</guid>
-			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201507/cbsubs401.gif" alt="cbsubs401" width="500" height="183" />&nbsp;</p>
-<p style="text-align: center;"><strong>CBSubs GPL Paid Subscriptions 4.0.1</strong> is here and CB 2.0.10+ compatible!<br />It is available for <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=775">download</a> by all CBSubs/Dev subscribers.</p>
-<p>&nbsp;</p>
-<p>As promised in our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18499:cbsubs-gpl-40-stable-released&amp;catid=6:news&amp;Itemid=19">CBSubs GPL 4.0 release announcement</a> we have now switched processes and provide continuous integration (nightly builds) and quick maintenance releases.</p>
-<p>This is a maintenance release that <strong>fixes 11 bugs</strong> (see discussion thread for details) and also adds the following <strong>3 features</strong>:</p>
-<ul>
-<li>Better filtering with multi-select plan subscription selector in CB User Manager</li>
-<li>Existing subscriptions no longer display initial plan duration and only show expiration date</li>
-<li>More choices for plan durations</li>
-</ul>
-<p><strong>CBSubs GPL 4.0.1 requires CB 2.0.10+</strong> (<a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=773">nightly build of CB</a> is recommended) and the <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=767">CBSubs GPL 4.0 manual</a> is still valid.</p>
-<p>The <strong>upgrade process</strong> is a <strong>simple install over</strong> (take full backup first) of all needed elements. All your configuration settings are kept.</p>
-<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/230489-cbsubs-gpl-401-released">Discuss this release announcement on forums</a>.</p>]]></description>
-			<author>nant@joomlapolis.com (Nick A.)</author>
-			<category>News</category>
-			<pubDate>Tue, 14 Jul 2015 10:34:07 +0000</pubDate>
 		</item>
 	</channel>
 </rss>
