@@ -1,0 +1,26 @@
+
+/*
+--- Slide Styles
+*/
+
+.jsn-master .jsn-es-slides {
+	/*background-color: #0f1015;*/
+	/*border-radius: 4px;*/
+}
+.jsn-master .jsn-es-slides:empty {
+	height: 0;
+}
+.jsn-master .jsn-es-slide {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.jsn-master .jsn-es-slide.hidden {
+	display: none !important;
+	visibility: hidden !important;
+}
+
+.jsn-master .jsn-es-app.preview-mode .jsn-es-toolbar,
+.jsn-master .jsn-es-app.preview-mode .jsn-es-thumbs-panel,
+.jsn-master .jsn-es-app.preview-mode .jsn-es-canvas-background-wrapper {
+	pointer-events: none;
+}

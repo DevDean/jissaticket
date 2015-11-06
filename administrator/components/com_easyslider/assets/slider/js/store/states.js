@@ -1,0 +1,1 @@
+void function(exports,$,_,Backbone){var LS=exports.localStorage;exports.JSNES_StateStore=_.deepExtend({},Backbone.Events,{save:function(key,state){LS.setItem("jsn.es.app.states."+key,JSON.stringify(state))},load:function(key){return JSON.parse(LS.getItem("jsn.es.app.states."+key)||"{}")}})}(this,JSNES_jQuery,JSNES_Underscore,JSNES_Backbone);

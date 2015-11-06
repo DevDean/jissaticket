@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cbinstall version="1.0" type="plugin" group="user">
+	<name>HikaShop CB Plugin</name>
+	<creationDate>January 2013</creationDate>
+	<version>2.0.0</version>
+	<release>2.0.0</release>
+	<author>HikaShop</author>
+	<authorEmail>dev@hikashop.com</authorEmail>
+	<authorUrl>http://www.hikashop.com</authorUrl>
+	<copyright>(C) 2009-2015 HIKARI SOFTWARE. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+	<description>CB plugin for HikaShop : display user orders on CB profile</description>
+	<files>
+		<filename plugin="hikashop">hikashop.php</filename>
+	</files>
+	<params>
+	</params>
+	<tabs>
+		<tab name="Orders" description="Enables the user to manage his orders made with HikaShop" class="getHikaShopTab" fields="0">
+		<params>
+		</params>
+	<fields>
+	</fields>
+	</tab>
+	</tabs>
+	<install>
+		<queries>
+		</queries>
+	</install>
+	<uninstall>
+		<queries>
+		</queries>
+	</uninstall>
+	<database>
+	</database>
+</cbinstall>

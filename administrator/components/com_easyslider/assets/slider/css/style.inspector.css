@@ -1,0 +1,491 @@
+/* --- Inspectors Styles --- */
+
+.jsn-master .jsn-es-inspector-panel {
+	/*display: none;*/
+	position: absolute;
+	height: 400px;
+	width: 290px;
+	top: 50px;
+	right: 0;
+	background: #191b22;
+	border-left: 1px solid #23262f;
+	overflow: hidden;
+	box-shadow: inset;
+	z-index: 90;
+}
+.jsn-master .jsn-es-minimal .jsn-es-inspector-panel {
+	display: none;
+}
+.jsn-master .jsn-es-inspector {
+	margin: 0;
+	color: #767882;
+}
+.jsn-master .jsn-es-fx-inspector {
+	width: 400px;
+	height: 400px;
+}
+.jsn-master .jsn-es-inspector-panel .jsn-es-inspector {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.jsn-master .jsn-es-inspector-heading {
+	position: relative;
+	background: #2f313a;
+	border-top: 1px solid #3f414d;
+	border-bottom: 1px solid #191b22;
+	padding: 0 15px;
+	height: 30px;
+	color: #767882;
+	text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+	line-height: 30px;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	overflow: hidden;
+}
+.jsn-master .jsn-es-inspector-heading .fa {
+	font-size: 16px;
+	margin-right: 5px;
+}
+.jsn-master .jsn-es-inspector-panel .jsn-es-inspector .tab-content {
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.jsn-master .jsn-es-inspector .tab-pane {
+	padding: 10px 20px;
+}
+
+.jsn-master .jsn-es-inspector .inner-container {
+	margin: -10px -20px;
+}
+
+.jsn-master .jsn-es-inspector .nav-tabs {
+	display: block;
+	text-align: center;
+	padding: 5px 5px 0 5px;
+	background-color: #13141a;
+	border-bottom: 1px solid #23262F;
+	height: 35px;
+}
+.jsn-master .jsn-es-inspector .nav-tabs li {
+}
+.jsn-master .jsn-es-inspector .nav-tabs li a {
+	padding: 5px 10px 7px 10px;
+	margin: 0;
+	color: #3D404A;
+	background-color: transparent;
+	border-radius: 3px 3px 0 0;
+	border: 1px solid transparent;
+	border-bottom: none;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.jsn-master .jsn-es-inspector .nav-tabs li:hover a {
+	color: #535765;
+	border-color: transparent;
+}
+.jsn-master .jsn-es-inspector .nav-tabs li.active a,
+.jsn-master .jsn-es-inspector .nav-tabs li.active a:focus {
+	color: #767882;
+	border-color: #23262F;
+	border-bottom: none;
+	background-color: #191B22;
+}
+.jsn-master .jsn-es-inspector .nav-tabs li.active a:hover {
+	border-color: #23262F;
+	border-bottom: none;
+}
+.jsn-master .jsn-es-inspector .nav-tabs li.active a:focus {
+	color: #767882;
+}
+
+.jsn-master .jsn-es-inspector .nav-pills {
+	padding: 5px 0;
+	text-align: center;
+}
+.jsn-master .jsn-es-inspector .nav-pills li {
+	display: inline-block;
+	float: none;
+}
+.jsn-master .jsn-es-inspector .nav-pills li a {
+	padding: 8px 15px;
+	margin: 2px;
+	color: #70727B;
+	background-color: transparent;
+	border-radius: 20px;
+	border: 1px solid transparent;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.jsn-master .jsn-es-inspector .nav-pills li:hover a {
+	color: #70727B;
+	border-color: transparent;
+}
+.jsn-master .jsn-es-inspector .nav-pills li.active a,
+.jsn-master .jsn-es-inspector .nav-pills li.active a:focus {
+	color: #B4B8C4;
+	border-color: #23262F;
+	background-color: #13141A;
+}
+.jsn-master .jsn-es-inspector .nav-pills li.active a:hover {
+	border-color: #23262F;
+}
+.jsn-master .jsn-es-inspector .nav-pills li.active a:focus {
+	color: #767882;
+}
+
+.jsn-master .jsn-es-inspector select {
+	position: relative;
+}
+.jsn-master .jsn-es-inspector select:before {
+	content: "fdfdsf";
+	position: absolute;
+}
+.jsn-master .jsn-es-inspector input.input-sm,
+.jsn-master .jsn-es-inspector select.input-sm,
+.jsn-master .jsn-es-inspector .btn.btn-sm {
+	height: 24px;
+	margin-top: 1px;
+	padding: 3px 6px;
+	line-height: 16px;
+	font-size: 13px;
+	border-radius: 3px;
+}
+.jsn-master .jsn-es-inspector .btn.btn-sm {
+	margin-top: 0;
+	height: 26px;
+	line-height: 18px;
+}
+.jsn-master .jsn-es-inspector .btn.btn-sm .fa {
+	font-size: 14px;
+}
+
+.jsn-master .jsn-es-inspector h4 {
+	color: #323542;
+}
+.jsn-master .jsn-es-inspector label {
+	display: block;
+	font-size: 12px;
+	color: #767882;
+	line-height: 18px;
+	margin-top: 5px;
+}
+
+.jsn-master .jsn-es-inspector ::-webkit-input-placeholder {
+	color: #33343A;
+}
+.jsn-master .jsn-es-inspector :-moz-placeholder { /* Firefox 18- */
+	color: #33343A;
+}
+.jsn-master .jsn-es-inspector ::-moz-placeholder {  /* Firefox 19+ */
+	color: #33343A;
+}
+.jsn-master .jsn-es-inspector :-ms-input-placeholder {
+	color: #33343A;
+}
+
+.jsn-master .jsn-es-inspector .form-control {
+	color: #c5c8d9;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	background: rgba(20, 21, 27, 1);
+	box-shadow: inset 0 4px 13px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.04);
+}
+.jsn-master .jsn-es-inspector .form-control:focus {
+	background: rgb(18, 19, 23);
+}
+.jsn-master .jsn-es-inspector .form-control[disabled] {
+	opacity: 0.3;
+}
+.jsn-master .jsn-es-inspector .btn.btn-default {
+	background: rgb(36, 39, 49);
+	color: #eee;
+	text-shadow: 1px 1px 0 #000;
+	box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.08), inset 0px -1px 0px rgba(0, 0, 0, 0.12), 1px 1px 0 rgba(255, 255, 255, 0.04);
+	border: 1px solid #07080A;
+	transition: none;
+}
+.jsn-master .jsn-es-inspector .btn.btn-default:hover {
+	/*background: rgb(41, 45, 53);*/
+	/*color: #c5c8d9;*/
+}
+.jsn-master .jsn-es-inspector .btn.btn-default:focus {
+	background: #353741;
+	outline: none;
+}
+.jsn-master .jsn-es-inspector .btn.btn-default:active,
+.jsn-master .jsn-es-inspector .btn.btn-default.active {
+	color: #393b3f;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	background: rgba(20, 21, 27, 1);
+	box-shadow: inset 0 4px 13px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.04);
+}
+.jsn-master .jsn-es-inspector .btn.btn-default.active {
+	color: #009F56;
+	text-shadow: 0 0 8px rgba(0, 159, 86, 0.5);
+}
+.jsn-master .jsn-es-inspector .input-group-addon:not(:first-child),
+.jsn-master .jsn-es-inspector .input-group-btn:not(:first-child) .btn {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.jsn-master .jsn-es-inspector .input-group-addon {
+	font-size: 12px;
+	color: rgba(126, 129, 142, 1);
+	text-shadow: 1px 1px 0 #07080A;
+	background: transparent;
+
+	padding: 3px 6px;
+	border-color: #07080A;
+	box-shadow: inset 0 4px 13px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.04);
+}
+.jsn-master .jsn-es-inspector .input-group-addon .fa {
+	font-size: 14px;
+}
+.jsn-master .jsn-es-inspector .input-group-addon:empty {
+	padding: 0;
+	width: 0;
+	opacity: 0;
+}
+.jsn-master .jsn-es-inspector .input-group-btn {
+	background: transparent;
+	padding: 0;
+}
+.jsn-master .jsn-es-inspector .input-group-btn .btn {
+	margin: 0 0 0 -2px;
+	padding: 3px 6px;
+	z-index: 2;
+}
+.jsn-master .jsn-es-inspector .input-group-btn .btn.btn-sm .fa {
+	font-size: 10px;
+}
+.jsn-master .jsn-es-inspector .input-group-btn:not(:last-child) .btn {
+	border-radius: 0;
+}
+.jsn-master .jsn-es-inspector .input-group {
+	width: 100%;
+}
+
+.jsn-master .jsn-es-inspector .form-horizontal {
+	padding: 0 13px;
+}
+.jsn-master .jsn-es-inspector .form-group {
+	margin-bottom: 9px;
+}
+.jsn-master .jsn-es-inspector .control-label {
+	padding-top: 0px;
+}
+.jsn-master .jsn-es-inspector .control-description {
+	font-size: 10px;
+	line-height: 15px;
+	font-weight: normal;
+	opacity: 0.6;
+	display: block;
+
+}
+.jsn-master .jsn-es-inspector .row {
+	margin-left: -5px;
+	margin-right: -5px;
+}
+.jsn-master .jsn-es-inspector .row {
+	border-bottom: 1px solid #131418;
+	box-shadow: 0px 1px 0 #24272F;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.jsn-master .jsn-es-inspector .row:last-child {
+	border-bottom: none;
+	box-shadow: none;
+}
+.jsn-master .jsn-es-inspector *[class*=col-xs-] {
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+
+.jsn-master .jsn-es-inspector .box-shadows .row,
+.jsn-master .jsn-es-inspector .text-shadows .row {
+	margin: 0 -1px 3px -1px;
+	padding: 0;
+}
+.jsn-master .jsn-es-inspector .box-shadows *[class*=col-xs-],
+.jsn-master .jsn-es-inspector .text-shadows *[class*=col-xs-] {
+	padding: 0 1px;
+}
+
+.jsn-master .jsn-es-inspector .ui-slider-wrapper {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+.jsn-master .jsn-es-inspector .ui-slider {
+	margin: 6px 0px !important;
+	height: 10px;
+	width: auto;
+	display: block;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	background: rgba(20, 21, 27, 1);
+	box-shadow: inset 0 4px 13px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.04);
+	cursor: pointer;
+	overflow: visible !important;
+}
+.jsn-master .jsn-es-inspector .ui-slider-handle {
+	outline: none;
+	top: -6px;
+	margin-left: -2px;
+	width: 4px;
+	height: 20px;
+	border-radius: 2px;
+	background: rgba(0, 159, 86, 0.36) !important;
+	border-color: #7ef3b1;
+}
+.jsn-master .jsn-es-inspector .ui-slider-handle:hover,
+.jsn-master .jsn-es-inspector .ui-slider-handle:focus {
+
+	background-color: #009F56;
+}
+.jsn-master .jsn-es-inspector .jsn-es-shadow-item input,
+.jsn-master .jsn-es-inspector .jsn-es-shadow-item select {
+	text-align: center;
+}
+.jsn-master .jsn-es-inspector .remove-shadow {
+	padding-left: 3px !important;
+	padding-right: 3px !important;
+	cursor: pointer !important;
+}
+.jsn-master .jsn-es-inspector .remove-shadow:hover {
+	opacity: 1;
+}
+
+.jsn-master .jsn-es-inspector .transition-preview-wrapper {
+	position: relative;
+	height: 70px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+.jsn-master .jsn-es-inspector .transition-preview-wrapper .slide-sample {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+.jsn-master .jsn-es-inspector .transition-preview-wrapper .slide-sample-from {
+	z-index: 2;
+	background: #F50067 url(http://www.planwallpaper.com/static/cache/a6/c5/a6c5a0b1b9cf438bb362b00a0847ea25.jpg);
+	background-size: cover;
+}
+.jsn-master .jsn-es-inspector .transition-preview-wrapper .slide-sample-to {
+	z-index: 1;
+	background: #F50067 url(http://www.planwallpaper.com/static/cache/ac/0a/ac0a8cd24028dca08bf746ab989eb5ba.jpg);
+	background-size: cover;
+}
+
+
+.jsn-master .jsn-es-inspector .fa {
+	/*font-size: 14px;*/
+}
+.jsn-master .jsn-es-inspector .input-color-wrapper {
+	position: relative;
+	border: 1px solid rgba(0, 0, 0, 0.6);
+	background: rgba(20, 21, 27, 1) url("http://localhost/joomla/administrator/components/com_easyslider/assets/slider/css/../images/checker.png") -3px -4px;
+	background-clip: content-box;
+	border-radius: 4px;
+	border: 1px solid #07080A;
+	padding: 5px;
+	padding-right: 15px;
+	height: 26px;
+	box-shadow: inset 0 4px 13px rgba(0, 0, 0, 0.2), 1px 1px 0 rgba(255, 255, 255, 0.04);
+}
+.jsn-master .jsn-es-inspector .input-color-wrapper .input-color {
+	background-color: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	padding: 0;
+	margin: 0;
+	border-radius: 1px;
+	color: transparent !important;
+	height: 14px !important;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px #000;
+}
+.jsn-master .jsn-es-inspector .input-color-wrapper .input-group-btn {
+	position: absolute;
+	right: 10px;
+	top: 0px;
+	display: block;
+}
+.jsn-master .jsn-es-inspector .input-color-wrapper .input-group-btn .btn {
+	border: none;
+	padding: 0;
+	font-size: 10px;
+	margin: 0;
+	height: 24px;
+	line-height: 22px;
+	background-color: transparent;
+	box-shadow: none;
+}
+.jsn-master .jsn-es-inspector .input-number {
+	text-align: right;
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper {
+	position: relative;
+	width: 8px;
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > * {
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 50%;
+	overflow: hidden;
+	cursor: pointer;
+	text-shadow: none;
+	background: rgb(36, 39, 49);
+	box-shadow: inset 0px 1px 0 rgba(255,255,255,0.05);
+
+	font-size: 10px;
+	color: #eee;
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > *:hover {
+	background: rgb(43, 46, 58);
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > *:active {
+	color: #393b3f;
+	background: rgba(20, 21, 27, 1);
+	box-shadow: inset 0 4px 13px rgba(0, 0, 0, 0.2);
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > .up {
+	top: 0;
+	border-top-right-radius: 3px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > .down {
+	top: 50%;
+	border-bottom-right-radius: 3px;
+}
+
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > *:before {
+	font-family: "FontAwesome";
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: -15px;
+
+	position: absolute;
+	left: 50%;
+	top: 50%;
+
+	line-height: 30px;
+	text-align: center;
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > .up:before {
+	content: '\f106';
+}
+.jsn-master .jsn-es-inspector .input-number-wrapper .stepper > .down:before {
+	content: '\f107';
+	margin-top: -16px;
+}
