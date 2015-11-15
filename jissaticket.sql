@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.0.2
+-- version 4.3.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2015 at 02:58 PM
--- Server version: 10.0.17-MariaDB
--- PHP Version: 5.6.14
+-- Generation Time: Nov 15, 2015 at 05:02 PM
+-- Server version: 5.6.24
+-- PHP Version: 5.6.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `jissaticket`
@@ -26,58 +26,58 @@ SET time_zone = "+00:00";
 -- Table structure for table `jt_assets`
 --
 
-CREATE TABLE `jt_assets` (
-  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
+CREATE TABLE IF NOT EXISTS `jt_assets` (
+  `id` int(10) unsigned NOT NULL COMMENT 'Primary Key',
   `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set parent.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `level` int(10) UNSIGNED NOT NULL COMMENT 'The cached level in the nested tree.',
+  `level` int(10) unsigned NOT NULL COMMENT 'The cached level in the nested tree.',
   `name` varchar(50) NOT NULL COMMENT 'The unique name for the asset.\n',
   `title` varchar(100) NOT NULL COMMENT 'The descriptive title for the asset.',
   `rules` varchar(5120) NOT NULL COMMENT 'JSON encoded access control.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_assets`
 --
 
 INSERT INTO `jt_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 1, 656, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":[],"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
+(1, 0, 1, 670, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":[],"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
 (2, 1, 2, 3, 1, 'com_admin', 'com_admin', '{}'),
 (3, 1, 4, 13, 1, 'com_banners', 'com_banners', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (4, 1, 14, 15, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 (5, 1, 16, 17, 1, 'com_checkin', 'com_checkin', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 (6, 1, 18, 19, 1, 'com_config', 'com_config', '{}'),
-(7, 1, 20, 91, 1, 'com_contact', 'com_contact', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(8, 1, 92, 401, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.options":[],"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
-(9, 1, 402, 403, 1, 'com_cpanel', 'com_cpanel', '{}'),
-(10, 1, 404, 405, 1, 'com_installer', 'com_installer', '{"core.admin":{"7":0},"core.manage":{"7":0},"core.delete":{"7":0},"core.edit.state":{"7":0}}'),
-(11, 1, 406, 407, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(12, 1, 408, 409, 1, 'com_login', 'com_login', '{}'),
-(13, 1, 410, 411, 1, 'com_mailto', 'com_mailto', '{}'),
-(14, 1, 412, 413, 1, 'com_massmail', 'com_massmail', '{}'),
-(15, 1, 414, 415, 1, 'com_media', 'com_media', '{"core.admin":{"7":0},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
-(16, 1, 416, 417, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(7, 1, 20, 91, 1, 'com_contact', 'com_contact', '{"core.admin":{"7":1},"core.options":[],"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(8, 1, 92, 407, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.options":[],"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
+(9, 1, 408, 409, 1, 'com_cpanel', 'com_cpanel', '{}'),
+(10, 1, 410, 411, 1, 'com_installer', 'com_installer', '{"core.admin":{"7":0},"core.manage":{"7":0},"core.delete":{"7":0},"core.edit.state":{"7":0}}'),
+(11, 1, 412, 413, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(12, 1, 414, 415, 1, 'com_login', 'com_login', '{}'),
+(13, 1, 416, 417, 1, 'com_mailto', 'com_mailto', '{}'),
+(14, 1, 418, 419, 1, 'com_massmail', 'com_massmail', '{}'),
+(15, 1, 420, 421, 1, 'com_media', 'com_media', '{"core.admin":{"7":0},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
+(16, 1, 422, 423, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (17, 1, 39, 40, 1, 'com_messages', 'com_messages', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
-(18, 1, 420, 507, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(19, 1, 508, 515, 1, 'com_newsfeeds', 'com_newsfeeds', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(20, 1, 516, 517, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(21, 1, 518, 519, 1, 'com_redirect', 'com_redirect', '{"core.admin":{"7":1},"core.manage":[]}'),
-(22, 1, 520, 521, 1, 'com_search', 'com_search', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
-(23, 1, 522, 523, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(24, 1, 524, 525, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}'),
-(25, 1, 526, 543, 1, 'com_weblinks', 'com_weblinks', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1,"10":0,"12":0},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1}}'),
-(26, 1, 544, 545, 1, 'com_wrapper', 'com_wrapper', '{}'),
+(18, 1, 426, 521, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(19, 1, 522, 529, 1, 'com_newsfeeds', 'com_newsfeeds', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(20, 1, 530, 531, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(21, 1, 532, 533, 1, 'com_redirect', 'com_redirect', '{"core.admin":{"7":1},"core.manage":[]}'),
+(22, 1, 534, 535, 1, 'com_search', 'com_search', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
+(23, 1, 536, 537, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(24, 1, 538, 539, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.own":{"6":1},"core.edit.state":[]}'),
+(25, 1, 540, 557, 1, 'com_weblinks', 'com_weblinks', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1,"10":0,"12":0},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1}}'),
+(26, 1, 558, 559, 1, 'com_wrapper', 'com_wrapper', '{}'),
 (34, 8, 109, 112, 2, 'com_content.category.9', 'Uncategorised', '{"core.create":{"10":0,"12":0},"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (35, 3, 7, 8, 2, 'com_banners.category.10', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (36, 7, 25, 26, 2, 'com_contact.category.11', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(37, 19, 511, 512, 2, 'com_newsfeeds.category.12', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(38, 25, 533, 534, 2, 'com_weblinks.category.13', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(39, 8, 113, 306, 2, 'com_content.category.14', 'Sample Data-Articles', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(37, 19, 525, 526, 2, 'com_newsfeeds.category.12', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(38, 25, 547, 548, 2, 'com_weblinks.category.13', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(39, 8, 113, 308, 2, 'com_content.category.14', 'Sample Data-Articles', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (40, 3, 9, 10, 2, 'com_banners.category.15', 'Sample Data-Banners', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (41, 7, 27, 88, 2, 'com_contact.category.16', 'Sample Data-Contact', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(42, 19, 513, 514, 2, 'com_newsfeeds.category.17', 'Sample Data-Newsfeeds', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(43, 25, 535, 542, 2, 'com_weblinks.category.18', 'Sample Data-Weblinks', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(42, 19, 527, 528, 2, 'com_newsfeeds.category.17', 'Sample Data-Newsfeeds', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(43, 25, 549, 556, 2, 'com_weblinks.category.18', 'Sample Data-Weblinks', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (44, 39, 114, 249, 3, 'com_content.category.19', 'Joomla!', '{"core.create":{"10":0,"12":0},"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (45, 44, 115, 226, 4, 'com_content.category.20', 'Extensions', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (46, 45, 116, 131, 5, 'com_content.category.21', 'Components', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
@@ -90,9 +90,9 @@ INSERT INTO `jt_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 (53, 51, 257, 278, 4, 'com_content.category.28', 'Photo Gallery', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (54, 39, 282, 295, 3, 'com_content.category.29', 'Fruit Shop Site', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (55, 54, 283, 288, 4, 'com_content.category.30', 'Growers', '{"core.create":{"12":0},"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":{"10":1}}'),
-(56, 43, 536, 537, 3, 'com_weblinks.category.31', 'Park Links', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(57, 43, 538, 541, 3, 'com_weblinks.category.32', 'Joomla! Specific Links', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(58, 57, 539, 540, 4, 'com_weblinks.category.33', 'Other Resources', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(56, 43, 550, 551, 3, 'com_weblinks.category.31', 'Park Links', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(57, 43, 552, 555, 3, 'com_weblinks.category.32', 'Joomla! Specific Links', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(58, 57, 553, 554, 4, 'com_weblinks.category.33', 'Other Resources', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (59, 41, 28, 29, 3, 'com_contact.category.34', 'Park Site', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (60, 41, 30, 87, 3, 'com_contact.category.35', 'Shop Site', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (61, 60, 31, 32, 4, 'com_contact.category.36', 'Staff', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
@@ -201,117 +201,124 @@ INSERT INTO `jt_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 (166, 47, 185, 190, 6, 'com_content.category.75', 'Navigation Modules', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
 (167, 54, 293, 294, 4, 'com_content.category.76', 'Recipes', '{"core.create":{"12":1,"10":1},"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":{"12":1,"10":1}}'),
 (168, 34, 110, 111, 3, 'com_content.article.67', 'What''s New in 1.5?', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(169, 8, 307, 400, 2, 'com_content.category.77', 'Template Details', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(170, 169, 308, 323, 3, 'com_content.category.78', 'Design & Features', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(171, 169, 324, 357, 3, 'com_content.category.79', 'Advanced Stuff', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(172, 169, 358, 367, 3, 'com_content.category.80', 'General', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(173, 169, 368, 383, 3, 'com_content.category.81', 'Layout Variations', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(174, 169, 384, 385, 3, 'com_content.category.82', 'Testimonials', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(175, 169, 386, 399, 3, 'com_content.category.83', 'Menu Styles', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(176, 170, 309, 310, 4, 'com_content.article.68', 'Color Variations', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(177, 170, 311, 312, 4, 'com_content.article.69', 'Font Styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(178, 170, 313, 314, 4, 'com_content.article.70', 'JSN Metro Design & Features', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(179, 170, 315, 316, 4, 'com_content.article.71', 'Layout', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(180, 170, 317, 318, 4, 'com_content.article.72', 'Menu Styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(181, 170, 319, 320, 4, 'com_content.article.73', 'Module Styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(182, 170, 321, 322, 4, 'com_content.article.74', 'Typography', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(183, 171, 325, 326, 4, 'com_content.article.75', 'CSS/JS Compression', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(184, 171, 327, 328, 4, 'com_content.article.76', 'Docs & Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(185, 171, 329, 330, 4, 'com_content.article.77', 'Easy to Start', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(186, 171, 331, 332, 4, 'com_content.article.78', 'Extended styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(187, 171, 333, 334, 4, 'com_content.article.79', 'Image Gallery', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(188, 171, 335, 336, 4, 'com_content.article.80', 'Flash Gallery Alternative', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(189, 171, 337, 338, 4, 'com_content.article.81', 'Joomla! 2.5 & Joomla! 3.x Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(190, 171, 339, 340, 4, 'com_content.article.82', 'Mobile Ready ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(191, 171, 341, 342, 4, 'com_content.article.83', 'Multilingual Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(192, 171, 343, 344, 4, 'com_content.article.84', 'Painless Configuration ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(193, 171, 345, 346, 4, 'com_content.article.85', 'RTL Layout Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(194, 171, 347, 348, 4, 'com_content.article.86', 'SEO & Accessibility', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(195, 173, 369, 370, 4, 'com_content.article.87', 'Layout variation Center | Innerright | Right ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(196, 173, 371, 372, 4, 'com_content.article.88', 'Layout variation Innerleft | Center | Right ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(197, 173, 373, 374, 4, 'com_content.article.89', 'Layout variation Left | Center | Innerright ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(198, 173, 375, 376, 4, 'com_content.article.90', 'Layout variation Left | Center | Right', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(199, 173, 377, 378, 4, 'com_content.article.91', 'Layout variation Left | Innerleft | Center', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(200, 173, 379, 380, 4, 'com_content.article.92', 'Main content only', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(201, 175, 387, 388, 4, 'com_content.article.93', 'Main Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(202, 175, 389, 390, 4, 'com_content.article.94', 'Rich Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(203, 175, 391, 392, 4, 'com_content.article.95', 'Side Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(204, 175, 393, 394, 4, 'com_content.article.96', 'Side Menu RTL', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(205, 175, 395, 396, 4, 'com_content.article.97', 'Top Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(206, 175, 397, 398, 4, 'com_content.article.98', 'Tree Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(207, 171, 349, 350, 4, 'com_content.article.99', 'JSN Metro Features', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(208, 171, 351, 352, 4, 'com_content.article.100', 'K2 Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(209, 172, 359, 360, 4, 'com_content.article.101', 'JSN Metro Product Tour', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(210, 172, 361, 362, 4, 'com_content.article.102', '5 reasons to choose JSN Metro', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(211, 172, 363, 364, 4, 'com_content.article.103', 'Welcome to JSN Metro', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(212, 172, 365, 366, 4, 'com_content.article.104', 'JSN Metro Showcase', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(169, 8, 309, 402, 2, 'com_content.category.77', 'Template Details', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(170, 169, 310, 325, 3, 'com_content.category.78', 'Design & Features', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(171, 169, 326, 359, 3, 'com_content.category.79', 'Advanced Stuff', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(172, 169, 360, 369, 3, 'com_content.category.80', 'General', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(173, 169, 370, 385, 3, 'com_content.category.81', 'Layout Variations', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(174, 169, 386, 387, 3, 'com_content.category.82', 'Testimonials', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(175, 169, 388, 401, 3, 'com_content.category.83', 'Menu Styles', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(176, 170, 311, 312, 4, 'com_content.article.68', 'Color Variations', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(177, 170, 313, 314, 4, 'com_content.article.69', 'Font Styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(178, 170, 315, 316, 4, 'com_content.article.70', 'JSN Metro Design & Features', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(179, 170, 317, 318, 4, 'com_content.article.71', 'Layout', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(180, 170, 319, 320, 4, 'com_content.article.72', 'Menu Styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(181, 170, 321, 322, 4, 'com_content.article.73', 'Module Styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(182, 170, 323, 324, 4, 'com_content.article.74', 'Typography', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(183, 171, 327, 328, 4, 'com_content.article.75', 'CSS/JS Compression', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(184, 171, 329, 330, 4, 'com_content.article.76', 'Docs & Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(185, 171, 331, 332, 4, 'com_content.article.77', 'Easy to Start', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(186, 171, 333, 334, 4, 'com_content.article.78', 'Extended styles', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(187, 171, 335, 336, 4, 'com_content.article.79', 'Image Gallery', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(188, 171, 337, 338, 4, 'com_content.article.80', 'Flash Gallery Alternative', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(189, 171, 339, 340, 4, 'com_content.article.81', 'Joomla! 2.5 & Joomla! 3.x Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(190, 171, 341, 342, 4, 'com_content.article.82', 'Mobile Ready ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(191, 171, 343, 344, 4, 'com_content.article.83', 'Multilingual Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(192, 171, 345, 346, 4, 'com_content.article.84', 'Painless Configuration ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(193, 171, 347, 348, 4, 'com_content.article.85', 'RTL Layout Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(194, 171, 349, 350, 4, 'com_content.article.86', 'SEO & Accessibility', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(195, 173, 371, 372, 4, 'com_content.article.87', 'Layout variation Center | Innerright | Right ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(196, 173, 373, 374, 4, 'com_content.article.88', 'Layout variation Innerleft | Center | Right ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(197, 173, 375, 376, 4, 'com_content.article.89', 'Layout variation Left | Center | Innerright ', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(198, 173, 377, 378, 4, 'com_content.article.90', 'Layout variation Left | Center | Right', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(199, 173, 379, 380, 4, 'com_content.article.91', 'Layout variation Left | Innerleft | Center', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(200, 173, 381, 382, 4, 'com_content.article.92', 'Main content only', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(201, 175, 389, 390, 4, 'com_content.article.93', 'Main Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(202, 175, 391, 392, 4, 'com_content.article.94', 'Rich Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(203, 175, 393, 394, 4, 'com_content.article.95', 'Side Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(204, 175, 395, 396, 4, 'com_content.article.96', 'Side Menu RTL', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(205, 175, 397, 398, 4, 'com_content.article.97', 'Top Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(206, 175, 399, 400, 4, 'com_content.article.98', 'Tree Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(207, 171, 351, 352, 4, 'com_content.article.99', 'JSN Metro Features', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(208, 171, 353, 354, 4, 'com_content.article.100', 'K2 Support', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(209, 172, 361, 362, 4, 'com_content.article.101', 'JSN Metro Product Tour', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(210, 172, 363, 364, 4, 'com_content.article.102', '5 reasons to choose JSN Metro', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(211, 172, 365, 366, 4, 'com_content.article.103', 'Welcome to JSN Metro', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(212, 172, 367, 368, 4, 'com_content.article.104', 'JSN Metro Showcase', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (213, 3, 11, 12, 2, 'com_banners.category.84', 'Promo', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (215, 7, 89, 90, 2, 'com_contact.category.85', 'Contacts', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(216, 173, 381, 382, 4, 'com_content.article.105', 'Main content only (2)', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(216, 173, 383, 384, 4, 'com_content.article.105', 'Main content only (2)', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (231, 45, 222, 223, 5, 'com_content.article.106', 'Form Builder', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (232, 39, 300, 301, 3, 'com_content.article.107', 'Sample Article ', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(233, 171, 353, 354, 4, 'com_content.article.108', 'Image Gallery (2)', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(233, 171, 355, 356, 4, 'com_content.article.108', 'Image Gallery (2)', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (234, 39, 302, 303, 3, 'com_content.article.109', 'JSN PowerAdmin - Managing your Joomla website can''t be easier', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(235, 1, 628, 629, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{"core.admin":{"8":1},"core.manage":{"7":1},"core.delete":{"6":1},"core.edit.state":{"6":1,"5":1}}'),
-(237, 1, 630, 631, 1, 'com_uniform', 'uniform', '{}'),
-(238, 1, 632, 633, 1, 'com_poweradmin', 'poweradmin', '{}'),
-(239, 1, 634, 635, 1, 'com_imageshow', 'imageshow', '{}'),
-(240, 1, 636, 637, 1, 'com_finder', 'com_finder', '{}'),
-(241, 1, 638, 639, 1, 'com_tags', 'com_tags', '{}'),
-(242, 1, 640, 641, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
-(243, 1, 642, 643, 1, 'com_ajax', 'com_ajax', '{}'),
-(244, 1, 644, 645, 1, 'com_postinstall', 'com_postinstall', '{}'),
-(245, 18, 421, 422, 2, 'com_modules.module.270', 'JSN imageshow Module', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(246, 18, 423, 424, 2, 'com_modules.module.267', 'JSN PowerAdmin Quick Icons', ''),
-(247, 18, 425, 426, 2, 'com_modules.module.269', 'JSN imageshow Quick Icons', '{}'),
-(248, 1, 646, 647, 1, 'com_mobilize', 'mobilize', '{}'),
-(249, 171, 355, 356, 4, 'com_content.article.110', 'Website Mobilizing', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(250, 18, 427, 428, 2, 'com_modules.module.87', 'Native Compatibility', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(251, 18, 429, 430, 2, 'com_modules.module.99', 'Joomla! Copyright', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(252, 18, 431, 432, 2, 'com_modules.module.264', ' RTL Support', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(253, 18, 433, 434, 2, 'com_modules.module.156', 'Position "promo"', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(254, 1, 648, 649, 1, 'com_pagebuilder', 'com_pagebuilder', '{}'),
+(235, 1, 642, 643, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{"core.admin":{"8":1},"core.manage":{"7":1},"core.delete":{"6":1},"core.edit.state":{"6":1,"5":1}}'),
+(237, 1, 644, 645, 1, 'com_uniform', 'uniform', '{}'),
+(238, 1, 646, 647, 1, 'com_poweradmin', 'poweradmin', '{}'),
+(239, 1, 648, 649, 1, 'com_imageshow', 'imageshow', '{}'),
+(240, 1, 650, 651, 1, 'com_finder', 'com_finder', '{}'),
+(241, 1, 652, 653, 1, 'com_tags', 'com_tags', '{}'),
+(242, 1, 654, 655, 1, 'com_contenthistory', 'com_contenthistory', '{}'),
+(243, 1, 656, 657, 1, 'com_ajax', 'com_ajax', '{}'),
+(244, 1, 658, 659, 1, 'com_postinstall', 'com_postinstall', '{}'),
+(245, 18, 427, 428, 2, 'com_modules.module.270', 'JSN imageshow Module', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(246, 18, 429, 430, 2, 'com_modules.module.267', 'JSN PowerAdmin Quick Icons', ''),
+(247, 18, 431, 432, 2, 'com_modules.module.269', 'JSN imageshow Quick Icons', '{}'),
+(248, 1, 660, 661, 1, 'com_mobilize', 'mobilize', '{}'),
+(249, 171, 357, 358, 4, 'com_content.article.110', 'Website Mobilizing', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
+(250, 18, 433, 434, 2, 'com_modules.module.87', 'Native Compatibility', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(251, 18, 435, 436, 2, 'com_modules.module.99', 'Joomla! Copyright', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(252, 18, 437, 438, 2, 'com_modules.module.264', ' RTL Support', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(253, 18, 439, 440, 2, 'com_modules.module.156', 'Position "promo"', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
+(254, 1, 662, 663, 1, 'com_pagebuilder', 'com_pagebuilder', '{}'),
 (255, 39, 304, 305, 3, 'com_content.article.111', 'JSN PageBuilder - The Easiest Way to Build Joomla Pages', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(256, 18, 435, 436, 2, 'com_modules.module.79', 'Must-see Stuff', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(257, 18, 437, 438, 2, 'com_modules.module.283', 'Reviews on JED', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(258, 18, 439, 440, 2, 'com_modules.module.284', 'Reviews on JED', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(259, 18, 441, 442, 2, 'com_modules.module.285', 'Reviews on JED', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(260, 18, 443, 444, 2, 'com_modules.module.94', 'Compatibility', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(261, 1, 650, 651, 1, 'com_easyslider', 'EasySlider', '{}'),
-(262, 18, 445, 446, 2, 'com_modules.module.286', 'mod_easyslider', ''),
+(256, 18, 441, 442, 2, 'com_modules.module.79', 'Must-see Stuff', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(257, 18, 443, 444, 2, 'com_modules.module.283', 'Reviews on JED', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(258, 18, 445, 446, 2, 'com_modules.module.284', 'Reviews on JED', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(259, 18, 447, 448, 2, 'com_modules.module.285', 'Reviews on JED', '{"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(260, 18, 449, 450, 2, 'com_modules.module.94', 'Compatibility', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(261, 1, 664, 665, 1, 'com_easyslider', 'EasySlider', '{}'),
+(262, 18, 451, 452, 2, 'com_modules.module.286', 'mod_easyslider', ''),
 (263, 45, 224, 225, 5, 'com_content.article.112', 'Content Slider', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(264, 18, 447, 448, 2, 'com_modules.module.260', 'Reviews on JED', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(265, 18, 449, 450, 2, 'com_modules.module.287', 'JSN ImageShow', '{}'),
-(266, 18, 451, 452, 2, 'com_modules.module.288', 'JSN UniForm', '{}'),
-(267, 18, 453, 454, 2, 'com_modules.module.289', 'mod_easyslider', '{}'),
-(268, 18, 455, 456, 2, 'com_modules.module.290', 'Multilanguage status', '{}'),
-(269, 18, 457, 458, 2, 'com_modules.module.291', 'Joomla Version', '{}'),
-(270, 18, 459, 460, 2, 'com_modules.module.292', 'Site Information', '{}'),
-(271, 18, 461, 462, 2, 'com_modules.module.293', 'JSN PowerAdmin Quick Icons', '{}'),
-(272, 18, 463, 464, 2, 'com_modules.module.294', 'JSN imageshow Quick Icons', '{}'),
-(273, 18, 465, 466, 2, 'com_modules.module.246', 'See PRO edition', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(274, 18, 467, 468, 2, 'com_modules.module.110', 'See other templates', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(275, 18, 469, 470, 2, 'com_modules.module.254', 'Time and Socials', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(276, 18, 471, 472, 2, 'com_modules.module.78', 'Footer Menu', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(277, 18, 473, 474, 2, 'com_modules.module.101', 'Jissa Copyright', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(278, 18, 475, 476, 2, 'com_modules.module.263', 'Flexible Layout', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(279, 18, 477, 478, 2, 'com_modules.module.262', 'Module', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(280, 18, 479, 480, 2, 'com_modules.module.243', 'Menu', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(281, 18, 481, 482, 2, 'com_modules.module.89', 'Tree Menu', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(282, 1, 652, 653, 1, 'com_hikashop', 'HikaShop', '{}'),
-(283, 1, 654, 655, 1, 'com_comprofiler', 'comprofiler', '{}'),
-(284, 18, 483, 484, 2, 'com_modules.module.307', 'Login Now!', '{"core.delete":[],"core.edit":[],"core.edit.state":[],"module.edit.frontend":[]}'),
-(285, 18, 485, 486, 2, 'com_modules.module.308', 'CB Online', '{}'),
-(286, 18, 487, 488, 2, 'com_modules.module.309', 'CB Workflows', '{}'),
-(287, 18, 489, 490, 2, 'com_modules.module.310', 'CB Admin Dropdown Menu', '{}'),
-(288, 18, 491, 492, 2, 'com_modules.module.311', 'Community Builder News', '{}'),
-(289, 18, 493, 494, 2, 'com_modules.module.312', 'Community Builder Updates', '{}'),
-(290, 18, 495, 496, 2, 'com_modules.module.313', 'CB Admin Version Checker', '{}'),
-(291, 18, 497, 498, 2, 'com_modules.module.16', 'Login Form', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(292, 18, 499, 500, 2, 'com_modules.module.1', 'Main Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[],"module.edit.frontend":[]}'),
-(293, 18, 501, 502, 2, 'com_modules.module.26', 'This Site', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(294, 18, 503, 504, 2, 'com_modules.module.314', 'bannerad', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
-(295, 18, 505, 506, 2, 'com_modules.module.305', 'Your Cart', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}');
+(264, 18, 453, 454, 2, 'com_modules.module.260', 'Reviews on JED', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(265, 18, 455, 456, 2, 'com_modules.module.287', 'JSN ImageShow', '{}'),
+(266, 18, 457, 458, 2, 'com_modules.module.288', 'JSN UniForm', '{}'),
+(267, 18, 459, 460, 2, 'com_modules.module.289', 'mod_easyslider', '{}'),
+(268, 18, 461, 462, 2, 'com_modules.module.290', 'Multilanguage status', '{}'),
+(269, 18, 463, 464, 2, 'com_modules.module.291', 'Joomla Version', '{}'),
+(270, 18, 465, 466, 2, 'com_modules.module.292', 'Site Information', '{}'),
+(271, 18, 467, 468, 2, 'com_modules.module.293', 'JSN PowerAdmin Quick Icons', '{}'),
+(272, 18, 469, 470, 2, 'com_modules.module.294', 'JSN imageshow Quick Icons', '{}'),
+(273, 18, 471, 472, 2, 'com_modules.module.246', 'See PRO edition', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(274, 18, 473, 474, 2, 'com_modules.module.110', 'See other templates', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(275, 18, 475, 476, 2, 'com_modules.module.254', 'Time and Socials', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(276, 18, 477, 478, 2, 'com_modules.module.78', 'Footer Menu', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(277, 18, 479, 480, 2, 'com_modules.module.101', 'Jissa Copyright', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(278, 18, 481, 482, 2, 'com_modules.module.263', 'Flexible Layout', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(279, 18, 483, 484, 2, 'com_modules.module.262', 'Module', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(280, 18, 485, 486, 2, 'com_modules.module.243', 'Menu', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(281, 18, 487, 488, 2, 'com_modules.module.89', 'Tree Menu', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(282, 1, 666, 667, 1, 'com_hikashop', 'HikaShop', '{}'),
+(283, 1, 668, 669, 1, 'com_comprofiler', 'comprofiler', '{}'),
+(284, 18, 489, 490, 2, 'com_modules.module.307', 'Login Now!', '{"core.delete":[],"core.edit":[],"core.edit.state":[],"module.edit.frontend":[]}'),
+(285, 18, 491, 492, 2, 'com_modules.module.308', 'CB Online', '{}'),
+(286, 18, 493, 494, 2, 'com_modules.module.309', 'CB Workflows', '{}'),
+(287, 18, 495, 496, 2, 'com_modules.module.310', 'CB Admin Dropdown Menu', '{}'),
+(288, 18, 497, 498, 2, 'com_modules.module.311', 'Community Builder News', '{}'),
+(289, 18, 499, 500, 2, 'com_modules.module.312', 'Community Builder Updates', '{}'),
+(290, 18, 501, 502, 2, 'com_modules.module.313', 'CB Admin Version Checker', '{}'),
+(291, 18, 503, 504, 2, 'com_modules.module.16', 'Login Form', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(292, 18, 505, 506, 2, 'com_modules.module.1', 'Main Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[],"module.edit.frontend":[]}'),
+(293, 18, 507, 508, 2, 'com_modules.module.26', 'This Site', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(294, 18, 509, 510, 2, 'com_modules.module.314', 'bannerad', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(295, 18, 511, 512, 2, 'com_modules.module.305', 'Your Cart', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(296, 18, 513, 514, 2, 'com_modules.module.315', 'Product Listing', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(297, 18, 515, 516, 2, 'com_modules.module.17', 'Breadcrumbs', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(298, 18, 517, 518, 2, 'com_modules.module.316', 'Copy of Main Menu', '{"core.delete":[],"core.edit":[],"core.edit.state":[],"module.edit.frontend":[]}'),
+(299, 18, 519, 520, 2, 'com_modules.module.304', 'HikaShop Content Module', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"module.edit.frontend":[]}'),
+(300, 8, 403, 406, 2, 'com_content.category.86', 'News', '{"core.create":{"6":1,"3":1,"5":1},"core.delete":{"6":1,"3":1,"4":1,"5":1},"core.edit":{"6":1,"3":1,"4":1,"5":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1,"4":1}}'),
+(301, 39, 306, 307, 3, 'com_content.article.113', 'Forezine Fest ''15', '{"core.admin":{"7":1},"core.options":[],"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
+(302, 300, 404, 405, 3, 'com_content.article.114', 'Forezine Fest ''15', '{"core.admin":{"7":1},"core.options":[],"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}');
 
 -- --------------------------------------------------------
 
@@ -319,7 +326,7 @@ INSERT INTO `jt_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 -- Table structure for table `jt_associations`
 --
 
-CREATE TABLE `jt_associations` (
+CREATE TABLE IF NOT EXISTS `jt_associations` (
   `id` int(11) NOT NULL COMMENT 'A reference to the associated item.',
   `context` varchar(50) NOT NULL COMMENT 'The context of the associated item.',
   `key` char(32) NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.'
@@ -331,7 +338,7 @@ CREATE TABLE `jt_associations` (
 -- Table structure for table `jt_banners`
 --
 
-CREATE TABLE `jt_banners` (
+CREATE TABLE IF NOT EXISTS `jt_banners` (
   `id` int(11) NOT NULL,
   `cid` int(11) NOT NULL DEFAULT '0',
   `type` int(11) NOT NULL DEFAULT '0',
@@ -342,10 +349,10 @@ CREATE TABLE `jt_banners` (
   `clicks` int(11) NOT NULL DEFAULT '0',
   `clickurl` varchar(200) NOT NULL DEFAULT '',
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `catid` int(10) unsigned NOT NULL DEFAULT '0',
   `description` text NOT NULL,
   `custombannercode` varchar(2048) NOT NULL,
-  `sticky` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `sticky` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `params` text NOT NULL,
@@ -354,19 +361,19 @@ CREATE TABLE `jt_banners` (
   `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
   `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
   `track_impressions` tinyint(4) NOT NULL DEFAULT '-1',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `reset` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `language` char(7) NOT NULL DEFAULT '',
-  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `version` int(10) UNSIGNED NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `version` int(10) unsigned NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_banners`
@@ -384,14 +391,14 @@ INSERT INTO `jt_banners` (`id`, `cid`, `type`, `name`, `alias`, `imptotal`, `imp
 -- Table structure for table `jt_banner_clients`
 --
 
-CREATE TABLE `jt_banner_clients` (
+CREATE TABLE IF NOT EXISTS `jt_banner_clients` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `contact` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `extrainfo` text NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `metakey` text NOT NULL,
   `own_prefix` tinyint(4) NOT NULL DEFAULT '0',
@@ -399,7 +406,7 @@ CREATE TABLE `jt_banner_clients` (
   `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
   `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
   `track_impressions` tinyint(4) NOT NULL DEFAULT '-1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_banner_clients`
@@ -414,11 +421,11 @@ INSERT INTO `jt_banner_clients` (`id`, `name`, `contact`, `email`, `extrainfo`, 
 -- Table structure for table `jt_banner_tracks`
 --
 
-CREATE TABLE `jt_banner_tracks` (
+CREATE TABLE IF NOT EXISTS `jt_banner_tracks` (
   `track_date` datetime NOT NULL,
-  `track_type` int(10) UNSIGNED NOT NULL,
-  `banner_id` int(10) UNSIGNED NOT NULL,
-  `count` int(10) UNSIGNED NOT NULL DEFAULT '0'
+  `track_type` int(10) unsigned NOT NULL,
+  `banner_id` int(10) unsigned NOT NULL,
+  `count` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -427,13 +434,13 @@ CREATE TABLE `jt_banner_tracks` (
 -- Table structure for table `jt_categories`
 --
 
-CREATE TABLE `jt_categories` (
+CREATE TABLE IF NOT EXISTS `jt_categories` (
   `id` int(11) NOT NULL,
-  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
   `rgt` int(11) NOT NULL DEFAULT '0',
-  `level` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `level` int(10) unsigned NOT NULL DEFAULT '0',
   `path` varchar(255) NOT NULL DEFAULT '',
   `extension` varchar(50) NOT NULL DEFAULT '',
   `title` varchar(255) NOT NULL,
@@ -441,28 +448,28 @@ CREATE TABLE `jt_categories` (
   `note` varchar(255) NOT NULL DEFAULT '',
   `description` mediumtext,
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `access` int(10) UNSIGNED DEFAULT NULL,
+  `access` int(10) unsigned DEFAULT NULL,
   `params` text NOT NULL,
   `metadesc` varchar(1024) NOT NULL COMMENT 'The meta description for the page.',
   `metakey` varchar(1024) NOT NULL COMMENT 'The meta keywords for the page.',
   `metadata` varchar(2048) NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `modified_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `language` char(7) NOT NULL,
-  `version` int(10) UNSIGNED NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `version` int(10) unsigned NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_categories`
 --
 
 INSERT INTO `jt_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`, `version`) VALUES
-(1, 0, 0, 0, 151, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2011-01-01 00:00:01', 0, '2011-01-01 00:00:01', 0, '*', 1),
+(1, 0, 0, 0, 153, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 0, '2011-01-01 00:00:01', 0, '2011-01-01 00:00:01', 0, '*', 1),
 (9, 34, 1, 131, 132, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2011-01-01 00:00:01', 42, '2011-01-01 00:00:01', 0, '*', 1),
 (10, 35, 1, 129, 130, 1, 'uncategorised', 'com_banners', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":"","foobar":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '2011-01-01 00:00:01', 0, '*', 1),
 (11, 36, 1, 125, 126, 1, 'uncategorised', 'com_contact', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 42, '2011-01-01 00:00:01', 0, '2011-01-01 00:00:01', 0, '*', 1),
@@ -537,7 +544,8 @@ INSERT INTO `jt_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level
 (82, 174, 77, 142, 143, 2, 'template-details/testimonials', 'com_content', 'Testimonials', 'testimonials', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-04-01 02:53:58', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (83, 175, 77, 144, 145, 2, 'template-details/menu-styles', 'com_content', 'Menu Styles', 'menu-styles', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-04-01 02:54:08', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (84, 213, 1, 147, 148, 1, 'promo', 'com_banners', 'Promo', 'promo', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-04-01 08:36:56', 0, '0000-00-00 00:00:00', 0, '*', 1),
-(85, 215, 1, 149, 150, 1, 'contacts', 'com_contact', 'Contacts', 'contacts', '', 'Contact Details for this Web site', -2, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-04-13 07:17:36', 0, '0000-00-00 00:00:00', 0, '*', 1);
+(85, 215, 1, 149, 150, 1, 'contacts', 'com_contact', 'Contacts', 'contacts', '', 'Contact Details for this Web site', -2, 0, '0000-00-00 00:00:00', 1, '{"category_layout":"","image":""}', '', '', '{"author":"","robots":""}', 42, '2011-04-13 07:17:36', 0, '0000-00-00 00:00:00', 0, '*', 1),
+(86, 300, 1, 151, 152, 1, 'news', 'com_content', 'News', 'news', '', '', 1, 326, '2015-11-15 10:21:21', 1, '{"category_layout":"","image":"","image_alt":""}', '', '', '{"author":"","robots":""}', 328, '2015-11-15 03:32:05', 326, '2015-11-15 03:46:33', 0, '*', 1);
 
 -- --------------------------------------------------------
 
@@ -545,7 +553,7 @@ INSERT INTO `jt_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level
 -- Table structure for table `jt_comprofiler`
 --
 
-CREATE TABLE `jt_comprofiler` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler` (
   `id` int(11) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL DEFAULT '0',
   `firstname` varchar(100) DEFAULT NULL,
@@ -569,15 +577,20 @@ CREATE TABLE `jt_comprofiler` (
   `bannedby` int(11) DEFAULT NULL,
   `unbannedby` int(11) DEFAULT NULL,
   `bannedreason` mediumtext,
-  `acceptedterms` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
+  `acceptedterms` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `cb_schoolcompany` text,
+  `cb_position` text,
+  `cb_lastname` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler`
 --
 
-INSERT INTO `jt_comprofiler` (`id`, `user_id`, `firstname`, `middlename`, `lastname`, `hits`, `message_last_sent`, `message_number_sent`, `avatar`, `avatarapproved`, `canvas`, `canvasapproved`, `approved`, `confirmed`, `lastupdatedate`, `registeripaddr`, `cbactivation`, `banned`, `banneddate`, `unbanneddate`, `bannedby`, `unbannedby`, `bannedreason`, `acceptedterms`) VALUES
-(326, 326, NULL, NULL, NULL, 0, '0000-00-00 00:00:00', 0, NULL, 1, NULL, 1, 1, 1, '0000-00-00 00:00:00', '', '', 0, NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `jt_comprofiler` (`id`, `user_id`, `firstname`, `middlename`, `lastname`, `hits`, `message_last_sent`, `message_number_sent`, `avatar`, `avatarapproved`, `canvas`, `canvasapproved`, `approved`, `confirmed`, `lastupdatedate`, `registeripaddr`, `cbactivation`, `banned`, `banneddate`, `unbanneddate`, `bannedby`, `unbannedby`, `bannedreason`, `acceptedterms`, `cb_schoolcompany`, `cb_position`, `cb_lastname`) VALUES
+(326, 326, NULL, NULL, NULL, 0, '0000-00-00 00:00:00', 0, NULL, 1, NULL, 1, 1, 1, '0000-00-00 00:00:00', '', '', 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+(327, 327, NULL, NULL, NULL, 0, '0000-00-00 00:00:00', 0, NULL, 1, NULL, 1, 1, 1, '0000-00-00 00:00:00', '', '', 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL),
+(328, 328, NULL, NULL, NULL, 0, '0000-00-00 00:00:00', 0, NULL, 1, NULL, 1, 1, 1, '0000-00-00 00:00:00', '', '', 0, NULL, NULL, NULL, NULL, NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -585,7 +598,7 @@ INSERT INTO `jt_comprofiler` (`id`, `user_id`, `firstname`, `middlename`, `lastn
 -- Table structure for table `jt_comprofiler_fields`
 --
 
-CREATE TABLE `jt_comprofiler_fields` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_fields` (
   `fieldid` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
   `tablecolumns` text NOT NULL,
@@ -613,7 +626,7 @@ CREATE TABLE `jt_comprofiler_fields` (
   `pluginid` int(11) NOT NULL DEFAULT '0',
   `cssclass` varchar(255) DEFAULT NULL,
   `params` mediumtext
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_fields`
@@ -627,18 +640,21 @@ INSERT INTO `jt_comprofiler_fields` (`fieldid`, `name`, `tablecolumns`, `table`,
 (27, 'lastvisitDate', 'lastvisitDate', '#__users', '_UE_LASTONLINE', '', 'datetime', NULL, NULL, 0, 21, 2, NULL, NULL, NULL, NULL, 1, 0, 0, 2, 1, 0, 1, 1, 1, NULL, 'field_display_by=2'),
 (28, 'registerDate', 'registerDate', '#__users', '_UE_MEMBERSINCE', '', 'datetime', NULL, NULL, 0, 21, 1, NULL, NULL, NULL, NULL, 1, 0, 0, 2, 1, 0, 1, 1, 1, NULL, 'field_display_by=6'),
 (29, 'avatar', 'avatar,avatarapproved', '#__comprofiler', '_UE_IMAGE', '', 'image', NULL, NULL, 0, 20, 1, NULL, NULL, NULL, NULL, 1, 0, 1, 4, 0, 0, 1, 1, 1, NULL, NULL),
-(41, 'name', 'name', '#__users', '_UE_NAME', '_UE_REGWARN_NAME', 'predefined', NULL, NULL, 1, 11, 2, NULL, NULL, NULL, NULL, 1, 1, 1, 0, 0, 1, 1, 1, 1, NULL, NULL),
-(42, 'username', 'username', '#__users', '_UE_UNAME', '_UE_VALID_UNAME', 'predefined', NULL, NULL, 1, 11, 6, NULL, NULL, NULL, NULL, 1, 1, 1, 0, 0, 1, 1, 1, 1, NULL, NULL),
-(44, 'acceptedterms', 'acceptedterms', '#__comprofiler', 'USER_TERMS_AND_CONDITIONS_TITLE', '', 'terms', NULL, NULL, 0, 11, 11, NULL, NULL, NULL, NULL, 1, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL),
+(41, 'name', 'name', '#__users', 'First Name', '_UE_REGWARN_NAME', 'predefined', 0, 0, 1, 11, 2, NULL, NULL, NULL, '', 1, 1, 1, 0, 0, 1, 1, 1, 1, '', '{"fieldLayout":"","fieldLayoutEdit":"","fieldLayoutList":"","fieldLayoutRegister":"","fieldLayoutContentPlugins":"0","fieldLayoutIcons":"","fieldPlaceholder":"","fieldMinLength":"0","fieldValidateExpression":"singleword","pregexp":"\\/^.*$\\/","pregexperror":"Not a valid input","fieldValidateForbiddenList_register":"http:,https:,mailto:,\\/\\/.[url],<a,<\\/a>,&#","fieldValidateForbiddenList_edit":""}'),
+(42, 'username', 'username', '#__users', '_UE_UNAME', '_UE_VALID_UNAME', 'predefined', NULL, NULL, 1, 11, 9, NULL, NULL, NULL, NULL, 1, 1, 1, 0, 0, 1, 1, 1, 1, NULL, NULL),
+(44, 'acceptedterms', 'acceptedterms', '#__comprofiler', 'USER_TERMS_AND_CONDITIONS_TITLE', '', 'terms', NULL, NULL, 0, 11, 14, NULL, NULL, NULL, NULL, 1, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL),
 (45, 'formatname', '', '#__comprofiler', '_UE_FORMATNAME', '', 'formatname', NULL, NULL, 0, 11, 1, NULL, NULL, NULL, NULL, 1, 0, 0, 1, 1, 0, 1, 1, 1, NULL, NULL),
-(46, 'firstname', 'firstname', '#__comprofiler', '_UE_YOUR_FNAME', '_UE_REGWARN_FNAME', 'predefined', NULL, NULL, 1, 11, 3, NULL, NULL, NULL, NULL, 0, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
-(47, 'middlename', 'middlename', '#__comprofiler', '_UE_YOUR_MNAME', '_UE_REGWARN_MNAME', 'predefined', NULL, NULL, 0, 11, 4, NULL, NULL, NULL, NULL, 0, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
-(48, 'lastname', 'lastname', '#__comprofiler', '_UE_YOUR_LNAME', '_UE_REGWARN_LNAME', 'predefined', NULL, NULL, 1, 11, 5, NULL, NULL, NULL, NULL, 0, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
+(46, 'firstname', 'firstname', '#__comprofiler', '_UE_YOUR_FNAME', '_UE_REGWARN_FNAME', 'predefined', NULL, NULL, 1, 11, 4, NULL, NULL, NULL, NULL, 0, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
+(47, 'middlename', 'middlename', '#__comprofiler', '_UE_YOUR_MNAME', '_UE_REGWARN_MNAME', 'predefined', NULL, NULL, 0, 11, 5, NULL, NULL, NULL, NULL, 0, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
+(48, 'lastname', 'lastname', '#__comprofiler', '_UE_YOUR_LNAME', '_UE_REGWARN_LNAME', 'predefined', NULL, NULL, 1, 11, 6, NULL, NULL, NULL, NULL, 0, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
 (49, 'lastupdatedate', 'lastupdatedate', '#__comprofiler', '_UE_LASTUPDATEDON', '', 'datetime', NULL, NULL, 0, 21, 3, NULL, NULL, NULL, NULL, 1, 0, 0, 2, 1, 0, 1, 1, 1, NULL, 'field_display_by=2'),
-(50, 'email', 'email', '#__users', '_UE_EMAIL', '_UE_REGWARN_MAIL', 'primaryemailaddress', NULL, NULL, 1, 11, 7, NULL, NULL, NULL, NULL, 1, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
-(51, 'password', 'password', '#__users', '_UE_PASS', '_UE_VALID_PASS', 'password', 50, NULL, 1, 11, 8, NULL, NULL, NULL, NULL, 1, 1, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
-(52, 'params', 'params', '#__users', '_UE_USERPARAMS', '', 'userparams', NULL, NULL, 0, 11, 9, NULL, NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
-(53, 'pm', '', '#__comprofiler', '_UE_PM', '', 'pm', NULL, NULL, 0, 11, 10, NULL, NULL, NULL, NULL, 1, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL);
+(50, 'email', 'email', '#__users', '_UE_EMAIL', '_UE_REGWARN_MAIL', 'primaryemailaddress', 0, 0, 1, 11, 10, NULL, NULL, NULL, '', 1, 1, 1, 0, 0, 0, 1, 1, 1, '', '{"fieldLayout":"","fieldLayoutEdit":"","fieldLayoutList":"","fieldLayoutRegister":"","fieldLayoutContentPlugins":"0","fieldLayoutIcons":"","fieldPlaceholder":"sample@gmail.com","displayMode":"0","displayModeList":"0","field_check_email":"2","fieldMinLength":"0","fieldValidateExpression":"","pregexp":"\\/^.*$\\/","pregexperror":"Not a valid input","fieldValidateForbiddenList_register":"http:,https:,mailto:,\\/\\/.[url],<a,<\\/a>,&#","fieldValidateForbiddenList_edit":"","fieldVerifyInput":"0","verifyEmailTitle":"_UE_VERIFY_SOMETHING"}'),
+(51, 'password', 'password', '#__users', '_UE_PASS', '_UE_VALID_PASS', 'password', 50, 0, 1, 11, 11, NULL, NULL, NULL, '', 1, 1, 1, 0, 0, 0, 1, 1, 1, '', '{"fieldPlaceholder":"","fieldMinLength":"0","fieldValidateExpression":"singleaznum","pregexp":"\\/^.*$\\/","pregexperror":"Not a valid input","fieldValidateForbiddenList_register":"http:,https:,mailto:,\\/\\/.[url],<a,<\\/a>,&#","fieldValidateForbiddenList_edit":"","fieldVerifyInput":"1","verifyPassTitle":"_UE_VERIFY_SOMETHING","passTestSrength":"0"}'),
+(52, 'params', 'params', '#__users', '_UE_USERPARAMS', '', 'userparams', NULL, NULL, 0, 11, 12, NULL, NULL, NULL, NULL, 1, 0, 1, 0, 0, 0, 1, 1, 1, NULL, NULL),
+(53, 'pm', '', '#__comprofiler', '_UE_PM', '', 'pm', NULL, NULL, 0, 11, 13, NULL, NULL, NULL, NULL, 1, 0, 0, 0, 0, 0, 1, 1, 1, NULL, NULL),
+(54, 'cb_schoolcompany', 'cb_schoolcompany', '#__comprofiler', 'School/Company', '', 'text', 0, 0, 1, 11, 7, NULL, NULL, NULL, '', 1, 1, 1, 1, 0, 0, 0, 0, 1, '', '{"fieldLayout":"","fieldLayoutEdit":"","fieldLayoutList":"","fieldLayoutRegister":"","fieldLayoutContentPlugins":"0","fieldLayoutIcons":"","fieldPlaceholder":"","fieldMinLength":"0","fieldValidateExpression":"multiplewords","pregexp":"\\/^([a-z]+ *+[a-z])*$\\/i )","pregexperror":"Not a valid input","fieldValidateForbiddenList_register":"http:,https:,mailto:,\\/\\/.[url],<a,<\\/a>,&#","fieldValidateForbiddenList_edit":""}'),
+(55, 'cb_position', 'cb_position', '#__comprofiler', 'Position', '', 'text', 0, 0, 1, 11, 8, NULL, NULL, NULL, '', 1, 1, 1, 1, 0, 0, 0, 0, 1, '', '{"fieldLayout":"","fieldLayoutEdit":"","fieldLayoutList":"","fieldLayoutRegister":"","fieldLayoutContentPlugins":"0","fieldLayoutIcons":"","fieldPlaceholder":"","fieldMinLength":"0","fieldValidateExpression":"multiplewords","pregexp":"\\/^.*$\\/","pregexperror":"Not a valid input","fieldValidateForbiddenList_register":"http:,https:,mailto:,\\/\\/.[url],<a,<\\/a>,&#","fieldValidateForbiddenList_edit":""}'),
+(56, 'cb_lastname', 'cb_lastname', '#__comprofiler', 'Last Name', '', 'text', 0, 0, 1, 11, 3, NULL, NULL, NULL, '', 1, 1, 1, 1, 0, 0, 0, 0, 1, '', '{"fieldLayout":"","fieldLayoutEdit":"","fieldLayoutList":"","fieldLayoutRegister":"","fieldLayoutContentPlugins":"0","fieldLayoutIcons":"","fieldPlaceholder":"","fieldMinLength":"0","fieldValidateExpression":"singleword","pregexp":"\\/^.*$\\/","pregexperror":"Not a valid input","fieldValidateForbiddenList_register":"http:,https:,mailto:,\\/\\/.[url],<a,<\\/a>,&#","fieldValidateForbiddenList_edit":""}');
 
 -- --------------------------------------------------------
 
@@ -646,7 +662,7 @@ INSERT INTO `jt_comprofiler_fields` (`fieldid`, `name`, `tablecolumns`, `table`,
 -- Table structure for table `jt_comprofiler_field_values`
 --
 
-CREATE TABLE `jt_comprofiler_field_values` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_field_values` (
   `fieldvalueid` int(11) NOT NULL,
   `fieldid` int(11) NOT NULL DEFAULT '0',
   `fieldtitle` varchar(255) NOT NULL DEFAULT '',
@@ -661,13 +677,13 @@ CREATE TABLE `jt_comprofiler_field_values` (
 -- Table structure for table `jt_comprofiler_lists`
 --
 
-CREATE TABLE `jt_comprofiler_lists` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_lists` (
   `listid` int(11) NOT NULL,
   `title` varchar(255) NOT NULL DEFAULT '',
   `description` mediumtext,
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `default` tinyint(1) NOT NULL DEFAULT '0',
-  `viewaccesslevel` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `viewaccesslevel` int(10) unsigned NOT NULL DEFAULT '0',
   `usergroupids` varchar(255) DEFAULT NULL,
   `ordering` int(11) NOT NULL DEFAULT '0',
   `params` mediumtext
@@ -679,7 +695,7 @@ CREATE TABLE `jt_comprofiler_lists` (
 -- Table structure for table `jt_comprofiler_members`
 --
 
-CREATE TABLE `jt_comprofiler_members` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_members` (
   `referenceid` int(11) NOT NULL DEFAULT '0',
   `memberid` int(11) NOT NULL DEFAULT '0',
   `accepted` tinyint(1) NOT NULL DEFAULT '1',
@@ -696,22 +712,22 @@ CREATE TABLE `jt_comprofiler_members` (
 -- Table structure for table `jt_comprofiler_plugin`
 --
 
-CREATE TABLE `jt_comprofiler_plugin` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_plugin` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `element` varchar(100) NOT NULL DEFAULT '',
   `type` varchar(100) DEFAULT '',
   `folder` varchar(100) DEFAULT '',
-  `viewaccesslevel` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `viewaccesslevel` int(10) unsigned NOT NULL DEFAULT '0',
   `backend_menu` varchar(255) NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `published` tinyint(3) NOT NULL DEFAULT '0',
   `iscore` tinyint(3) NOT NULL DEFAULT '0',
   `client_id` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `params` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_plugin`
@@ -734,8 +750,8 @@ INSERT INTO `jt_comprofiler_plugin` (`id`, `name`, `element`, `type`, `folder`, 
 -- Table structure for table `jt_comprofiler_plugin_blogs`
 --
 
-CREATE TABLE `jt_comprofiler_plugin_blogs` (
-  `id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_plugin_blogs` (
+  `id` int(11) unsigned NOT NULL,
   `user` int(11) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `blog_intro` text,
@@ -746,7 +762,14 @@ CREATE TABLE `jt_comprofiler_plugin_blogs` (
   `access` int(11) NOT NULL DEFAULT '0',
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '99999'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jt_comprofiler_plugin_blogs`
+--
+
+INSERT INTO `jt_comprofiler_plugin_blogs` (`id`, `user`, `title`, `blog_intro`, `blog_full`, `category`, `created`, `modified`, `access`, `published`, `ordering`) VALUES
+(2, 328, 'ds', '<p>ds</p>', '<p>dssd</p>', 'General', '2015-11-15 03:54:30', '0000-00-00 00:00:00', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -754,7 +777,7 @@ CREATE TABLE `jt_comprofiler_plugin_blogs` (
 -- Table structure for table `jt_comprofiler_ratings`
 --
 
-CREATE TABLE `jt_comprofiler_ratings` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_ratings` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `type` varchar(255) NOT NULL DEFAULT 'field',
@@ -771,15 +794,15 @@ CREATE TABLE `jt_comprofiler_ratings` (
 -- Table structure for table `jt_comprofiler_sessions`
 --
 
-CREATE TABLE `jt_comprofiler_sessions` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_sessions` (
   `username` varchar(50) NOT NULL DEFAULT '',
-  `userid` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `userid` int(11) unsigned NOT NULL DEFAULT '0',
   `ui` tinyint(4) NOT NULL DEFAULT '0',
   `incoming_ip` varchar(39) NOT NULL DEFAULT '',
   `client_ip` varchar(39) NOT NULL DEFAULT '',
   `session_id` varchar(33) NOT NULL DEFAULT '',
   `session_data` mediumtext NOT NULL,
-  `expiry_time` int(14) UNSIGNED NOT NULL DEFAULT '0'
+  `expiry_time` int(14) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -788,7 +811,7 @@ CREATE TABLE `jt_comprofiler_sessions` (
 -- Table structure for table `jt_comprofiler_tabs`
 --
 
-CREATE TABLE `jt_comprofiler_tabs` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_tabs` (
   `tabid` int(11) NOT NULL,
   `title` varchar(50) NOT NULL DEFAULT '',
   `description` text,
@@ -803,9 +826,9 @@ CREATE TABLE `jt_comprofiler_tabs` (
   `sys` tinyint(4) NOT NULL DEFAULT '0',
   `displaytype` varchar(255) NOT NULL DEFAULT '',
   `position` varchar(255) NOT NULL DEFAULT '',
-  `viewaccesslevel` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `viewaccesslevel` int(10) unsigned NOT NULL DEFAULT '0',
   `cssclass` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_tabs`
@@ -832,7 +855,7 @@ INSERT INTO `jt_comprofiler_tabs` (`tabid`, `title`, `description`, `ordering`, 
 -- Table structure for table `jt_comprofiler_userreports`
 --
 
-CREATE TABLE `jt_comprofiler_userreports` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_userreports` (
   `reportid` int(11) NOT NULL,
   `reporteduser` int(11) NOT NULL DEFAULT '0',
   `reportedbyuser` int(11) NOT NULL DEFAULT '0',
@@ -847,7 +870,7 @@ CREATE TABLE `jt_comprofiler_userreports` (
 -- Table structure for table `jt_comprofiler_views`
 --
 
-CREATE TABLE `jt_comprofiler_views` (
+CREATE TABLE IF NOT EXISTS `jt_comprofiler_views` (
   `viewer_id` int(11) NOT NULL DEFAULT '0',
   `profile_id` int(11) NOT NULL DEFAULT '0',
   `lastip` varchar(50) NOT NULL DEFAULT '',
@@ -863,7 +886,7 @@ CREATE TABLE `jt_comprofiler_views` (
 -- Table structure for table `jt_contact_details`
 --
 
-CREATE TABLE `jt_contact_details` (
+CREATE TABLE IF NOT EXISTS `jt_contact_details` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -878,15 +901,15 @@ CREATE TABLE `jt_contact_details` (
   `misc` mediumtext,
   `image` varchar(255) DEFAULT NULL,
   `email_to` varchar(255) DEFAULT NULL,
-  `default_con` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `default_con` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `params` text NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `catid` int(11) NOT NULL DEFAULT '0',
-  `access` int(10) UNSIGNED DEFAULT NULL,
+  `access` int(10) unsigned DEFAULT NULL,
   `mobile` varchar(255) NOT NULL DEFAULT '',
   `webpage` varchar(255) NOT NULL DEFAULT '',
   `sortname1` varchar(255) NOT NULL,
@@ -894,20 +917,20 @@ CREATE TABLE `jt_contact_details` (
   `sortname3` varchar(255) NOT NULL,
   `language` char(7) NOT NULL,
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
   `metadata` text NOT NULL,
-  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
-  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `version` int(10) unsigned NOT NULL DEFAULT '1',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_contact_details`
@@ -922,7 +945,8 @@ INSERT INTO `jt_contact_details` (`id`, `name`, `alias`, `con_position`, `addres
 (6, 'Apples', 'apples', 'Scientific Name: Malus cubestica', 'Image Credit: Fievet\nRights: Public Domain\nSource: http://commons.wikimedia.org/wiki/File:Pommes_vertes.JPG', '', 'Family: Rosaceae', 'Large: Producers: China, United States', '', '', '', '<p>Apples are a versatile fruit, used for eating, cooking, and preserving.</p>\n<p>There are more that 7500 different kinds of apples grown around the world.</p>', 'images/sampledata/fruitshop/apple.jpg', '', 0, 1, 0, '0000-00-00 00:00:00', 1, '{"show_contact_category":"","show_contact_list":"","presentation_style":"plain","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","show_profile":"","show_links":"1","linka_name":"Wikipedia: Apples English","linka":"http:\\/\\/en.wikipedia.org\\/wiki\\/Apple","linkb_name":"Wikipedia: Manzana Espa\\u00f1ol ","linkb":"http:\\/\\/es.wikipedia.org\\/wiki\\/Manzana","linkc_name":"Wikipedia: \\u82f9\\u679c \\u4e2d\\u6587","linkc":"http:\\/\\/zh.wikipedia.org\\/zh\\/\\u82f9\\u679c","linkd_name":"Wikipedia: Tofaa Kiswahili","linkd":"http:\\/\\/sw.wikipedia.org\\/wiki\\/Tofaa","linke_name":"","linke":"","contact_layout":"beez5:encyclopedia"}', 0, 38, 1, '', '', '', '', '', '*', '2011-01-01 00:00:01', 0, '', '2011-01-01 00:00:01', 42, '', '', '{"robots":"","rights":""}', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 0),
 (7, 'Tamarind', 'tamarind', 'Scientific Name: Tamarindus indica', 'Image Credit: Franz Eugen KÃ¶hler, KÃ¶hler''s Medizinal-Pflanzen \nRights: Public Domain\nSource:http://commons.wikimedia.org/wiki/File:Koeh-134.jpg', '', 'Family: Fabaceae', 'Large Producers: India, United States', '', '', '', '<p>Tamarinds are a versatile fruit used around the world. In its young form it is used in hot sauces; ripened it is the basis for many refreshing drinks.</p>\n<p>Â </p>', 'images/sampledata/fruitshop/tamarind.jpg', '', 0, 1, 0, '0000-00-00 00:00:00', 1, '{"show_contact_category":"","show_contact_list":"","presentation_style":"plain","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","show_profile":"","show_links":"1","linka_name":"Wikipedia: Tamarind English","linka":"http:\\/\\/en.wikipedia.org\\/wiki\\/Tamarind","linkb_name":"Wikipedia: \\u09a4\\u09c7\\u0981\\u09a4\\u09c1\\u09b2  \\u09ac\\u09be\\u0982\\u09b2\\u09be  ","linkb":"http:\\/\\/bn.wikipedia.org\\/wiki\\/\\u09a4\\u09c7\\u0981\\u09a4\\u09c1\\u09b2 ","linkc_name":"Wikipedia: Tamarinier Fran\\u00e7ais","linkc":"http:\\/\\/fr.wikipedia.org\\/wiki\\/Tamarinier","linkd_name":"Wikipedia:Tamaline lea faka-Tonga","linkd":"http:\\/\\/to.wikipedia.org\\/wiki\\/Tamaline","linke_name":"","linke":"","contact_layout":"beez5:encyclopedia"}', 0, 57, 1, '', '', '', '', '', '*', '2011-01-01 00:00:01', 0, '', '2011-01-01 00:00:01', 42, '', '', '{"robots":"","rights":""}', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 0),
 (8, 'Shop Address', 'shop-address', '', '', 'Our City', 'Our Province', 'Our Country', '', '555-555-5555', '', '<p>Here are directions for how to get to our shop.</p>', '', '', 0, 1, 0, '0000-00-00 00:00:00', 1, '{"show_contact_category":"","show_contact_list":"","presentation_style":"","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","show_profile":"","show_links":"","linka_name":"","linka":"","linkb_name":"","linkb":"","linkc_name":"","linkc":"","linkd_name":"","linkd":"","linke_name":"","linke":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":""}', 0, 35, 1, '', '', '', '', '', '*', '2011-01-01 00:00:01', 0, '', '2011-01-01 00:00:01', 42, '', '', '{"robots":"","rights":""}', 1, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 0),
-(9, 'Name', 'name', 'Position', 'Street', 'Suburb', 'State', 'Country', 'Zip Code', 'Telephone', 'Fax', 'Miscellanous info', 'images/powered_by.png', 'email@email.com', 0, -2, 0, '0000-00-00 00:00:00', 3, '{"show_contact_category":"","show_contact_list":"","presentation_style":"","show_name":"1","show_position":"1","show_email":"0","show_street_address":"1","show_suburb":"1","show_state":"1","show_postcode":"1","show_country":"1","show_telephone":"1","show_mobile":"1","show_fax":"1","show_webpage":"1","show_misc":"1","show_image":"","allow_vcard":"","show_articles":"","show_profile":"","show_links":"0","linka_name":"","linka":"","linkb_name":"","linkb":"","linkc_name":"","linkc":"","linkd_name":"","linkd":"","linke_name":"","linke":"","contact_layout":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":""}', 0, 85, 1, '', '', '', '', '', '*', '2011-04-13 07:20:25', 42, '', '0000-00-00 00:00:00', 0, '', '', '{"robots":"","rights":""}', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 0);
+(9, 'Name', 'name', 'Position', 'Street', 'Suburb', 'State', 'Country', 'Zip Code', 'Telephone', 'Fax', 'Miscellanous info', 'images/powered_by.png', 'email@email.com', 0, -2, 0, '0000-00-00 00:00:00', 3, '{"show_contact_category":"","show_contact_list":"","presentation_style":"","show_name":"1","show_position":"1","show_email":"0","show_street_address":"1","show_suburb":"1","show_state":"1","show_postcode":"1","show_country":"1","show_telephone":"1","show_mobile":"1","show_fax":"1","show_webpage":"1","show_misc":"1","show_image":"","allow_vcard":"","show_articles":"","show_profile":"","show_links":"0","linka_name":"","linka":"","linkb_name":"","linkb":"","linkc_name":"","linkc":"","linkd_name":"","linkd":"","linke_name":"","linke":"","contact_layout":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":""}', 0, 85, 1, '', '', '', '', '', '*', '2011-04-13 07:20:25', 42, '', '0000-00-00 00:00:00', 0, '', '', '{"robots":"","rights":""}', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 0),
+(10, 'Contact Us', 'contact-us', '', '', '', '', '', '', '', '', '', '', 'adriandean12@gmail.com', 0, 1, 0, '0000-00-00 00:00:00', 4, '{"show_contact_category":"","show_contact_list":"","presentation_style":"","show_tags":"","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","articles_display_num":"","show_profile":"","show_links":"","linka_name":"","linka":false,"linkb_name":"","linkb":false,"linkc_name":"","linkc":false,"linkd_name":"","linkd":false,"linke_name":"","linke":false,"contact_layout":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":""}', 0, 16, 1, '', '', '', '', '', '*', '2015-11-06 09:07:55', 326, '', '2015-11-06 09:07:55', 0, '', '', '{"robots":"","rights":""}', 0, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 8);
 
 -- --------------------------------------------------------
 
@@ -930,38 +954,38 @@ INSERT INTO `jt_contact_details` (`id`, `name`, `alias`, `con_position`, `addres
 -- Table structure for table `jt_content`
 --
 
-CREATE TABLE `jt_content` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+CREATE TABLE IF NOT EXISTS `jt_content` (
+  `id` int(10) unsigned NOT NULL,
+  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `introtext` mediumtext NOT NULL,
   `fulltext` mediumtext NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `catid` int(10) unsigned NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `images` text NOT NULL,
   `urls` text NOT NULL,
   `attribs` varchar(5120) NOT NULL,
-  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `version` int(10) unsigned NOT NULL DEFAULT '1',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
-  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
   `language` char(7) NOT NULL COMMENT 'The language code for the article.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_content`
@@ -1010,7 +1034,7 @@ INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 (39, 137, 'Search', 'search-component', '<p>The search component proviedes basic search functionality for the information contained in your core components. Many third part extensions also can be searched by the search component. <a href="http://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help16:Components_Search">Help</a></p>', '', 1, 21, '2011-01-01 00:00:01', 42, 'Joomla!', '2011-01-10 04:19:31', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 2, 3, '', '', 1, 2, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (40, 138, 'Search Module', 'search-module', '<p>This module will display a search box. <a href="http://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help16:Extensions_Module_Manager_Search" title="Search">Help</a></p>\n<p>{loadposition searchload}</p>', '', 1, 67, '2011-01-01 00:00:01', 42, 'Joomla!', '2011-01-10 03:55:54', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_readmore":"","show_print_icon":"","show_email_icon":"","show_hits":"","page_title":"","alternative_readmore":"","layout":""}', 2, 4, '', '', 1, 2, '', 0, '*', ''),
 (41, 139, 'Search ', 'search-plugin', '<p>The search component uses plugins to control which parts of your Joomla! site are searched. You may choose to turn off some areas to improve performance or for other reasons. Many third party Joomla! extensions have search plugins that extend where search takes place.</p><p>Default On:</p><ul><li>Content Help</li><li>Contacts Help</li><li>WeblinksÂ Help</li><li>News FeedsÂ Help</li><li>CategoriesÂ Help</li></ul>', '', 1, 25, '2011-01-01 00:00:01', 42, 'Joomla!', '2011-01-01 00:00:01', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_readmore":"","show_print_icon":"","show_email_icon":"","show_hits":"","page_title":"","alternative_readmore":"","layout":""}', 1, 1, '', '', 1, 0, '', 0, '*', ''),
-(42, 140, 'Site Map', 'site-map', '<p>{loadposition sitemapload}</p><p><em>By putting all of your content into nested categories you can give users and search engines access to everything using a menu.</em></p>', '', 1, 14, '2011-01-01 00:00:01', 42, 'Joomla!', '2011-01-01 00:00:01', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_readmore":"","show_print_icon":"","show_email_icon":"","show_hits":"","page_title":"","alternative_readmore":"","layout":""}', 1, 3, '', '', 1, 0, '', 0, '*', ''),
+(42, 140, 'Site Map', 'site-map', '<p>{loadposition sitemapload}</p><p><em>By putting all of your content into nested categories you can give users and search engines access to everything using a menu.</em></p>', '', 1, 14, '2011-01-01 00:00:01', 42, 'Joomla!', '2011-01-01 00:00:01', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_readmore":"","show_print_icon":"","show_email_icon":"","show_hits":"","page_title":"","alternative_readmore":"","layout":""}', 1, 4, '', '', 1, 0, '', 0, '*', ''),
 (43, 141, 'Spotted Quoll', 'spotted-quoll', '<p><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/sampledata/parks/animals/220px_spottedquoll_2005_seanmcclean.jpg" border="0" alt="Spotted Quoll" style="vertical-align: middle; border: 0;" /></p>', '<p><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/sampledata/parks/animals/789px_spottedquoll_2005_seanmcclean.jpg" border="0" alt="Spotted Quoll" style="vertical-align: middle;" /></p><p>Â </p><p>Source: http://en.wikipedia.org/wiki/File:SpottedQuoll_2005_SeanMcClean.jpg</p><p>Author: Sean McClean</p><p>License: GNU Free Documentation License v 1.2 or later</p>', 1, 72, '2011-01-01 00:00:01', 42, 'Parks Webmaster', '2011-01-01 00:00:01', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_readmore":"","show_print_icon":"","show_email_icon":"","show_hits":"","page_title":"","alternative_readmore":"","layout":""}', 1, 4, '', '', 1, 5, '', 0, '*', ''),
 (44, 142, 'Statistics Module', 'statistics', '<p>The Statistics Module shows information about your server installation together with statistics on the Web site users, number of Articles in your database and the number of Web links you provide.</p><p>{loadposition statisticsload}</p>', '', 1, 67, '2011-01-01 00:00:01', 42, 'Joomla!', '2011-01-01 00:00:01', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_readmore":"","show_print_icon":"","show_email_icon":"","show_hits":"","page_title":"","alternative_readmore":"","layout":""}', 1, 5, '', '', 1, 1, '', 0, '*', ''),
 (45, 143, 'Syndicate Module', 'syndicate-module', '<p>The syndicate module allows you to display a link that allows users to take a feed from your site. It will only display on pages for which feeds are possible. That means it will not display on single article, contact or weblinks pages, such as this one. <a href="http://docs.joomla.org/Help15:Screen.modulessite.edit.15#Syndicate" title="Synicate Module">Help</a></p><p>{loadposition syndicateload}</p>', '', 1, 67, '2011-01-01 00:00:01', 42, '', '2011-01-01 00:00:01', 42, 0, '0000-00-00 00:00:00', '2011-01-01 00:00:01', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_readmore":"","show_print_icon":"","show_email_icon":"","show_hits":"","page_title":"","alternative_readmore":"","layout":""}', 1, 6, '', '', 1, 0, '', 0, '*', ''),
@@ -1040,7 +1064,7 @@ INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
 (70, 178, 'JSN Metro Design & Features', 'jsn-metro-design-a-features', '<p>JSN Metro has incredibly beautiful clean design with ultra flexible layout built-up from 36+ module positions. The combination of 6 colors variation, 5 menu styles and 6 module styles results in a really remarkable website. In addition, super rich typography makes your content look stunning and clear for all users.</p>\n\n<div class="grid-layout">\n<div>\n<h3>Layout</h3>\n<p><strong>36 module positions </strong>allowing you to have multiple layout configurations. All module positions are collapsible and can arrange modules in horizontal or vertical layout.</p>\n<p><a href="index.php?option=com_content&view=article&id=71&Itemid=466" class="link-button button-light"><span class="link-icon jsn-icon-info">More about layout</span></a></p>\n</div>\n<div>\n<h3>Color Variations</h3>\n<p><strong>6 major color variations</strong> for your taste. Each color variation covers not only the main background, but also color of drop-down menu, links, table''s header and more.</p>\n<p><a href="index.php?option=com_content&view=article&id=68&Itemid=467" class="link-button button-light"><span class="link-icon jsn-icon-info">More about colors</span></a></p>\n</div>\n</div>\n\n<div class="grid-layout">\n<div>\n<h3>Menu Styles</h3>\n<p><strong>5 menu styles </strong>to display your website navigation on multiple positions. The built-in menu module is  utilized, so you don''t need to install any external menu modules.</p>\n<p><a href="index.php?option=com_content&view=article&id=72&Itemid=468" class="link-button button-light"><span class="link-icon jsn-icon-info">More about menu styles</span></a></p>\n</div>\n<div>\n<h3>Typography</h3>\n<p><strong>Super rich typography</strong> ready for the most comprehensive content presentation. Headings, text, links, tables, images, everything was designed with high level of refinement.</p>\n<p><a href="index.php?option=com_content&view=article&id=74&Itemid=469" class="link-button button-light"><span class="link-icon jsn-icon-info">More about typography</span></a></p>\n</div>\n</div>\n\n<div class="grid-layout">\n<div>\n<h3>Module Styles</h3>\n<p>JSN Metro provides <strong>6 background designs</strong>, which can be combined with <strong>20 predefined icons</strong> for outstading module styling. Make your modules look good easily!</p>\n<p><a href="index.php?option=com_content&view=article&id=73&Itemid=470" class="link-button button-light"><span class="link-icon jsn-icon-info">More about modules styles</span></a></p>\n</div>\n<div>\n<h3>Font Styles</h3>\n<p><strong>3 font face</strong> options for major website types and <strong>3 font size</strong> options for major audience. Each font face option is a combination of 2 font types, which looks stunning..</p>\n<p><a href="index.php?option=com_content&view=article&id=69&Itemid=471" class="link-button button-light"><span class="link-icon jsn-icon-info">More about font styles</span></a></p>\n</div>\n</div>', '', 1, 78, '2011-04-01 02:56:18', 42, '', '2012-07-23 03:04:42', 43, 0, '0000-00-00 00:00:00', '2011-04-01 02:56:18', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 15, 4, '', '', 1, 347, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (71, 179, 'Layout', 'layout', '<h3>Module Positions</h3>\r\n<p>JSN Metro provides <strong>37+ module positions</strong> allowing you to have multiple layout configurations. All module positions are collapsible which means if you don''t publish any modules in some positions it will not take any blank spaces leaving those for neighbor modules. Some positions are designed to arrange modules inside in horizontal layout which makes it very easy to reorder modules inside it.</p>\r\n<p class="content-center"><a href="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/layout/layout-full.png" target="_blank" class="link-button button-light"><span class="link-icon jsn-icon-info">See all module positions outline</span></a></p>\r\n<hr class="line-dots" />\r\n<h3>Layout Configuration</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/layout/params-layout.png" class="image-border" alt="Layout configuration by template parameters"  /></p>\r\n<p>JSN Metro allows you to change the width size for several critical layout elements. All settings can be done via template parameters in section <strong>LAYOUT SETTINGS</strong>.</p>\r\n<hr class="line-dots" />\r\n<h3>Layout Variations</h3>\r\n<p>JSN Metro layout system is very flexible and capable. Module positions are designed in smart way to cover all possible spot where you might want to put content. Moreover, you can specify width of both overall layout and specific columns conveniently via template parameters. Bellow is live presentation of some most popular layout variations:</p>\r\n<div class="grid-layout" style="margin-top: 10px">\r\n	<div class="content-center">\r\n    	<a href="index.php?option=com_content&view=article&id=92&Itemid=477" class="link-highlight"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/layout-variations/layout-thumb-mc.png" width="160" height="90" alt="Main content only" /><br />Main content only</a>\r\n	</div>\r\n	<div class="content-center">\r\n    	<a href="index.php?option=com_content&view=article&id=89&Itemid=474" class="link-highlight"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/layout-variations/layout-thumb-lcir.png" width="160" height="90" alt="Left | Center | InnerRight" /><br />Left | Center | InnerRight</a>\r\n	</div>\r\n	<div class="content-center">\r\n    	<a href="index.php?option=com_content&view=article&id=91&Itemid=473" class="link-highlight"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/layout-variations/layout-thumb-lilc.png" width="160" height="90" alt="Left | Center | InnerRight" /><br />Left | InnerLeft | Center</a>\r\n	</div>\r\n</div>\r\n<div class="grid-layout" style="margin-top: 10px">\r\n	<div class="content-center">\r\n    	<a href="index.php?option=com_content&view=article&id=90&Itemid=472" class="link-highlight"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/layout-variations/layout-thumb-lcr.png" width="160" height="90" alt="Left | Center | Right" /><br />Left | Center | Right</a>\r\n    </div>\r\n	<div class="content-center">\r\n    	<a href="index.php?option=com_content&view=article&id=88&Itemid=476" class="link-highlight"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/layout-variations/layout-thumb-ilcr.png" width="160" height="90" alt="Left | Center | Right" /><br />InnerLeft | Center | Right</a>\r\n	</div>\r\n	<div class="content-center">\r\n    	<a href="index.php?option=com_content&view=article&id=87&Itemid=475" class="link-highlight"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/layout-variations/layout-thumb-cirr.png" width="160" height="90" alt="Left | Center | Right" /><br />Center | InnerRight | Right</a>\r\n	</div>\r\n</div>', '', 1, 78, '2011-04-01 02:56:37', 42, '', '2013-06-19 09:15:56', 42, 0, '0000-00-00 00:00:00', '2011-04-01 02:56:37', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 17, 3, '', '', 1, 411, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(72, 180, 'Menu Styles', 'menu-styles', '<p>JSN Metro provides <strong>3 menu styles </strong>to present your website navigation. The default Joomla! built-in menu module <strong>(mod_mainmenu)</strong> is utilized, so you don''t need to install any external menu modules.</p>\r\n<h3>Main Menu</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-mainmenu-submenus.png" class="image-border" alt="Main Menu" width="600" height="300" /></p>\r\n<p>Main Menu is very powerful menu built with clean accessible XHTML code structure and effective drop-down submenu panels.</p>\r\n<h4>Main Menu with rich text</h4>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-mainmenu-rich.png" class="image-border" alt="Main Menu with rich text" width="600" height="175" /></p>\r\n<p>You can add descriptive text to each menu item to make them much clearer and more appealing. Descriptive text is configured directly in menu item settings page, which is very convenient.</p>\r\n<p class="content-center"><span class="link-button button-light"><a class="link-action" href="index.php?option=com_content&amp;view=article&amp;id=93&amp;Itemid=479">See live demo of Main Menu</a></span></p>\r\n<hr class="line-dots" />\r\n<h3>Tree Menu</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-treemenu.png" class="image-border" alt="" width="600" height="300" /></p>\r\n<p>Tree Menu represents menu items in clear tree-like hierarchy, which is very appropriate for indexing menu. By default all submenu items are collapsed until you select the parent menu item.</p>\r\n<p class="content-center"><span class="link-button button-light"><a class="link-action" href="index.php?option=com_content&amp;view=article&amp;id=98&amp;Itemid=482">See live demo of Tree Menu</a></span></p>\r\n<hr class="line-dots" />\r\n<h3>Div Menu</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-divmenu.png" border="0" alt="Div Menu" width="600" height="175" /></p>\r\n<p>Div Menu is simple yet nice menu bar with items separated by slightly visible dashes. This menu is very suitable for footer navigation presentation.</p>', '', 1, 78, '2011-04-01 02:56:55', 42, '', '2013-06-19 09:31:48', 42, 0, '0000-00-00 00:00:00', '2011-04-01 02:56:55', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 12, 2, '', '', 1, 256, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
+(72, 180, 'Menu Styles', 'menu-styles', '<p>JSN Metro provides <strong>3 menu styles </strong>to present your website navigation. The default Joomla! built-in menu module <strong>(mod_mainmenu)</strong> is utilized, so you don''t need to install any external menu modules.</p>\r\n<h3>Main Menu</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-mainmenu-submenus.png" class="image-border" alt="Main Menu" width="600" height="300" /></p>\r\n<p>Main Menu is very powerful menu built with clean accessible XHTML code structure and effective drop-down submenu panels.</p>\r\n<h4>Main Menu with rich text</h4>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-mainmenu-rich.png" class="image-border" alt="Main Menu with rich text" width="600" height="175" /></p>\r\n<p>You can add descriptive text to each menu item to make them much clearer and more appealing. Descriptive text is configured directly in menu item settings page, which is very convenient.</p>\r\n<p class="content-center"><span class="link-button button-light"><a class="link-action" href="index.php?option=com_content&amp;view=article&amp;id=93&amp;Itemid=479">See live demo of Main Menu</a></span></p>\r\n<hr class="line-dots" />\r\n<h3>Tree Menu</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-treemenu.png" class="image-border" alt="" width="600" height="300" /></p>\r\n<p>Tree Menu represents menu items in clear tree-like hierarchy, which is very appropriate for indexing menu. By default all submenu items are collapsed until you select the parent menu item.</p>\r\n<p class="content-center"><span class="link-button button-light"><a class="link-action" href="index.php?option=com_content&amp;view=article&amp;id=98&amp;Itemid=482">See live demo of Tree Menu</a></span></p>\r\n<hr class="line-dots" />\r\n<h3>Div Menu</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/menu-styles/menu-divmenu.png" border="0" alt="Div Menu" width="600" height="175" /></p>\r\n<p>Div Menu is simple yet nice menu bar with items separated by slightly visible dashes. This menu is very suitable for footer navigation presentation.</p>', '', 1, 78, '2011-04-01 02:56:55', 42, '', '2013-06-19 09:31:48', 42, 0, '0000-00-00 00:00:00', '2011-04-01 02:56:55', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 12, 2, '', '', 1, 263, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (73, 181, 'Module Styles', 'module-styles', '<p>JSN Metro provides <strong>3 box designs</strong> for module background styling in <strong>Free edition</strong> and <strong>15 box designs</strong> in <strong>PRO edition</strong> (which can be combined with <strong>28 predefined icons</strong> for module title styling). Module styles are configured by module''s parameter Module Class Suffix with very simple syntax.\r\n\r\nTake a look around to see how module styles are applied.\r\n', '', 1, 78, '2011-04-01 02:57:11', 42, '', '2013-06-19 09:45:05', 42, 0, '0000-00-00 00:00:00', '2011-04-01 02:57:11', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 6, 1, '', '', 1, 382, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (74, 182, 'Typography', 'typography', '<p>JSN Metro was developed with <strong>extreme focus on typography</strong> and we believe it provides the most comprehensive content presentation capability. Headings, text, links, tables, images, everything was designed with high level of refinement. Let''s take a look.</p>\n<h3>Headings</h3>\n<div class="grid-layout">\n  <div>\n    <h1>This is an H1 Header</h1>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h2>This is an H2 Header</h2>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n</div>\n<div class="grid-layout">\n  <div>\n    <h3>This is an H3 Header</h3>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h4>This is an H4 Header</h4>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n</div>\n<div class="grid-layout">\n  <div>\n    <h5>This is an H5 Header</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h6>This is an H6 Header</h6>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n</div>\n<hr class="line-dots" />\n<h3>Text columns</h3>\n<p>You can arrange  content in multiple columns by using very simple html code. JSN Metro will detect the amount of columns you defined and automatically make arrangement.</p>\n<p> <span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;div class=&rdquo;grid-layout&rdquo;&gt;&lt;div&gt;</strong>Text in column 1<strong>&lt;/div&gt;&lt;div&gt;</strong>Text in column 2<strong>&lt;/div&gt;&lt;/div&gt;</strong></p>\n<h4>Content arranged in 2 columns</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n</div>\n<h4>Content arranged in 3 columns</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n</div>\n<h4>Content arranged in 4 columns</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Text column</h5>\n    <p>At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n  </div>\n</div>\n<h4>Content arranged in 5 columns</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet.</p>\n  </div>\n  <div>\n    <h5>Text column</h5>\n    <p>Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet.</p>\n  </div>\n</div>\n<hr class="line-dots" />\n<h3>Text styles</h3>\n<h4>Preformatted text (&lt;pre&gt; tag)</h4>\n<pre>\n\ndiv.grid-layout2 div.grid-col {\n float: left;\n width: 49.95%;\n}\ndiv.grid-layout3 div.grid-col {\n float: left;\n width: 33.3%;\n}\n\n</pre>\n\n<h4>Quote text (<strong>&lt;blockquote&gt;</strong> tag)</h4>\n<blockquote>\n  <p>You can us this style to quote somebody''s speech, idea or a fragment from some book, articles, etc. Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus  laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem.  Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;blockquote&gt;</strong>This is your quote<strong>&lt;/blockquote&gt;</strong></p>\n</blockquote>\n\n<h4>Drop Cap</h4>\n<div class="text-dropcap">\n<p>You can use this special drop cap symbol style for magazine / newspaper text paragraph. Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-dropcap&quot;&gt;</strong>This is the text with dropcap symbol.<strong>&lt;/p&gt;</strong></p>\n</div>\n\n<h4>Highlighted Text</h4>\n<p>You can use this style to <span class="text-highlight">highlight important words and / or keyword expression</span> in search result page. Lorem ipsum dolor sit amet consectetuer eleifend elit vel tellus  laoreet. At ut pellentesque risus quis sem eros et consequat enim lorem.  Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;span class=&quot;text-highlight&quot;&gt;</strong>This is the text to be highlighted.<strong>&lt;/span&gt;</strong></p>\n\n<h4>Highlighted Text on mouse over</h4>\n<div class="grid-layout">\n<div><div class="text-box-highlight">\n<p>You can use this style to highlight important text block on mouse over. Just roll mouse over this text block to see how it''s highlighted.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;div class=&quot;text-box-highlight&quot;&gt;</strong>This is the text to be highlighted.<strong>&lt;/div&gt;</strong></p>\n</div></div>\n<div>\n  <div class="text-box-highlight">\n<p>You can use this style to highlight important text block on mouse over. Just roll mouse over this text block to see how it''s highlighted.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;div class=&quot;text-box-highlight&quot;&gt;</strong>This is the text to be highlighted.<strong>&lt;/div&gt;</strong></p>\n</div></div>\n</div>\n\n<h4>Alert Text</h4>\n<div class="text-alert">\n<p>You can use this style for alert or warning text paragraph requiring user''s attention. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-alert&quot;&gt;</strong>This is text that requires user''s attentions.<strong>&lt;/p&gt;</strong></p>\n</div>\n<h4>Info Text</h4>\n<div class="text-info">\n<p>You can use this style for regular information text paragraph that does not require much user''s attentions. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-info&quot;&gt;</strong>This is your d text.<strong>&lt;/p&gt;</strong></p>\n</div>\n<h4>Download Text</h4>\n<div class="text-download">\n<p>You can use this style for information text paragraph related to download process. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-download&quot;&gt;</strong>This is download related text.<strong>&lt;/p&gt;</strong></p>\n</div>\n<h4>Tip Text</h4>\n<div class="text-tip">\n<p>You can use this style for useful information like tips, hint or help text. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-tip&quot;&gt;</strong>This is yourtip hint or help text.<strong>&lt;/p&gt;</strong></p>\n</div>\n<h4>Comment Text</h4>\n<div class="text-comment">\n<p>You can use this style for comment text paragraph. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-comment&quot;&gt;</strong>This is your comment text.<strong>&lt;/p&gt;</strong></p>\n</div>\n<h4>Attachment Text</h4>\n<div class="text-attachment">\n<p>You can use this style for information text paragraph related to attachment file. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-attachment&quot;&gt;</strong>This is your attachment related text.<strong>&lt;/p&gt;</strong></p>\n</div>\n<h4>Video Text</h4>\n<div class="text-comment">\n<p>You can use this style for description text paragraph that related to video file. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-video&quot;&gt;</strong>This is your video related text.<strong>&lt;/p&gt;</strong></p>\n</div>\n<h4>Audio Text</h4>\n<div class="text-audio">\n<p>You can use this style for description text paragraph related to audio file. At ut pellentesque risus quis sem eros et consequat enim lorem. Aenean lorem consequat consequat eu.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;p class=&quot;text-audio&quot;&gt;</strong>This is your audio related text.<strong>&lt;/p&gt;</strong></p>\n</div>\n<hr class="line-dots" />\n<h3>Link Styles</h3>\n<h4>Link Icon Styles</h4>\n<p>You  can attach up to <strong>20 predefined</strong> <strong>icons</strong> to the front of any link by  adding simple class to it.</p>\n<div class="grid-layout">\n  <div>\n    <ul class="list-nobullet">\n      <li><a class="link-icon jsn-icon-article">Link with article icon</a></li>\n      <li><a class="link-icon jsn-icon-calendar">Link with calendar icon</a></li>\n      <li><a class="link-icon jsn-icon-cart">Link with cart icon</a></li>\n      <li><a class="link-icon jsn-icon-comment">Link with comment icon</a></li>\n      <li><a class="link-icon jsn-icon-display">Link with display icon</a></li>\n      <li><a class="link-icon jsn-icon-download">Link with download icon</a></li>\n      <li><a class="link-icon jsn-icon-online">Link with online icon</a></li>\n    </ul>\n  </div>\n  <div>\n    <ul class="list-nobullet">\n      <li><a class="link-icon jsn-icon-folder">Link with folder icon</a></li>\n      <li><a class="link-icon jsn-icon-help">Link with help icon</a></li>\n      <li><a class="link-icon jsn-icon-home">Link with home icon</a></li>\n      <li><a class="link-icon jsn-icon-image">Link with image icon</a></li>\n      <li><a class="link-icon jsn-icon-info">Link with info icon</a></li>\n      <li><a class="link-icon jsn-icon-mail">Link with mail icon</a></li>\n      <li><a class="link-icon jsn-icon-rss">Link with rss icon</a></li>\n    </ul>\n  </div>\n  <div>\n    <ul class="list-nobullet">\n      <li><a class="link-icon jsn-icon-search">Link with search icon</a></li>\n      <li><a class="link-icon jsn-icon-selection">Link with selection icon</a></li>\n      <li><a class="link-icon jsn-icon-settings">Link with settings icon</a></li>\n      <li><a class="link-icon jsn-icon-star">Link with star icon</a></li>\n      <li><a class="link-icon jsn-icon-statistics">Link with statistics icon</a></li>\n      <li><a class="link-icon jsn-icon-user">Link with user icon</a></li>\n    </ul>\n  </div>\n</div>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;a class=&quot;link-icon jsn-icon-xxx&quot;&gt;</strong>This is link  text.<strong>&lt;/a&gt;</strong>, where <strong>xxx</strong> is the name of icon to be applied. Detailed information about all icon names can be found in template documentation.</p>\n<p><span class="text-highlight highlight-light"><strong>Example:</strong></span> <strong>&lt;a  class=&quot;link-icon jsn-icon-download&quot;&gt;</strong>This is link to download something.<strong>&lt;/a&gt;</strong></p>\n<h4>Link Button Styles</h4>\n<p>JSN  Metro offers<strong> 6 button styles </strong>to neonate  any call-to-action links you have in the content.</p>\n<div class="grid-layout">\n  <div>\n  	<p><a href="#" class="link-button button-light">Link as light button</a></p>\n    <p><a href="#" class="link-button button-dark">Link as dark button</a></p>\n  </div>\n  <div>\n  <p><a href="#" class="link-button button-blue">Link as blue button</a></p>\n  <p><a href="#" class="link-button button-green">Link as green button</a></p>\n  </div>\n  <div>\n  <p><a href="#" class="link-button button-red">Link as red button</a></p>\n  <p><a href="#" class="link-button button-orange">Link as orange button</a></p>\n  </div>\n</div>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;a class=&quot;link-button button-xxx&quot;&gt;</strong>This  is link text.<strong>&lt;/a&gt;</strong>, where <strong>xxx</strong> is the button color name selected from: <strong>light</strong>, <strong>dark</strong>, <strong>green</strong>, <strong>orange</strong>, <strong>blue</strong> and <strong>red</strong>.</p>\n<p><span class="text-highlight highlight-light"><strong>Example:</strong></span> <strong>&lt;a  class=&quot;link-button button-orange&quot;&gt;</strong>See plans &amp; pricing.<strong>&lt;/a&gt;</strong></p>\n<h4>Combination of Button and Icon Styles</h4>\n<p>You can use both button and icon link style combined.</p>\n<div class="grid-layout">\n  <div>\n  <p><a href="#" class="link-button button-light"><span class="link-icon jsn-icon-home">Light button &amp; Home icon</span></a></p>\n  <p><a href="#" class="link-button button-dark"><span class="link-icon jsn-icon-calendar">Dark button &amp; Calendar icon</span></a></p>\n  </div>\n  <div>\n  <p><a href="#" class="link-button button-blue"><span class="link-icon jsn-icon-mail">Blue button &amp; Mail icon</span></a></p>\n  <p><a href="#" class="link-button button-green"><span class="link-icon jsn-icon-image">Green button &amp; Image icon</span></a></p>\n  </div>\n  <div>\n  <p><a href="#" class="link-button button-red"><span class="link-icon jsn-icon-star">Red button &amp; Star icon</span></a></p>\n  <p><a href="#" class="link-button button-orange"><span class="link-icon jsn-icon-user">Orange button &amp User icon</span></a></p>\n  </div>\n</div>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;a class=&quot;link-button button-xxx&quot;&gt;&lt;span  class=&quot;link-icon jsn-icon-yyy&quot;&gt;</strong>This is link text.<strong>&lt;/span&gt;&lt;/a&gt;</strong>, where <strong>xxx</strong> and <strong>yyy</strong> are button color and icon names  respectively.</p>\n<p><span class="text-highlight highlight-light"><strong>Example:</strong></span> <strong>&lt;a  class=&quot;link-button button-green&quot;&gt;&lt;span class=&quot;link-icon jsn-icon-cart&quot;&gt;</strong>Add  to cart.<strong>&lt;/span&gt;&lt;/a&gt;</strong></p>\n<h4>Extension  link styles</h4>\n<p>JSN  Metro is able to attach not only descriptive icon to the front of link as  described in above section, but also <strong>23 extension  icons</strong> to the end of the link.</p>\n<div class="grid-layout">\n  <div>\n    <ul>\n      <li><a class="link-icon-ext jsn-icon-ext-aim">AIM contact link (aim:)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-application">Application file (.app)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-archive">Archive file (.zip, .rar, .gzip)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-calendar">Calendar file (.ical)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-css">Cascading Style Sheet file (.css)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-doc">Microsoft Word file (.doc)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-excel">Microsoft Excel file (.xls)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-feed">Feed item (.rss, .atom)</a></li>\n    </ul>\n  </div>\n  <div>\n    <ul>\n      <li><a class="link-icon-ext jsn-icon-ext-flash">Adobe Flash / Flex file (.fla, .swf)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-font">Font file (.ttf)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-mail">Email link (mailto:)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-mobile">Call link (callto:)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-movie">Movie file (.mp4, .avi, .mpg)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-msn">MSN IM contact link (msnim:)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-music">Music file (.mp3, .wav, .wma)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-pdf">Adobe PDF file (.pdf)</a></li>\n    </ul>\n  </div>\n  <div>\n    <ul>\n      <li><a class="link-icon-ext jsn-icon-ext-powerpoint">Microsoft PowerPoint file (.pps)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-quicktime">QuickTime movie file (.mov)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-skype">Skype contact link (skype:)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-text">Regular text file (.txt)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-torrent">Torrent metainfo file (.torrent)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-vcard">Electronic business card  (.vcard)</a></li>\n      <li><a class="link-icon-ext jsn-icon-ext-yahoo">Yahoo Messenger contact  (ymsgr:)</a></li>\n    </ul>\n  </div>\n</div>\n<p>All icons can be assigned automatically by enabling a template parameter or manually by adding simple class to the link.</p>\n<p><span class="text-highlight highlight-light"><strong>Usage:</strong></span> <strong>&lt;a class=&quot;link-icon-ext jsn-icon-ext-xxx&quot;&gt;</strong>This  is link text.<strong>&lt;/a&gt;</strong>, where <strong>xxx</strong> is the icon name. Detailed information about all icon names can be found in template documentation.</p>\n<hr class="line-dots" />\n<h3>Table Styles</h3>\n<h4>Plain  Rows table style</h4>\n<table width="100%" border="0" class="table-style style-colorheader">\n  <thead>\n    <tr>\n      <th>Table header</th>\n      <th>Column header 1</th>\n      <th class="highlight">Column header 2</th>\n      <th>Column header 3</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th>Table footer</th>\n      <td colspan="3">Footer data</td>\n    </tr>\n  </tfoot>\n</table>\n<h4>Color Stripes table style</h4>\n<table width="100%" border="0" class="table-style style-colorstripes">\n  <thead>\n    <tr>\n      <th>Table header</th>\n      <th>Column header 1</th>\n      <th class="highlight">Column header 2</th>\n      <th>Column header 3</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr>\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr>\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th>Table footer</th>\n      <td colspan="3">Footer data</td>\n    </tr>\n  </tfoot>\n</table>\n<h4>Grey Stripes table style</h4>\n<table width="100%" border="0" class="table-style style-greystripes">\n  <thead>\n    <tr>\n      <th>Table header</th>\n      <th>Column header 1</th>\n      <th class="highlight">Column header 2</th>\n      <th>Column header 3</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr>\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr>\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n    <tr class="odd">\n      <th>Row header 1</th>\n      <td>Lorem ipsum</td>\n      <td class="highlight">Dolor sit amet</td>\n      <td>Lorem ipsum</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <th>Table footer</th>\n      <td colspan="3">Footer data</td>\n    </tr>\n  </tfoot>\n</table>\n<hr class="line-dots" />\n<h3>List styles</h3>\n<h4>Standard list styles</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Unordered list</h5>\n    <ul>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Ordered list</h5>\n    <ol>\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ol>\n  </div>\n</div>\n<h4>Arrow list styles</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Red arrow</h5>\n    <ul class="list-arrow arrow-red">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Blue arrow</h5>\n    <ul class="list-arrow arrow-blue">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Green arrow</h5>\n    <ul class="list-arrow arrow-green">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n</div>\n<h4>Icon list styles</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Article icon list</h5>\n    <ul class="list-icon jsn-icon-article">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Folder icon list</h5>\n    <ul class="list-icon jsn-icon-folder">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Image icon list</h5>\n    <ul class="list-icon jsn-icon-image">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n</div>\n<div class="grid-layout">\n  <div>\n    <h5>Online icon list</h5>\n    <ul class="list-icon jsn-icon-online">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Star icon list</h5>\n    <ul class="list-icon jsn-icon-star">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>User icon list</h5>\n    <ul class="list-icon jsn-icon-user">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n</div>\n<p class="text-tip">You can assign any of predefined 20 icons to list items. 6 icons shown above are just samples.</p>\n<h4>Number list styles</h4>\n<div class="grid-layout">\n  <div>\n    <h5>Blue Bullet number list</h5>\n    <ul class="list-number-bullet bullet-blue">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Green Bullet number list</h5>\n    <ul class="list-number-bullet bullet-green">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Grey Bullet number list</h5>\n    <ul class="list-number-bullet bullet-grey">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n</div>\n<div class="grid-layout">\n  <div>\n    <h5>Orange Bullet number list</h5>\n    <ul class="list-number-bullet bullet-orange">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Red Bullet number list</h5>\n    <ul class="list-number-bullet bullet-red">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Violet Bullet number list</h5>\n    <ul class="list-number-bullet bullet-violet">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n</div>\n<div class="grid-layout">\n  <div>\n    <h5>Blue Digit number list</h5>\n    <ul class="list-number-digit digit-blue">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Green Digit number list</h5>\n    <ul class="list-number-digit digit-green">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Grey Digit number list</h5>\n    <ul class="list-number-digit digit-grey">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n</div>\n<div class="grid-layout">\n  <div>\n    <h5>Orange Digit number list</h5>\n    <ul class="list-number-digit digit-orange">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Red Digit number list</h5>\n    <ul class="list-number-digit digit-red">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n  <div>\n    <h5>Violet Digit number list</h5>\n    <ul class="list-number-digit digit-violet">\n      <li>Lorem ipsum dolor sit amet</li>\n      <li>Consetetur sadipscing elitr</li>\n      <li>Sed diam voluptua</li>\n    </ul>\n  </div>\n</div>', '', 1, 78, '2011-04-01 02:57:27', 42, '', '2012-07-26 03:27:28', 42, 0, '0000-00-00 00:00:00', '2011-04-01 02:57:27', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 0, '', '', 1, 275, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (75, 183, 'CSS/JS Compression', 'cssjs-compression', '<p>At JoomlaShine.com, we put great efforts in optimizing our templates performance by multiple techniques like image sprites application, clean html code output and now one new step â€“ <strong>CSS/JS Compression</strong>.</p>\n<p>What it does is to combine all CSS/JS files into a single file and deliver it in GZIP compressed state to browser. This feature significantly reduce http request number to server as well as overall loading size, which results in 35% performance boost.</p>\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/cssjs-compression/system-compression-filesbefore.png" border="0" alt="Before enabling CSS/JS compression" width="600" height="380" /></p>\n<p class="content-center"><em>Before enabling CSS/JS compression</em></p>\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/cssjs-compression/system-compression-filesafter.png" border="0" alt="After enabling CSS/JS compression" width="600" height="200" /></p>\n<p class="content-center"><em>After enabling CSS/JS compression</em></p>\n<p>CSS/JS Compression feature is enabled on this demo website. You can check the source code to see how it works.</p>\n<hr class="line-dots" />\n<h3>Custom CSS File(s)</h3>\n<p>This feature allows you to load multiple custom CSS files among with template default files. This feature is very useful, when you have special dedicated CSS file for content styling.</p>\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/cssjs-compression/system-customcss.png" border="0" alt="Custom CSS files are loaded among with other template CSS files" width="600" height="320" /></p>\n<p class="content-center"><em>Custom CSS files are loaded among with other template CSS files</em></p>\n<p>Just put custom CSS files to template''s CSS folder and define them in template parameter <strong>Custom CSS File(s)</strong> each file name at a line. If you enable <strong>CSS/JS Compression </strong>feature, all custom CSS files will be compressed as well.</p>', '', 1, 79, '2011-04-01 03:05:52', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2011-04-01 03:05:52', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 14, '', '', 1, 12, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
@@ -1073,17 +1097,20 @@ INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 (100, 208, 'K2 Support', 'k2-support', '<p>One of hottest features in JSN Metro is extended styles adapted for a very popular Joomla! extension <strong>K2</strong>. Technically extended styles are overrides of default extension&rsquo;s style (images + CSS) and located in folder &ldquo;<strong>/ext/k2&rdquo;</strong> inside template folder.</p>\n<p>Extended style for K2 includes adapted tabs color, additional module styles, fixed alignment issues and some other minor visual enhancement.</p>\n<h3>Component styling</h3>\n<p>Here is how K2 component will look like after extended styles applied.</p>\n<p class="content-center"><img width="600" height="445" src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-style-after.png" /></p>\n<h3>Module styling</h3>\n<p>Besides from extended component styling you can use template module styles for K2 modules as well.</p>\n<div class="grid-layout">\n<div>\n<p class="content-center"><img width="300" height="455" src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-module-content.png" /></p>\n<ul><li>K2 Content Module (mod_k2_content) with module style <strong>box-green jsn-icon-article</strong> applied</li></ul>\n</div>\n<div>\n  <p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-module-comment-login.png" width="300" height="580" /></p>\n  <ul>\n    <li>K2 Comments Module (mod_k2_comments) with module style <strong>box-blue jsn-icon-comment</strong> applied</li>\n    <li>K2 Login Module (mod_k2_login) with module style <strong>box-yellow jsn-icon-user</strong> applied </li>\n  </ul>\n</div>\n</div>\n<p class="text-info">The K2 extensions is not included in the template package and you have to download separately at http://www.getk2.org</p>', '', 0, 79, '2011-04-01 04:24:28', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 1, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (101, 209, 'JSN Metro Product Tour', 'jsn-metro-product-tour', '<h3>Easy to start</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-easy-start.jpg" alt="Easy to Start" class="image-border" /></p>\r\n<p>One of the fastest and easiest ways to learn template is to install sample data and start playing with it. JSN Metro provides unique mechanism of <strong>installing sample data directly on your current website</strong>. Just few steps and the demo website is here.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=77&amp;Itemid=484" class="link-button button-light"><span class="link-icon jsn-icon-info">More about easy start</span></a></p>\r\n\r\n\r\n\r\n<h3>Painless Configuration</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-configuration.jpg" alt="Painless Configuration" class="image-border" /></p>\r\n<p>All JoomlaShine templates can be effortlessly configured by template parameters. In template setting page, you will find <strong>40+ template parameters</strong> arranged into logical groups for convenient operation. All parameters are equipped with description text for easier understanding.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=84&amp;Itemid=485" class="link-button button-light"><span class="link-icon jsn-icon-info">More about configuration</span></a></p>\r\n\r\n\r\n\r\n<h3>Flexible layout</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-layout.jpg" alt="Flexible layout" class="image-border" /></p>\r\n<p>JSN Metro provides <strong>36+ module positions </strong>allowing you to have multiple layout configurations. Module positions are designed in smart way to cover all possible spot where you might want to put content. You can specify width of both overall layout and specific columns conveniently via template parameters.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=71&amp;Itemid=466" class="link-button button-light"><span class="link-icon jsn-icon-info">More about layout</span></a></p>\r\n\r\n\r\n<h3>Versatile Menu Styles</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-menu-styles.jpg" alt="Menu Styles" class="image-border" /></p>\r\n<p>JSN Metro provides <strong>3 menu styles</strong> to present your website navigation. The default Joomla! built-in menu module is utilized, so you don''t need to install any external menu modules.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=72&amp;Itemid=468" class="link-button button-light"><span class="link-icon jsn-icon-info">More about menu styles</span></a></p>\r\n\r\n<h3>Native RTL Support</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-rtl-support.jpg" alt="RTL Support" class="image-border" /></p>\r\n<p>All JoomlaShine templates are equipped with <strong>native RTL layout support</strong>. We spent huge amount of time tweaking every tiny details of the template to make it look absolutely awesome in RTL mode. Everything is horizontally-flipped including dropdown main menu and side menu.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=85&amp;Itemid=488" class="link-button button-light"><span class="link-icon jsn-icon-info">More about RTL support</span></a></p>\r\n\r\n\r\n<h3>Cool Image Gallery</h3>\r\n{imageshow sl=1 sc=3 max-width=650 h=400 /}\r\n<p>The image gallery you see on this website is another cool product <strong>JSN ImageShow</strong> from JoomlaShine.com. With transition technology applied, you get smooth experience and consistent performance in all browsers.</p>\r\n<p>For mobile device, we have built special lightweight Javascript version, so you can be absolutely sure about images presentation.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=79&amp;Itemid=487" class="link-button button-light"><span class="link-icon jsn-icon-info">More about image gallery</span></a></p>\r\n\r\n\r\n<h3>Manage Joomla easily</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-poweradmin.jpg" alt="JSN PowerAdmin" class="image-border" /></p>\r\n<p>When you install sample data template, you will have one more powerful  extension to manage your Joomla site: <strong>JSN  PowerAdmin</strong>. It provides <strong>s</strong>potlight  search, giving results as you type. When you find the desired  item, just click it to open the edit page.</p>\r\n	JSN PowerAdmin allows you to have full control under your Joomla website in  single screen. You can manipulate elements by using convenient GUI with  drag-n-drop operations</p>\r\n<p class="content-center"><a href="http://rc.joomlashine.com/demo/joomla-templates/jsn_metro/j25/free/index.php?option=com_content&view=article&id=109&Itemid=994" target="_blank" class="link-button button-light"><span class="link-icon jsn-icon-info">More about JSN PowerAdmin</span></a></p>\r\n\r\n\r\n<h3>Great Docs & Support</h3>\r\n<div style="max-width: 680px; margin: 0px auto; padding: 0 20px 10px; border: 8px solid #EEE; ">\r\n<div class="grid-layout">\r\n<div style="width: 49%; float: left">\r\n<h3>Documentation</h3>\r\n<p>JSN Metro is equipped with very comprehensive documentation package that will help you with template utilization.</p>\r\n<ul>\r\n<li><h4>Configuration Manual</h4>This PDF document gives you detailed description of every template feature. You can print and use this document as a reference every time. You also can watch <a href="http://www.youtube.com/playlist?list=PL068EB32BB584F3F7">our play list JoomlaShine Template Configuration</a>. </li>\r\n<li><h4>Customization Manual</h4>This PDF document gives you easy-to-understand instruction how to customize template elements to make it suites you or your client. You also can watch <a href="http://www.youtube.com/playlist?list=PL0B473CA36B16C3FD">our playlist JoomlaShine Template Customization</a>. </li> \r\n</ul>\r\n</div>\r\n<div style="width: 49%; float: right">\r\n<h3>Support</h3>\r\n<p>When purchasing our products you are backed up with professional and timely support providing via:</p>\r\n<ul>\r\n<li><h4>Support Forum</h4>In the <a href="http://www.joomlashine.com/forum.html">support forum</a> we provide support for everyone who bought the <strong>PRO Edition</strong> of our products. Here you will get support from our support team as well as thousands of active members.</li>\r\n<li><h4>Dedicated Ticket Support</h4><a href="http://www.joomlashine.com/dedicated-support.html">Dedicated Ticket Support</a> is for developers who bought<strong> PRO UNLIMITED Edition </strong>of our products. With ticket support we can investigate the issue in-depth and provide a solution much faster. <strong>12-hour</strong> response time is guaranteed.</p> </li>\r\n</ul>\r\n</div>\r\n</div>\r\n<p class="content-center"><br /><a href="http://www.joomlashine.com/joomla-templates/jsn-metro-docs.zip" class="link-button button-light"><span class="link-icon jsn-icon-download">Download documentation</span></a></p>\r\n</div>', '', 1, 80, '2011-04-01 04:41:44', 42, '', '2013-06-19 10:01:33', 42, 0, '0000-00-00 00:00:00', '2011-04-01 04:41:44', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 34, 3, '', '', 1, 540, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (102, 210, '5 reasons to choose JSN Metro', '5-reasons-to-choose-jsn-metro', '<h3>Beautiful Design</h3>\n<p>JSN Metro has incredibly beautiful clean design with ultra flexible layout built-up from 28 module positions. The combination of 6 colors variation, 5 menu styles and 6 module styles results in a really remarkable website. In addition, super rich typography makes your content look stunning and clear for all users.</p>\n<p><strong>Read more:</strong> <a href="layout.html">Layout</a> - <a href="colors-varitation.html">Colors Variation</a> - <a href="menu-styles.html">Menu Styles</a> - <a href="typography.html">Typography</a> - <a href="modules-styles.html">Module Styles</a> <a href="font-styles.html">Font Styles</a>.</p>\n<h3>Stable Feature Rich Core</h3>\n<p>For us, JSN Metro is not just a template, but whole piece of software for which we spent more then 2 years. As the result you get ultra stable template with native RTL support and flawlessly running on IE6. Even more than that, there are multiple SEO &amp; Accessibility features which make your website greatly visible for both search engines and people with disabilities.</p>\n<p><strong>Read more:</strong> <a href="rtl-support.html">RTL Layout Support</a> - <a href="ie6-support.html">IE6 Support</a> - <a href="seo-accessibility.html">SEO &amp; Accessibility</a> - <a href="flash-gallery.html">Flash Gallery</a>.</p>\n<h3>Dead-easy Configuration</h3>\n<p>You will be surprised how such a capable template can be so easily handled. Majority of template features are conveniently managed by over 40 template parameters. You dont have to be a CSS master or PHP guru. Just set parameters as you want and enjoy the result.</p>\n<p><strong>Read more:</strong> <a href="template-parameters.html">Template Parameters</a>.</p>\n<h3>Outstanding Docs &amp; Support</h3>\n<p>Even when the template is deadly easy to use, we still provide very comprehensive documentation package of 3 PDF documents. So its really hard to get things done wrong, but if even so, you can get timely and professional support from our team as well as friendly community.</p>\n<p><strong>Next Step:</strong> <a href="download-jsn-metro-docs.html">Download template documentation</a> for free.</p>\n<h3>Cost Effective Solution</h3>\n<p>All the benefits is available for you for just 29$. Our ultimate goal is to offer you a solution that in turns must bring you much more profit. Even more, we provide 30-days money back guarantee, so this is absolutely risk-free. Just give it a try and you wont look back.</p>\n<p><strong>Next Step:</strong> <a href="buy-now.html">Download JSN Metro</a>.</p>', '', 1, 80, '2011-04-01 07:17:52', 42, '', '2012-07-16 10:36:08', 43, 0, '0000-00-00 00:00:00', '2011-04-01 07:17:52', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 2, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(103, 211, 'Welcome to JSN Metro', 'introducing-jsn-metro', '<div id="jsn-article-demo">\r\n	<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/content-html/demo-image1.jpg" alt="Demo Image"/>\r\n	<div class="demo-caption">\r\n		<h2 class="demo-tilte"><a href="">Welcome to JSN Metro</a></h2>\r\n		<p>JSN Metro is the latest innovation in the Metro legacy. The look itself echoes the visual language of airport and metro system signage as undoubtedly straightforward, making it increasingly popular to both web and mobile user. Its interfaces are supposed to encourage the sense of depth, experiment and usage. </p>\r\n<p>About the design, JSN Metro is color drenched with lots of pop. Its flat color variations deliver superb vignettes, mind-blowing saturation and knockout contrast. </p> \r\n		<a href="index.php?option=com_content&view=article&id=101&Itemid=497" class="readmore">Read more</a>\r\n	</div>\r\n</div>', '', 1, 80, '2011-04-01 07:18:18', 42, '', '2013-06-19 10:39:13', 42, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"1","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 94, 1, '', '', 1, 4242, '{"robots":"","author":"","rights":"","xreference":""}', 1, '*', ''),
+(103, 211, 'Welcome to JSN Metro', 'introducing-jsn-metro', '<div id="jsn-article-demo">\r\n	<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/content-html/demo-image1.jpg" alt="Demo Image"/>\r\n	<div class="demo-caption">\r\n		<h2 class="demo-tilte"><a href="">Welcome to JSN Metro</a></h2>\r\n		<p>JSN Metro is the latest innovation in the Metro legacy. The look itself echoes the visual language of airport and metro system signage as undoubtedly straightforward, making it increasingly popular to both web and mobile user. Its interfaces are supposed to encourage the sense of depth, experiment and usage. </p>\r\n<p>About the design, JSN Metro is color drenched with lots of pop. Its flat color variations deliver superb vignettes, mind-blowing saturation and knockout contrast. </p> \r\n		<a href="index.php?option=com_content&view=article&id=101&Itemid=497" class="readmore">Read more</a>\r\n	</div>\r\n</div>', '', 1, 80, '2011-04-01 07:18:18', 42, '', '2013-06-19 10:39:13', 42, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"1","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 94, 1, '', '', 1, 4325, '{"robots":"","author":"","rights":"","xreference":""}', 1, '*', ''),
 (104, 212, 'JSN Metro Showcase', 'jsn-metro-showcase', '<p>Here, wed like to show you how JSN Metro can be utilized for multiple kinds of websites, staring from simple personal website ending with professional news portal. All content are fictions and serves for demo purpose only.</p>\n<ul type="disc">\n <li>News Portal / Online magazine</li>\n <li>Personal website / Blog</li>\n <li>Corporate website / Service providers</li>\n <li>Community website / Fan clubs</li>\n <li>Online shops</li>\n</ul>\n<p>Here are some real life examples of JSN Metro.</p>', '', 1, 80, '2011-04-01 07:18:37', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:37', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (105, 216, 'Main content only (2)', 'main-content-only-2', '<p>Here you can see how content are presented only in main content area. Sometimes, you will need a lot of space to present content and that how it will looks like.</p>\n<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit dui eu augue faucibus non interdum odio elementum. Praesent faucibus lorem sed massa condimentum in semper lacus aliquet. Aliquam viverra erat a libero accumsan a egestas lorem hendrerit. Donec id elit dolor. Phasellus est ligula, hendrerit id vehicula sit amet, placerat ut diam. Sed eu fringilla lectus. Aliquam augue lorem, suscipit eu consequat vel, viverra id diam. Praesent lectus elit, interdum a imperdiet vitae, cursus at velit. </p>\n<p class="content-center"><a href="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/layout/layout-full.png" target="_blank" class="link-button button-light"><span class="link-icon jsn-icon-info">See all module positions outline</span></a></p>\n', '', -2, 81, '2011-04-01 03:14:14', 42, '', '2011-11-21 04:55:09', 0, 0, '0000-00-00 00:00:00', '2011-04-01 03:14:14', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (106, 231, 'Form Builder', 'form-builder', '<p><strong><a href="http://www.joomlashine.com/joomla-extensions/jsn-uniform-details.html">JSN UniForm</a></strong> will bring you the new indulgence since you find out it is the easiest-to-use form extension for your site. Contact us, survey and job application are just some of thousand forms that this single extension can help you to create and control. Besides the intuitive <strong>drag-n-drop operation</strong>, <strong>flexible form presentation</strong> and <strong>multiple pages layout</strong>, JSN UniForm also assists you to deeply understand your collected data with the multiple admins email notification, clean result display or submission filter. </p>\r\n\r\n<p>Below is the survey form created by the <strong>Free Edition</strong> of JSN UniForm. </p>\r\n{uniform form=1/}\r\n<p class="text-info">This extension is NOT included in the template package, but you can download it for free. <a href="http://www.joomlashine.com/joomla-extensions/jsn-uniform-details.html" class="link-action">Read more</a>.</p>', '', 1, 20, '2012-11-09 02:44:31', 42, '', '2013-01-30 04:52:59', 42, 0, '0000-00-00 00:00:00', '2012-11-09 02:44:31', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 1, '', '', 1, 26, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(107, 232, 'Sample Article ', 'sample-article', '<h2>Sample Article</h2>\nLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. ', '\n\nNam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', 1, 14, '2012-11-22 07:18:18', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2012-11-22 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 2, '', '', 1, 3, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
+(107, 232, 'Sample Article ', 'sample-article', '<h2>Sample Article</h2>\nLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. ', '\n\nNam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica, quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.', 1, 14, '2012-11-22 07:18:18', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2012-11-22 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 3, '', '', 1, 3, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (108, 233, 'Image Gallery (2)', 'image-gallery-2', '<p>The image gallery you see on this website is another cool product <strong><a href="http://www.joomlashine.com/joomla-extensions/jsn-imageshow.html" target="_blank">JSN ImageShow</a></strong> from JoomlaShine.com. This product is shipped with component, module and content plugin, so you can place it anywhere on every website.</p>\n<p>On this page you can see how JSN ImageShow is presented as module on top and as plugin in article content. With it, you get smooth experience and consistent performance in all browsers. The JSN ImageShow also support mobile devices normally with JS/HTML version switched automatically when you visit the website.</p>\n<p>Currently, JSN ImageShow comes with 4 themes: Theme Classic, Theme Slider, Theme Grid and Theme Carousel. More themes will be released in the future.</p>\n<div class="content-center" style="max-width: 640px; margin: 0 auto;">{imageshow sl=1 sc=3 h=400 /}</div>\n<p class="content-center"><em>JSN ImageShow with Theme Classic</em></p>\n<div class="content-center" style="max-width: 640px; margin: 0 auto;">{imageshow sl=1 sc=5 h=400 /}</div>\n<p class="content-center"><em>JSN ImageShow with Theme Slider</em></p>\n<div class="content-center" style="padding-left: 10px; max-width: 660px; margin: 0 auto;">{imageshow sl=1 sc=4 /}</div>\n<p class="content-center" style="clear: both;"><em>JSN ImageShow with Theme Grid</em></p>\n<div class="content-center" style="padding-left: 10px; max-width: 660px; margin: 0 auto;">{imageshow sl=1 sc=6/}</div>\n<p class="content-center"><em>JSN ImageShow with Theme Carousel</em></p>\n<hr class="line-dots" />\n<h3>Mobile optimized</h3>\n<p>For mobile device, we have built special lightweight Javascript version, so you can be absolutely sure about images presentation.</p>\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/flash-gallery/flash-gallery-iphone.png" border="0" alt="Mobile optimized presentation (screenshot made by iPhone)" width="320" height="480" /><br /> <em>Mobile optimized presentation (screenshot made by iPhone)</em></p>\n<p class="text-info">This extension is NOT included in the template package, but you can download it for free. <a class="link-action" href="http://www.joomlashine.com/joomla-extensions/jsn-imageshow.html">Read more</a>.</p>', '', -2, 79, '2011-04-01 03:07:30', 42, '', '2012-11-28 10:32:23', 43, 0, '0000-00-00 00:00:00', '2011-04-01 03:07:30', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 0, '', '', 1, 1, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(109, 234, 'JSN PowerAdmin - Managing your Joomla website can''t be easier', 'jsn-poweradmin-managing-your-joomla-website-can-t-be-easier', '<p><strong>JSN PowerAdmin</strong> makes your Joomla  administration process easy and enjoyable. It allows you to have full control  under your Joomla website in single screen. You can manipulate elements by  using convenient GUI with drag-n-drop operations.</p>\r\n<p align="center"></p>\r\n<h3>Admin Bar</h3>\r\n<p>AdminBar allows you to perform  common actions quickly: Search items, check actions history, manage users and  manage site.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/admin bar.png" alt="Admin Bar" width="600" height="88" /></p>\r\n<h4>Spotlight Search</h4>\r\n<p>Spotlight Search helps you search items in your website quickly. <br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/spotlight search.png" alt="Spotlight Search" width="600" height="261" /></p>\r\n<h3>Site Manager</h3>\r\n<p>Here we go to the coolest feature of this extension: Site Manager. It helps you control the website content  in one place. As you see, it covers Menu, Component and Modules.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/site manager.png" alt="Site Manager" width="600" height="345" /></p>\r\n<h4>Menu</h4>\r\n<p>Here you can manage your menus. If you want to move items  within a menu, simply drag and drop them. If you want to edit more, left click  on menu items.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/menu.png" alt="Menu" width="600" height="377" /></p>\r\n<h4>Component</h4>\r\n<p>This section shows you the component of the menu item you  selected. <strong>JSN PowerAdmin</strong> helps you  move the mouse over all elements on the page and configure them with a single  click. The software will automatically adjust all necessary parameters for you<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/component.png" alt="Component" width="600" height="414" /></p>\r\n<h4>Modules</h4>\r\n<p>Here you can manage all Modules  of the current default template. You can drag and drop a module to different  module positions, or simply click on modules and positions to get more editing  options.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/modules.png" alt="Modules" width="600" height="379" /></p>\r\n<p><strong>JSN PowerAdmin</strong> supports <strong>10  languages</strong>: <em>English, German, Dutch,  French, Russian, Spanish, Portuguese (Portugal), Portuguese (Brazil), Polish  and Japan</em>. It works perfectly with Joomla admin templates: <em>Hathor, Mission Control, Admin Praise Lite, VTEM Admin, Minima and other</em></p>\r\n<p><em><strong>Impressions from Joomla site builders...</strong></em></p>\r\n<p><em>\r\n<blockquote>All I can say is it turbo-charged the admin  area. So many shortcuts, saving hours of clicking and checking. With developers  creating extensions like these, Joomla can only go up. My hat is off to the  Joomlashine team <strong><em>-</em></strong><a href="http://extensions.joomla.org/extensions/reviews/pcbob" target="_blank"> pcbob</a>\r\n  </p>\r\n  <em></em>\r\n</blockquote>\r\n</em>\r\n<p><em>\r\n<blockquote>JSN  PowerAdmin is a great timesaver. It adds drag &amp; drop functionality to menus  and modules. The live search over articles, modules, menus, plug-ins ... is  perfect. You visually can administrate all content elements like release date,  author, category etc. I simply love it! Thank to Joomlashine <strong><em>- </em></strong><a href="http://extensions.joomla.org/extensions/reviews/Herm" target="_blank">Herm</a>\r\n  </p>\r\n</blockquote></em>\r\n<p><em>\r\n<blockquote>The  moment I installed this component I could see the improvements and difference  it makes in managing my site. A hefty percentage of my time in Joomla is spent  switching between sections and finding modules and editing their settings.  Where have you been all my life?<em><strong><em>-</em></strong></em><a href="http://extensions.joomla.org/extensions/reviews/talgans" target="_blank"> talgans</a>\r\n</p>\r\n</blockquote></em>\r\n<p align="center"><a href="http://www.joomlashine.com/joomla-extensions/jsn-poweradmin-details.html" class="link-button button-dark"><span class="link-icon jsn-icon-download">Download Now</span></a></p>\r\n\r\n', '', 1, 14, '2012-12-28 09:14:14', 42, '', '2014-10-28 10:12:03', 42, 0, '0000-00-00 00:00:00', '2012-12-28 09:14:14', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 2, 1, '', '', 1, 7, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
+(109, 234, 'JSN PowerAdmin - Managing your Joomla website can''t be easier', 'jsn-poweradmin-managing-your-joomla-website-can-t-be-easier', '<p><strong>JSN PowerAdmin</strong> makes your Joomla  administration process easy and enjoyable. It allows you to have full control  under your Joomla website in single screen. You can manipulate elements by  using convenient GUI with drag-n-drop operations.</p>\r\n<p align="center"></p>\r\n<h3>Admin Bar</h3>\r\n<p>AdminBar allows you to perform  common actions quickly: Search items, check actions history, manage users and  manage site.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/admin bar.png" alt="Admin Bar" width="600" height="88" /></p>\r\n<h4>Spotlight Search</h4>\r\n<p>Spotlight Search helps you search items in your website quickly. <br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/spotlight search.png" alt="Spotlight Search" width="600" height="261" /></p>\r\n<h3>Site Manager</h3>\r\n<p>Here we go to the coolest feature of this extension: Site Manager. It helps you control the website content  in one place. As you see, it covers Menu, Component and Modules.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/site manager.png" alt="Site Manager" width="600" height="345" /></p>\r\n<h4>Menu</h4>\r\n<p>Here you can manage your menus. If you want to move items  within a menu, simply drag and drop them. If you want to edit more, left click  on menu items.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/menu.png" alt="Menu" width="600" height="377" /></p>\r\n<h4>Component</h4>\r\n<p>This section shows you the component of the menu item you  selected. <strong>JSN PowerAdmin</strong> helps you  move the mouse over all elements on the page and configure them with a single  click. The software will automatically adjust all necessary parameters for you<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/component.png" alt="Component" width="600" height="414" /></p>\r\n<h4>Modules</h4>\r\n<p>Here you can manage all Modules  of the current default template. You can drag and drop a module to different  module positions, or simply click on modules and positions to get more editing  options.<br />\r\n<p align="center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-poweradmin/modules.png" alt="Modules" width="600" height="379" /></p>\r\n<p><strong>JSN PowerAdmin</strong> supports <strong>10  languages</strong>: <em>English, German, Dutch,  French, Russian, Spanish, Portuguese (Portugal), Portuguese (Brazil), Polish  and Japan</em>. It works perfectly with Joomla admin templates: <em>Hathor, Mission Control, Admin Praise Lite, VTEM Admin, Minima and other</em></p>\r\n<p><em><strong>Impressions from Joomla site builders...</strong></em></p>\r\n<p><em>\r\n<blockquote>All I can say is it turbo-charged the admin  area. So many shortcuts, saving hours of clicking and checking. With developers  creating extensions like these, Joomla can only go up. My hat is off to the  Joomlashine team <strong><em>-</em></strong><a href="http://extensions.joomla.org/extensions/reviews/pcbob" target="_blank"> pcbob</a>\r\n  </p>\r\n  <em></em>\r\n</blockquote>\r\n</em>\r\n<p><em>\r\n<blockquote>JSN  PowerAdmin is a great timesaver. It adds drag &amp; drop functionality to menus  and modules. The live search over articles, modules, menus, plug-ins ... is  perfect. You visually can administrate all content elements like release date,  author, category etc. I simply love it! Thank to Joomlashine <strong><em>- </em></strong><a href="http://extensions.joomla.org/extensions/reviews/Herm" target="_blank">Herm</a>\r\n  </p>\r\n</blockquote></em>\r\n<p><em>\r\n<blockquote>The  moment I installed this component I could see the improvements and difference  it makes in managing my site. A hefty percentage of my time in Joomla is spent  switching between sections and finding modules and editing their settings.  Where have you been all my life?<em><strong><em>-</em></strong></em><a href="http://extensions.joomla.org/extensions/reviews/talgans" target="_blank"> talgans</a>\r\n</p>\r\n</blockquote></em>\r\n<p align="center"><a href="http://www.joomlashine.com/joomla-extensions/jsn-poweradmin-details.html" class="link-button button-dark"><span class="link-icon jsn-icon-download">Download Now</span></a></p>\r\n\r\n', '', 1, 14, '2012-12-28 09:14:14', 42, '', '2014-10-28 10:12:03', 42, 0, '0000-00-00 00:00:00', '2012-12-28 09:14:14', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 2, 2, '', '', 1, 7, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
 (110, 249, 'Website Mobilizing', 'website-mobilizing', '<style type="text/css">\r\nh3.article-heading {\r\n        font-size: 1.5em;\r\n        text-transform: uppercase;\r\n}\r\n</style>\r\n<div class="text-info" style="background-image: none; padding: 0.8em;">\r\n <p align="center"><strong>JSN Mobilize</strong> comes with both Free and PRO Editions. The <strong>FREE edition</strong> is included in sample data installation package with function limitation. You only can <strong>create 1 mobile template</strong> with limited displaying area.</p>  \r\n <p align="center">Please click on buttons below to see how JSN Mobilize present a website on mobile devices:</p>\r\n  <p align="center"> \r\n<a rel="{handler: ''iframe'', size: {x: 480, y: 640}}" href="http://rc.joomlashine.com/demo/joomla-extensions/jsn-mobilize/j25/index.php?jsn_mobilize_preview=1" class="modal link-tooltip link-button button-blue" style="z-index: 90;">\r\nSmart phones</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r\n<a rel="{handler: ''iframe'', size: {x: 1024, y:768}}" href="http://rc.joomlashine.com/demo/joomla-extensions/jsn-mobilize/j25/index.php?jsn_mobilize_preview=1" class="modal link-tooltip link-button button-red" style="z-index: 90;">Tablet</a></p>\r\n</div>\r\n\r\n<p align="center">\r\n<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-mobilize/img1.jpg" alt="" />\r\n</p>\r\n<p>\r\nJSN Mobilize helps your website to achieve a better browsing experience by creating an elaborated mobile version for the site. This revolutionary extension guarantees to include a bunch of sophisticated features and enhancement while require minimum technical knowledge from users.\r\n</p>\r\n<p>&nbsp;</p>\r\n\r\n<h3 class="article-heading">Multi-device Support</h3>\r\n<p>&nbsp;</p>\r\n<p align="center">\r\n<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-mobilize/img2.jpg" alt="" />\r\n</p>\r\n<p>\r\nNot only smartphones are supported by JSN Mobilize, the recent innovation â€“ tablets are also covered. Tablet usually has bigger screen and can receive more displaying area than phone. With JSN Mobilize you will have the separate layouts for phone and tablet which surely deliver the better device coverage for websiteâ€™s mobile version.\r\n</p>\r\n<p>&nbsp;</p>\r\n<hr />\r\n<p>&nbsp;</p>\r\n\r\n<h3 class="article-heading">Multi-OS Support</h3>\r\n<p>&nbsp;</p>\r\n\r\n<p align="center">\r\n<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-mobilize/img3.jpg" alt="" />\r\n</p>\r\n<p>\r\nJSN Mobilize delivers the future-ready and mobile-friendly experience to your Joomla website by initiatively supporting multiple operation systems. In short explanation, your website should work and be viewed effortlessly on every screen solution horizontally and vertically. Your website will look awesome automatically on these operation systems (OS) below:</p>\r\n<ul class="list-arrow arrow-blue">\r\n<li>iOS (6.x and below, 7.x)</li>\r\n<li>Android (2.2 - 2.3, 4.x)</li>\r\n<li>Windows Mobile (6.x and below, 7.x, 8.x)</li>\r\n<li>BlackBerry (5.x and below, 6x - 7x, 10x)</li>\r\n<li>Others...</li>\r\n</ul>\r\n<p>&nbsp;</p>\r\n<hr />\r\n<p>&nbsp;</p>\r\n\r\n<h3 class="article-heading">Load Speed Enhancement</h3>\r\n<p>&nbsp;</p>\r\n\r\n<p>\r\nGet the most out of JSN Mobilize with the <strong>Advanced Image Optimization</strong> based on two options including â€œFor the best performanceâ€ or â€œFor the best image qualityâ€. Additionally, the <strong>CSS/JS minify mechanism</strong> allows to compress all files into one single package. By that way, your site load will quickly enough in a limited-bandwidth environment at least <strong>170%</strong>. Below is the speed test by <a href="http://mobitest.akamai.com/" target="_blank">akamai</a>.\r\n</p>\r\n\r\n<p align="center">\r\n<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-mobilize/img4.jpg" alt="" title="The loading speed before enabling the image optimization and CSS/JS minify mechanism" class="caption" />\r\n</p>\r\n\r\n<p align="center">\r\n<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/jsn-mobilize/img5.jpg" alt="" title="The loading speed after enabling the image optimization and CSS/JS minify mechanism" class="caption" />\r\n</p>\r\n\r\n<div class="text-info" style="background-image: none; padding: 0.8em;">\r\n<p align="center">Please click on buttons below to check the detailed information about PRO Edition''s features of JSN Mobilize:</p>\r\n  <p align="center"> <a href="http://demo.joomlashine.com/joomla-extensions/jsn-mobilize.html" target="_blank" class="link-button button-green" >See Demo</a>       <a href="http://www.joomlashine.com/joomla-extensions/jsn-mobilize-joomla-mobile-extension.html" target="_blank" class="link-button button-red" >Buy Now</a></p>\r\n</div>', '', 1, 79, '2014-03-04 07:33:19', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2014-03-04 07:33:19', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, '', '', 1, 1, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(111, 255, 'JSN PageBuilder - The Easiest Way to Build Joomla Pages', 'jsn-pagebuilder-the-easiest-way-to-build-joomla-pages', '[pb_row background="solid" solid_color_value="#dbe7f8" solid_color_color="#dbe7f8" border_width_value_="0" border_style="solid" border_color="#000" width_value="100" width_unit="%" div_padding_top="10" div_padding_right="10" div_padding_bottom="10" div_padding_left="10" ][pb_column span="span12"][pb_text el_title="Highlight" div_margin_top="30" div_margin_bottom="30" enable_dropcap="no" appearing_animation="0" ]<h5 style="text-align: center;">This page is built by the Free Edition of another cool product <a href="http://www.joomlashine.com/joomla-extensions/jsn-pagebuilder.html" title="" target="_blank">JSN PageBuilder</a> from JoomlaShine (Only for Joomla 3.x).</h5><h5 style="text-align: center;"> Please click on the below button to check the PRO Edition of this extension.</h5>[/pb_text][pb_buttonbar el_title="Button Bar 1" buttonbar_alignment="center" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="See Demo" link_type="url" button_type_url="http://demo.joomlashine.com/joomla-extensions/jsn-pagebuilder/jsn-pagebuilder-overview.html" open_in="current_browser" button_size="default" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Get It Now" link_type="url" button_type_url="http://www.joomlashine.com/joomla-extensions/jsn-pagebuilder.html" open_in="current_browser" button_size="default" button_color="btn-success" ][/pb_buttonbar_item][/pb_buttonbar][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_text el_title="JSN PageBuilder introduction" enable_dropcap="no" appearing_animation="0" ]<p>JSN PageBuilder is the perfect tool to help you build and manage content for Joomla 3.x websites. JSN PageBuilder not only allows you to build a new page<strong> </strong>but also helps you to redesign your old pages<b> </b>because it works directly on articles and modules. Even you are a Joomla newbie, you now can create your desired page without worry. And for a developer who is tired of coding too much, this helpful extension will make your life better and save you time. You can be free from programming knowledge.</p>[/pb_text][pb_divider el_title="Divider 2" div_margin_top="40" div_border_width="1" div_border_style="solid" div_border_color="#e8e8e8" appearing_animation="0" ][/pb_divider][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_heading el_title="OUTSTANDING FEATURES OF JSN PAGEBUILDER" tag="h3" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Yanone Kaffeesatz" font_size_value_="28" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]OUTSTANDING FEATURES OF JSN PAGEBUILDER[/pb_heading][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span4"][pb_list el_title="Features" show_icon="yes" icon_position="left" icon_size_value="32" icon_background_type="circle" icon_background_color="#ffffff" icon_c_value="#47a447" icon_c_color="#47a447" show_heading="yes" font="inherit" appearing_animation="0" ][pb_list_item heading="Drag & Drop Function" icon="icon-checkmark" ]Simplest way to create and arrange page elements.[/pb_list_item][pb_list_item heading="Visual Editing" icon="icon-checkmark" ]Easy to start without dealing with IT bottlenecks. <br>[/pb_list_item][/pb_list][/pb_column][pb_column span="span4"][pb_list el_title="Features" show_icon="yes" icon_position="left" icon_size_value="32" icon_background_type="circle" icon_background_color="#ffffff" icon_c_value="#47a447" icon_c_color="#47a447" show_heading="yes" font="inherit" appearing_animation="0" ][pb_list_item heading="Advanced Elements" icon="icon-checkmark" ]Fundamental and advanced elements to optimize contents.<br>[/pb_list_item][pb_list_item heading="Live Preview" icon="icon-checkmark" ]Instant view of what is going on with content and styles.<br>[/pb_list_item][/pb_list][/pb_column][pb_column span="span4"][pb_list el_title="Features" show_icon="yes" icon_position="left" icon_size_value="32" icon_background_type="circle" icon_background_color="#ffffff" icon_c_value="#47a447" icon_c_color="#47a447" show_heading="yes" font="inherit" appearing_animation="0" ][pb_list_item heading="Built-in animation" icon="icon-checkmark" ]Various styles to make your website more eye-catching<br>[/pb_list_item][pb_list_item heading="Responsive" icon="icon-checkmark" ]Presented beautifully on all browsers and mobile devices.<br>[/pb_list_item][/pb_list][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_divider el_title="Divider 4 copy" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="SAMPLE ELEMENTS" tag="h3" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Yanone Kaffeesatz" font_size_value_="28" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]SAMPLE ELEMENTS[/pb_heading][pb_heading el_title="Pricing table element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Pricing table element[/pb_heading][pb_pricingtable el_title="Pricing Table 2" prtbl_elements="title__#__attributes__#__button__#__ " appearing_animation="0" ][pb_pricingtableattr_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_desc="Max Domains" prtbl_item_attr_type="text" ][/pb_pricingtableattr_item][pb_pricingtableattr_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_desc="Storage" prtbl_item_attr_type="text" ][/pb_pricingtableattr_item][pb_pricingtableattr_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_desc="SSL Support" prtbl_item_attr_type="checkbox" ][/pb_pricingtableattr_item][pb_pricingtable_item div_margin_top="" div_margin_bottom="" disabled_el="no" css_suffix="" prtbl_item_title="Free" prtbl_item_desc="Free" prtbl_item_image="" prtbl_item_currency="$" prtbl_item_price="0" prtbl_item_time=" / month" prtbl_item_button_text="Buy now" link_type="url" button_type_url="http://" open_in="current_browser" prtbl_item_attributes="" prtbl_item_feature="no" ][pb_pricingtable_item_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_value="5" prtbl_item_attr_desc="5" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_value="500 MB" prtbl_item_attr_desc="500 MB" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_value="yes" prtbl_item_attr_desc="yes" prtbl_item_attr_type="checkbox" ][/pb_pricingtable_item_item][/pb_pricingtable_item][pb_pricingtable_item div_margin_top="" div_margin_bottom="" disabled_el="no" css_suffix="" prtbl_item_title="Standard" prtbl_item_desc="Standard" prtbl_item_image="" prtbl_item_currency="$" prtbl_item_price="69" prtbl_item_time=" / month" prtbl_item_button_text="Buy now" link_type="url" button_type_url="http://" open_in="current_browser" prtbl_item_attributes="" prtbl_item_feature="yes" ][pb_pricingtable_item_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_value="20" prtbl_item_attr_desc="20" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_value="2 TB" prtbl_item_attr_desc="2 TB" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_value="yes" prtbl_item_attr_desc="yes" prtbl_item_attr_type="checkbox" ][/pb_pricingtable_item_item][/pb_pricingtable_item][pb_pricingtable_item prtbl_item_title="Premium" prtbl_item_desc="Premium" prtbl_item_currency="$" prtbl_item_price="99" prtbl_item_time=" / month" prtbl_item_button_text="Buy now" link_type="url" button_type_url="http://" open_in="current_browser" prtbl_item_feature="no" ][pb_pricingtable_item_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_value="1" prtbl_item_attr_desc="1" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_value="100 MB" prtbl_item_attr_desc="100 MB" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_value="yes" prtbl_item_attr_desc="no" prtbl_item_attr_type="checkbox" ][/pb_pricingtable_item_item][/pb_pricingtable_item][/pb_pricingtable][pb_divider el_title="Divider 3" div_margin_top="40" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="Button element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Button element[/pb_heading][pb_buttonbar el_title="Button Bar large" buttonbar_alignment="inherit" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Default" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Primary" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Info" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-info" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Success" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-success" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Warning" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-warning" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Danger" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-danger" ][/pb_buttonbar_item][/pb_buttonbar][pb_buttonbar el_title="Button Bar 3" buttonbar_alignment="inherit" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Default" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Primary" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Info" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-info" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Success" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-success" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Warning" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-warning" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Danger" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-danger" ][/pb_buttonbar_item][pb_buttonbar_item button_text="With icon" link_type="url" button_type_url="http://" open_in="current_browser" icon="icon-comments" button_size="default" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Link" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-link" ][/pb_buttonbar_item][/pb_buttonbar][pb_buttonbar el_title="Button Bar small" buttonbar_alignment="inherit" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Default" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Primary" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Info" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-info" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Success" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-success" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Warning" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-warning" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Danger" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-danger" ][/pb_buttonbar_item][pb_buttonbar_item button_text="With icon" link_type="url" button_type_url="http://" open_in="current_browser" icon="icon-comments" button_size="btn-sm" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Link" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-link" ][/pb_buttonbar_item][/pb_buttonbar][pb_divider el_title="Divider 3 copy" div_margin_top="40" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span6"][pb_heading el_title="Accordion element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Accordion element[/pb_heading][pb_accordion el_title="Accordion 1" initial_open="1" multi_open="no" filter="no" appearing_animation="0" ][pb_accordion_item heading="Accordion Item 1" icon="" tag="" ]Felis ornare fames vehicula nisi leo molestie curabitur felis, eget porta interdum habitant porttitor ligula nunc volutpat, sagittis aenean taciti justo auctor ante quam. suspendisse ipsum orci eu cras placerat porttitor diam ante placerat, libero fringilla consectetur morbi potenti, eget porta interdum habitant porttitor ligula nunc.[/pb_accordion_item][pb_accordion_item heading="Accordion Item 2" ]Lorem dictumst placerat adipiscing augue odio nunc, ultrices orci curabitur adipiscing blandit dolor dapibus, sollicitudin ante donec ornare consectetur. sit nisi tellus integer etiam interdum laoreet luctus sagittis curae integer nibh, torquent tristique quisque non magna a porta fermentum ultricies. tellus dolor pulvinar lectus purus in.[/pb_accordion_item][/pb_accordion][/pb_column][pb_column span="span6"][pb_heading el_title="Tab element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Tab element[/pb_heading][pb_tab el_title="Tab 1" initial_open="1" fade_effect="no" tab_position="top" appearing_animation="0" ][pb_tab_item heading="Tab Item 1" icon="" ]Feugiat odio duis facilisis hac fusce ipsum donec euismod class, elementum nulla condimentum quam aliquet odio consectetur malesuada, quisque ante commodo varius vel praesent urna leo. mauris aliquam vitae interdum rhoncus taciti aenean cursus curabitur est quam non molestie, facilisis ut praesent quam amet faucibus fermentum et euismod mi sollicitudin. [/pb_tab_item][pb_tab_item heading="Tab Item 2" icon="" ]Consectetur taciti hac posuere ultrices malesuada sapien quis dictumst, ut turpis consequat netus et ligula sociosqu, feugiat aliquet nisi integer sed ligula feugiat. aliquam pellentesque proin venenatis sed tempus augue, fusce quam consectetur amet ultricies, placerat ullamcorper vestibulum lacus luctus. ut scelerisque praesent tortor sociosqu eros, suspendisse donec ut enim. [/pb_tab_item][/pb_tab][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_divider el_title="Divider 4" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="Carousel element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Carousel element[/pb_heading][pb_carousel el_title="Carousel 1" align="center" dimension_width_unit="px" show_indicator="no" show_arrows="yes" automatic_cycling="no" appearing_animation="0" ][pb_carousel_item image_file="https://lh5.googleusercontent.com/-uMjkIqBu-6Q/VNHuELzvkPI/AAAAAAAAE0w/SkumY36ADQI/s1024/image-1.jpg" heading="Carousel Item 1" ]Senectus faucibus hac tincidunt lorem tincidunt tempus integer ipsum per, etiam luctus arcu egestas nullam conubia lobortis turpis imperdiet pharetra[/pb_carousel_item][pb_carousel_item image_file="https://lh4.googleusercontent.com/-7Zlo6unCgug/VNHuEI6WZ4I/AAAAAAAAE0w/lpT5-ZAo4q8/s1024/image-2.jpg" heading="Carousel Item 2" ]Sit class semper lacinia molestie ultricies in at habitasse viverra facilisis phasellus fames, condimentum cras nisl feugiat arcu habitant cursus at libero in cubilia[/pb_carousel_item][/pb_carousel][pb_divider el_title="Divider 5" div_margin_top="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_heading el_title="Parallax Scrolling Background" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Parallax Scrolling Background[/pb_heading][/pb_column][/pb_row][pb_row background="image" image="https://lh4.googleusercontent.com/-fct5BGdSUg8/VNHuEH6mXrI/AAAAAAAAE0w/3WjTqH2ueS0/s1024/image-3.jpg" position="center center" paralax="yes" parallax_scroll="no" border_width_value_="0" border_style="solid" border_color="#000" width_value="100" width_unit="%" div_padding_top="50" div_padding_right="30" div_padding_bottom="50" div_padding_left="30" ][pb_column span="span12"][pb_heading el_title=" STUNNING PARALLAX BACKGROUND" tag="h3" text_align="center" font="custom" font_face_type="google fonts" font_face_value="Open Sans" font_style="bold" color="#ffffff" border_bottom_style="solid" border_bottom_color="#000000" appearing_animation="0" ] STUNNING PARALLAX BACKGROUND[/pb_heading][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_divider el_title="Divider 5 copy" div_margin_top="40" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="Built-in animation" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Built-in animation[/pb_heading][pb_text el_title="Appearing animation: Slide from top" enable_dropcap="no" appearing_animation="slide_from_top" appearing_animation_speed="medium" ]<b>Appearing animation: Slide from top.</b> Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus.Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus. Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus.Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus.[/pb_text][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_heading el_title="Built-in animation copy" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]And many other advanced elements are waiting for you to discover...[/pb_heading][pb_buttonbar el_title="Button Download" div_margin_top="30" buttonbar_alignment="center" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Free Download Now" link_type="url" button_type_url="http://www.joomlashine.com/joomla-extensions/jsn-pagebuilder.html" open_in="current_browser" icon="icon-download" button_size="btn-lg" button_color="btn-danger" ][/pb_buttonbar_item][/pb_buttonbar][/pb_column][/pb_row]', '', 1, 14, '2015-01-06 07:35:19', 42, '', '2015-01-28 10:52:58', 42, 0, '0000-00-00 00:00:00', '2015-01-06 07:35:19', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 0, '', '', 1, 6, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(112, 263, 'Content Slider', 'joomla-slider', '<style type="text/css">\r\n	.jsn-easyslider p {\r\n		margin-bottom: 20px;\r\n	}\r\n</style>\r\n\r\n\r\n<div class="jsn-easyslider">\r\n	<div class="text-info" style="background-image: none; padding-left: 15px;">\r\n		<p style="text-align: center;">The slider you see on this website is the <strong>Free Edition</strong> of another cool product <a href="http://www.joomlashine.com/joomla-extensions/jsn-easyslider-joomla-slider-extension.html">JSN EasySlider</a> from JoomlaShine. Please click on the below button to check the PRO Edition of this extension.</p>\r\n		<p align="center">\r\n			<a class="link-button button-blue" href="http://demo.joomlashine.com/joomla-extensions/jsn-easyslider/jsn-easyslider-overview.html?utm_source=detailpage&utm_medium=button&utm_campaign=JSNEasySlider" target="_blank">See Demo</a>\r\n			<a class="link-button button-green" href="http://www.joomlashine.com/joomla-extensions/jsn-easyslider-joomla-slider-extension.html#jsn-edition-price" target="_blank">Get It Now</a>\r\n		</p>\r\n	</div>\r\n\r\n	<p>JSN EasySlider is the cutting-edge way of presenting content on the web with the <strong>“Three-I” standard:</strong> Impressive - Informative - Interactive.</p>\r\n	<ul style="list-style-position: inside;">\r\n		<li style="padding-left: 30px;">Impressive to catch and maintain attention</li>\r\n		<li style="padding-left: 30px;">Informative to convey message effectively</li>\r\n		<li style="padding-left: 30px;">Interactive to drive engagement with specific Call-To-Actions</li>\r\n	</ul>\r\n	<p>It allows you to synthesize <strong>dynamic content types</strong>: text, video &amp; images and leverage the strength of <strong>stunning effects</strong> for effective information conveyance. Besides superpower for content presentation, it also has a uniquely outstanding feature:<strong> super user-friendly interface</strong>. With Drag-n-drop functionality, WYSIWYG Editor, Timeline editor and live preview, no lines of code are required to get a stunning slider.</p>\r\n	<p><strong>Here after is the slider created by the FREE Edition of JSN EasySlider:</strong></p>\r\n</div>\r\n\r\n{jsn_easyslider identity_id=NyCDeIfY slider_id=2/}', '', 1, 20, '2015-08-12 04:42:49', 42, '', '2015-09-09 07:30:21', 42, 0, '0000-00-00 00:00:00', '2015-08-12 04:42:49', '0000-00-00 00:00:00', '{}', '{}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 0, '', '', 1, 9, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
+(111, 255, 'JSN PageBuilder - The Easiest Way to Build Joomla Pages', 'jsn-pagebuilder-the-easiest-way-to-build-joomla-pages', '[pb_row background="solid" solid_color_value="#dbe7f8" solid_color_color="#dbe7f8" border_width_value_="0" border_style="solid" border_color="#000" width_value="100" width_unit="%" div_padding_top="10" div_padding_right="10" div_padding_bottom="10" div_padding_left="10" ][pb_column span="span12"][pb_text el_title="Highlight" div_margin_top="30" div_margin_bottom="30" enable_dropcap="no" appearing_animation="0" ]<h5 style="text-align: center;">This page is built by the Free Edition of another cool product <a href="http://www.joomlashine.com/joomla-extensions/jsn-pagebuilder.html" title="" target="_blank">JSN PageBuilder</a> from JoomlaShine (Only for Joomla 3.x).</h5><h5 style="text-align: center;"> Please click on the below button to check the PRO Edition of this extension.</h5>[/pb_text][pb_buttonbar el_title="Button Bar 1" buttonbar_alignment="center" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="See Demo" link_type="url" button_type_url="http://demo.joomlashine.com/joomla-extensions/jsn-pagebuilder/jsn-pagebuilder-overview.html" open_in="current_browser" button_size="default" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Get It Now" link_type="url" button_type_url="http://www.joomlashine.com/joomla-extensions/jsn-pagebuilder.html" open_in="current_browser" button_size="default" button_color="btn-success" ][/pb_buttonbar_item][/pb_buttonbar][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_text el_title="JSN PageBuilder introduction" enable_dropcap="no" appearing_animation="0" ]<p>JSN PageBuilder is the perfect tool to help you build and manage content for Joomla 3.x websites. JSN PageBuilder not only allows you to build a new page<strong> </strong>but also helps you to redesign your old pages<b> </b>because it works directly on articles and modules. Even you are a Joomla newbie, you now can create your desired page without worry. And for a developer who is tired of coding too much, this helpful extension will make your life better and save you time. You can be free from programming knowledge.</p>[/pb_text][pb_divider el_title="Divider 2" div_margin_top="40" div_border_width="1" div_border_style="solid" div_border_color="#e8e8e8" appearing_animation="0" ][/pb_divider][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_heading el_title="OUTSTANDING FEATURES OF JSN PAGEBUILDER" tag="h3" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Yanone Kaffeesatz" font_size_value_="28" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]OUTSTANDING FEATURES OF JSN PAGEBUILDER[/pb_heading][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span4"][pb_list el_title="Features" show_icon="yes" icon_position="left" icon_size_value="32" icon_background_type="circle" icon_background_color="#ffffff" icon_c_value="#47a447" icon_c_color="#47a447" show_heading="yes" font="inherit" appearing_animation="0" ][pb_list_item heading="Drag & Drop Function" icon="icon-checkmark" ]Simplest way to create and arrange page elements.[/pb_list_item][pb_list_item heading="Visual Editing" icon="icon-checkmark" ]Easy to start without dealing with IT bottlenecks. <br>[/pb_list_item][/pb_list][/pb_column][pb_column span="span4"][pb_list el_title="Features" show_icon="yes" icon_position="left" icon_size_value="32" icon_background_type="circle" icon_background_color="#ffffff" icon_c_value="#47a447" icon_c_color="#47a447" show_heading="yes" font="inherit" appearing_animation="0" ][pb_list_item heading="Advanced Elements" icon="icon-checkmark" ]Fundamental and advanced elements to optimize contents.<br>[/pb_list_item][pb_list_item heading="Live Preview" icon="icon-checkmark" ]Instant view of what is going on with content and styles.<br>[/pb_list_item][/pb_list][/pb_column][pb_column span="span4"][pb_list el_title="Features" show_icon="yes" icon_position="left" icon_size_value="32" icon_background_type="circle" icon_background_color="#ffffff" icon_c_value="#47a447" icon_c_color="#47a447" show_heading="yes" font="inherit" appearing_animation="0" ][pb_list_item heading="Built-in animation" icon="icon-checkmark" ]Various styles to make your website more eye-catching<br>[/pb_list_item][pb_list_item heading="Responsive" icon="icon-checkmark" ]Presented beautifully on all browsers and mobile devices.<br>[/pb_list_item][/pb_list][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_divider el_title="Divider 4 copy" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="SAMPLE ELEMENTS" tag="h3" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Yanone Kaffeesatz" font_size_value_="28" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]SAMPLE ELEMENTS[/pb_heading][pb_heading el_title="Pricing table element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Pricing table element[/pb_heading][pb_pricingtable el_title="Pricing Table 2" prtbl_elements="title__#__attributes__#__button__#__ " appearing_animation="0" ][pb_pricingtableattr_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_desc="Max Domains" prtbl_item_attr_type="text" ][/pb_pricingtableattr_item][pb_pricingtableattr_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_desc="Storage" prtbl_item_attr_type="text" ][/pb_pricingtableattr_item][pb_pricingtableattr_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_desc="SSL Support" prtbl_item_attr_type="checkbox" ][/pb_pricingtableattr_item][pb_pricingtable_item div_margin_top="" div_margin_bottom="" disabled_el="no" css_suffix="" prtbl_item_title="Free" prtbl_item_desc="Free" prtbl_item_image="" prtbl_item_currency="$" prtbl_item_price="0" prtbl_item_time=" / month" prtbl_item_button_text="Buy now" link_type="url" button_type_url="http://" open_in="current_browser" prtbl_item_attributes="" prtbl_item_feature="no" ][pb_pricingtable_item_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_value="5" prtbl_item_attr_desc="5" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_value="500 MB" prtbl_item_attr_desc="500 MB" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_value="yes" prtbl_item_attr_desc="yes" prtbl_item_attr_type="checkbox" ][/pb_pricingtable_item_item][/pb_pricingtable_item][pb_pricingtable_item div_margin_top="" div_margin_bottom="" disabled_el="no" css_suffix="" prtbl_item_title="Standard" prtbl_item_desc="Standard" prtbl_item_image="" prtbl_item_currency="$" prtbl_item_price="69" prtbl_item_time=" / month" prtbl_item_button_text="Buy now" link_type="url" button_type_url="http://" open_in="current_browser" prtbl_item_attributes="" prtbl_item_feature="yes" ][pb_pricingtable_item_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_value="20" prtbl_item_attr_desc="20" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_value="2 TB" prtbl_item_attr_desc="2 TB" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_value="yes" prtbl_item_attr_desc="yes" prtbl_item_attr_type="checkbox" ][/pb_pricingtable_item_item][/pb_pricingtable_item][pb_pricingtable_item prtbl_item_title="Premium" prtbl_item_desc="Premium" prtbl_item_currency="$" prtbl_item_price="99" prtbl_item_time=" / month" prtbl_item_button_text="Buy now" link_type="url" button_type_url="http://" open_in="current_browser" prtbl_item_feature="no" ][pb_pricingtable_item_item prtbl_item_attr_id="max_domains" prtbl_item_attr_title="Max Domains" prtbl_item_attr_value="1" prtbl_item_attr_desc="1" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="storage" prtbl_item_attr_title="Storage" prtbl_item_attr_value="100 MB" prtbl_item_attr_desc="100 MB" prtbl_item_attr_type="text" ][/pb_pricingtable_item_item][pb_pricingtable_item_item prtbl_item_attr_id="ssl_support" prtbl_item_attr_title="SSL Support" prtbl_item_attr_value="yes" prtbl_item_attr_desc="no" prtbl_item_attr_type="checkbox" ][/pb_pricingtable_item_item][/pb_pricingtable_item][/pb_pricingtable][pb_divider el_title="Divider 3" div_margin_top="40" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="Button element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Button element[/pb_heading][pb_buttonbar el_title="Button Bar large" buttonbar_alignment="inherit" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Default" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Primary" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Info" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-info" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Success" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-success" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Warning" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-warning" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Danger" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-lg" button_color="btn-danger" ][/pb_buttonbar_item][/pb_buttonbar][pb_buttonbar el_title="Button Bar 3" buttonbar_alignment="inherit" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Default" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Primary" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Info" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-info" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Success" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-success" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Warning" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-warning" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Danger" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-danger" ][/pb_buttonbar_item][pb_buttonbar_item button_text="With icon" link_type="url" button_type_url="http://" open_in="current_browser" icon="icon-comments" button_size="default" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Link" link_type="url" button_type_url="http://" open_in="current_browser" button_size="default" button_color="btn-link" ][/pb_buttonbar_item][/pb_buttonbar][pb_buttonbar el_title="Button Bar small" buttonbar_alignment="inherit" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Default" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Primary" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-primary" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Info" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-info" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Success" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-success" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Warning" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-warning" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Danger" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-danger" ][/pb_buttonbar_item][pb_buttonbar_item button_text="With icon" link_type="url" button_type_url="http://" open_in="current_browser" icon="icon-comments" button_size="btn-sm" button_color="btn-default" ][/pb_buttonbar_item][pb_buttonbar_item button_text="Link" link_type="url" button_type_url="http://" open_in="current_browser" icon="" button_size="btn-sm" button_color="btn-link" ][/pb_buttonbar_item][/pb_buttonbar][pb_divider el_title="Divider 3 copy" div_margin_top="40" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span6"][pb_heading el_title="Accordion element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Accordion element[/pb_heading][pb_accordion el_title="Accordion 1" initial_open="1" multi_open="no" filter="no" appearing_animation="0" ][pb_accordion_item heading="Accordion Item 1" icon="" tag="" ]Felis ornare fames vehicula nisi leo molestie curabitur felis, eget porta interdum habitant porttitor ligula nunc volutpat, sagittis aenean taciti justo auctor ante quam. suspendisse ipsum orci eu cras placerat porttitor diam ante placerat, libero fringilla consectetur morbi potenti, eget porta interdum habitant porttitor ligula nunc.[/pb_accordion_item][pb_accordion_item heading="Accordion Item 2" ]Lorem dictumst placerat adipiscing augue odio nunc, ultrices orci curabitur adipiscing blandit dolor dapibus, sollicitudin ante donec ornare consectetur. sit nisi tellus integer etiam interdum laoreet luctus sagittis curae integer nibh, torquent tristique quisque non magna a porta fermentum ultricies. tellus dolor pulvinar lectus purus in.[/pb_accordion_item][/pb_accordion][/pb_column][pb_column span="span6"][pb_heading el_title="Tab element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Tab element[/pb_heading][pb_tab el_title="Tab 1" initial_open="1" fade_effect="no" tab_position="top" appearing_animation="0" ][pb_tab_item heading="Tab Item 1" icon="" ]Feugiat odio duis facilisis hac fusce ipsum donec euismod class, elementum nulla condimentum quam aliquet odio consectetur malesuada, quisque ante commodo varius vel praesent urna leo. mauris aliquam vitae interdum rhoncus taciti aenean cursus curabitur est quam non molestie, facilisis ut praesent quam amet faucibus fermentum et euismod mi sollicitudin. [/pb_tab_item][pb_tab_item heading="Tab Item 2" icon="" ]Consectetur taciti hac posuere ultrices malesuada sapien quis dictumst, ut turpis consequat netus et ligula sociosqu, feugiat aliquet nisi integer sed ligula feugiat. aliquam pellentesque proin venenatis sed tempus augue, fusce quam consectetur amet ultricies, placerat ullamcorper vestibulum lacus luctus. ut scelerisque praesent tortor sociosqu eros, suspendisse donec ut enim. [/pb_tab_item][/pb_tab][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_divider el_title="Divider 4" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="Carousel element" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Carousel element[/pb_heading][pb_carousel el_title="Carousel 1" align="center" dimension_width_unit="px" show_indicator="no" show_arrows="yes" automatic_cycling="no" appearing_animation="0" ][pb_carousel_item image_file="https://lh5.googleusercontent.com/-uMjkIqBu-6Q/VNHuELzvkPI/AAAAAAAAE0w/SkumY36ADQI/s1024/image-1.jpg" heading="Carousel Item 1" ]Senectus faucibus hac tincidunt lorem tincidunt tempus integer ipsum per, etiam luctus arcu egestas nullam conubia lobortis turpis imperdiet pharetra[/pb_carousel_item][pb_carousel_item image_file="https://lh4.googleusercontent.com/-7Zlo6unCgug/VNHuEI6WZ4I/AAAAAAAAE0w/lpT5-ZAo4q8/s1024/image-2.jpg" heading="Carousel Item 2" ]Sit class semper lacinia molestie ultricies in at habitasse viverra facilisis phasellus fames, condimentum cras nisl feugiat arcu habitant cursus at libero in cubilia[/pb_carousel_item][/pb_carousel][pb_divider el_title="Divider 5" div_margin_top="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_heading el_title="Parallax Scrolling Background" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Parallax Scrolling Background[/pb_heading][/pb_column][/pb_row][pb_row background="image" image="https://lh4.googleusercontent.com/-fct5BGdSUg8/VNHuEH6mXrI/AAAAAAAAE0w/3WjTqH2ueS0/s1024/image-3.jpg" position="center center" paralax="yes" parallax_scroll="no" border_width_value_="0" border_style="solid" border_color="#000" width_value="100" width_unit="%" div_padding_top="50" div_padding_right="30" div_padding_bottom="50" div_padding_left="30" ][pb_column span="span12"][pb_heading el_title=" STUNNING PARALLAX BACKGROUND" tag="h3" text_align="center" font="custom" font_face_type="google fonts" font_face_value="Open Sans" font_style="bold" color="#ffffff" border_bottom_style="solid" border_bottom_color="#000000" appearing_animation="0" ] STUNNING PARALLAX BACKGROUND[/pb_heading][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_divider el_title="Divider 5 copy" div_margin_top="40" div_margin_bottom="40" div_border_width="1" div_border_style="solid" div_border_color="#ebe8e8" appearing_animation="0" ][/pb_divider][pb_heading el_title="Built-in animation" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]Built-in animation[/pb_heading][pb_text el_title="Appearing animation: Slide from top" enable_dropcap="no" appearing_animation="slide_from_top" appearing_animation_speed="medium" ]<b>Appearing animation: Slide from top.</b> Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus.Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus. Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus.Consectetur fusce vehicula potenti venenatis consectetur pulvinar vehicula tempor ac aptent sed lobortis, hac torquent elit dapibus.[/pb_text][/pb_column][/pb_row][pb_row background="none" solid_color_value="#FFFFFF" solid_color_color="#ffffff" gradient_color="0% #FFFFFF,100% #000000" gradient_color_css="" gradient_direction="vertical" pattern="" repeat="full" image="" stretch="none" position="center center" paralax="no" video_url="" autoplay="no" border_width_value_="0" border_style="solid" border_color="#000" div_padding="" div_padding_top="10" div_padding_bottom="10" div_padding_right="10" div_padding_left="10" css_suffix="" id_wrapper="" ][pb_column span="span12"][pb_heading el_title="Built-in animation copy" tag="h4" div_margin_bottom="20" text_align="inherit" font="custom" font_face_type="google fonts" font_face_value="Source Sans Pro" font_size_value_="20" font_style="bold" color="#5e5f66" border_bottom_style="solid" border_bottom_color="#a81010" appearing_animation="fade_in" appearing_animation_speed="medium" ]And many other advanced elements are waiting for you to discover...[/pb_heading][pb_buttonbar el_title="Button Download" div_margin_top="30" buttonbar_alignment="center" buttonbar_show_title="yes" buttonbar_show_icon="yes" buttonbar_group="no" appearing_animation="0" ][pb_buttonbar_item button_text="Free Download Now" link_type="url" button_type_url="http://www.joomlashine.com/joomla-extensions/jsn-pagebuilder.html" open_in="current_browser" icon="icon-download" button_size="btn-lg" button_color="btn-danger" ][/pb_buttonbar_item][/pb_buttonbar][/pb_column][/pb_row]', '', 1, 14, '2015-01-06 07:35:19', 42, '', '2015-01-28 10:52:58', 42, 0, '0000-00-00 00:00:00', '2015-01-06 07:35:19', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 1, '', '', 1, 6, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
+(112, 263, 'Content Slider', 'joomla-slider', '<style type="text/css">\r\n	.jsn-easyslider p {\r\n		margin-bottom: 20px;\r\n	}\r\n</style>\r\n\r\n\r\n<div class="jsn-easyslider">\r\n	<div class="text-info" style="background-image: none; padding-left: 15px;">\r\n		<p style="text-align: center;">The slider you see on this website is the <strong>Free Edition</strong> of another cool product <a href="http://www.joomlashine.com/joomla-extensions/jsn-easyslider-joomla-slider-extension.html">JSN EasySlider</a> from JoomlaShine. Please click on the below button to check the PRO Edition of this extension.</p>\r\n		<p align="center">\r\n			<a class="link-button button-blue" href="http://demo.joomlashine.com/joomla-extensions/jsn-easyslider/jsn-easyslider-overview.html?utm_source=detailpage&utm_medium=button&utm_campaign=JSNEasySlider" target="_blank">See Demo</a>\r\n			<a class="link-button button-green" href="http://www.joomlashine.com/joomla-extensions/jsn-easyslider-joomla-slider-extension.html#jsn-edition-price" target="_blank">Get It Now</a>\r\n		</p>\r\n	</div>\r\n\r\n	<p>JSN EasySlider is the cutting-edge way of presenting content on the web with the <strong>“Three-I” standard:</strong> Impressive - Informative - Interactive.</p>\r\n	<ul style="list-style-position: inside;">\r\n		<li style="padding-left: 30px;">Impressive to catch and maintain attention</li>\r\n		<li style="padding-left: 30px;">Informative to convey message effectively</li>\r\n		<li style="padding-left: 30px;">Interactive to drive engagement with specific Call-To-Actions</li>\r\n	</ul>\r\n	<p>It allows you to synthesize <strong>dynamic content types</strong>: text, video &amp; images and leverage the strength of <strong>stunning effects</strong> for effective information conveyance. Besides superpower for content presentation, it also has a uniquely outstanding feature:<strong> super user-friendly interface</strong>. With Drag-n-drop functionality, WYSIWYG Editor, Timeline editor and live preview, no lines of code are required to get a stunning slider.</p>\r\n	<p><strong>Here after is the slider created by the FREE Edition of JSN EasySlider:</strong></p>\r\n</div>\r\n\r\n{jsn_easyslider identity_id=NyCDeIfY slider_id=2/}', '', 1, 20, '2015-08-12 04:42:49', 42, '', '2015-09-09 07:30:21', 42, 0, '0000-00-00 00:00:00', '2015-08-12 04:42:49', '0000-00-00 00:00:00', '{}', '{}', '{"show_title":"","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 0, '', '', 1, 9, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
+(113, 301, 'Forezine Fest ''15', 'forezine-fest-15', '<p><img src="images/HomeImages/forezine.png" alt="" /></p>\r\n<p><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; color: #505050; font-family: robotoregular, Arial, sans-serif; line-height: 18.2000007629395px; background: transparent;">Forezine Fest 2015</strong><span style="color: #505050; font-family: robotoregular, Arial, sans-serif; font-size: 13px; line-height: 18.2000007629395px;"> is an event consist of various events combined together to create a big event for Otaku which showcases anime, arts, cosplay, music, toys &amp; games related events.</span></p>\r\n', '\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><span style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: #ff6600; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">GENERAL EVENT DETAILS</strong></span></p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Theme</strong>: “OTAKU, Unleash Your Passion for People”</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Date</strong>:  November 4-5, 2015 (Wednesday and Thursday)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Venue</strong>:  Malolos Sports and Convention Center <em style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">(<a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="http://narutocosplayers.com/forezine-fest/forezine-fest-2015-venue-map-and-guide/" target="_blank">View Direction and Travel Guide Here</a></em>)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Ticket Details and Reservation</strong>:  <a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="http://bit.ly/FF2015tickets" target="_blank">http://bit.ly/FF2015tickets</a>  (<em style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">RESERVE NOW TO GET 10% DISCOUNT)</em></p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Organized By</strong>:  BulSU – The Otaku Philippines(BulSU – TOP)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Co-Presented By</strong>:  Naruto Cosplayers Philippines (NCPH)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">In Cooperation with</strong>:  Forezine Community Interest Organization</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Group Alliance:  BulSU</strong> – ROMASU</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Official FB Page</strong>:  <a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="https://www.facebook.com/forezinefest" target="_blank">https://www.facebook.com/forezinefest</a></p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Official FB Event Page</strong>:  <a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="https://www.facebook.com/events/1595004760759993/" target="_blank">https://www.facebook.com/events/1595004760759993/</a></p>\r\n<p style="line-height: 15.8079996109009px;"> </p>\r\n<p> </p>', 1, 14, '2015-11-15 10:20:56', 328, '', '2015-11-15 10:20:56', 0, 0, '0000-00-00 00:00:00', '2015-11-15 10:20:56', '0000-00-00 00:00:00', '{}', '{}', '{}', 1, 0, '', '', 1, 0, '{}', 0, '*', '');
+INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
+(114, 302, 'Forezine Fest ''15', 'forezine-fest-15', '<p><img src="images/HomeImages/forezine.png" alt="" /></p>\r\n<p><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; color: #505050; font-family: robotoregular, Arial, sans-serif; line-height: 18.2000007629395px; background: transparent;">Forezine Fest 2015</strong><span style="color: #505050; font-family: robotoregular, Arial, sans-serif; font-size: 13px; line-height: 18.2000007629395px;"> is an event consist of various events combined together to create a big event for Otaku which showcases anime, arts, cosplay, music, toys &amp; games related events</span></p>\r\n', '\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><span style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; color: #ff6600; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">GENERAL EVENT DETAILS</strong></span></p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Theme</strong>: “OTAKU, Unleash Your Passion for People”</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Date</strong>:  November 4-5, 2015 (Wednesday and Thursday)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Venue</strong>:  Malolos Sports and Convention Center <em style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">(<a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="http://narutocosplayers.com/forezine-fest/forezine-fest-2015-venue-map-and-guide/" target="_blank">View Direction and Travel Guide Here</a></em>)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Ticket Details and Reservation</strong>:  <a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="http://bit.ly/FF2015tickets" target="_blank">http://bit.ly/FF2015tickets</a>  (<em style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">RESERVE NOW TO GET 10% DISCOUNT)</em></p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Organized By</strong>:  BulSU – The Otaku Philippines(BulSU – TOP)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Co-Presented By</strong>:  Naruto Cosplayers Philippines (NCPH)</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">In Cooperation with</strong>:  Forezine Community Interest Organization</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Group Alliance:  BulSU</strong> – ROMASU</p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Official FB Page</strong>:  <a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="https://www.facebook.com/forezinefest" target="_blank">https://www.facebook.com/forezinefest</a></p>\r\n<p style="margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-size: 13px; vertical-align: baseline; line-height: 1.4; color: #505050; font-family: robotoregular, Arial, sans-serif; background: transparent;"><strong style="margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: baseline; background: transparent;">Official FB Event Page</strong>:  <a style="margin: 0px; padding: 0px; vertical-align: baseline; max-width: 100%; color: #ff7200; background: transparent;" href="https://www.facebook.com/events/1595004760759993/" target="_blank">https://www.facebook.com/events/1595004760759993/</a></p>\r\n<p style="line-height: 15.8079996109009px;"> </p>\r\n<p> </p>', 1, 86, '2015-11-15 10:25:43', 328, '', '2015-11-15 10:25:43', 0, 0, '0000-00-00 00:00:00', '2015-11-15 10:25:43', '0000-00-00 00:00:00', '{}', '{}', '{}', 1, 0, '', '', 1, 0, '{}', 0, '*', '');
 
 -- --------------------------------------------------------
 
@@ -1091,11 +1118,11 @@ INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 -- Table structure for table `jt_contentitem_tag_map`
 --
 
-CREATE TABLE `jt_contentitem_tag_map` (
+CREATE TABLE IF NOT EXISTS `jt_contentitem_tag_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
-  `core_content_id` int(10) UNSIGNED NOT NULL COMMENT 'PK from the core content table',
+  `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
-  `tag_id` int(10) UNSIGNED NOT NULL COMMENT 'PK from the tag table',
+  `tag_id` int(10) unsigned NOT NULL COMMENT 'PK from the tag table',
   `tag_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date of most recent save for this tag-item',
   `type_id` mediumint(8) NOT NULL COMMENT 'PK from the content_type table'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps items from content tables to tags';
@@ -1106,7 +1133,7 @@ CREATE TABLE `jt_contentitem_tag_map` (
 -- Table structure for table `jt_content_frontpage`
 --
 
-CREATE TABLE `jt_content_frontpage` (
+CREATE TABLE IF NOT EXISTS `jt_content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1124,10 +1151,10 @@ INSERT INTO `jt_content_frontpage` (`content_id`, `ordering`) VALUES
 -- Table structure for table `jt_content_rating`
 --
 
-CREATE TABLE `jt_content_rating` (
+CREATE TABLE IF NOT EXISTS `jt_content_rating` (
   `content_id` int(11) NOT NULL DEFAULT '0',
-  `rating_sum` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `rating_count` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `rating_sum` int(10) unsigned NOT NULL DEFAULT '0',
+  `rating_count` int(10) unsigned NOT NULL DEFAULT '0',
   `lastip` varchar(50) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1137,8 +1164,8 @@ CREATE TABLE `jt_content_rating` (
 -- Table structure for table `jt_content_types`
 --
 
-CREATE TABLE `jt_content_types` (
-  `type_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_content_types` (
+  `type_id` int(10) unsigned NOT NULL,
   `type_title` varchar(255) NOT NULL DEFAULT '',
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `table` varchar(255) NOT NULL DEFAULT '',
@@ -1146,7 +1173,7 @@ CREATE TABLE `jt_content_types` (
   `field_mappings` text NOT NULL,
   `router` varchar(255) NOT NULL DEFAULT '',
   `content_history_options` varchar(5120) DEFAULT NULL COMMENT 'JSON string for com_contenthistory options'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_content_types`
@@ -1174,9 +1201,9 @@ INSERT INTO `jt_content_types` (`type_id`, `type_title`, `type_alias`, `table`, 
 -- Table structure for table `jt_core_log_searches`
 --
 
-CREATE TABLE `jt_core_log_searches` (
+CREATE TABLE IF NOT EXISTS `jt_core_log_searches` (
   `search_term` varchar(128) NOT NULL DEFAULT '',
-  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0'
+  `hits` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1185,7 +1212,7 @@ CREATE TABLE `jt_core_log_searches` (
 -- Table structure for table `jt_extensions`
 --
 
-CREATE TABLE `jt_extensions` (
+CREATE TABLE IF NOT EXISTS `jt_extensions` (
   `extension_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `type` varchar(20) NOT NULL,
@@ -1193,17 +1220,17 @@ CREATE TABLE `jt_extensions` (
   `folder` varchar(100) NOT NULL,
   `client_id` tinyint(3) NOT NULL,
   `enabled` tinyint(3) NOT NULL DEFAULT '1',
-  `access` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `access` int(10) unsigned NOT NULL DEFAULT '1',
   `protected` tinyint(3) NOT NULL DEFAULT '0',
   `manifest_cache` text NOT NULL,
   `params` text NOT NULL,
   `custom_data` text NOT NULL,
   `system_data` text NOT NULL,
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) DEFAULT '0',
   `state` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10158 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_extensions`
@@ -1217,7 +1244,7 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (5, 'com_cache', 'component', 'com_cache', '', 1, 1, 1, 1, '{"name":"com_cache","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CACHE_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (6, 'com_categories', 'component', 'com_categories', '', 1, 1, 1, 1, '{"name":"com_categories","type":"component","creationDate":"December 2007","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CATEGORIES_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (7, 'com_checkin', 'component', 'com_checkin', '', 1, 1, 1, 1, '{"name":"com_checkin","type":"component","creationDate":"Unknown","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CHECKIN_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(8, 'com_contact', 'component', 'com_contact', '', 1, 1, 1, 0, '{"name":"com_contact","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CONTACT_XML_DESCRIPTION","group":"","filename":"contact"}', '{"show_contact_category":"hide","save_history":"1","history_limit":10,"show_contact_list":"0","presentation_style":"sliders","show_name":"1","show_position":"1","show_email":"0","show_street_address":"1","show_suburb":"1","show_state":"1","show_postcode":"1","show_country":"1","show_telephone":"1","show_mobile":"1","show_fax":"1","show_webpage":"1","show_misc":"1","show_image":"1","image":"","allow_vcard":"0","show_articles":"0","show_profile":"0","show_links":"0","linka_name":"","linkb_name":"","linkc_name":"","linkd_name":"","linke_name":"","contact_icons":"0","icon_address":"","icon_email":"","icon_telephone":"","icon_mobile":"","icon_fax":"","icon_misc":"","show_headings":"1","show_position_headings":"1","show_email_headings":"0","show_telephone_headings":"1","show_mobile_headings":"0","show_fax_headings":"0","allow_vcard_headings":"0","show_suburb_headings":"1","show_state_headings":"1","show_country_headings":"1","show_email_form":"1","show_email_copy":"1","banned_email":"","banned_subject":"","banned_text":"","validate_session":"1","custom_reply":"0","redirect":"","show_category_crumb":"0","metakey":"","metadesc":"","robots":"","author":"","rights":"","xreference":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(8, 'com_contact', 'component', 'com_contact', '', 1, 1, 1, 0, '{"name":"com_contact","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CONTACT_XML_DESCRIPTION","group":"","filename":"contact"}', '{"contact_layout":"_:default","show_contact_category":"hide","save_history":"1","history_limit":10,"show_contact_list":"0","presentation_style":"plain","show_name":"1","show_position":"1","show_email":"0","show_street_address":"1","show_suburb":"1","show_state":"1","show_postcode":"1","show_country":"1","show_telephone":"1","show_mobile":"1","show_fax":"1","show_webpage":"1","show_misc":"1","show_image":"1","image":"","allow_vcard":"0","show_articles":"0","articles_display_num":"10","show_profile":"0","show_links":"0","linka_name":"","linkb_name":"","linkc_name":"","linkd_name":"","linke_name":"","show_tags":"1","contact_icons":"0","icon_address":"","icon_email":"","icon_telephone":"","icon_mobile":"","icon_fax":"","icon_misc":"","category_layout":"_:default","show_category_title":"1","show_description":"1","show_description_image":"0","maxLevel":"-1","show_empty_categories":"0","show_subcat_desc":"1","show_cat_items":"1","show_cat_tags":"1","show_base_description":"1","maxLevelcat":"-1","show_empty_categories_cat":"0","show_subcat_desc_cat":"1","show_cat_items_cat":"1","filter_field":"1","show_pagination_limit":"1","show_headings":"1","show_position_headings":"1","show_email_headings":"0","show_telephone_headings":"1","show_mobile_headings":"0","show_fax_headings":"0","show_suburb_headings":"1","show_state_headings":"1","show_country_headings":"1","show_pagination":"2","show_pagination_results":"1","initial_sort":"ordering","captcha":"","show_email_form":"1","show_email_copy":"1","banned_email":"","banned_subject":"","banned_text":"","validate_session":"1","custom_reply":"0","redirect":"","show_feed_link":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (9, 'com_cpanel', 'component', 'com_cpanel', '', 1, 1, 1, 1, '{"name":"com_cpanel","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CPANEL_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10, 'com_installer', 'component', 'com_installer', '', 1, 1, 1, 1, '{"name":"com_installer","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_INSTALLER_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (11, 'com_languages', 'component', 'com_languages', '', 1, 1, 1, 1, '{"name":"com_languages","type":"component","creationDate":"2006","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_LANGUAGES_XML_DESCRIPTION","group":""}', '{"administrator":"en-GB","site":"en-GB"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1300,9 +1327,9 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (412, 'plg_editors_tinymce', 'plugin', 'tinymce', 'editors', 0, 1, 1, 0, '{"name":"plg_editors_tinymce","type":"plugin","creationDate":"2005-2014","author":"Moxiecode Systems AB","copyright":"Moxiecode Systems AB","authorEmail":"N\\/A","authorUrl":"tinymce.moxiecode.com","version":"4.1.7","description":"PLG_TINY_XML_DESCRIPTION","group":"","filename":"tinymce"}', '{"mode":"1","skin":"0","mobile":"0","entity_encoding":"raw","lang_mode":"1","text_direction":"ltr","content_css":"1","content_css_custom":"","relative_urls":"1","newlines":"0","invalid_elements":"script,applet,iframe","extended_elements":"","html_height":"550","html_width":"750","resizing":"1","element_path":"1","fonts":"1","paste":"1","searchreplace":"1","insertdate":"1","colors":"1","table":"1","smilies":"1","hr":"1","link":"1","media":"1","print":"1","directionality":"1","fullscreen":"1","alignment":"1","visualchars":"1","visualblocks":"1","nonbreaking":"1","template":"1","blockquote":"1","wordcount":"1","advlist":"1","autosave":"1","contextmenu":"1","inlinepopups":"1","custom_plugin":"","custom_button":""}', '', '', 0, '0000-00-00 00:00:00', 3, 0),
 (413, 'plg_editors-xtd_article', 'plugin', 'article', 'editors-xtd', 0, 1, 1, 0, '{"name":"plg_editors-xtd_article","type":"plugin","creationDate":"October 2009","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_ARTICLE_XML_DESCRIPTION","group":"","filename":"article"}', '', '', '', 0, '0000-00-00 00:00:00', 1, 0),
 (414, 'plg_editors-xtd_image', 'plugin', 'image', 'editors-xtd', 0, 1, 1, 0, '{"name":"plg_editors-xtd_image","type":"plugin","creationDate":"August 2004","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_IMAGE_XML_DESCRIPTION","group":"","filename":"image"}', '', '', '', 0, '0000-00-00 00:00:00', 2, 0),
-(415, 'plg_editors-xtd_pagebreak', 'plugin', 'pagebreak', 'editors-xtd', 0, 1, 1, 0, '{"name":"plg_editors-xtd_pagebreak","type":"plugin","creationDate":"August 2004","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_EDITORSXTD_PAGEBREAK_XML_DESCRIPTION","group":"","filename":"pagebreak"}', '', '', '', 0, '0000-00-00 00:00:00', 3, 0),
-(416, 'plg_editors-xtd_readmore', 'plugin', 'readmore', 'editors-xtd', 0, 1, 1, 0, '{"name":"plg_editors-xtd_readmore","type":"plugin","creationDate":"March 2006","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_READMORE_XML_DESCRIPTION","group":"","filename":"readmore"}', '', '', '', 0, '0000-00-00 00:00:00', 4, 0);
+(415, 'plg_editors-xtd_pagebreak', 'plugin', 'pagebreak', 'editors-xtd', 0, 1, 1, 0, '{"name":"plg_editors-xtd_pagebreak","type":"plugin","creationDate":"August 2004","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_EDITORSXTD_PAGEBREAK_XML_DESCRIPTION","group":"","filename":"pagebreak"}', '', '', '', 0, '0000-00-00 00:00:00', 3, 0);
 INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
+(416, 'plg_editors-xtd_readmore', 'plugin', 'readmore', 'editors-xtd', 0, 1, 1, 0, '{"name":"plg_editors-xtd_readmore","type":"plugin","creationDate":"March 2006","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_READMORE_XML_DESCRIPTION","group":"","filename":"readmore"}', '', '', '', 0, '0000-00-00 00:00:00', 4, 0),
 (417, 'plg_search_categories', 'plugin', 'categories', 'search', 0, 1, 1, 0, '{"name":"plg_search_categories","type":"plugin","creationDate":"November 2005","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_SEARCH_CATEGORIES_XML_DESCRIPTION","group":"","filename":"categories"}', '{"search_limit":"50","search_content":"1","search_archived":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (418, 'plg_search_contacts', 'plugin', 'contacts', 'search', 0, 1, 1, 0, '{"name":"plg_search_contacts","type":"plugin","creationDate":"November 2005","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_SEARCH_CONTACTS_XML_DESCRIPTION","group":"","filename":"contacts"}', '{"search_limit":"50","search_content":"1","search_archived":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (419, 'plg_search_content', 'plugin', 'content', 'search', 0, 1, 1, 0, '{"name":"plg_search_content","type":"plugin","creationDate":"November 2005","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_SEARCH_CONTENT_XML_DESCRIPTION","group":"","filename":"content"}', '{"search_limit":"50","search_content":"1","search_archived":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1344,7 +1371,7 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (601, 'English (en-GB)', 'language', 'en-GB', '', 1, 1, 1, 1, '{"name":"English (en-GB)","type":"language","creationDate":"2013-03-07","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.4.3","description":"en-GB administrator language","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (700, 'files_joomla', 'file', 'joomla', '', 0, 1, 1, 1, '{"name":"files_joomla","type":"file","creationDate":"October 2015","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.4.5","description":"FILES_JOOMLA_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10000, 'plg_installer_webinstaller', 'plugin', 'webinstaller', 'installer', 0, 1, 1, 0, '{"name":"plg_installer_webinstaller","type":"plugin","creationDate":"18 December 2013","author":"Joomla! Project","copyright":"Copyright (C) 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"1.0.5","description":"PLG_INSTALLER_WEBINSTALLER_XML_DESCRIPTION","group":"","filename":"webinstaller"}', '{"tab_position":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10001, 'plg_system_jsntplframework', 'plugin', 'jsntplframework', 'system', 0, 1, 1, 1, '{"name":"plg_system_jsntplframework","type":"plugin","creationDate":"10\\/24\\/2015","author":"JoomlaShine.com","copyright":"Copyright (C) 2012 JoomlaShine.com. All Rights Reserved.","authorEmail":"admin@joomlashine.com","authorUrl":"www.joomlashine.com","version":"3.0.2","description":"","group":"","filename":"jsntplframework"}', '{"update-check":1446468142}', '', '', 0, '0000-00-00 00:00:00', 9999, 0),
+(10001, 'plg_system_jsntplframework', 'plugin', 'jsntplframework', 'system', 0, 1, 1, 1, '{"name":"plg_system_jsntplframework","type":"plugin","creationDate":"10\\/24\\/2015","author":"JoomlaShine.com","copyright":"Copyright (C) 2012 JoomlaShine.com. All Rights Reserved.","authorEmail":"admin@joomlashine.com","authorUrl":"www.joomlashine.com","version":"3.0.2","description":"","group":"","filename":"jsntplframework"}', '{"update-check":1447554820}', '', '', 0, '0000-00-00 00:00:00', 9999, 0),
 (10002, 'jsn_metro_free', 'template', 'jsn_metro_free', '', 0, 1, 1, 0, '{"name":"jsn_metro_free","type":"template","creationDate":"10\\/24\\/2015","author":"JoomlaShine.com","copyright":"Copyright (c) 2008 - 2013 - JoomlaShine.com","authorEmail":"support@joomlashine.com","authorUrl":"http:\\/\\/www.joomlashine.com","version":"2.0.8","description":"TPL_JSN_METRO_FREE_XML_DESCRIPTION","group":"jsntemplate","filename":"templateDetails"}', '[]', 'jsntemplate', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10003, 'PowerAdmin', 'component', 'com_poweradmin', '', 1, 1, 0, 0, '{"name":"PowerAdmin","type":"component","creationDate":"08\\/04\\/2015","author":"JoomlaShine.com","copyright":"Copyright (c) 2012 - JoomlaShine.com","authorEmail":"support@joomlashine.com","authorUrl":"http:\\/\\/www.joomlashine.com","version":"2.2.7","description":"JSN PowerAdmin","group":"","filename":"poweradmin"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10004, 'System - JSN PowerAdmin', 'plugin', 'jsnpoweradmin', 'system', 0, 1, 1, 1, '{"name":"System - JSN PowerAdmin","type":"plugin","creationDate":"08/04/2015","author":"JoomlaShine.com","copyright":"Copyright (c) 2012 - JoomlaShine.com","authorEmail":"support@joomlashine.com","authorUrl":"http://www.joomlashine.com","version":"2.2.7","description":"System - JSN PowerAdmin plugin","group":"","filename":"jsnpoweradmin","dependency":["poweradmin"]}', '{"poweradmin":"poweradmin"}', '["poweradmin"]', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1396,10 +1423,10 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (10051, 'Hikashop Massaction Category Plugin', 'plugin', 'massaction_category', 'hikashop', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10052, 'Hikashop Massaction Order Plugin', 'plugin', 'massaction_order', 'hikashop', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10053, 'Hikashop Massaction Product Plugin', 'plugin', 'massaction_product', 'hikashop', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10054, 'Hikashop Massaction User Plugin', 'plugin', 'massaction_user', 'hikashop', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10054, 'Hikashop Massaction User Plugin', 'plugin', 'massaction_user', 'hikashop', 0, 1, 1, 0, '', '', '', '', 326, '2015-11-06 08:43:32', 0, 0),
 (10055, 'HikaShop Shipping manual - Prices per product plugin', 'plugin', 'shippingmanual_prices', 'hikashop', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10056, 'Hikashop TaxCloud Plugin', 'plugin', 'taxcloud', 'hikashop', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10057, 'HikaShop joomla user account link plugin', 'plugin', 'user_account', 'hikashop', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10057, 'HikaShop joomla user account link plugin', 'plugin', 'user_account', 'hikashop', 0, 1, 1, 0, '', '', '', '', 326, '2015-11-06 08:43:18', 0, 0),
 (10058, 'HikaShop Free orders validation Plugin', 'plugin', 'validate_free_order', 'hikashop', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10059, 'HikaShop Adyen payment plugin', 'plugin', 'adyen', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10060, 'HikaShop Payza payment plugin', 'plugin', 'alertpay', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1413,12 +1440,12 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (10068, 'HikaShop Beanstream payment plugin', 'plugin', 'beanstream', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10069, 'HikaShop WorldPay Business Gateway payment plugin', 'plugin', 'bf_rbsbusinessgateway', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10070, 'HikaShop WorldPay Global Gateway payment plugin', 'plugin', 'bf_rbsglobalgateway', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10071, 'HikaShop Bluepaid payment plugin', 'plugin', 'bluepaid', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10071, 'HikaShop Bluepaid payment plugin', 'plugin', 'bluepaid', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
 (10072, 'HikaShop Borgun payment plugin', 'plugin', 'borgun', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10073, 'HikaShop CardSave payment plugin', 'plugin', 'cardsave', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10074, 'HikaShop CECA payment plugin', 'plugin', 'ceca', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10075, 'HikaShop check payment plugin', 'plugin', 'check', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0);
-INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
+(10075, 'HikaShop check payment plugin', 'plugin', 'check', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10076, 'HikaShop CM-CIC payment plugin', 'plugin', 'cmcic', 'hikashoppayment', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10077, 'HikaShop collect on delivery payment plugin', 'plugin', 'collectondelivery', 'hikashoppayment', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10078, 'HikaShop common payment API plugin', 'plugin', 'common', 'hikashoppayment', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1484,7 +1511,7 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (10138, 'Redirect Joomla registration to HikaShop plugin', 'plugin', 'hikashopregistrationredirect', 'system', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10139, 'HikaShop Google Dynamic Remarketing (conversion tracking) plugin', 'plugin', 'hikashopremarketing', 'system', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10140, 'Hikashop Social Networks plugin', 'plugin', 'hikashopsocial', 'system', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10141, 'HikaShop user synchronization plugin', 'plugin', 'hikashopuser', 'system', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10141, 'HikaShop user synchronization plugin', 'plugin', 'hikashopuser', 'system', 0, 1, 1, 0, '', '', '', '', 326, '2015-11-06 08:43:36', 0, 0),
 (10142, 'Mijoshop Fallback Redirect plugin', 'plugin', 'mijo_redirect', 'system', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10143, 'HikaShop no SSL outside checkout plugin', 'plugin', 'nossloutsidecheckout', 'system', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10144, 'Redshop Fallback Redirect plugin', 'plugin', 'reds_redirect', 'system', 0, 0, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1508,19 +1535,19 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 -- Table structure for table `jt_finder_filters`
 --
 
-CREATE TABLE `jt_finder_filters` (
-  `filter_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_finder_filters` (
+  `filter_id` int(10) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) UNSIGNED NOT NULL,
+  `created_by` int(10) unsigned NOT NULL,
   `created_by_alias` varchar(255) NOT NULL,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `map_count` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `map_count` int(10) unsigned NOT NULL DEFAULT '0',
   `data` text NOT NULL,
   `params` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1531,8 +1558,8 @@ CREATE TABLE `jt_finder_filters` (
 -- Table structure for table `jt_finder_links`
 --
 
-CREATE TABLE `jt_finder_links` (
-  `link_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_finder_links` (
+  `link_id` int(10) unsigned NOT NULL,
   `url` varchar(255) NOT NULL,
   `route` varchar(255) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -1547,8 +1574,8 @@ CREATE TABLE `jt_finder_links` (
   `publish_end_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `start_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `list_price` double UNSIGNED NOT NULL DEFAULT '0',
-  `sale_price` double UNSIGNED NOT NULL DEFAULT '0',
+  `list_price` double unsigned NOT NULL DEFAULT '0',
+  `sale_price` double unsigned NOT NULL DEFAULT '0',
   `type_id` int(11) NOT NULL,
   `object` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1559,10 +1586,10 @@ CREATE TABLE `jt_finder_links` (
 -- Table structure for table `jt_finder_links_terms0`
 --
 
-CREATE TABLE `jt_finder_links_terms0` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms0` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1571,10 +1598,10 @@ CREATE TABLE `jt_finder_links_terms0` (
 -- Table structure for table `jt_finder_links_terms1`
 --
 
-CREATE TABLE `jt_finder_links_terms1` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms1` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1583,10 +1610,10 @@ CREATE TABLE `jt_finder_links_terms1` (
 -- Table structure for table `jt_finder_links_terms2`
 --
 
-CREATE TABLE `jt_finder_links_terms2` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms2` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1595,10 +1622,10 @@ CREATE TABLE `jt_finder_links_terms2` (
 -- Table structure for table `jt_finder_links_terms3`
 --
 
-CREATE TABLE `jt_finder_links_terms3` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms3` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1607,10 +1634,10 @@ CREATE TABLE `jt_finder_links_terms3` (
 -- Table structure for table `jt_finder_links_terms4`
 --
 
-CREATE TABLE `jt_finder_links_terms4` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms4` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1619,10 +1646,10 @@ CREATE TABLE `jt_finder_links_terms4` (
 -- Table structure for table `jt_finder_links_terms5`
 --
 
-CREATE TABLE `jt_finder_links_terms5` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms5` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1631,10 +1658,10 @@ CREATE TABLE `jt_finder_links_terms5` (
 -- Table structure for table `jt_finder_links_terms6`
 --
 
-CREATE TABLE `jt_finder_links_terms6` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms6` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1643,10 +1670,10 @@ CREATE TABLE `jt_finder_links_terms6` (
 -- Table structure for table `jt_finder_links_terms7`
 --
 
-CREATE TABLE `jt_finder_links_terms7` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms7` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1655,10 +1682,10 @@ CREATE TABLE `jt_finder_links_terms7` (
 -- Table structure for table `jt_finder_links_terms8`
 --
 
-CREATE TABLE `jt_finder_links_terms8` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms8` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1667,10 +1694,10 @@ CREATE TABLE `jt_finder_links_terms8` (
 -- Table structure for table `jt_finder_links_terms9`
 --
 
-CREATE TABLE `jt_finder_links_terms9` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_terms9` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1679,10 +1706,10 @@ CREATE TABLE `jt_finder_links_terms9` (
 -- Table structure for table `jt_finder_links_termsa`
 --
 
-CREATE TABLE `jt_finder_links_termsa` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_termsa` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1691,10 +1718,10 @@ CREATE TABLE `jt_finder_links_termsa` (
 -- Table structure for table `jt_finder_links_termsb`
 --
 
-CREATE TABLE `jt_finder_links_termsb` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_termsb` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1703,10 +1730,10 @@ CREATE TABLE `jt_finder_links_termsb` (
 -- Table structure for table `jt_finder_links_termsc`
 --
 
-CREATE TABLE `jt_finder_links_termsc` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_termsc` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1715,10 +1742,10 @@ CREATE TABLE `jt_finder_links_termsc` (
 -- Table structure for table `jt_finder_links_termsd`
 --
 
-CREATE TABLE `jt_finder_links_termsd` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_termsd` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1727,10 +1754,10 @@ CREATE TABLE `jt_finder_links_termsd` (
 -- Table structure for table `jt_finder_links_termse`
 --
 
-CREATE TABLE `jt_finder_links_termse` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_termse` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1739,10 +1766,10 @@ CREATE TABLE `jt_finder_links_termse` (
 -- Table structure for table `jt_finder_links_termsf`
 --
 
-CREATE TABLE `jt_finder_links_termsf` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `term_id` int(10) UNSIGNED NOT NULL,
-  `weight` float UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_links_termsf` (
+  `link_id` int(10) unsigned NOT NULL,
+  `term_id` int(10) unsigned NOT NULL,
+  `weight` float unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1751,14 +1778,14 @@ CREATE TABLE `jt_finder_links_termsf` (
 -- Table structure for table `jt_finder_taxonomy`
 --
 
-CREATE TABLE `jt_finder_taxonomy` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_finder_taxonomy` (
+  `id` int(10) unsigned NOT NULL,
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
-  `state` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
-  `access` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `ordering` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `state` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `access` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `ordering` tinyint(1) unsigned NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_finder_taxonomy`
@@ -1773,9 +1800,9 @@ INSERT INTO `jt_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `access`,
 -- Table structure for table `jt_finder_taxonomy_map`
 --
 
-CREATE TABLE `jt_finder_taxonomy_map` (
-  `link_id` int(10) UNSIGNED NOT NULL,
-  `node_id` int(10) UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_finder_taxonomy_map` (
+  `link_id` int(10) unsigned NOT NULL,
+  `node_id` int(10) unsigned NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1784,13 +1811,13 @@ CREATE TABLE `jt_finder_taxonomy_map` (
 -- Table structure for table `jt_finder_terms`
 --
 
-CREATE TABLE `jt_finder_terms` (
-  `term_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_finder_terms` (
+  `term_id` int(10) unsigned NOT NULL,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `weight` float UNSIGNED NOT NULL DEFAULT '0',
+  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `weight` float unsigned NOT NULL DEFAULT '0',
   `soundex` varchar(75) NOT NULL,
   `links` int(10) NOT NULL DEFAULT '0',
   `language` char(3) NOT NULL DEFAULT ''
@@ -1802,7 +1829,7 @@ CREATE TABLE `jt_finder_terms` (
 -- Table structure for table `jt_finder_terms_common`
 --
 
-CREATE TABLE `jt_finder_terms_common` (
+CREATE TABLE IF NOT EXISTS `jt_finder_terms_common` (
   `term` varchar(75) NOT NULL,
   `language` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1934,13 +1961,13 @@ INSERT INTO `jt_finder_terms_common` (`term`, `language`) VALUES
 -- Table structure for table `jt_finder_tokens`
 --
 
-CREATE TABLE `jt_finder_tokens` (
+CREATE TABLE IF NOT EXISTS `jt_finder_tokens` (
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `weight` float UNSIGNED NOT NULL DEFAULT '1',
-  `context` tinyint(1) UNSIGNED NOT NULL DEFAULT '2',
+  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `weight` float unsigned NOT NULL DEFAULT '1',
+  `context` tinyint(1) unsigned NOT NULL DEFAULT '2',
   `language` char(3) NOT NULL DEFAULT ''
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
@@ -1950,17 +1977,17 @@ CREATE TABLE `jt_finder_tokens` (
 -- Table structure for table `jt_finder_tokens_aggregate`
 --
 
-CREATE TABLE `jt_finder_tokens_aggregate` (
-  `term_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_finder_tokens_aggregate` (
+  `term_id` int(10) unsigned NOT NULL,
   `map_suffix` char(1) NOT NULL,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `term_weight` float UNSIGNED NOT NULL,
-  `context` tinyint(1) UNSIGNED NOT NULL DEFAULT '2',
-  `context_weight` float UNSIGNED NOT NULL,
-  `total_weight` float UNSIGNED NOT NULL,
+  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `term_weight` float unsigned NOT NULL,
+  `context` tinyint(1) unsigned NOT NULL DEFAULT '2',
+  `context_weight` float unsigned NOT NULL,
+  `total_weight` float unsigned NOT NULL,
   `language` char(3) NOT NULL DEFAULT ''
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
@@ -1970,8 +1997,8 @@ CREATE TABLE `jt_finder_tokens_aggregate` (
 -- Table structure for table `jt_finder_types`
 --
 
-CREATE TABLE `jt_finder_types` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_finder_types` (
+  `id` int(10) unsigned NOT NULL,
   `title` varchar(100) NOT NULL,
   `mime` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1982,9 +2009,9 @@ CREATE TABLE `jt_finder_types` (
 -- Table structure for table `jt_hikashop_address`
 --
 
-CREATE TABLE `jt_hikashop_address` (
-  `address_id` int(10) UNSIGNED NOT NULL,
-  `address_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_address` (
+  `address_id` int(10) unsigned NOT NULL,
+  `address_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `address_title` varchar(255) DEFAULT NULL,
   `address_firstname` varchar(255) DEFAULT NULL,
   `address_middle_name` varchar(255) DEFAULT NULL,
@@ -2002,14 +2029,16 @@ CREATE TABLE `jt_hikashop_address` (
   `address_published` tinyint(4) NOT NULL DEFAULT '1',
   `address_vat` varchar(255) DEFAULT NULL,
   `address_default` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_address`
 --
 
 INSERT INTO `jt_hikashop_address` (`address_id`, `address_user_id`, `address_title`, `address_firstname`, `address_middle_name`, `address_lastname`, `address_company`, `address_street`, `address_street2`, `address_post_code`, `address_city`, `address_telephone`, `address_telephone2`, `address_fax`, `address_state`, `address_country`, `address_published`, `address_vat`, `address_default`) VALUES
-(1, 2, 'Mr', 'albert', NULL, 'landayan', NULL, 'pag-asa street', '', '1606', 'Pasig', '9111111', NULL, NULL, 'state_NationalCapitalRegion_12851', 'country_Philippines_168', 1, NULL, 1);
+(3, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1),
+(6, 2, 'Mr', 'albert', NULL, 'landayan', NULL, '41, Phase 2', 'United Glorietta Subdivision, Caniogan', '1606', 'pasig', '09165542324', NULL, NULL, 'state_NationalCapitalRegion_12851', 'country_Philippines_168', 1, NULL, 1),
+(5, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -2017,18 +2046,18 @@ INSERT INTO `jt_hikashop_address` (`address_id`, `address_user_id`, `address_tit
 -- Table structure for table `jt_hikashop_badge`
 --
 
-CREATE TABLE `jt_hikashop_badge` (
-  `badge_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_badge` (
+  `badge_id` int(11) unsigned NOT NULL,
   `badge_name` varchar(255) NOT NULL DEFAULT '',
   `badge_image` varchar(255) NOT NULL DEFAULT '',
-  `badge_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `badge_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `badge_start` int(10) unsigned NOT NULL DEFAULT '0',
+  `badge_end` int(10) unsigned NOT NULL DEFAULT '0',
   `badge_product_id` varchar(255) NOT NULL DEFAULT '',
   `badge_category_id` varchar(255) NOT NULL DEFAULT '',
   `badge_category_childs` tinyint(4) NOT NULL DEFAULT '0',
   `badge_discount_id` varchar(255) NOT NULL DEFAULT '',
-  `badge_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `badge_size` float(12,2) UNSIGNED NOT NULL,
+  `badge_ordering` int(10) unsigned NOT NULL DEFAULT '0',
+  `badge_size` float(12,2) unsigned NOT NULL,
   `badge_position` varchar(255) NOT NULL DEFAULT 'bottomleft',
   `badge_vertical_distance` int(10) NOT NULL DEFAULT '0',
   `badge_horizontal_distance` int(10) NOT NULL DEFAULT '0',
@@ -2045,8 +2074,8 @@ CREATE TABLE `jt_hikashop_badge` (
 -- Table structure for table `jt_hikashop_banner`
 --
 
-CREATE TABLE `jt_hikashop_banner` (
-  `banner_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_banner` (
+  `banner_id` int(10) unsigned NOT NULL,
   `banner_title` varchar(255) NOT NULL DEFAULT '',
   `banner_url` varchar(255) NOT NULL DEFAULT '',
   `banner_image_url` varchar(255) NOT NULL DEFAULT '',
@@ -2061,25 +2090,27 @@ CREATE TABLE `jt_hikashop_banner` (
 -- Table structure for table `jt_hikashop_cart`
 --
 
-CREATE TABLE `jt_hikashop_cart` (
-  `cart_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_cart` (
+  `cart_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `session_id` varchar(255) NOT NULL,
-  `cart_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cart_modified` int(10) unsigned NOT NULL DEFAULT '0',
   `cart_coupon` varchar(255) NOT NULL DEFAULT '',
   `cart_type` varchar(25) NOT NULL DEFAULT 'cart',
   `cart_current` int(11) NOT NULL DEFAULT '0',
   `cart_share` varchar(255) NOT NULL DEFAULT 'nobody',
   `cart_name` varchar(50) NOT NULL DEFAULT '',
   `cart_params` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_cart`
 --
 
 INSERT INTO `jt_hikashop_cart` (`cart_id`, `user_id`, `session_id`, `cart_modified`, `cart_coupon`, `cart_type`, `cart_current`, `cart_share`, `cart_name`, `cart_params`) VALUES
-(1, 0, 'odigmlb2u3th1nn32otbetsbd3', 1446469523, '', 'cart', 0, 'nobody', '', '');
+(1, 0, 'odigmlb2u3th1nn32otbetsbd3', 1446469523, '', 'cart', 0, 'nobody', '', ''),
+(12, 0, 'r6efanqjh4rp2l6ohmuqua0k66', 1447555282, '', 'cart', 0, 'nobody', '', ''),
+(13, 0, 'pb03cb7gbe1qbdt1bqfbba9v35', 1447558072, '', 'cart', 0, 'nobody', '', '');
 
 -- --------------------------------------------------------
 
@@ -2087,23 +2118,26 @@ INSERT INTO `jt_hikashop_cart` (`cart_id`, `user_id`, `session_id`, `cart_modifi
 -- Table structure for table `jt_hikashop_cart_product`
 --
 
-CREATE TABLE `jt_hikashop_cart_product` (
-  `cart_product_id` int(10) UNSIGNED NOT NULL,
-  `cart_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `product_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `cart_product_quantity` int(10) UNSIGNED NOT NULL DEFAULT '1',
-  `cart_product_parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `cart_product_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `cart_product_option_parent_id` int(10) UNSIGNED DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_cart_product` (
+  `cart_product_id` int(10) unsigned NOT NULL,
+  `cart_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `cart_product_quantity` int(10) unsigned NOT NULL DEFAULT '1',
+  `cart_product_parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `cart_product_modified` int(10) unsigned NOT NULL DEFAULT '0',
+  `cart_product_option_parent_id` int(10) unsigned DEFAULT '0',
   `cart_product_wishlist_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_cart_product`
 --
 
 INSERT INTO `jt_hikashop_cart_product` (`cart_product_id`, `cart_id`, `product_id`, `cart_product_quantity`, `cart_product_parent_id`, `cart_product_modified`, `cart_product_option_parent_id`, `cart_product_wishlist_id`) VALUES
-(1, 1, 2, 1, 0, 1446469523, 0, 0);
+(1, 1, 2, 1, 0, 1446469523, 0, 0),
+(15, 12, 1, 1, 0, 1447555007, 0, 0),
+(16, 12, 2, 1, 0, 1447555275, 0, 0),
+(17, 12, 10, 1, 0, 1447555282, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2111,22 +2145,22 @@ INSERT INTO `jt_hikashop_cart_product` (`cart_product_id`, `cart_id`, `product_i
 -- Table structure for table `jt_hikashop_category`
 --
 
-CREATE TABLE `jt_hikashop_category` (
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `category_parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_category` (
+  `category_id` int(10) unsigned NOT NULL,
+  `category_parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `category_type` varchar(255) NOT NULL,
   `category_name` varchar(255) NOT NULL,
   `category_description` text NOT NULL,
   `category_published` tinyint(4) NOT NULL DEFAULT '0',
-  `category_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `category_left` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `category_right` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `category_depth` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `category_ordering` int(10) unsigned NOT NULL DEFAULT '0',
+  `category_left` int(10) unsigned NOT NULL DEFAULT '0',
+  `category_right` int(10) unsigned NOT NULL DEFAULT '0',
+  `category_depth` int(10) unsigned NOT NULL DEFAULT '0',
   `category_namekey` varchar(255) NOT NULL,
-  `category_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `category_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `category_created` int(10) unsigned NOT NULL DEFAULT '0',
+  `category_modified` int(10) unsigned NOT NULL DEFAULT '0',
   `category_access` varchar(255) NOT NULL DEFAULT 'all',
-  `category_menu` int(10) UNSIGNED DEFAULT '0',
+  `category_menu` int(10) unsigned DEFAULT '0',
   `category_keywords` text NOT NULL,
   `category_meta_description` varchar(255) NOT NULL DEFAULT '',
   `category_layout` varchar(255) NOT NULL DEFAULT '',
@@ -2135,7 +2169,7 @@ CREATE TABLE `jt_hikashop_category` (
   `category_site_id` varchar(255) DEFAULT '',
   `category_canonical` varchar(255) NOT NULL DEFAULT '',
   `category_quantity_layout` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_category`
@@ -2161,16 +2195,16 @@ INSERT INTO `jt_hikashop_category` (`category_id`, `category_parent_id`, `catego
 -- Table structure for table `jt_hikashop_characteristic`
 --
 
-CREATE TABLE `jt_hikashop_characteristic` (
-  `characteristic_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_characteristic` (
+  `characteristic_id` int(10) unsigned NOT NULL,
   `characteristic_parent_id` int(10) NOT NULL DEFAULT '0',
   `characteristic_value` varchar(255) NOT NULL DEFAULT '0',
   `characteristic_alias` varchar(255) NOT NULL DEFAULT '',
   `characteristic_display_type` varchar(255) NOT NULL DEFAULT '',
   `characteristic_params` text NOT NULL,
-  `characteristic_ordering` int(12) UNSIGNED NOT NULL DEFAULT '0',
+  `characteristic_ordering` int(12) unsigned NOT NULL DEFAULT '0',
   `characteristic_display_method` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2178,15 +2212,15 @@ CREATE TABLE `jt_hikashop_characteristic` (
 -- Table structure for table `jt_hikashop_click`
 --
 
-CREATE TABLE `jt_hikashop_click` (
-  `click_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_click` (
+  `click_id` int(10) unsigned NOT NULL,
   `click_ip` varchar(255) NOT NULL DEFAULT '',
-  `click_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `click_partner_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `click_created` int(10) unsigned NOT NULL DEFAULT '0',
+  `click_partner_id` int(10) unsigned NOT NULL DEFAULT '0',
   `click_partner_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `click_referer` varchar(255) NOT NULL DEFAULT '',
   `click_partner_paid` tinyint(4) NOT NULL DEFAULT '0',
-  `click_partner_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0'
+  `click_partner_currency_id` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2195,7 +2229,7 @@ CREATE TABLE `jt_hikashop_click` (
 -- Table structure for table `jt_hikashop_config`
 --
 
-CREATE TABLE `jt_hikashop_config` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_config` (
   `config_namekey` varchar(200) NOT NULL,
   `config_value` text NOT NULL,
   `config_default` text NOT NULL
@@ -2304,8 +2338,8 @@ INSERT INTO `jt_hikashop_config` (`config_namekey`, `config_value`, `config_defa
 ('show_vote_product', '1', '1'),
 ('affiliate_advanced_stats', '1', '1'),
 ('cart_retaining_period', '2592000', ''),
-('default_params', 'YTozNzp7czoxMjoiY29udGVudF90eXBlIjtzOjc6InByb2R1Y3QiO3M6MTE6ImxheW91dF90eXBlIjtzOjM6ImRpdiI7czo3OiJjb2x1bW5zIjtzOjE6IjEiO3M6NToibGltaXQiO3M6MjoiMjEiO3M6NjoicmFuZG9tIjtzOjE6IjAiO3M6OToib3JkZXJfZGlyIjtzOjM6IkFTQyI7czoxMToiZmlsdGVyX3R5cGUiO3M6MToiMCI7czoxOToic2VsZWN0cGFyZW50bGlzdGluZyI7czoxOiIyIjtzOjE1OiJtb2R1bGVjbGFzc19zZngiO3M6MDoiIjtzOjc6Im1vZHVsZXMiO3M6MDoiIjtzOjE5OiJjb250ZW50X3N5bmNocm9uaXplIjtzOjE6IjEiO3M6MTU6InVzZV9tb2R1bGVfbmFtZSI7czoxOiIwIjtzOjEzOiJwcm9kdWN0X29yZGVyIjtzOjg6Im9yZGVyaW5nIjtzOjE1OiJyZWNlbnRseV92aWV3ZWQiO3M6MToiMCI7czoxMToiYWRkX3RvX2NhcnQiO3M6MToiMSI7czoxOToic2hvd19xdWFudGl0eV9maWVsZCI7czoxOiIxIjtzOjIwOiJsaW5rX3RvX3Byb2R1Y3RfcGFnZSI7czoxOiIxIjtzOjE5OiJwcm9kdWN0X3N5bmNocm9uaXplIjtzOjE6IjEiO3M6MTA6InNob3dfcHJpY2UiO3M6MToiMSI7czoxOToic2hvd19vcmlnaW5hbF9wcmljZSI7czoxOiIxIjtzOjEzOiJzaG93X2Rpc2NvdW50IjtzOjE6IjEiO3M6MTg6InByaWNlX2Rpc3BsYXlfdHlwZSI7czo4OiJjaGVhcGVzdCI7czoxNDoiZGlzcGxheV9iYWRnZXMiO3M6MToiMSI7czoxNDoiY2F0ZWdvcnlfb3JkZXIiO3M6MTc6ImNhdGVnb3J5X29yZGVyaW5nIjtzOjE4OiJjaGlsZF9kaXNwbGF5X3R5cGUiO3M6Nzoibm9jaGlsZCI7czoxMToiY2hpbGRfbGltaXQiO3M6MDoiIjtzOjk6InNob3dfdm90ZSI7czoxOiIwIjtzOjE4OiJudW1iZXJfb2ZfcHJvZHVjdHMiO3M6MToiMCI7czoyNDoibGlua3Nfb25fbWFpbl9jYXRlZ29yaWVzIjtzOjE6IjAiO3M6MTY6Im9ubHlfaWZfcHJvZHVjdHMiO3M6MToiMCI7czoyMDoiZGl2X2l0ZW1fbGF5b3V0X3R5cGUiO3M6OToiaW1nX3RpdGxlIjtzOjE2OiJiYWNrZ3JvdW5kX2NvbG9yIjtzOjc6IiNmZmZmZmYiO3M6NjoibWFyZ2luIjtzOjI6IjEwIjtzOjE0OiJib3JkZXJfdmlzaWJsZSI7czoxOiIyIjtzOjE1OiJyb3VuZGVkX2Nvcm5lcnMiO3M6MToiMSI7czoxMToidGV4dF9jZW50ZXIiO3M6MToiMSI7czoxNzoic2hvd192b3RlX3Byb2R1Y3QiO3M6MToiMCI7fQ==', ''),
-('force_shipping', '0', ''),
+('default_params', 'YTozNzp7czoxMjoiY29udGVudF90eXBlIjtzOjc6InByb2R1Y3QiO3M6MTE6ImxheW91dF90eXBlIjtzOjM6ImRpdiI7czo3OiJjb2x1bW5zIjtzOjE6IjEiO3M6NToibGltaXQiO3M6MjoiMjEiO3M6NjoicmFuZG9tIjtzOjE6IjAiO3M6OToib3JkZXJfZGlyIjtzOjM6IkFTQyI7czoxMToiZmlsdGVyX3R5cGUiO3M6MToiMCI7czoxOToic2VsZWN0cGFyZW50bGlzdGluZyI7czoxOiIyIjtzOjE1OiJtb2R1bGVjbGFzc19zZngiO3M6MDoiIjtzOjc6Im1vZHVsZXMiO3M6MDoiIjtzOjE5OiJjb250ZW50X3N5bmNocm9uaXplIjtzOjE6IjEiO3M6MTU6InVzZV9tb2R1bGVfbmFtZSI7czoxOiIwIjtzOjEzOiJwcm9kdWN0X29yZGVyIjtzOjg6Im9yZGVyaW5nIjtzOjE1OiJyZWNlbnRseV92aWV3ZWQiO3M6MToiMCI7czoxMToiYWRkX3RvX2NhcnQiO3M6MToiMSI7czoxOToic2hvd19xdWFudGl0eV9maWVsZCI7czoxOiIxIjtzOjIwOiJsaW5rX3RvX3Byb2R1Y3RfcGFnZSI7czoxOiIxIjtzOjE5OiJwcm9kdWN0X3N5bmNocm9uaXplIjtzOjE6IjEiO3M6MTA6InNob3dfcHJpY2UiO3M6MToiMSI7czoxOToic2hvd19vcmlnaW5hbF9wcmljZSI7czoxOiIxIjtzOjEzOiJzaG93X2Rpc2NvdW50IjtzOjE6IjEiO3M6MTg6InByaWNlX2Rpc3BsYXlfdHlwZSI7czo4OiJjaGVhcGVzdCI7czoxNDoiZGlzcGxheV9iYWRnZXMiO3M6MToiMSI7czoxNDoiY2F0ZWdvcnlfb3JkZXIiO3M6MTc6ImNhdGVnb3J5X29yZGVyaW5nIjtzOjE4OiJjaGlsZF9kaXNwbGF5X3R5cGUiO3M6Nzoibm9jaGlsZCI7czoxMToiY2hpbGRfbGltaXQiO3M6MDoiIjtzOjk6InNob3dfdm90ZSI7czoxOiIwIjtzOjE4OiJudW1iZXJfb2ZfcHJvZHVjdHMiO3M6MToiMCI7czoyNDoibGlua3Nfb25fbWFpbl9jYXRlZ29yaWVzIjtzOjE6IjAiO3M6MTY6Im9ubHlfaWZfcHJvZHVjdHMiO3M6MToiMCI7czoyMDoiZGl2X2l0ZW1fbGF5b3V0X3R5cGUiO3M6OToiaW1nX3RpdGxlIjtzOjE2OiJiYWNrZ3JvdW5kX2NvbG9yIjtzOjc6IiNmZmZmZmYiO3M6NjoibWFyZ2luIjtzOjE6IjUiO3M6MTQ6ImJvcmRlcl92aXNpYmxlIjtzOjE6IjEiO3M6MTU6InJvdW5kZWRfY29ybmVycyI7czoxOiIxIjtzOjExOiJ0ZXh0X2NlbnRlciI7czoxOiIxIjtzOjE3OiJzaG93X3ZvdGVfcHJvZHVjdCI7czoxOiIwIjt9', ''),
+('force_shipping', '1', ''),
 ('default_product_type', 'shippable', ''),
 ('menu_1954', 'YTozNDp7czoxNDoiYm9yZGVyX3Zpc2libGUiO3M6MToiMiI7czoxMToiYWRkX3RvX2NhcnQiO3M6MToiMSI7czoxMjoiY29udGVudF90eXBlIjtzOjg6ImNhdGVnb3J5IjtzOjExOiJsYXlvdXRfdHlwZSI7czozOiJkaXYiO3M6NzoiY29sdW1ucyI7aTozO3M6NToibGltaXQiO3M6MjoiMjEiO3M6OToib3JkZXJfZGlyIjtzOjM6IkFTQyI7czoxMToiZmlsdGVyX3R5cGUiO3M6MToiMCI7czoxOToic2VsZWN0cGFyZW50bGlzdGluZyI7czoxOiIyIjtzOjE1OiJtb2R1bGVjbGFzc19zZngiO3M6MDoiIjtzOjc6Im1vZHVsZXMiO3M6MDoiIjtzOjE5OiJjb250ZW50X3N5bmNocm9uaXplIjtzOjE6IjEiO3M6MTU6InVzZV9tb2R1bGVfbmFtZSI7czoxOiIwIjtzOjEzOiJwcm9kdWN0X29yZGVyIjtzOjg6Im9yZGVyaW5nIjtzOjY6InJhbmRvbSI7czoxOiIwIjtzOjE5OiJwcm9kdWN0X3N5bmNocm9uaXplIjtzOjE6IjEiO3M6MTA6InNob3dfcHJpY2UiO3M6MToiMSI7czoxNDoicHJpY2Vfd2l0aF90YXgiO3M6MToiMSI7czoxOToic2hvd19vcmlnaW5hbF9wcmljZSI7czoxOiIxIjtzOjEzOiJzaG93X2Rpc2NvdW50IjtzOjE6IjEiO3M6MTg6InByaWNlX2Rpc3BsYXlfdHlwZSI7czo4OiJjaGVhcGVzdCI7czoxNDoiY2F0ZWdvcnlfb3JkZXIiO3M6MTc6ImNhdGVnb3J5X29yZGVyaW5nIjtzOjE4OiJjaGlsZF9kaXNwbGF5X3R5cGUiO3M6Nzoibm9jaGlsZCI7czoxMToiY2hpbGRfbGltaXQiO3M6MDoiIjtzOjIwOiJkaXZfaXRlbV9sYXlvdXRfdHlwZSI7czo5OiJpbWdfdGl0bGUiO3M6MTc6ImRpdl9jdXN0b21fZmllbGRzIjtzOjA6IiI7czo2OiJoZWlnaHQiO3M6MzoiMTUwIjtzOjE2OiJiYWNrZ3JvdW5kX2NvbG9yIjtzOjc6IiNGRkZGRkYiO3M6NjoibWFyZ2luIjtzOjI6IjEwIjtzOjE1OiJyb3VuZGVkX2Nvcm5lcnMiO3M6MToiMSI7czoxMToidGV4dF9jZW50ZXIiO3M6MToiMSI7czoyNDoibGlua3Nfb25fbWFpbl9jYXRlZ29yaWVzIjtzOjE6IjAiO3M6MjA6ImxpbmtfdG9fcHJvZHVjdF9wYWdlIjtzOjE6IjEiO3M6MTQ6ImRpc3BsYXlfYmFkZ2VzIjtzOjE6IjEiO30=', ''),
 ('default_image', 'barcode.png', ''),
@@ -2317,8 +2351,8 @@ INSERT INTO `jt_hikashop_config` (`config_namekey`, `config_value`, `config_defa
 ('show_cart_delete', '1', '1'),
 ('catalogue', '0', ''),
 ('redirect_url_after_add_cart', 'ask_user', ''),
-('redirect_url_when_cart_is_empty', '', ''),
-('cart_retaining_period_checked', '1446468148', ''),
+('redirect_url_when_cart_is_empty', 'index.php/products-listing', ''),
+('cart_retaining_period_checked', '1447255204', ''),
 ('auto_submit_methods', '1', ''),
 ('clean_cart_when_order_created', 'order_confirmed', 'order_confirmed'),
 ('category_image', '1', '1'),
@@ -2404,8 +2438,8 @@ INSERT INTO `jt_hikashop_config` (`config_namekey`, `config_value`, `config_defa
 ('checkout_terms', '', ''),
 ('terms_and_conditions_width', '450', ''),
 ('terms_and_conditions_height', '450', ''),
-('continue_shopping', 'index.php/hikashop-menu-for-categories-listing', ''),
-('auto_select_default', '0', ''),
+('continue_shopping', 'index.php/products-listing', ''),
+('auto_select_default', '2', ''),
 ('shipping_address_same_checkbox', '1', ''),
 ('checkout_address_selector', '0', ''),
 ('mini_address_format', '{address_lastname} {address_firstname} - {address_street}, {address_state} ({address_country})', ''),
@@ -2418,7 +2452,7 @@ INSERT INTO `jt_hikashop_config` (`config_namekey`, `config_value`, `config_defa
 ('pagination', 'bottom', ''),
 ('show_code', '0', ''),
 ('product_display', 'show_default', ''),
-('product_quantity_display', 'show_default', ''),
+('product_quantity_display', 'show_default_div', ''),
 ('manufacturer_display', '0', ''),
 ('show_price_weight', '0', ''),
 ('show_out_of_stock', '1', ''),
@@ -2470,8 +2504,8 @@ INSERT INTO `jt_hikashop_config` (`config_namekey`, `config_value`, `config_defa
 -- Table structure for table `jt_hikashop_currency`
 --
 
-CREATE TABLE `jt_hikashop_currency` (
-  `currency_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_currency` (
+  `currency_id` int(10) unsigned NOT NULL,
   `currency_symbol` varchar(255) NOT NULL,
   `currency_code` varchar(255) NOT NULL,
   `currency_format` char(10) NOT NULL DEFAULT '%i',
@@ -2481,8 +2515,8 @@ CREATE TABLE `jt_hikashop_currency` (
   `currency_locale` text NOT NULL,
   `currency_displayed` tinyint(4) NOT NULL DEFAULT '0',
   `currency_percent_fee` decimal(4,2) NOT NULL DEFAULT '0.00',
-  `currency_modified` int(10) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `currency_modified` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_currency`
@@ -2611,7 +2645,7 @@ INSERT INTO `jt_hikashop_currency` (`currency_id`, `currency_symbol`, `currency_
 (120, 'K ', 'PGK', '%i', 'Papua New Guinean kina', 0, '1.00000', '', 0, '0.00', 0),
 (121, '₲', 'PYG', '%i', 'Paraguayan guaraní', 0, '1.00000', '', 0, '0.00', 0),
 (122, 'S/.', 'PEN', '%i', 'Peruvian nuevo sol', 0, '1.00000', '', 0, '0.00', 0),
-(123, '₱', 'PHP', '%i', 'Philippine peso', 1, '1.00000', 'a:14:{s:17:"mon_decimal_point";s:1:".";s:17:"mon_thousands_sep";s:1:" ";s:12:"mon_grouping";s:1:"3";s:13:"positive_sign";s:0:"";s:13:"negative_sign";s:1:"-";s:15:"int_frac_digits";i:2;s:11:"frac_digits";i:2;s:18:"rounding_increment";s:0:"";s:13:"p_cs_precedes";i:0;s:14:"p_sep_by_space";i:1;s:13:"n_cs_precedes";i:0;s:14:"n_sep_by_space";i:1;s:11:"p_sign_posn";i:1;s:11:"n_sign_posn";i:1;}', 1, '0.00', 1446472516),
+(123, '₱', 'PHP', '%i', 'Philippine peso', 1, '1.00000', 'a:14:{s:17:"mon_decimal_point";s:1:".";s:17:"mon_thousands_sep";s:1:",";s:12:"mon_grouping";s:1:"3";s:13:"positive_sign";s:0:"";s:13:"negative_sign";s:1:"-";s:15:"int_frac_digits";i:2;s:11:"frac_digits";i:2;s:18:"rounding_increment";s:0:"";s:13:"p_cs_precedes";i:0;s:14:"p_sep_by_space";i:1;s:13:"n_cs_precedes";i:0;s:14:"n_sep_by_space";i:1;s:11:"p_sign_posn";i:1;s:11:"n_sign_posn";i:1;}', 1, '0.00', 1447258063),
 (124, 'XPT', 'XPT', '%i', 'Platinum', 0, '1.00000', '', 0, '0.00', 0),
 (125, 'zł', 'PLN', '%i', 'Polish Złoty', 0, '1.00000', '', 0, '0.00', 0),
 (126, '﷼', 'QAR', '%i', 'Qatari riyal', 0, '1.00000', '', 0, '0.00', 0),
@@ -2677,28 +2711,28 @@ INSERT INTO `jt_hikashop_currency` (`currency_id`, `currency_symbol`, `currency_
 -- Table structure for table `jt_hikashop_discount`
 --
 
-CREATE TABLE `jt_hikashop_discount` (
-  `discount_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_discount` (
+  `discount_id` int(10) unsigned NOT NULL,
   `discount_type` varchar(255) NOT NULL DEFAULT 'discount',
-  `discount_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `discount_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `discount_start` int(10) unsigned NOT NULL DEFAULT '0',
+  `discount_end` int(10) unsigned NOT NULL DEFAULT '0',
   `discount_flat_amount` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `discount_percent_amount` decimal(12,3) NOT NULL DEFAULT '0.000',
   `discount_minimum_order` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `discount_quota` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `discount_used_times` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `discount_quota` int(10) unsigned NOT NULL DEFAULT '0',
+  `discount_used_times` int(10) unsigned NOT NULL DEFAULT '0',
   `discount_code` varchar(255) NOT NULL DEFAULT '',
   `discount_published` tinyint(4) NOT NULL DEFAULT '0',
   `discount_product_id` varchar(255) NOT NULL DEFAULT '',
   `discount_category_id` varchar(255) NOT NULL DEFAULT '',
   `discount_zone_id` varchar(255) NOT NULL DEFAULT '',
-  `discount_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `discount_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
   `discount_category_childs` tinyint(4) NOT NULL DEFAULT '0',
-  `discount_auto_load` tinyint(3) UNSIGNED DEFAULT '0',
+  `discount_auto_load` tinyint(3) unsigned DEFAULT '0',
   `discount_access` varchar(255) NOT NULL DEFAULT 'all',
-  `discount_tax_id` int(10) UNSIGNED DEFAULT '0',
-  `discount_minimum_products` int(10) UNSIGNED DEFAULT '0',
-  `discount_quota_per_user` int(10) UNSIGNED DEFAULT '0',
+  `discount_tax_id` int(10) unsigned DEFAULT '0',
+  `discount_minimum_products` int(10) unsigned DEFAULT '0',
+  `discount_quota_per_user` int(10) unsigned DEFAULT '0',
   `discount_coupon_nodoubling` tinyint(4) DEFAULT NULL,
   `discount_coupon_product_only` tinyint(4) DEFAULT NULL,
   `discount_affiliate` int(10) NOT NULL DEFAULT '0',
@@ -2711,9 +2745,9 @@ CREATE TABLE `jt_hikashop_discount` (
 -- Table structure for table `jt_hikashop_download`
 --
 
-CREATE TABLE `jt_hikashop_download` (
-  `file_id` int(10) UNSIGNED NOT NULL,
-  `order_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_download` (
+  `file_id` int(10) unsigned NOT NULL,
+  `order_id` int(10) unsigned NOT NULL,
   `file_pos` int(10) NOT NULL DEFAULT '1',
   `download_number` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -2724,8 +2758,8 @@ CREATE TABLE `jt_hikashop_download` (
 -- Table structure for table `jt_hikashop_email_log`
 --
 
-CREATE TABLE `jt_hikashop_email_log` (
-  `email_log_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_email_log` (
+  `email_log_id` int(10) unsigned NOT NULL,
   `email_log_sender_email` varchar(255) NOT NULL DEFAULT '',
   `email_log_sender_name` varchar(255) NOT NULL DEFAULT '',
   `email_log_recipient_email` varchar(255) NOT NULL DEFAULT '',
@@ -2741,7 +2775,7 @@ CREATE TABLE `jt_hikashop_email_log` (
   `email_log_ref_id` varchar(255) NOT NULL DEFAULT '',
   `email_log_params` text NOT NULL,
   `email_log_date` int(10) NOT NULL,
-  `email_log_published` tinyint(3) UNSIGNED NOT NULL DEFAULT '1'
+  `email_log_published` tinyint(3) unsigned NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2750,9 +2784,9 @@ CREATE TABLE `jt_hikashop_email_log` (
 -- Table structure for table `jt_hikashop_entry`
 --
 
-CREATE TABLE `jt_hikashop_entry` (
-  `entry_id` int(10) UNSIGNED NOT NULL,
-  `order_id` int(10) UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `jt_hikashop_entry` (
+  `entry_id` int(10) unsigned NOT NULL,
+  `order_id` int(10) unsigned NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2761,28 +2795,28 @@ CREATE TABLE `jt_hikashop_entry` (
 -- Table structure for table `jt_hikashop_field`
 --
 
-CREATE TABLE `jt_hikashop_field` (
-  `field_id` smallint(5) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_field` (
+  `field_id` smallint(5) unsigned NOT NULL,
   `field_table` varchar(50) DEFAULT NULL,
   `field_realname` varchar(250) NOT NULL,
   `field_namekey` varchar(50) NOT NULL,
   `field_type` varchar(50) DEFAULT NULL,
   `field_value` longtext NOT NULL,
-  `field_published` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
-  `field_ordering` smallint(5) UNSIGNED DEFAULT '99',
+  `field_published` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `field_ordering` smallint(5) unsigned DEFAULT '99',
   `field_options` text,
-  `field_core` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
-  `field_required` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `field_core` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `field_required` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `field_default` varchar(250) DEFAULT NULL,
   `field_access` varchar(255) NOT NULL DEFAULT 'all',
   `field_categories` text NOT NULL,
   `field_with_sub_categories` tinyint(1) NOT NULL DEFAULT '0',
   `field_products` text NOT NULL,
-  `field_frontcomp` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
-  `field_backend` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
-  `field_backend_listing` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `field_frontcomp` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `field_backend` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `field_backend_listing` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `field_display` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_field`
@@ -2790,15 +2824,15 @@ CREATE TABLE `jt_hikashop_field` (
 
 INSERT INTO `jt_hikashop_field` (`field_id`, `field_table`, `field_realname`, `field_namekey`, `field_type`, `field_value`, `field_published`, `field_ordering`, `field_options`, `field_core`, `field_required`, `field_default`, `field_access`, `field_categories`, `field_with_sub_categories`, `field_products`, `field_frontcomp`, `field_backend`, `field_backend_listing`, `field_display`) VALUES
 (1, 'address', 'Title', 'address_title', 'singledropdown', 'Mr::HIKA_TITLE_MR\nMrs::HIKA_TITLE_MRS\nMiss::HIKA_TITLE_MISS\nMs::HIKA_TITLE_MS\nDr::HIKA_TITLE_DR', 1, 1, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, '', 'all', '', 0, '', 1, 1, 0, ''),
-(2, 'address', 'Firstname', 'address_firstname', 'text', '', 1, 2, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, '', 'all', '', 0, '', 1, 1, 0, ''),
+(2, 'address', 'Firstname', 'address_firstname', 'text', '', 1, 2, 'a:14:{s:12:"errormessage";s:31:"Please enter a valid First Name";s:5:"regex";s:13:"^[a-zA-Z\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
 (3, 'address', 'Middle name', 'address_middle_name', 'text', '', 0, 3, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
-(4, 'address', 'Lastname', 'address_lastname', 'text', '', 1, 4, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, '', 'all', '', 0, '', 1, 1, 0, ''),
+(4, 'address', 'Lastname', 'address_lastname', 'text', '', 1, 4, 'a:14:{s:12:"errormessage";s:31:"Please input a proper Last Name";s:5:"regex";s:13:"^[a-zA-Z\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
 (5, 'address', 'Company', 'address_company', 'text', '', 0, 5, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
-(6, 'address', 'Street', 'address_street', 'text', '', 1, 6, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, '', 'all', '', 0, '', 1, 1, 0, ''),
-(7, 'address', 'Complement', 'address_street2', 'text', '', 0, 7, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
-(8, 'address', 'Post code', 'address_post_code', 'text', '', 1, 8, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
-(9, 'address', 'City', 'address_city', 'text', '', 1, 9, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, '', 'all', '', 0, '', 1, 1, 0, ''),
-(10, 'address', 'Telephone', 'address_telephone', 'text', '', 1, 10, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, '', 'all', '', 0, '', 1, 1, 0, ''),
+(6, 'address', 'Street', 'address_street', 'text', '', 1, 6, 'a:15:{s:12:"errormessage";s:42:"Please Enter a Proper Street Number / Name";s:5:"regex";s:19:"^[0-9a-zA-Z -,\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";s:10:"customtext";s:51:"Street Number, Phase Number / Building Number / etc";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
+(7, 'address', 'Complement', 'address_street2', 'text', '', 1, 7, 'a:15:{s:12:"errormessage";s:28:"Please enter a valid address";s:5:"regex";s:19:"^[0-9a-zA-Z -,\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";s:10:"customtext";s:51:"Street Name, Subdivision Name / Baraggay Name / etc";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
+(8, 'address', 'Post code', 'address_post_code', 'text', '', 1, 8, 'a:14:{s:12:"errormessage";s:15:"Incorrect Input";s:5:"regex";s:8:"^[0-9]*$";s:11:"placeholder";s:11:"Number Only";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"4";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:1:"4";s:6:"format";s:8:"%Y-%m-%d";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
+(9, 'address', 'City', 'address_city', 'text', '', 1, 9, 'a:14:{s:12:"errormessage";s:25:"Please Enter a valid City";s:5:"regex";s:13:"^[a-zA-Z\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
+(10, 'address', 'Telephone', 'address_telephone', 'text', '', 1, 10, 'a:15:{s:12:"errormessage";s:37:"Please Enter a valid Cellphone Number";s:5:"regex";s:8:"^[0-9]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:2:"11";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:2:"11";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";s:10:"customtext";s:19:"Format: 09XXXXXXXXX";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
 (11, 'address', 'Telephone', 'address_telephone2', 'text', '', 0, 11, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
 (12, 'address', 'Fax', 'address_fax', 'text', '', 0, 12, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
 (13, 'address', 'Country', 'address_country', 'zone', '', 1, 13, 'a:6:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, 'country_Philippines_168', 'all', '', 0, '', 1, 1, 0, ''),
@@ -2811,17 +2845,17 @@ INSERT INTO `jt_hikashop_field` (`field_id`, `field_table`, `field_realname`, `f
 -- Table structure for table `jt_hikashop_file`
 --
 
-CREATE TABLE `jt_hikashop_file` (
-  `file_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_file` (
+  `file_id` int(10) unsigned NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `file_description` text NOT NULL,
   `file_path` varchar(255) NOT NULL,
   `file_type` varchar(255) NOT NULL DEFAULT 'category',
-  `file_ref_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `file_free_download` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
-  `file_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `file_ref_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `file_free_download` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `file_ordering` int(10) unsigned NOT NULL DEFAULT '0',
   `file_limit` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_file`
@@ -2832,13 +2866,13 @@ INSERT INTO `jt_hikashop_file` (`file_id`, `file_name`, `file_description`, `fil
 (2, 'd98b88bc-sarah_geronimo_from_the_top_2641', '', 'd98b88bc-sarah_geronimo_from_the_top_2641.jpg', 'product', 1, 0, 0, 0),
 (3, 'd98b88bc-sarah_geronimo_from_the_top_27704', '', 'd98b88bc-sarah_geronimo_from_the_top_27704.jpg', 'product', 2, 0, 0, 0),
 (4, 'd98b88bc-sarah_geronimo_from_the_top_441', '', 'd98b88bc-sarah_geronimo_from_the_top_441.jpg', 'product', 3, 0, 0, 0),
-(5, 'b5d4d37a-kpopfest_marriott_hotel_679x514', '', 'b5d4d37a-kpopfest_marriott_hotel_679x514.jpg', 'product', 4, 0, 0, 0),
-(6, '', '', 'b5d4d37a-kpopfest_marriott_hotel_679x514.jpg', 'product', 6, 0, 0, 0),
+(13, '', '', '1a08744e-kamikazee_679x514.jpg', 'product', 5, 0, 0, 0),
 (7, '7ee982dd-tni_walkingdead_679x514', '', '7ee982dd-tni_walkingdead_679x514.jpg', 'product', 7, 0, 0, 0),
 (8, '52c7a206-679514_robertkiyosaki', '', '52c7a206-679514_robertkiyosaki.jpg', 'product', 8, 0, 0, 0),
 (9, '', '', '52c7a206-679514_robertkiyosaki.jpg', 'product', 9, 0, 0, 0),
 (10, '', '', '52c7a206-679514_robertkiyosaki.jpg', 'product', 10, 0, 0, 0),
-(11, '', '', 'b5d4d37a-kpopfest_marriott_hotel_679x514.jpg', 'product', 5, 0, 0, 0);
+(14, '', '', '1a08744e-kamikazee_679x514.jpg', 'product', 6, 0, 0, 0),
+(12, '1a08744e-kamikazee_679x514', '', '1a08744e-kamikazee_679x514.jpg', 'product', 4, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2846,23 +2880,23 @@ INSERT INTO `jt_hikashop_file` (`file_id`, `file_name`, `file_description`, `fil
 -- Table structure for table `jt_hikashop_filter`
 --
 
-CREATE TABLE `jt_hikashop_filter` (
-  `filter_id` smallint(5) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_filter` (
+  `filter_id` smallint(5) unsigned NOT NULL,
   `filter_name` varchar(250) NOT NULL,
   `filter_namekey` varchar(50) NOT NULL,
-  `filter_published` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
+  `filter_published` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `filter_type` varchar(50) DEFAULT NULL,
   `filter_category_id` varchar(255) NOT NULL,
-  `filter_ordering` smallint(5) UNSIGNED DEFAULT '99',
+  `filter_ordering` smallint(5) unsigned DEFAULT '99',
   `filter_options` text,
   `filter_data` text NOT NULL,
   `filter_access` varchar(250) NOT NULL DEFAULT 'all',
   `filter_direct_application` tinyint(3) NOT NULL DEFAULT '0',
   `filter_value` text NOT NULL,
-  `filter_category_childs` tinyint(3) UNSIGNED NOT NULL,
-  `filter_height` int(50) UNSIGNED NOT NULL,
-  `filter_deletable` tinyint(3) UNSIGNED NOT NULL,
-  `filter_dynamic` tinyint(3) UNSIGNED NOT NULL
+  `filter_category_childs` tinyint(3) unsigned NOT NULL,
+  `filter_height` int(50) unsigned NOT NULL,
+  `filter_deletable` tinyint(3) unsigned NOT NULL,
+  `filter_dynamic` tinyint(3) unsigned NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2871,12 +2905,12 @@ CREATE TABLE `jt_hikashop_filter` (
 -- Table structure for table `jt_hikashop_geolocation`
 --
 
-CREATE TABLE `jt_hikashop_geolocation` (
-  `geolocation_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_geolocation` (
+  `geolocation_id` int(10) unsigned NOT NULL,
   `geolocation_ip` varchar(255) NOT NULL DEFAULT '',
   `geolocation_type` varchar(255) NOT NULL DEFAULT 'order',
-  `geolocation_ref_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `geolocation_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `geolocation_ref_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `geolocation_created` int(10) unsigned NOT NULL DEFAULT '0',
   `geolocation_latitude` decimal(9,6) NOT NULL DEFAULT '0.000000',
   `geolocation_longitude` decimal(9,6) NOT NULL DEFAULT '0.000000',
   `geolocation_postal_code` varchar(255) NOT NULL DEFAULT '',
@@ -2893,29 +2927,29 @@ CREATE TABLE `jt_hikashop_geolocation` (
 -- Table structure for table `jt_hikashop_history`
 --
 
-CREATE TABLE `jt_hikashop_history` (
-  `history_id` int(10) UNSIGNED NOT NULL,
-  `history_order_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `history_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_history` (
+  `history_id` int(10) unsigned NOT NULL,
+  `history_order_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `history_created` int(10) unsigned NOT NULL DEFAULT '0',
   `history_ip` varchar(255) NOT NULL DEFAULT '',
   `history_new_status` varchar(255) NOT NULL DEFAULT '',
   `history_reason` text NOT NULL,
   `history_notified` tinyint(4) NOT NULL DEFAULT '0',
   `history_amount` varchar(255) NOT NULL DEFAULT '',
-  `history_package_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `history_package_id` int(10) unsigned NOT NULL DEFAULT '0',
   `history_payment_id` varchar(255) NOT NULL DEFAULT '',
   `history_payment_method` varchar(255) NOT NULL DEFAULT '',
   `history_data` longtext NOT NULL,
   `history_type` varchar(255) NOT NULL DEFAULT '',
-  `history_user_id` int(10) UNSIGNED DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `history_user_id` int(10) unsigned DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_history`
 --
 
 INSERT INTO `jt_hikashop_history` (`history_id`, `history_order_id`, `history_created`, `history_ip`, `history_new_status`, `history_reason`, `history_notified`, `history_amount`, `history_package_id`, `history_payment_id`, `history_payment_method`, `history_data`, `history_type`, `history_user_id`) VALUES
-(1, 1, 1446472116, '', 'created', 'Order created', 0, '', 0, '', '', '', 'creation', 2);
+(4, 4, 1447257174, '', 'created', 'Order created', 0, '', 0, '', '', '', 'creation', 2);
 
 -- --------------------------------------------------------
 
@@ -2923,8 +2957,8 @@ INSERT INTO `jt_hikashop_history` (`history_id`, `history_order_id`, `history_cr
 -- Table structure for table `jt_hikashop_limit`
 --
 
-CREATE TABLE `jt_hikashop_limit` (
-  `limit_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_limit` (
+  `limit_id` int(11) unsigned NOT NULL,
   `limit_product_id` int(11) NOT NULL DEFAULT '0',
   `limit_category_id` int(11) NOT NULL DEFAULT '0',
   `limit_per_product` tinyint(4) NOT NULL DEFAULT '0',
@@ -2948,13 +2982,13 @@ CREATE TABLE `jt_hikashop_limit` (
 -- Table structure for table `jt_hikashop_massaction`
 --
 
-CREATE TABLE `jt_hikashop_massaction` (
-  `massaction_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_massaction` (
+  `massaction_id` int(10) unsigned NOT NULL,
   `massaction_name` varchar(255) NOT NULL DEFAULT '',
   `massaction_description` text NOT NULL,
   `massaction_table` varchar(255) NOT NULL DEFAULT 'product',
   `massaction_published` tinyint(4) NOT NULL DEFAULT '1',
-  `massaction_lasttime` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `massaction_lasttime` int(10) unsigned NOT NULL DEFAULT '0',
   `massaction_triggers` text NOT NULL,
   `massaction_filters` text NOT NULL,
   `massaction_actions` text NOT NULL,
@@ -2967,20 +3001,20 @@ CREATE TABLE `jt_hikashop_massaction` (
 -- Table structure for table `jt_hikashop_order`
 --
 
-CREATE TABLE `jt_hikashop_order` (
-  `order_id` int(10) UNSIGNED NOT NULL,
-  `order_billing_address_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `order_shipping_address_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `order_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_order` (
+  `order_id` int(10) unsigned NOT NULL,
+  `order_billing_address_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_shipping_address_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `order_status` varchar(255) NOT NULL DEFAULT '',
   `order_type` varchar(255) NOT NULL DEFAULT 'sale',
   `order_number` varchar(255) NOT NULL DEFAULT '',
-  `order_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `order_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `order_invoice_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_created` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_modified` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_invoice_id` int(10) unsigned NOT NULL DEFAULT '0',
   `order_invoice_number` varchar(255) NOT NULL DEFAULT '',
-  `order_invoice_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `order_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_invoice_created` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
   `order_currency_info` text NOT NULL,
   `order_full_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_tax_info` text NOT NULL,
@@ -2997,20 +3031,20 @@ CREATE TABLE `jt_hikashop_order` (
   `order_shipping_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_shipping_tax` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_shipping_params` text NOT NULL,
-  `order_partner_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_partner_id` int(10) unsigned NOT NULL DEFAULT '0',
   `order_partner_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_partner_paid` int(11) NOT NULL DEFAULT '0',
-  `order_partner_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_partner_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
   `order_ip` varchar(255) NOT NULL DEFAULT '',
   `order_site_id` varchar(255) DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_order`
 --
 
 INSERT INTO `jt_hikashop_order` (`order_id`, `order_billing_address_id`, `order_shipping_address_id`, `order_user_id`, `order_status`, `order_type`, `order_number`, `order_created`, `order_modified`, `order_invoice_id`, `order_invoice_number`, `order_invoice_created`, `order_currency_id`, `order_currency_info`, `order_full_price`, `order_tax_info`, `order_discount_code`, `order_discount_price`, `order_discount_tax`, `order_payment_id`, `order_payment_method`, `order_payment_price`, `order_payment_tax`, `order_payment_params`, `order_shipping_id`, `order_shipping_method`, `order_shipping_price`, `order_shipping_tax`, `order_shipping_params`, `order_partner_id`, `order_partner_price`, `order_partner_paid`, `order_partner_currency_id`, `order_ip`, `order_site_id`) VALUES
-(1, 1, 1, 2, 'created', 'sale', 'B1', 1446472116, 1446472116, 0, '', 0, 123, 'O:8:"stdClass":4:{s:13:"currency_code";s:3:"PHP";s:13:"currency_rate";s:7:"1.00000";s:20:"currency_percent_fee";s:4:"0.00";s:17:"currency_modified";s:10:"1446471828";}', '3671.00000', 'a:1:{s:0:"";O:8:"stdClass":3:{s:11:"tax_namekey";s:0:"";s:8:"tax_rate";s:7:"0.00000";s:10:"tax_amount";i:0;}}', '', '0.00000', '0.00000', '2', 'collectondelivery', '0.00000', '0.00000', '', '4', 'manual', '250.00000', '0.00000', 'O:8:"stdClass":1:{s:6:"prices";a:1:{s:3:"4@0";O:8:"stdClass":2:{s:14:"price_with_tax";s:9:"250.00000";s:3:"tax";d:0;}}}', 0, '0.00000', 0, 0, '', '');
+(4, 6, 6, 2, 'created', 'sale', 'E4', 1447257174, 1447257174, 0, '', 0, 123, 'O:8:"stdClass":4:{s:13:"currency_code";s:3:"PHP";s:13:"currency_rate";s:7:"1.00000";s:20:"currency_percent_fee";s:4:"0.00";s:17:"currency_modified";s:10:"1447257136";}', '62250.00000', 'a:1:{s:0:"";O:8:"stdClass":3:{s:11:"tax_namekey";s:0:"";s:8:"tax_rate";s:7:"0.00000";s:10:"tax_amount";i:0;}}', '', '0.00000', '0.00000', '2', 'collectondelivery', '0.00000', '0.00000', '', '3', 'manual', '250.00000', '0.00000', 'O:8:"stdClass":1:{s:6:"prices";a:1:{s:3:"3@0";O:8:"stdClass":2:{s:14:"price_with_tax";s:9:"250.00000";s:3:"tax";d:0;}}}', 0, '0.00000', 0, 0, '', '');
 
 -- --------------------------------------------------------
 
@@ -3018,32 +3052,32 @@ INSERT INTO `jt_hikashop_order` (`order_id`, `order_billing_address_id`, `order_
 -- Table structure for table `jt_hikashop_order_product`
 --
 
-CREATE TABLE `jt_hikashop_order_product` (
-  `order_product_id` int(10) UNSIGNED NOT NULL,
-  `order_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `product_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `order_product_quantity` int(10) UNSIGNED NOT NULL DEFAULT '1',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_order_product` (
+  `order_product_id` int(10) unsigned NOT NULL,
+  `order_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_product_quantity` int(10) unsigned NOT NULL DEFAULT '1',
   `order_product_name` varchar(255) NOT NULL DEFAULT '',
   `order_product_code` varchar(255) NOT NULL DEFAULT '',
   `order_product_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_tax` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_tax_info` text NOT NULL,
   `order_product_options` text NOT NULL,
-  `order_product_option_parent_id` int(10) UNSIGNED DEFAULT '0',
+  `order_product_option_parent_id` int(10) unsigned DEFAULT '0',
   `order_product_wishlist_id` int(11) NOT NULL DEFAULT '0',
   `order_product_shipping_id` varchar(255) NOT NULL DEFAULT '',
   `order_product_shipping_method` varchar(255) NOT NULL DEFAULT '',
   `order_product_shipping_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_shipping_tax` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_shipping_params` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_order_product`
 --
 
 INSERT INTO `jt_hikashop_order_product` (`order_product_id`, `order_id`, `product_id`, `order_product_quantity`, `order_product_name`, `order_product_code`, `order_product_price`, `order_product_tax`, `order_product_tax_info`, `order_product_options`, `order_product_option_parent_id`, `order_product_wishlist_id`, `order_product_shipping_id`, `order_product_shipping_method`, `order_product_shipping_price`, `order_product_shipping_tax`, `order_product_shipping_params`) VALUES
-(1, 1, 1, 1, 'Sarah Geronimo - From the Top VIP', 'Sarah_Geronimo_-_From_the_Top_VIP', '3421.00000', '0.00000', 'a:1:{i:0;O:8:"stdClass":17:{s:11:"taxation_id";s:1:"1";s:12:"zone_namekey";a:1:{i:0;s:23:"country_Philippines_168";}s:16:"category_namekey";s:11:"default_tax";s:11:"tax_namekey";s:0:"";s:18:"taxation_published";s:1:"1";s:13:"taxation_type";s:0:"";s:15:"taxation_access";s:3:"all";s:19:"taxation_cumulative";s:1:"0";s:18:"taxation_post_code";s:0:"";s:19:"taxation_date_start";s:1:"0";s:17:"taxation_date_end";s:1:"0";s:22:"taxation_internal_code";s:1:"0";s:13:"taxation_note";s:0:"";s:16:"taxation_site_id";s:0:"";s:17:"taxation_ordering";s:1:"0";s:8:"tax_rate";s:7:"0.00000";s:9:"zone_type";s:7:"country";}}', '', 0, 0, '4@0', 'manual', '0.00000', '0.00000', '');
+(4, 4, 9, 31, 'Kiyosaki - Live in Manila Premium', 'Kiyosaki_-_Live_in_Manila_Premium', '2000.00000', '0.00000', 'a:1:{i:0;O:8:"stdClass":17:{s:11:"taxation_id";s:1:"1";s:12:"zone_namekey";a:1:{i:0;s:23:"country_Philippines_168";}s:16:"category_namekey";s:11:"default_tax";s:11:"tax_namekey";s:0:"";s:18:"taxation_published";s:1:"1";s:13:"taxation_type";s:0:"";s:15:"taxation_access";s:3:"all";s:19:"taxation_cumulative";s:1:"0";s:18:"taxation_post_code";s:0:"";s:19:"taxation_date_start";s:1:"0";s:17:"taxation_date_end";s:1:"0";s:22:"taxation_internal_code";s:1:"0";s:13:"taxation_note";s:0:"";s:16:"taxation_site_id";s:0:"";s:17:"taxation_ordering";s:1:"0";s:8:"tax_rate";s:7:"0.00000";s:9:"zone_type";s:7:"country";}}', '', 0, 0, '3@0', 'manual', '0.00000', '0.00000', '');
 
 -- --------------------------------------------------------
 
@@ -3051,29 +3085,29 @@ INSERT INTO `jt_hikashop_order_product` (`order_product_id`, `order_id`, `produc
 -- Table structure for table `jt_hikashop_payment`
 --
 
-CREATE TABLE `jt_hikashop_payment` (
-  `payment_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_payment` (
+  `payment_id` int(10) unsigned NOT NULL,
   `payment_name` varchar(255) NOT NULL DEFAULT '',
   `payment_description` text NOT NULL,
   `payment_images` text NOT NULL,
   `payment_params` text NOT NULL,
   `payment_type` varchar(255) NOT NULL DEFAULT '',
   `payment_zone_namekey` varchar(255) NOT NULL DEFAULT '',
-  `payment_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `payment_ordering` int(10) unsigned NOT NULL DEFAULT '0',
   `payment_published` tinyint(4) NOT NULL DEFAULT '1',
   `payment_access` varchar(255) NOT NULL DEFAULT 'all',
   `payment_shipping_methods` text NOT NULL,
   `payment_currency` varchar(255) NOT NULL,
   `payment_price` decimal(17,5) NOT NULL DEFAULT '0.00000'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_payment`
 --
 
 INSERT INTO `jt_hikashop_payment` (`payment_id`, `payment_name`, `payment_description`, `payment_images`, `payment_params`, `payment_type`, `payment_zone_namekey`, `payment_ordering`, `payment_published`, `payment_access`, `payment_shipping_methods`, `payment_currency`, `payment_price`) VALUES
-(1, 'Bank transfer', '<p>You can pay by sending us a bank transfer.</p>', 'Bank_transfer', 'O:8:"stdClass":23:{s:16:"payment_currency";s:1:"1";s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:12:"order_status";s:7:"created";s:18:"status_notif_email";s:1:"0";s:11:"information";s:400:"Account owner: XXXXX<br/>\r\n<br/>\r\nOwner address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX<br/>\r\n<br/>\r\nIBAN International Bank Account Number:<br/>\r\n<br/>\r\nXXXX XXXX XXXX XXXX XXXX XXXX XXX<br/>\r\n<br/>\r\nBIC swift Bank Identification Code:<br/>\r\n<br/>\r\nXXXXXXXXXXXXXX<br/>\r\n<br/>\r\nBank name: XXXXXXXXXXX<br/>\r\n<br/>\r\nBank address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX";s:10:"return_url";s:0:"";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"1";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:0:"";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}', 'banktransfer', '', 1, 1, 'all', '', '', '0.00000'),
-(2, 'Collect on delivery', '<p>You can pay when your package is delivered by using this payment method.</p>', 'Collect_on_delivery', 'O:8:"stdClass":22:{s:16:"payment_currency";s:1:"1";s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:18:"status_notif_email";s:1:"0";s:10:"return_url";s:0:"";s:12:"order_status";s:7:"created";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"1";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:0:"";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}', 'collectondelivery', '', 2, 1, 'all', '', '', '0.00000'),
+(1, 'Bank transfer', '<p>You can pay by sending us a bank transfer.</p>', 'Bank_transfer', 'O:8:"stdClass":23:{s:16:"payment_currency";s:3:"123";s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:12:"order_status";s:7:"created";s:18:"status_notif_email";s:1:"1";s:11:"information";s:371:"Account owner: XXXXX<br/>\r\n<br/>\r\nOwner address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX<br/>\r\n<br/>\r\nBank Account Number:<br/>\r\n<br/>\r\nXXXX XXXX XXXX XXXX XXXX XXXX XXX<br/>\r\n<br/>\r\nBank Identification Code:<br/>\r\n<br/>\r\nXXXXXXXXXXXXXX<br/>\r\n<br/>\r\nBank name: XXXXXXXXXXX<br/>\r\n<br/>\r\nBank address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX";s:10:"return_url";s:0:"";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"1";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:0:"";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}', 'banktransfer', 'country_Philippines_168', 1, 1, 'all', '', '', '0.00000'),
+(2, 'Collect on delivery', '<p>You can pay when your package is delivered by using this payment method.</p>', 'Collect_on_delivery', 'O:8:"stdClass":22:{s:16:"payment_currency";s:3:"123";s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:18:"status_notif_email";s:1:"1";s:10:"return_url";s:0:"";s:12:"order_status";s:7:"created";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"0";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:2:"50";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}', 'collectondelivery', 'country_Philippines_168', 2, 1, 'all', '', '', '0.00000'),
 (3, 'Check/Deposit Slip', '<p>You can pay by sending us a check.</p>', 'Check', 'O:8:"stdClass":23:{s:16:"payment_currency";s:1:"1";s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:12:"order_status";s:7:"created";s:18:"status_notif_email";s:1:"0";s:10:"return_url";s:0:"";s:11:"information";s:438:"For Deposit Slips, kindly email us a scanned picture of your deposit slip together with your username, the product/s that you''ve bought and their quantity</br> \r\nYou can make out your check to: XXXX XXXX<br/>\r\n			<br/>\r\n			And then, send your check to the address below :<br/>\r\n			<br/>\r\n			XXXXXX XXXXXX<br/>\r\n			<br/>\r\n			XX XXXX XXXXXX<br/>\r\n			<br/>\r\n			XXXXX XXXXXXX<br/>\r\n			<br/>\r\n			Once we receive it, we will confirm your order.";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"1";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:0:"";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}', 'check', '', 3, 0, 'all', '', '', '0.00000');
 
 -- --------------------------------------------------------
@@ -3082,7 +3116,7 @@ INSERT INTO `jt_hikashop_payment` (`payment_id`, `payment_name`, `payment_descri
 -- Table structure for table `jt_hikashop_plugin`
 --
 
-CREATE TABLE `jt_hikashop_plugin` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_plugin` (
   `plugin_id` int(10) NOT NULL,
   `plugin_type` varchar(255) NOT NULL,
   `plugin_published` int(4) NOT NULL DEFAULT '0',
@@ -3099,15 +3133,15 @@ CREATE TABLE `jt_hikashop_plugin` (
 -- Table structure for table `jt_hikashop_price`
 --
 
-CREATE TABLE `jt_hikashop_price` (
-  `price_id` int(10) UNSIGNED NOT NULL,
-  `price_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `price_product_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_price` (
+  `price_id` int(10) unsigned NOT NULL,
+  `price_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `price_product_id` int(10) unsigned NOT NULL DEFAULT '0',
   `price_value` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `price_min_quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `price_min_quantity` int(10) unsigned NOT NULL DEFAULT '0',
   `price_access` varchar(255) NOT NULL DEFAULT 'all',
   `price_site_id` varchar(255) DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_price`
@@ -3131,42 +3165,42 @@ INSERT INTO `jt_hikashop_price` (`price_id`, `price_currency_id`, `price_product
 -- Table structure for table `jt_hikashop_product`
 --
 
-CREATE TABLE `jt_hikashop_product` (
-  `product_id` int(11) UNSIGNED NOT NULL,
-  `product_parent_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_hikashop_product` (
+  `product_id` int(11) unsigned NOT NULL,
+  `product_parent_id` int(11) unsigned NOT NULL DEFAULT '0',
   `product_name` varchar(255) NOT NULL,
   `product_description` text NOT NULL,
   `product_quantity` int(11) NOT NULL DEFAULT '-1',
   `product_code` varchar(255) NOT NULL,
   `product_published` tinyint(4) NOT NULL DEFAULT '0',
-  `product_hit` int(11) UNSIGNED NOT NULL DEFAULT '0',
-  `product_created` int(11) UNSIGNED NOT NULL DEFAULT '0',
-  `product_sale_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `product_sale_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `product_delay_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `product_tax_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_hit` int(11) unsigned NOT NULL DEFAULT '0',
+  `product_created` int(11) unsigned NOT NULL DEFAULT '0',
+  `product_sale_start` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_sale_end` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_delay_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_tax_id` int(10) unsigned NOT NULL DEFAULT '0',
   `product_type` varchar(255) NOT NULL DEFAULT '',
-  `product_vendor_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `product_manufacturer_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_vendor_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_manufacturer_id` int(10) unsigned NOT NULL DEFAULT '0',
   `product_url` varchar(255) NOT NULL,
-  `product_weight` decimal(12,3) UNSIGNED NOT NULL DEFAULT '0.000',
+  `product_weight` decimal(12,3) unsigned NOT NULL DEFAULT '0.000',
   `product_keywords` text NOT NULL,
   `product_weight_unit` varchar(255) NOT NULL DEFAULT 'kg',
-  `product_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_modified` int(10) unsigned NOT NULL DEFAULT '0',
   `product_meta_description` varchar(255) NOT NULL DEFAULT '',
   `product_dimension_unit` varchar(255) NOT NULL DEFAULT 'm',
   `product_width` decimal(12,3) NOT NULL DEFAULT '0.000',
   `product_length` decimal(12,3) NOT NULL DEFAULT '0.000',
   `product_height` decimal(12,3) NOT NULL DEFAULT '0.000',
-  `product_max_per_order` int(10) UNSIGNED DEFAULT '0',
+  `product_max_per_order` int(10) unsigned DEFAULT '0',
   `product_access` varchar(255) NOT NULL DEFAULT 'all',
   `product_group_after_purchase` varchar(255) NOT NULL DEFAULT '',
-  `product_min_per_order` int(10) UNSIGNED DEFAULT '0',
-  `product_contact` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `product_min_per_order` int(10) unsigned DEFAULT '0',
+  `product_contact` smallint(5) unsigned NOT NULL DEFAULT '0',
   `product_display_quantity_field` smallint(5) NOT NULL DEFAULT '0',
-  `product_last_seen_date` int(10) UNSIGNED DEFAULT '0',
-  `product_sales` int(10) UNSIGNED DEFAULT '0',
-  `product_waitlist` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
+  `product_last_seen_date` int(10) unsigned DEFAULT '0',
+  `product_sales` int(10) unsigned DEFAULT '0',
+  `product_waitlist` smallint(5) unsigned NOT NULL DEFAULT '0',
   `product_layout` varchar(255) NOT NULL DEFAULT '',
   `product_average_score` float NOT NULL,
   `product_total_vote` int(11) NOT NULL DEFAULT '0',
@@ -3175,25 +3209,25 @@ CREATE TABLE `jt_hikashop_product` (
   `product_price_percentage` decimal(15,7) NOT NULL DEFAULT '0.0000000',
   `product_msrp` decimal(15,7) DEFAULT '0.0000000',
   `product_canonical` varchar(255) NOT NULL DEFAULT '',
-  `product_warehouse_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_warehouse_id` int(10) unsigned NOT NULL DEFAULT '0',
   `product_quantity_layout` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_product`
 --
 
 INSERT INTO `jt_hikashop_product` (`product_id`, `product_parent_id`, `product_name`, `product_description`, `product_quantity`, `product_code`, `product_published`, `product_hit`, `product_created`, `product_sale_start`, `product_sale_end`, `product_delay_id`, `product_tax_id`, `product_type`, `product_vendor_id`, `product_manufacturer_id`, `product_url`, `product_weight`, `product_keywords`, `product_weight_unit`, `product_modified`, `product_meta_description`, `product_dimension_unit`, `product_width`, `product_length`, `product_height`, `product_max_per_order`, `product_access`, `product_group_after_purchase`, `product_min_per_order`, `product_contact`, `product_display_quantity_field`, `product_last_seen_date`, `product_sales`, `product_waitlist`, `product_layout`, `product_average_score`, `product_total_vote`, `product_page_title`, `product_alias`, `product_price_percentage`, `product_msrp`, `product_canonical`, `product_warehouse_id`, `product_quantity_layout`) VALUES
-(1, 0, 'Sarah Geronimo - From the Top VIP', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 349, 'Sarah_Geronimo_-_From_the_Top_VIP', 1, 1, 1446468265, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469317, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 1446468288, 1, 0, '', 0, 0, '', 'sarah-geronimo-from-the-top-vip', '0.0000000', '0.0000000', '', 0, ''),
-(2, 0, 'Sarah Geronimo - From the Top Premium', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 1700, 'Sarah_Geronimo_-_From_the_Top_Premium', 1, 0, 1446468544, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469307, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'sarah-geronimo-from-the-top-premium', '0.0000000', '0.0000000', '', 0, ''),
-(3, 0, 'Sarah Geronimo - From the Top Gen Ad', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 4000, 'Sarah_Geronimo_-_From_the_Top_Gen_Ad', 1, 0, 1446468610, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469290, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'sarah-geronimo-from-the-top-gen-ad', '0.0000000', '0.0000000', '', 0, ''),
-(4, 0, 'KPOP Fest with TEEN TOP VIP', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 100, 'KPOP_Fest_with_TEEN_TOP_VIP', 1, 0, 1446468673, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469457, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kpop-fest-with-teen-top-vip', '0.0000000', '0.0000000', '', 0, ''),
-(5, 0, 'KPOP Fest with TEEN Premium', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 300, 'KPOP_Fest_with_TEEN_Premium', 1, 0, 1446468701, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469468, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kpop-fest-with-teen-premium', '0.0000000', '0.0000000', '', 0, ''),
-(6, 0, 'KPOP Fest with TEEN TOP GEN AD', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 1000, 'KPOP_Fest_with_TEEN_TOP_GEN_AD', 1, 0, 1446468747, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469267, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kpop-fest-with-teen-top-gen-ad', '0.0000000', '0.0000000', '', 0, ''),
-(7, 0, 'The Walking Dead - Terminus', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 3000, 'The_Walking_Dead_-_Terminus', 1, 0, 1446468786, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469331, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'the-walking-dead-terminus', '0.0000000', '0.0000000', '', 0, ''),
-(8, 0, 'Kiyosaki - Live in Manila VIP', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 500, 'Kiyosaki_-_Live_in_Manila_VIp', 1, 0, 1446468840, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469249, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kiyosaki-live-in-manila-vip', '0.0000000', '0.0000000', '', 0, ''),
-(9, 0, 'Kiyosaki - Live in Manila Premium', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 2000, 'Kiyosaki_-_Live_in_Manila_Premium', 1, 0, 1446468886, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469483, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kiyosaki-live-in-manila-premium', '0.0000000', '0.0000000', '', 0, ''),
-(10, 0, 'Kiyosaki - Live in Manila Gen Ad', '<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>', 5000, 'Kiyosaki_-_Live_in_Manila_Gen_Ad', 1, 0, 1446468912, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1446469224, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kiyosaki-live-in-manila-gen-ad', '0.0000000', '0.0000000', '', 0, '');
+(1, 0, 'Sarah Geronimo - From the Top VIP', '<div class="fleft" style="float: left;">\r\n<h1 class="artist-title" style="font-size: 32px; color: #646464;">Sarah Geronimo From The Top</h1>\r\n</div>\r\n<div class="fright" style="float: right;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Smart Araneta Coliseum<br />12/05/2015</span></div>\r\n<div style="clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px;">\r\n<table style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;" border="0" align="center">\r\n<tbody>\r\n<tr>\r\n<td style="text-align: center;"><strong><span style="font-size: large; color: #0000ff;"><span style="color: #ff0000;">BUY YOUR TICKETS!!!</span></span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n<tr>\r\n<td><strong><span style="font-size: large; color: #0000ff;">DECEMBER 4, 2015 8:00PM FRIDAY</span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n<tr>\r\n<td><strong><span style="font-size: large; color: #0000ff;">DECEMBER 5, 2015 8:00PM SATURDAY</span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Popstar royalty Sarah Geronimo is a world-class Filipino entertainer and considered as one of the youngest, most popular and successful performers in Asia. She is set to mark another milestone in her career as she returns to the Big Dome on December 4 with a new show entitled "From The Top".</span></p>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">"From The Top" is under the musical direction of Louie Ocampo and promising director Paolo Valenciano.</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"> </span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">For inquiries, call Ticketnet at 911-5555 and Viva Live at 687-7236.</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">This is a production of Viva Live, Inc.</span></div>\r\n<p><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"> </span></p>\r\n</div>', 349, 'Sarah_Geronimo_-_From_the_Top_VIP', 1, 8, 1446468265, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257270, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 1447257989, 1, 0, '', 0, 0, '', 'sarah-geronimo-from-the-top-vip', '0.0000000', '0.0000000', '', 0, ''),
+(2, 0, 'Sarah Geronimo - From the Top Premium', '<div class="fleft" style="float: left;">\r\n<h1 class="artist-title" style="font-size: 32px; color: #646464;">Sarah Geronimo From The Top</h1>\r\n</div>\r\n<div class="fright" style="float: right;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Smart Araneta Coliseum<br />12/05/2015</span></div>\r\n<div style="clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px;">\r\n<table style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;" border="0" align="center">\r\n<tbody>\r\n<tr>\r\n<td style="text-align: center;"><strong><span style="font-size: large; color: #0000ff;"><span style="color: #ff0000;">BUY YOUR TICKETS!!!</span></span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n<tr>\r\n<td><strong><span style="font-size: large; color: #0000ff;">DECEMBER 4, 2015 8:00PM FRIDAY</span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n<tr>\r\n<td><strong><span style="font-size: large; color: #0000ff;">DECEMBER 5, 2015 8:00PM SATURDAY</span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Popstar royalty Sarah Geronimo is a world-class Filipino entertainer and considered as one of the youngest, most popular and successful performers in Asia. She is set to mark another milestone in her career as she returns to the Big Dome on December 4 with a new show entitled "From The Top".</span></p>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">"From The Top" is under the musical direction of Louie Ocampo and promising director Paolo Valenciano.</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"> </span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">For inquiries, call Ticketnet at 911-5555 and Viva Live at 687-7236.</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">This is a production of Viva Live, Inc.</span></div>\r\n<p><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"> </span></p>\r\n</div>', 1700, 'Sarah_Geronimo_-_From_the_Top_Premium', 1, 0, 1446468544, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257288, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'sarah-geronimo-from-the-top-premium', '0.0000000', '0.0000000', '', 0, ''),
+(3, 0, 'Sarah Geronimo - From the Top Gen Ad', '<div class="fleft" style="float: left;">\r\n<h1 class="artist-title" style="font-size: 32px; color: #646464;">Sarah Geronimo From The Top</h1>\r\n</div>\r\n<div class="fright" style="float: right;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Smart Araneta Coliseum<br />12/05/2015</span></div>\r\n<div style="clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px;">\r\n<table style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;" border="0" align="center">\r\n<tbody>\r\n<tr>\r\n<td style="text-align: center;"><strong><span style="font-size: large; color: #0000ff;"><span style="color: #ff0000;">BUY YOUR TICKETS!!!</span></span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n<tr>\r\n<td><strong><span style="font-size: large; color: #0000ff;">DECEMBER 4, 2015 8:00PM FRIDAY</span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n<tr>\r\n<td><strong><span style="font-size: large; color: #0000ff;">DECEMBER 5, 2015 8:00PM SATURDAY</span></strong></td>\r\n<td> </td>\r\n<td> </td>\r\n<td> </td>\r\n</tr>\r\n</tbody>\r\n</table>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Popstar royalty Sarah Geronimo is a world-class Filipino entertainer and considered as one of the youngest, most popular and successful performers in Asia. She is set to mark another milestone in her career as she returns to the Big Dome on December 4 with a new show entitled "From The Top".</span></p>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">"From The Top" is under the musical direction of Louie Ocampo and promising director Paolo Valenciano.</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"> </span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">For inquiries, call Ticketnet at 911-5555 and Viva Live at 687-7236.</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">This is a production of Viva Live, Inc.</span></div>\r\n<p><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"> </span></p>\r\n</div>', 4000, 'Sarah_Geronimo_-_From_the_Top_Gen_Ad', 1, 5, 1446468610, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257303, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 1446651263, 0, 0, '', 0, 0, '', 'sarah-geronimo-from-the-top-gen-ad', '0.0000000', '0.0000000', '', 0, ''),
+(4, 0, 'Kamikazee - Ang Huling Sayaw VIP', '<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<h1 class="artist-title" style="font-size: 32px; color: #646464;">Kamikazee The Final Show</h1>\r\n</div>\r\n<div class="fright" style="float: right; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Smart Araneta Coliseum<br />12/10/2015</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<hr />\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<p style="text-align: center;"><span style="font-size: large;"><strong><a href="http://ticketnet.com.ph/Credit-Cards-Accepted-Online-ticketnet/Pages/35"><em>**Please take note that we are currently not accepting credit cards issued outside the Philippines.**</em></a></strong> </span></p>\r\n<hr />\r\n<p style="text-align: justify;"> </p>\r\n<p style="text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Manila (Philippines): Filipino rock legends Kamikazee will bring down the curtain on their colourful 15-year career with an all-star celebratory concert at the SMART Araneta Coliseum in Manila on December 10, 2015</span><br /><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"><a name="more"></a></span><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">The five-piece band, who earlier this year announced they would be taking an indefinite break from</span><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">the music industry, will play one last time at arguably the most iconic concert venue in the Philippines before spending more time with their families and pursuing other interests.</span><br /><br /><br /><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Tickets for Kamikazee Live at the SMART Araneta Coliseum on December 10, 2015 will go on sale from the SMART Araneta Coliseum, all Ticketnet outlets and online at <a href="http://www.ticketnet.com.ph/">www.ticketnet.com.ph</a>   </span></p>\r\n</div>', 100, 'Kamikazee_-_Ang_Huling_Sayaw_VIP', 1, 3, 1446468673, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257846, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 1447258007, 0, 0, '', 0, 0, '', 'kpop-fest-with-teen-top-vip', '0.0000000', '0.0000000', '', 0, ''),
+(5, 0, 'Kamikazee - Ang Huling Sayaw Premium', '<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<h1 class="artist-title" style="font-size: 32px; color: #646464;">Kamikazee The Final Show</h1>\r\n</div>\r\n<div class="fright" style="float: right; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Smart Araneta Coliseum<br />12/10/2015</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<hr />\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<p style="text-align: center;"><span style="font-size: large;"><strong><a href="http://ticketnet.com.ph/Credit-Cards-Accepted-Online-ticketnet/Pages/35"><em>**Please take note that we are currently not accepting credit cards issued outside the Philippines.**</em></a></strong> </span></p>\r\n<hr />\r\n<p style="text-align: justify;"> </p>\r\n<p style="text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Manila (Philippines): Filipino rock legends Kamikazee will bring down the curtain on their colourful 15-year career with an all-star celebratory concert at the SMART Araneta Coliseum in Manila on December 10, 2015</span><br /><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"><a name="more"></a></span><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">The five-piece band, who earlier this year announced they would be taking an indefinite break from</span><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">the music industry, will play one last time at arguably the most iconic concert venue in the Philippines before spending more time with their families and pursuing other interests.</span><br /><br /><br /><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Tickets for Kamikazee Live at the SMART Araneta Coliseum on December 10, 2015 will go on sale from the SMART Araneta Coliseum, all Ticketnet outlets and online at <a href="http://www.ticketnet.com.ph/">www.ticketnet.com.ph</a>   </span></p>\r\n</div>', 300, 'Kamikazee_-_Ang_Huling_Sayaw_Premium', 1, 3, 1446468701, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257919, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 1446650859, 0, 0, '', 0, 0, '', 'kpop-fest-with-teen-premium', '0.0000000', '0.0000000', '', 0, ''),
+(6, 0, 'Kamikazee - Ang Huling Sayaw Gen Ad', '<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<h1 class="artist-title" style="font-size: 32px; color: #646464;">Kamikazee The Final Show</h1>\r\n</div>\r\n<div class="fright" style="float: right; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Smart Araneta Coliseum<br />12/10/2015</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<hr />\r\n<p class="artist-desc-p" style="font-family: Helvetica, Arial, sans-serif; font-size: 12px; color: #646464; text-align: center;"> </p>\r\n<p style="text-align: center;"><span style="font-size: large;"><strong><a href="http://ticketnet.com.ph/Credit-Cards-Accepted-Online-ticketnet/Pages/35"><em>**Please take note that we are currently not accepting credit cards issued outside the Philippines.**</em></a></strong> </span></p>\r\n<hr />\r\n<p style="text-align: justify;"> </p>\r\n<p style="text-align: justify;"><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Manila (Philippines): Filipino rock legends Kamikazee will bring down the curtain on their colourful 15-year career with an all-star celebratory concert at the SMART Araneta Coliseum in Manila on December 10, 2015</span><br /><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;"><a name="more"></a></span><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">The five-piece band, who earlier this year announced they would be taking an indefinite break from</span><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">the music industry, will play one last time at arguably the most iconic concert venue in the Philippines before spending more time with their families and pursuing other interests.</span><br /><br /><br /><br /><span style="font-size: large; font-family: ''trebuchet ms'', geneva;">Tickets for Kamikazee Live at the SMART Araneta Coliseum on December 10, 2015 will go on sale from the SMART Araneta Coliseum, all Ticketnet outlets and online at <a href="http://www.ticketnet.com.ph/">www.ticketnet.com.ph</a>   </span></p>\r\n</div>', 1000, 'Kamikazee_-_Ang_Huling_Sayaw_GEN_AD', 1, 0, 1446468747, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257968, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kpop-fest-with-teen-top-gen-ad', '0.0000000', '0.0000000', '', 0, ''),
+(7, 0, 'The Walking Dead - Terminus', '<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="color: #ff0000; font-family: ''trebuchet ms'', geneva; font-size: large;">Tickets are available  Only at the venue</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="color: #ff0000; font-family: ''trebuchet ms'', geneva; font-size: large;">October 30, 2015 - November 10, 2015</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: center;"><span style="color: #ff0000; font-family: ''trebuchet ms'', geneva; font-size: large;">6PM - 12MN<br /></span></p>\r\n<hr />\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"> </p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><strong>Conquer, Survive Eastwood City’s The Walking Dead: Terminus Haunted Horror House</strong></span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">Prepare for the ultimate Halloween thrill as Megaworld Lifestyle Malls and Eastwood City bring back this year’s most terrifying horror house, The Walking Dead: Terminus Haunted Horror House.</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">Taken from the hit American post-apocalyptic horror-drama TV series, the themed horror house promises an unforgettable and one-of-a-kind Halloween experience as it gives courageous thrill-seekers a chance to experience the gore and spine-chilling terror of The Walking Dead in real life.</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">Now with an even more challenging trail filled with hordes of blood-thirsty and flesh-eating zombies, also known as walkers, this year’s horror house brings Terminus, the deceitful facility thought to be a sanctuary for all in the show’s fifth season, to vivid life.</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">Those who are brave enough to enter the horror house will have to endure a harrowing journey as they need to dodge the terrifying walkers and blood-thirsty cannibals as they find their way out.  </span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">The Walking Dead: Terminus Haunted Horror House opens on October 30 until November 6, from 6PM onwards. Those who will visit the horror house can drop by the Eastwood Central Plaza. Ticket price is P150 per head. Children 13 years old and below must be accompanied by an adult.</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">Developed by Frank Darabont, The Walking Dead is one of the most successful and most watched TV series in the world. The show, which is based on based on the comic book series of the same name by Robert Kirkman, Tony Moore and Charlie Adlard, is also highly-acclaimed among critics, earning several nominations including the Writers Guild of America Awards and the Golden Globe Award for Best Television Series – Drama.</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">Recently, The Walking Dead premiered its sixth season, garnering a massive audience in the United States and across the globe.  In the Philippines, The Walking Dead is aired at FOX every Monday at 11:35AM and 8:55PM.</span></p>\r\n<p style="color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal; text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;">For more information and complete rules and regulations of The Walking Dead: Terminus Haunted Horror House at Eastwood City, please call the Megaworld Lifestyle Malls Concierge at 709-9888, 709-0888, 0917-8380111 or visit <a href="http://www.megaworldlifestylemalls.com./">www.megaworldlifestylemalls.com.</a>  </span></p>', 3000, 'The_Walking_Dead_-_Terminus', 1, 0, 1446468786, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257365, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'the-walking-dead-terminus', '0.0000000', '0.0000000', '', 0, ''),
+(8, 0, 'Kiyosaki - Live in Manila VIP', '<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<h1 class="artist-title" style="font-family: Helvetica, Arial, sans-serif; font-size: 32px; color: #646464;">Robert Kiyosaki Live in Manila with Masters of Wealth</h1>\r\n<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;"> </div>\r\n<div class="fright" style="float: right; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Multiple Venues<br />11/30/2015</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal; clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;">\r\n<div style="text-align: center;"><img style="border: 0px; outline: none;" src="http://www.ticketnet.com.ph/Content/images/Robert%20Kiyosaki%20Perks.png" alt="" width="345" height="263" />\r\n<p style="text-align: justify;"> </p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em>The <strong>Masters of Wealth</strong> is a one-day landmark event with Robert Kiyosaki and six (6) other international speakers to be held at the SMX, Mall of Asia in Pasay. This full day event is designed to help existing and future leaders, entrepreneurs, investors, and other interested individuals achieve outstanding financial results in an increasingly competitive world.</em></span></p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em> </em></span></p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em>At the <strong>Masters of Wealth</strong>, Robert Kiyosaki will lead an elite team of specialist speakers who will share today''s must-know'' strategies to fast track your wealth. They will be sharing the strategies they use for dramatic wealth creation in any economic climate. </em></span></p>\r\n</div>\r\n</div>\r\n</div>', 500, 'Kiyosaki_-_Live_in_Manila_VIP', 1, 0, 1446468840, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257635, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kiyosaki-live-in-manila-vip', '0.0000000', '0.0000000', '', 0, ''),
+(9, 0, 'Kiyosaki - Live in Manila GOLD', '<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<h1 class="artist-title" style="font-family: Helvetica, Arial, sans-serif; font-size: 32px; color: #646464;">Robert Kiyosaki Live in Manila with Masters of Wealth</h1>\r\n<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;"> </div>\r\n<div class="fright" style="float: right; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Multiple Venues<br />11/30/2015</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal; clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;">\r\n<div style="text-align: center;"><img style="border: 0px; outline: none;" src="http://www.ticketnet.com.ph/Content/images/Robert%20Kiyosaki%20Perks.png" alt="" width="345" height="263" />\r\n<p style="text-align: justify;"> </p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em>The <strong>Masters of Wealth</strong> is a one-day landmark event with Robert Kiyosaki and six (6) other international speakers to be held at the SMX, Mall of Asia in Pasay. This full day event is designed to help existing and future leaders, entrepreneurs, investors, and other interested individuals achieve outstanding financial results in an increasingly competitive world.</em></span></p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em> </em></span></p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em>At the <strong>Masters of Wealth</strong>, Robert Kiyosaki will lead an elite team of specialist speakers who will share today''s must-know'' strategies to fast track your wealth. They will be sharing the strategies they use for dramatic wealth creation in any economic climate. </em></span></p>\r\n</div>\r\n</div>\r\n</div>', 2000, 'Kiyosaki_-_Live_in_Manila_Gold', 1, 2, 1446468886, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257652, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 1447258078, 0, 0, '', 0, 0, '', 'kiyosaki-live-in-manila-premium', '0.0000000', '0.0000000', '', 0, ''),
+(10, 0, 'Kiyosaki - Live in Manila Silver', '<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; line-height: normal;">\r\n<h1 class="artist-title" style="font-family: Helvetica, Arial, sans-serif; font-size: 32px; color: #646464;">Robert Kiyosaki Live in Manila with Masters of Wealth</h1>\r\n<div class="fleft" style="float: left; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;"> </div>\r\n<div class="fright" style="float: right; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;"><span class="artist-venue" style="font-family: Helvetica, Arial, sans-serif; font-size: 16px; color: #646464;">Multiple Venues<br />11/30/2015</span></div>\r\n<div style="color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal; clear: both;"> </div>\r\n<div class="artist-desc" style="margin-top: 25px; color: #000000; font-family: ''Times New Roman''; font-size: medium; font-weight: normal;">\r\n<div style="text-align: center;"><img style="border: 0px; outline: none;" src="http://www.ticketnet.com.ph/Content/images/Robert%20Kiyosaki%20Perks.png" alt="" width="345" height="263" />\r\n<p style="text-align: justify;"> </p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em>The <strong>Masters of Wealth</strong> is a one-day landmark event with Robert Kiyosaki and six (6) other international speakers to be held at the SMX, Mall of Asia in Pasay. This full day event is designed to help existing and future leaders, entrepreneurs, investors, and other interested individuals achieve outstanding financial results in an increasingly competitive world.</em></span></p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em> </em></span></p>\r\n<p style="text-align: justify;"><span style="font-family: ''trebuchet ms'', geneva;"><em>At the <strong>Masters of Wealth</strong>, Robert Kiyosaki will lead an elite team of specialist speakers who will share today''s must-know'' strategies to fast track your wealth. They will be sharing the strategies they use for dramatic wealth creation in any economic climate. </em></span></p>\r\n</div>\r\n</div>\r\n</div>', 5000, 'Kiyosaki_-_Live_in_Manila_Silver', 1, 0, 1446468912, 0, 0, 0, 11, 'main', 0, 0, '', '0.000', '', 'kg', 1447257624, '', 'm', '0.000', '0.000', '0.000', 0, 'all', '', 0, 0, 0, 0, 0, 0, '', 0, 0, '', 'kiyosaki-live-in-manila-gen-ad', '0.0000000', '0.0000000', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -3201,28 +3235,28 @@ INSERT INTO `jt_hikashop_product` (`product_id`, `product_parent_id`, `product_n
 -- Table structure for table `jt_hikashop_product_category`
 --
 
-CREATE TABLE `jt_hikashop_product_category` (
-  `product_category_id` int(255) UNSIGNED NOT NULL,
-  `category_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `jt_hikashop_product_category` (
+  `product_category_id` int(255) unsigned NOT NULL,
+  `category_id` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
+  `ordering` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_product_category`
 --
 
 INSERT INTO `jt_hikashop_product_category` (`product_category_id`, `category_id`, `product_id`, `ordering`) VALUES
-(42, 12, 1, 1),
-(41, 12, 2, 2),
-(39, 12, 3, 3),
-(44, 12, 4, 8),
-(45, 12, 5, 9),
-(37, 12, 6, 7),
-(43, 12, 7, 4),
-(35, 12, 8, 5),
-(46, 12, 9, 10),
-(33, 12, 10, 6);
+(48, 12, 1, 1),
+(49, 12, 2, 2),
+(50, 12, 3, 3),
+(61, 12, 4, 8),
+(63, 12, 5, 9),
+(64, 12, 6, 7),
+(51, 12, 7, 4),
+(59, 12, 8, 5),
+(60, 12, 9, 10),
+(58, 12, 10, 6);
 
 -- --------------------------------------------------------
 
@@ -3230,11 +3264,11 @@ INSERT INTO `jt_hikashop_product_category` (`product_category_id`, `category_id`
 -- Table structure for table `jt_hikashop_product_related`
 --
 
-CREATE TABLE `jt_hikashop_product_related` (
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `product_related_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_product_related` (
+  `product_id` int(10) unsigned NOT NULL,
+  `product_related_id` int(10) unsigned NOT NULL,
   `product_related_type` varchar(255) NOT NULL DEFAULT 'related',
-  `product_related_ordering` int(10) UNSIGNED DEFAULT '0'
+  `product_related_ordering` int(10) unsigned DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3243,30 +3277,30 @@ CREATE TABLE `jt_hikashop_product_related` (
 -- Table structure for table `jt_hikashop_shipping`
 --
 
-CREATE TABLE `jt_hikashop_shipping` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_shipping` (
   `shipping_id` int(11) NOT NULL,
   `shipping_type` varchar(255) NOT NULL DEFAULT 'manual',
   `shipping_zone_namekey` varchar(255) NOT NULL,
-  `shipping_tax_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `shipping_tax_id` int(10) unsigned NOT NULL DEFAULT '0',
   `shipping_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `shipping_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `shipping_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
   `shipping_name` varchar(255) NOT NULL,
   `shipping_description` text NOT NULL,
   `shipping_published` tinyint(4) NOT NULL DEFAULT '1',
-  `shipping_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `shipping_ordering` int(10) unsigned NOT NULL DEFAULT '0',
   `shipping_currency` varchar(255) NOT NULL,
   `shipping_params` text NOT NULL,
   `shipping_images` varchar(255) NOT NULL DEFAULT '',
   `shipping_access` varchar(255) NOT NULL DEFAULT 'all'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_shipping`
 --
 
 INSERT INTO `jt_hikashop_shipping` (`shipping_id`, `shipping_type`, `shipping_zone_namekey`, `shipping_tax_id`, `shipping_price`, `shipping_currency_id`, `shipping_name`, `shipping_description`, `shipping_published`, `shipping_ordering`, `shipping_currency`, `shipping_params`, `shipping_images`, `shipping_access`) VALUES
-(3, 'manual', 'country_Philippines_168', 0, '250.00000', 123, 'Fedex', '', 1, 1, '', 'O:8:"stdClass":23:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";}', 'fedex', 'all'),
-(4, 'manual', 'country_Philippines_168', 0, '250.00000', 123, 'UPS', '', 1, 2, ',123,', 'O:8:"stdClass":23:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";}', 'ups', 'all');
+(3, 'manual', 'country_Philippines_168', 0, '250.00000', 123, 'Fedex', '<p>Ship Thru Fedex</p>', 1, 1, '', 'O:8:"stdClass":23:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";}', 'fedex', 'all'),
+(4, 'manual', 'country_Philippines_168', 0, '250.00000', 123, 'UPS', '<p>Ship Thru UPS</p>', 1, 2, ',123,', 'O:8:"stdClass":23:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";}', 'ups', 'all');
 
 -- --------------------------------------------------------
 
@@ -3274,7 +3308,7 @@ INSERT INTO `jt_hikashop_shipping` (`shipping_id`, `shipping_type`, `shipping_zo
 -- Table structure for table `jt_hikashop_shipping_price`
 --
 
-CREATE TABLE `jt_hikashop_shipping_price` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_shipping_price` (
   `shipping_price_id` int(11) NOT NULL,
   `shipping_id` int(11) NOT NULL,
   `shipping_price_ref_id` int(11) NOT NULL,
@@ -3290,7 +3324,7 @@ CREATE TABLE `jt_hikashop_shipping_price` (
 -- Table structure for table `jt_hikashop_tax`
 --
 
-CREATE TABLE `jt_hikashop_tax` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_tax` (
   `tax_namekey` varchar(255) NOT NULL,
   `tax_rate` decimal(17,5) NOT NULL DEFAULT '0.00000'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3308,8 +3342,8 @@ INSERT INTO `jt_hikashop_tax` (`tax_namekey`, `tax_rate`) VALUES
 -- Table structure for table `jt_hikashop_taxation`
 --
 
-CREATE TABLE `jt_hikashop_taxation` (
-  `taxation_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_taxation` (
+  `taxation_id` int(10) unsigned NOT NULL,
   `zone_namekey` varchar(255) NOT NULL,
   `category_namekey` varchar(255) NOT NULL,
   `tax_namekey` varchar(255) NOT NULL,
@@ -3318,13 +3352,13 @@ CREATE TABLE `jt_hikashop_taxation` (
   `taxation_access` varchar(255) NOT NULL DEFAULT 'all',
   `taxation_cumulative` tinyint(4) DEFAULT NULL,
   `taxation_post_code` varchar(255) NOT NULL DEFAULT '',
-  `taxation_date_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `taxation_date_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `taxation_date_start` int(10) unsigned NOT NULL DEFAULT '0',
+  `taxation_date_end` int(10) unsigned NOT NULL DEFAULT '0',
   `taxation_internal_code` varchar(15) NOT NULL DEFAULT '' COMMENT 'Accounting internal code',
   `taxation_note` text NOT NULL COMMENT 'Note to add in the invoice when this tax is used - It uses the language file for the translation',
   `taxation_site_id` varchar(255) NOT NULL DEFAULT '' COMMENT 'Reference to JMS site ID',
-  `taxation_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `taxation_ordering` int(10) unsigned NOT NULL DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_taxation`
@@ -3340,22 +3374,22 @@ INSERT INTO `jt_hikashop_taxation` (`taxation_id`, `zone_namekey`, `category_nam
 -- Table structure for table `jt_hikashop_user`
 --
 
-CREATE TABLE `jt_hikashop_user` (
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `user_cms_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_user` (
+  `user_id` int(10) unsigned NOT NULL,
+  `user_cms_id` int(10) unsigned NOT NULL,
   `user_email` varchar(255) NOT NULL DEFAULT '',
   `user_partner_email` varchar(255) NOT NULL,
   `user_params` text NOT NULL,
-  `user_partner_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `user_partner_id` int(10) unsigned NOT NULL DEFAULT '0',
   `user_partner_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `user_partner_paid` tinyint(4) NOT NULL DEFAULT '0',
   `user_created_ip` varchar(255) NOT NULL DEFAULT '',
   `user_unpaid_amount` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `user_partner_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `user_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `user_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `user_partner_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_created` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
   `user_partner_activated` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_user`
@@ -3363,7 +3397,8 @@ CREATE TABLE `jt_hikashop_user` (
 
 INSERT INTO `jt_hikashop_user` (`user_id`, `user_cms_id`, `user_email`, `user_partner_email`, `user_params`, `user_partner_id`, `user_partner_price`, `user_partner_paid`, `user_created_ip`, `user_unpaid_amount`, `user_partner_currency_id`, `user_created`, `user_currency_id`, `user_partner_activated`) VALUES
 (1, 326, 'adriandean12@gmail.com', '', '', 0, '0.00000', 0, '', '0.00000', 0, 1446280404, 0, 0),
-(2, 327, 'albert.landayan.14@gmail.com', '', '', 0, '0.00000', 0, '', '0.00000', 0, 1446469625, 0, 0);
+(2, 327, 'albert.landayan.14@gmail.com', '', '', 0, '0.00000', 0, '', '0.00000', 0, 1446469625, 0, 0),
+(3, 328, 'asd@yahoo.com', '', '', 0, '0.00000', 0, '127.0.0.1', '0.00000', 0, 1447558452, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -3371,10 +3406,10 @@ INSERT INTO `jt_hikashop_user` (`user_id`, `user_cms_id`, `user_email`, `user_pa
 -- Table structure for table `jt_hikashop_variant`
 --
 
-CREATE TABLE `jt_hikashop_variant` (
-  `variant_characteristic_id` int(10) UNSIGNED NOT NULL,
-  `variant_product_id` int(10) UNSIGNED NOT NULL,
-  `ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
+CREATE TABLE IF NOT EXISTS `jt_hikashop_variant` (
+  `variant_characteristic_id` int(10) unsigned NOT NULL,
+  `variant_product_id` int(10) unsigned NOT NULL,
+  `ordering` int(10) unsigned NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3383,8 +3418,8 @@ CREATE TABLE `jt_hikashop_variant` (
 -- Table structure for table `jt_hikashop_vote`
 --
 
-CREATE TABLE `jt_hikashop_vote` (
-  `vote_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_vote` (
+  `vote_id` int(11) unsigned NOT NULL,
   `vote_ref_id` int(11) NOT NULL,
   `vote_type` varchar(15) NOT NULL,
   `vote_user_id` varchar(255) NOT NULL,
@@ -3394,7 +3429,7 @@ CREATE TABLE `jt_hikashop_vote` (
   `vote_pseudo` varchar(255) NOT NULL,
   `vote_ip` varchar(255) NOT NULL,
   `vote_email` varchar(255) NOT NULL,
-  `vote_date` int(10) UNSIGNED NOT NULL,
+  `vote_date` int(10) unsigned NOT NULL,
   `vote_published` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -3404,7 +3439,7 @@ CREATE TABLE `jt_hikashop_vote` (
 -- Table structure for table `jt_hikashop_vote_user`
 --
 
-CREATE TABLE `jt_hikashop_vote_user` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_vote_user` (
   `vote_user_id` int(11) NOT NULL,
   `vote_user_user_id` varchar(26) NOT NULL,
   `vote_user_useful` tinyint(4) NOT NULL
@@ -3416,7 +3451,7 @@ CREATE TABLE `jt_hikashop_vote_user` (
 -- Table structure for table `jt_hikashop_waitlist`
 --
 
-CREATE TABLE `jt_hikashop_waitlist` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_waitlist` (
   `waitlist_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `date` int(11) NOT NULL,
@@ -3431,7 +3466,7 @@ CREATE TABLE `jt_hikashop_waitlist` (
 -- Table structure for table `jt_hikashop_warehouse`
 --
 
-CREATE TABLE `jt_hikashop_warehouse` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_warehouse` (
   `warehouse_id` int(10) NOT NULL,
   `warehouse_name` varchar(255) NOT NULL DEFAULT '',
   `warehouse_published` tinyint(4) NOT NULL DEFAULT '1',
@@ -3447,14 +3482,14 @@ CREATE TABLE `jt_hikashop_warehouse` (
 -- Table structure for table `jt_hikashop_widget`
 --
 
-CREATE TABLE `jt_hikashop_widget` (
-  `widget_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_widget` (
+  `widget_id` int(10) unsigned NOT NULL,
   `widget_name` varchar(255) NOT NULL,
   `widget_params` text NOT NULL,
   `widget_published` tinyint(4) NOT NULL DEFAULT '0',
   `widget_ordering` int(11) NOT NULL DEFAULT '0',
   `widget_access` varchar(250) NOT NULL DEFAULT 'all'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_widget`
@@ -3479,8 +3514,8 @@ INSERT INTO `jt_hikashop_widget` (`widget_id`, `widget_name`, `widget_params`, `
 -- Table structure for table `jt_hikashop_zone`
 --
 
-CREATE TABLE `jt_hikashop_zone` (
-  `zone_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_hikashop_zone` (
+  `zone_id` int(10) unsigned NOT NULL,
   `zone_namekey` varchar(255) NOT NULL,
   `zone_name` varchar(255) NOT NULL,
   `zone_name_english` varchar(255) NOT NULL,
@@ -3488,8 +3523,8 @@ CREATE TABLE `jt_hikashop_zone` (
   `zone_code_3` varchar(255) NOT NULL,
   `zone_type` varchar(255) NOT NULL DEFAULT 'country',
   `zone_published` tinyint(4) NOT NULL DEFAULT '0',
-  `zone_currency_id` int(10) UNSIGNED DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `zone_currency_id` int(10) unsigned DEFAULT '0'
+) ENGINE=MyISAM AUTO_INCREMENT=4569 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_zone`
@@ -7803,7 +7838,7 @@ INSERT INTO `jt_hikashop_zone` (`zone_id`, `zone_namekey`, `zone_name`, `zone_na
 -- Table structure for table `jt_hikashop_zone_link`
 --
 
-CREATE TABLE `jt_hikashop_zone_link` (
+CREATE TABLE IF NOT EXISTS `jt_hikashop_zone_link` (
   `zone_parent_namekey` varchar(255) NOT NULL,
   `zone_child_namekey` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -11910,7 +11945,7 @@ INSERT INTO `jt_hikashop_zone_link` (`zone_parent_namekey`, `zone_child_namekey`
 -- Table structure for table `jt_imageshow_images`
 --
 
-CREATE TABLE `jt_imageshow_images` (
+CREATE TABLE IF NOT EXISTS `jt_imageshow_images` (
   `image_id` int(11) NOT NULL,
   `showlist_id` int(11) NOT NULL,
   `image_extid` varchar(255) DEFAULT NULL,
@@ -11927,7 +11962,7 @@ CREATE TABLE `jt_imageshow_images` (
   `image_size` varchar(25) DEFAULT NULL,
   `exif_data` text,
   `image_alt_text` text
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_images`
@@ -11949,15 +11984,15 @@ INSERT INTO `jt_imageshow_images` (`image_id`, `showlist_id`, `image_extid`, `al
 -- Table structure for table `jt_imageshow_log`
 --
 
-CREATE TABLE `jt_imageshow_log` (
-  `log_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_log` (
+  `log_id` int(11) unsigned NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `result` varchar(255) DEFAULT NULL,
   `screen` varchar(100) DEFAULT NULL,
   `action` varchar(50) DEFAULT NULL,
   `time_created` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_log`
@@ -11985,8 +12020,8 @@ INSERT INTO `jt_imageshow_log` (`log_id`, `user_id`, `url`, `result`, `screen`, 
 -- Table structure for table `jt_imageshow_showcase`
 --
 
-CREATE TABLE `jt_imageshow_showcase` (
-  `showcase_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_showcase` (
+  `showcase_id` int(11) unsigned NOT NULL,
   `showcase_title` varchar(255) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '0',
   `ordering` int(11) DEFAULT '0',
@@ -11994,7 +12029,7 @@ CREATE TABLE `jt_imageshow_showcase` (
   `general_overall_height` char(30) DEFAULT NULL,
   `date_created` datetime DEFAULT '0000-00-00 00:00:00',
   `date_modified` datetime DEFAULT '0000-00-00 00:00:00'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_showcase`
@@ -12016,7 +12051,7 @@ INSERT INTO `jt_imageshow_showcase` (`showcase_id`, `showcase_title`, `published
 -- Table structure for table `jt_imageshow_showlist`
 --
 
-CREATE TABLE `jt_imageshow_showlist` (
+CREATE TABLE IF NOT EXISTS `jt_imageshow_showlist` (
   `showlist_id` int(11) NOT NULL,
   `showlist_title` varchar(255) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '0',
@@ -12037,7 +12072,7 @@ CREATE TABLE `jt_imageshow_showlist` (
   `date_modified` datetime DEFAULT '0000-00-00 00:00:00',
   `image_loading_order` char(30) DEFAULT NULL,
   `show_exif_data` char(100) DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_showlist`
@@ -12054,10 +12089,10 @@ INSERT INTO `jt_imageshow_showlist` (`showlist_id`, `showlist_title`, `published
 -- Table structure for table `jt_imageshow_source_profile`
 --
 
-CREATE TABLE `jt_imageshow_source_profile` (
+CREATE TABLE IF NOT EXISTS `jt_imageshow_source_profile` (
   `external_source_profile_id` int(11) NOT NULL,
   `external_source_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_source_profile`
@@ -12072,8 +12107,8 @@ INSERT INTO `jt_imageshow_source_profile` (`external_source_profile_id`, `extern
 -- Table structure for table `jt_imageshow_theme_carousel`
 --
 
-CREATE TABLE `jt_imageshow_theme_carousel` (
-  `theme_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_carousel` (
+  `theme_id` int(11) unsigned NOT NULL,
   `image_source` char(150) DEFAULT 'thumbnails',
   `image_width` char(150) DEFAULT '',
   `image_height` char(150) DEFAULT '',
@@ -12100,7 +12135,7 @@ CREATE TABLE `jt_imageshow_theme_carousel` (
   `auto_play` char(150) DEFAULT 'no',
   `slide_timing` char(150) DEFAULT '3',
   `pause_on_mouse_over` char(150) DEFAULT 'yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_carousel`
@@ -12115,8 +12150,8 @@ INSERT INTO `jt_imageshow_theme_carousel` (`theme_id`, `image_source`, `image_wi
 -- Table structure for table `jt_imageshow_theme_classic_flash`
 --
 
-CREATE TABLE `jt_imageshow_theme_classic_flash` (
-  `theme_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_flash` (
+  `theme_id` int(11) unsigned NOT NULL,
   `imgpanel_presentation_mode` char(30) DEFAULT '0',
   `imgpanel_img_transition_type_fit` char(30) DEFAULT '',
   `imgpanel_img_click_action_fit` char(30) DEFAULT '',
@@ -12193,8 +12228,8 @@ CREATE TABLE `jt_imageshow_theme_classic_flash` (
 -- Table structure for table `jt_imageshow_theme_classic_javascript`
 --
 
-CREATE TABLE `jt_imageshow_theme_classic_javascript` (
-  `theme_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_javascript` (
+  `theme_id` int(11) unsigned NOT NULL,
   `imgpanel_presentation_mode` char(30) DEFAULT '0',
   `imgpanel_img_click_action_fit` char(30) DEFAULT '',
   `imgpanel_img_open_link_in_fit` char(30) DEFAULT 'new-browser',
@@ -12230,7 +12265,7 @@ CREATE TABLE `jt_imageshow_theme_classic_javascript` (
   `general_border_color` char(30) DEFAULT '',
   `general_background_color` char(30) DEFAULT '',
   `general_border_stroke` char(30) DEFAULT ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_classic_javascript`
@@ -12245,11 +12280,11 @@ INSERT INTO `jt_imageshow_theme_classic_javascript` (`theme_id`, `imgpanel_prese
 -- Table structure for table `jt_imageshow_theme_classic_parameters`
 --
 
-CREATE TABLE `jt_imageshow_theme_classic_parameters` (
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_parameters` (
   `id` int(11) NOT NULL,
   `general_swf_library` tinyint(1) DEFAULT '0',
   `root_url` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_classic_parameters`
@@ -12264,8 +12299,8 @@ INSERT INTO `jt_imageshow_theme_classic_parameters` (`id`, `general_swf_library`
 -- Table structure for table `jt_imageshow_theme_flow`
 --
 
-CREATE TABLE `jt_imageshow_theme_flow` (
-  `theme_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_flow` (
+  `theme_id` int(11) unsigned NOT NULL,
   `image_source` char(150) DEFAULT 'thumbnails',
   `image_width` char(150) DEFAULT '150',
   `image_height` char(150) DEFAULT '150',
@@ -12294,7 +12329,7 @@ CREATE TABLE `jt_imageshow_theme_flow` (
   `auto_play` char(150) DEFAULT 'no',
   `slide_timing` char(150) DEFAULT '3',
   `pause_on_mouse_over` char(150) DEFAULT 'yes'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_flow`
@@ -12309,8 +12344,8 @@ INSERT INTO `jt_imageshow_theme_flow` (`theme_id`, `image_source`, `image_width`
 -- Table structure for table `jt_imageshow_theme_grid`
 --
 
-CREATE TABLE `jt_imageshow_theme_grid` (
-  `theme_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_grid` (
+  `theme_id` int(11) unsigned NOT NULL,
   `img_layout` char(5) DEFAULT 'fixed',
   `background_color` char(30) DEFAULT '#ffffff',
   `thumbnail_width` int(11) DEFAULT '50',
@@ -12329,7 +12364,7 @@ CREATE TABLE `jt_imageshow_theme_grid` (
   `open_link_in` char(150) DEFAULT 'current_browser',
   `container_height_type` char(150) DEFAULT 'inherited',
   `container_transparent_background` char(150) DEFAULT 'no'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_grid`
@@ -12344,7 +12379,7 @@ INSERT INTO `jt_imageshow_theme_grid` (`theme_id`, `img_layout`, `background_col
 -- Table structure for table `jt_imageshow_theme_profile`
 --
 
-CREATE TABLE `jt_imageshow_theme_profile` (
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_profile` (
   `theme_id` int(11) NOT NULL DEFAULT '0',
   `showcase_id` int(11) NOT NULL DEFAULT '0',
   `theme_name` varchar(255) NOT NULL DEFAULT '',
@@ -12371,8 +12406,8 @@ INSERT INTO `jt_imageshow_theme_profile` (`theme_id`, `showcase_id`, `theme_name
 -- Table structure for table `jt_imageshow_theme_slider`
 --
 
-CREATE TABLE `jt_imageshow_theme_slider` (
-  `theme_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_slider` (
+  `theme_id` int(11) unsigned NOT NULL,
   `img_transition_effect` char(30) DEFAULT 'random',
   `toolbar_navigation_arrows_presentation` char(30) DEFAULT 'show-on-mouse-over',
   `toolbar_slideshow_player_presentation` char(30) DEFAULT 'hide',
@@ -12395,7 +12430,7 @@ CREATE TABLE `jt_imageshow_theme_slider` (
   `click_action` char(150) DEFAULT 'no_action',
   `open_link_in` char(150) DEFAULT 'current_browser',
   `img_transparent_background` char(150) DEFAULT 'no'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_slider`
@@ -12411,8 +12446,8 @@ INSERT INTO `jt_imageshow_theme_slider` (`theme_id`, `img_transition_effect`, `t
 -- Table structure for table `jt_imageshow_theme_strip`
 --
 
-CREATE TABLE `jt_imageshow_theme_strip` (
-  `theme_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_strip` (
+  `theme_id` int(11) unsigned NOT NULL,
   `slideshow_sliding_speed` char(150) NOT NULL DEFAULT '500',
   `image_orientation` char(150) NOT NULL DEFAULT 'horizontal',
   `image_width` char(150) NOT NULL DEFAULT '130',
@@ -12441,7 +12476,7 @@ CREATE TABLE `jt_imageshow_theme_strip` (
   `open_link_in` char(150) DEFAULT 'current_browser',
   `slideshow_auto_play` char(150) DEFAULT 'no',
   `slideshow_delay_time` char(150) DEFAULT '3000'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_strip`
@@ -12457,7 +12492,7 @@ INSERT INTO `jt_imageshow_theme_strip` (`theme_id`, `slideshow_sliding_speed`, `
 -- Table structure for table `jt_jsn_easyslider_config`
 --
 
-CREATE TABLE `jt_jsn_easyslider_config` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12477,7 +12512,7 @@ INSERT INTO `jt_jsn_easyslider_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_easyslider_item_templates`
 --
 
-CREATE TABLE `jt_jsn_easyslider_item_templates` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_item_templates` (
   `model_id` int(11) NOT NULL,
   `collection_id` varchar(30) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -12491,7 +12526,7 @@ CREATE TABLE `jt_jsn_easyslider_item_templates` (
 -- Table structure for table `jt_jsn_easyslider_messages`
 --
 
-CREATE TABLE `jt_jsn_easyslider_messages` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -12504,14 +12539,14 @@ CREATE TABLE `jt_jsn_easyslider_messages` (
 -- Table structure for table `jt_jsn_easyslider_sliders`
 --
 
-CREATE TABLE `jt_jsn_easyslider_sliders` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_sliders` (
   `slider_id` int(11) NOT NULL,
   `slider_title` varchar(255) NOT NULL,
   `slider_data` longtext,
   `published` int(11) NOT NULL,
   `ordering` int(11) NOT NULL,
   `access` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_easyslider_sliders`
@@ -12526,7 +12561,7 @@ INSERT INTO `jt_jsn_easyslider_sliders` (`slider_id`, `slider_title`, `slider_da
 -- Table structure for table `jt_jsn_easyslider_slide_templates`
 --
 
-CREATE TABLE `jt_jsn_easyslider_slide_templates` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_slide_templates` (
   `model_id` int(11) NOT NULL,
   `collection_id` varchar(30) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -12540,7 +12575,7 @@ CREATE TABLE `jt_jsn_easyslider_slide_templates` (
 -- Table structure for table `jt_jsn_imageshow_config`
 --
 
-CREATE TABLE `jt_jsn_imageshow_config` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_imageshow_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12564,12 +12599,12 @@ INSERT INTO `jt_jsn_imageshow_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_imageshow_messages`
 --
 
-CREATE TABLE `jt_jsn_imageshow_messages` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_imageshow_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
   `ordering` int(11) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_imageshow_messages`
@@ -12586,7 +12621,7 @@ INSERT INTO `jt_jsn_imageshow_messages` (`msg_id`, `msg_screen`, `published`, `o
 -- Table structure for table `jt_jsn_mobilize_config`
 --
 
-CREATE TABLE `jt_jsn_mobilize_config` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12608,12 +12643,12 @@ INSERT INTO `jt_jsn_mobilize_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_mobilize_design`
 --
 
-CREATE TABLE `jt_jsn_mobilize_design` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_design` (
   `design_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_design`
@@ -12649,7 +12684,7 @@ INSERT INTO `jt_jsn_mobilize_design` (`design_id`, `profile_id`, `name`, `value`
 -- Table structure for table `jt_jsn_mobilize_messages`
 --
 
-CREATE TABLE `jt_jsn_mobilize_messages` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -12662,13 +12697,13 @@ CREATE TABLE `jt_jsn_mobilize_messages` (
 -- Table structure for table `jt_jsn_mobilize_os`
 --
 
-CREATE TABLE `jt_jsn_mobilize_os` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_os` (
   `os_id` int(11) NOT NULL,
   `os_value` varchar(255) NOT NULL,
   `os_type` varchar(50) NOT NULL,
   `os_title` varchar(255) NOT NULL,
   `os_order` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_os`
@@ -12694,11 +12729,11 @@ INSERT INTO `jt_jsn_mobilize_os` (`os_id`, `os_value`, `os_type`, `os_title`, `o
 -- Table structure for table `jt_jsn_mobilize_os_support`
 --
 
-CREATE TABLE `jt_jsn_mobilize_os_support` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_os_support` (
   `support_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `os_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_os_support`
@@ -12716,7 +12751,7 @@ INSERT INTO `jt_jsn_mobilize_os_support` (`support_id`, `profile_id`, `os_id`) V
 -- Table structure for table `jt_jsn_mobilize_profiles`
 --
 
-CREATE TABLE `jt_jsn_mobilize_profiles` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_profiles` (
   `profile_id` int(11) NOT NULL,
   `profile_title` varchar(255) NOT NULL,
   `profile_description` text NOT NULL,
@@ -12725,7 +12760,7 @@ CREATE TABLE `jt_jsn_mobilize_profiles` (
   `profile_optimize_images` int(11) NOT NULL,
   `ordering` int(11) NOT NULL,
   `profile_device` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_profiles`
@@ -12740,7 +12775,7 @@ INSERT INTO `jt_jsn_mobilize_profiles` (`profile_id`, `profile_title`, `profile_
 -- Table structure for table `jt_jsn_pagebuilder_config`
 --
 
-CREATE TABLE `jt_jsn_pagebuilder_config` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12751,9 +12786,9 @@ CREATE TABLE `jt_jsn_pagebuilder_config` (
 -- Table structure for table `jt_jsn_pagebuilder_content_custom_css`
 --
 
-CREATE TABLE `jt_jsn_pagebuilder_content_custom_css` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `content` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_content_custom_css` (
+  `id` bigint(20) unsigned NOT NULL,
+  `content` bigint(20) unsigned NOT NULL DEFAULT '0',
   `css_key` varchar(255) DEFAULT NULL,
   `css_value` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12764,7 +12799,7 @@ CREATE TABLE `jt_jsn_pagebuilder_content_custom_css` (
 -- Table structure for table `jt_jsn_pagebuilder_messages`
 --
 
-CREATE TABLE `jt_jsn_pagebuilder_messages` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -12777,7 +12812,7 @@ CREATE TABLE `jt_jsn_pagebuilder_messages` (
 -- Table structure for table `jt_jsn_poweradmin_config`
 --
 
-CREATE TABLE `jt_jsn_poweradmin_config` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12795,7 +12830,7 @@ INSERT INTO `jt_jsn_poweradmin_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_poweradmin_favourite`
 --
 
-CREATE TABLE `jt_jsn_poweradmin_favourite` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_favourite` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(500) NOT NULL,
@@ -12810,9 +12845,9 @@ CREATE TABLE `jt_jsn_poweradmin_favourite` (
 -- Table structure for table `jt_jsn_poweradmin_history`
 --
 
-CREATE TABLE `jt_jsn_poweradmin_history` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_history` (
   `id` int(11) NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
   `object_key` varchar(255) NOT NULL,
   `object_id` int(11) NOT NULL,
   `component` varchar(255) NOT NULL,
@@ -12826,8 +12861,8 @@ CREATE TABLE `jt_jsn_poweradmin_history` (
   `icon` varchar(255) NOT NULL,
   `css` varchar(100) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `visited` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `visited` int(10) unsigned NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_jsn_poweradmin_history`
@@ -12847,12 +12882,23 @@ INSERT INTO `jt_jsn_poweradmin_history` (`id`, `user_id`, `object_key`, `object_
 (11, 326, 'option=com_comprofiler&view=editrow&task=editrow', 7, '', '', '', 'Default', '', '', '', 'option=com_comprofiler&view=editrow&table=pluginsbrowser&action=editrow&cid=7&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dQbHVnaW5zJnRhc2s9c2hvd1BsdWdpbnM%3D', '', '', 0, 1446283486),
 (12, 326, 'option=com_menus&view=item&layout=edit', 1990, '', '', '', 'bannerad', '', '', '', 'option=com_menus&view=item&layout=edit&id=1990', '', '', 0, 1446287342),
 (13, 326, 'option=com_modules&view=module&layout=edit', 314, '', '', '', 'bannerad', '', '', '', 'option=com_modules&view=module&layout=edit&id=314', '', '', 0, 1446287926),
-(14, 326, 'option=com_menus&view=item&layout=edit', 1991, '', '', '', 'News', '', '', '', 'option=com_menus&view=item&layout=edit&id=1991', '', '', 0, 1446302559),
-(15, 326, 'option=com_menus&view=item&layout=edit', 1958, '', '', '', 'Brands listing', '', '', '', 'option=com_menus&view=item&layout=edit&id=1958', '', '', 0, 1446472577),
-(16, 326, 'option=com_menus&view=item&layout=edit', 1956, '', '', '', 'User control panel', '', '', '', 'option=com_menus&view=item&layout=edit&id=1956', '', '', 0, 1446468445),
-(17, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 1, '', '', '', 'FedEx', '	', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=shipping&task=edit&name=fedex&subtask=shipping_edit&shipping_id=1', '', '', 0, 1446471899),
-(18, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 2, '', '', '', 'UPS', '	', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=shipping&task=edit&name=ups&subtask=shipping_edit&shipping_id=2', '', '', 0, 1446471917),
-(19, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 4, '', '', '', 'UPS', '	', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=shipping&task=edit&name=manual&subtask=shipping_edit&shipping_id=4', '', '', 0, 1446472098);
+(14, 326, 'option=com_menus&view=item&layout=edit', 1991, '', '', '', 'News', '', '', '', 'option=com_menus&view=item&layout=edit&id=1991', '', '', 0, 1447600153),
+(15, 326, 'option=com_menus&view=item&layout=edit', 1958, '', '', '', 'Products Listing', '', '', '', 'option=com_menus&view=item&layout=edit&id=1958', '', '', 0, 1446651307),
+(16, 326, 'option=com_menus&view=item&layout=edit', 1956, '', '', '', 'User control panel', '', '', '', 'option=com_menus&view=item&layout=edit&id=1956', '', '', 0, 1447571980),
+(17, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 1, '', '', '', 'Bank transfer', '	You can pay by sending us a bank transfer.', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=payment&task=edit&name=banktransfer&subtask=payment_edit&payment_id=1', '', '', 0, 1447256671),
+(18, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 2, '', '', '', 'Collect on delivery', '	You can pay when your package is delivered by using this payment method.', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=payment&task=edit&name=collectondelivery&subtask=payment_edit&payment_id=2', '', '', 0, 1447256696),
+(19, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 4, '', '', '', 'UPS', '	', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=shipping&task=edit&name=manual&subtask=shipping_edit&shipping_id=4', '', '', 0, 1446652105),
+(20, 326, 'option=com_modules&view=module&layout=edit', 315, '', '', '', 'Product Listing', '', '', '', 'option=com_modules&view=module&layout=edit&id=315', '', '', 0, 1446642292),
+(21, 326, 'option=com_modules&view=module&layout=edit', 17, '', '', '', 'Breadcrumbs', '', '', '', 'option=com_modules&view=module&layout=edit&id=17', '', '', 0, 1446642778),
+(22, 326, 'option=com_menus&view=item&layout=edit', 1993, '', '', '', 'User Panel', '', '', '', 'option=com_menus&view=item&layout=edit&id=1993', '', '', 0, 1446801491),
+(23, 326, 'option=com_modules&view=module&layout=edit', 305, '', '', '', 'Your Cart', '', '', '', 'option=com_modules&view=module&layout=edit&id=305', '', '', 0, 1446649848),
+(24, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 3, '', '', '', 'Fedex', '	', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=shipping&task=edit&name=manual&subtask=shipping_edit&shipping_id=3', '', '', 0, 1446652059),
+(25, 326, 'option=com_modules&view=module&layout=edit', 304, '', '', '', 'HikaShop Content Module', '', '', '', 'option=com_modules&view=module&layout=edit&id=304', '', '', 0, 1446650719),
+(26, 326, 'option=com_hikashop&view=plugins&layout=form&task=edit', 5, '', '', '', 'try', '	', '', '', 'option=com_hikashop&ctrl=plugins&plugin_type=shipping&task=edit&name=manual&subtask=shipping_edit&shipping_id=5', '', '', 0, 1446652163),
+(27, 326, 'option=com_comprofiler&view=editrow&task=editrow', 41, '', '', '', 'Name', '	_UE_REGWARN_NAME', '', '', 'option=com_comprofiler&view=editrow&table=fieldsbrowser&cid=41&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dGaWVsZCZ0YXNrPXNob3dGaWVsZA==', '', '', 0, 1446703236),
+(28, 326, 'option=com_comprofiler&view=editrow&task=editrow', 54, '', '', '', 'School/Company', '	', '', '', 'option=com_comprofiler&view=editrow&table=fieldsbrowser&cid=54&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dGaWVsZCZ0YXNrPXNob3dGaWVsZA==', '', '', 0, 1446703763),
+(29, 326, 'option=com_comprofiler&view=editrow&task=editrow', 55, '', '', '', 'Position', '	', '', '', 'option=com_comprofiler&view=editrow&table=fieldsbrowser&action=editrow&cid=55&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dGaWVsZCZ0YXNrPXNob3dGaWVsZA%3D%3D', '', '', 0, 1446703882),
+(30, 326, 'option=com_comprofiler&view=editrow&task=editrow', 51, '', '', '', '_UE_PASS', '	_UE_VALID_PASS', '', '', 'option=com_comprofiler&view=editrow&table=fieldsbrowser&action=editrow&cid=51&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dGaWVsZCZ0YXNrPXNob3dGaWVsZA%3D%3D', '', '', 0, 1446799128);
 
 -- --------------------------------------------------------
 
@@ -12860,7 +12906,7 @@ INSERT INTO `jt_jsn_poweradmin_history` (`id`, `user_id`, `object_key`, `object_
 -- Table structure for table `jt_jsn_poweradmin_menu_assets`
 --
 
-CREATE TABLE `jt_jsn_poweradmin_menu_assets` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_menu_assets` (
   `menuId` int(16) NOT NULL,
   `assets` text,
   `type` enum('css','js') NOT NULL DEFAULT 'css',
@@ -12873,7 +12919,7 @@ CREATE TABLE `jt_jsn_poweradmin_menu_assets` (
 -- Table structure for table `jt_jsn_uniform_config`
 --
 
-CREATE TABLE `jt_jsn_uniform_config` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12884,7 +12930,7 @@ CREATE TABLE `jt_jsn_uniform_config` (
 
 INSERT INTO `jt_jsn_uniform_config` (`name`, `value`) VALUES
 ('form_style', ''),
-('last_ask_for_review', '1396496879'),
+('last_ask_for_review', '1446651396'),
 ('live_update_checking', '1'),
 ('position_form_1', '{"identifier":["sd_3","sd_4","sd_5","sd_6","sd_7","sd_8","sd_9","sd_10","data_ip","data_country","data_browser","data_os","data_created_by","data_created_at"],"field_view":""sd_3","sd_4","sd_5","data_country","data_created_by","data_created_at""}');
 
@@ -12894,10 +12940,10 @@ INSERT INTO `jt_jsn_uniform_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_uniform_data`
 --
 
-CREATE TABLE `jt_jsn_uniform_data` (
-  `data_id` int(10) UNSIGNED NOT NULL,
-  `form_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_data` (
+  `data_id` int(10) unsigned NOT NULL,
+  `form_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
   `data_ip` varchar(40) NOT NULL,
   `data_country` varchar(45) NOT NULL,
   `data_country_code` varchar(4) NOT NULL,
@@ -12905,10 +12951,10 @@ CREATE TABLE `jt_jsn_uniform_data` (
   `data_browser_version` varchar(20) NOT NULL,
   `data_browser_agent` varchar(255) NOT NULL,
   `data_os` varchar(45) NOT NULL,
-  `data_created_by` int(10) UNSIGNED NOT NULL COMMENT '0 = Guest',
+  `data_created_by` int(10) unsigned NOT NULL COMMENT '0 = Guest',
   `data_created_at` datetime NOT NULL,
-  `data_state` tinyint(1) UNSIGNED NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `data_state` tinyint(1) unsigned NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_data`
@@ -12925,14 +12971,14 @@ INSERT INTO `jt_jsn_uniform_data` (`data_id`, `form_id`, `user_id`, `data_ip`, `
 -- Table structure for table `jt_jsn_uniform_emails`
 --
 
-CREATE TABLE `jt_jsn_uniform_emails` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_emails` (
   `email_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
   `email_name` varchar(70) DEFAULT NULL,
   `email_address` varchar(255) NOT NULL,
   `email_state` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_emails`
@@ -12947,7 +12993,7 @@ INSERT INTO `jt_jsn_uniform_emails` (`email_id`, `form_id`, `user_id`, `email_na
 -- Table structure for table `jt_jsn_uniform_fields`
 --
 
-CREATE TABLE `jt_jsn_uniform_fields` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_fields` (
   `field_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
   `field_type` varchar(45) NOT NULL,
@@ -12955,9 +13001,9 @@ CREATE TABLE `jt_jsn_uniform_fields` (
   `field_title` varchar(255) DEFAULT NULL,
   `field_instructions` text,
   `field_position` varchar(50) NOT NULL,
-  `field_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `field_ordering` int(10) unsigned NOT NULL DEFAULT '0',
   `field_settings` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_fields`
@@ -12979,24 +13025,24 @@ INSERT INTO `jt_jsn_uniform_fields` (`field_id`, `form_id`, `field_type`, `field
 -- Table structure for table `jt_jsn_uniform_forms`
 --
 
-CREATE TABLE `jt_jsn_uniform_forms` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_forms` (
   `form_id` int(11) NOT NULL,
   `form_title` varchar(255) NOT NULL,
   `form_description` text,
   `form_layout` varchar(50) NOT NULL,
   `form_theme` varchar(45) NOT NULL,
   `form_style` text NOT NULL,
-  `form_notify_submitter` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `form_post_action` tinyint(1) UNSIGNED NOT NULL COMMENT '1 = Redirect to URL; 2 = Redirect to Menu Item; 3 = Show Article; 4 = Show custom message',
+  `form_notify_submitter` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `form_post_action` tinyint(1) unsigned NOT NULL COMMENT '1 = Redirect to URL; 2 = Redirect to Menu Item; 3 = Show Article; 4 = Show custom message',
   `form_post_action_data` text NOT NULL,
-  `form_captcha` tinyint(1) UNSIGNED NOT NULL,
-  `form_state` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `form_captcha` tinyint(1) unsigned NOT NULL,
+  `form_state` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `form_access` int(11) NOT NULL,
-  `form_created_by` int(10) UNSIGNED NOT NULL,
+  `form_created_by` int(10) unsigned NOT NULL,
   `form_created_at` datetime DEFAULT NULL,
-  `form_modified_by` int(10) UNSIGNED DEFAULT '0',
+  `form_modified_by` int(10) unsigned DEFAULT '0',
   `form_modified_at` datetime DEFAULT NULL,
-  `form_checked_out` int(10) UNSIGNED DEFAULT '0',
+  `form_checked_out` int(10) unsigned DEFAULT '0',
   `form_checked_out_time` datetime DEFAULT NULL,
   `form_submission_cout` int(11) NOT NULL,
   `form_last_submitted` datetime NOT NULL,
@@ -13005,7 +13051,7 @@ CREATE TABLE `jt_jsn_uniform_forms` (
   `form_settings` longtext NOT NULL,
   `form_edit_submission` int(11) NOT NULL,
   `form_payment_type` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_forms`
@@ -13020,14 +13066,14 @@ INSERT INTO `jt_jsn_uniform_forms` (`form_id`, `form_title`, `form_description`,
 -- Table structure for table `jt_jsn_uniform_form_pages`
 --
 
-CREATE TABLE `jt_jsn_uniform_form_pages` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_form_pages` (
   `page_id` int(11) NOT NULL,
   `page_title` varchar(255) NOT NULL,
   `form_id` int(11) NOT NULL,
   `page_content` text NOT NULL,
   `page_template` text NOT NULL,
   `page_container` longtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_form_pages`
@@ -13042,7 +13088,7 @@ INSERT INTO `jt_jsn_uniform_form_pages` (`page_id`, `page_title`, `form_id`, `pa
 -- Table structure for table `jt_jsn_uniform_messages`
 --
 
-CREATE TABLE `jt_jsn_uniform_messages` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -13055,10 +13101,10 @@ CREATE TABLE `jt_jsn_uniform_messages` (
 -- Table structure for table `jt_jsn_uniform_submissions`
 --
 
-CREATE TABLE `jt_jsn_uniform_submissions` (
-  `submission_id` int(10) UNSIGNED NOT NULL,
-  `form_id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED DEFAULT NULL,
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submissions` (
+  `submission_id` int(10) unsigned NOT NULL,
+  `form_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned DEFAULT NULL,
   `submission_ip` varchar(40) NOT NULL,
   `submission_country` varchar(45) NOT NULL,
   `submission_country_code` varchar(4) NOT NULL,
@@ -13066,9 +13112,9 @@ CREATE TABLE `jt_jsn_uniform_submissions` (
   `submission_browser_version` varchar(20) NOT NULL,
   `submission_browser_agent` varchar(255) NOT NULL,
   `submission_os` varchar(45) NOT NULL,
-  `submission_created_by` int(10) UNSIGNED NOT NULL COMMENT '0 = Guest',
+  `submission_created_by` int(10) unsigned NOT NULL COMMENT '0 = Guest',
   `submission_created_at` datetime NOT NULL,
-  `submission_state` tinyint(1) UNSIGNED NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
+  `submission_state` tinyint(1) unsigned NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -13077,7 +13123,7 @@ CREATE TABLE `jt_jsn_uniform_submissions` (
 -- Table structure for table `jt_jsn_uniform_submissions_1`
 --
 
-CREATE TABLE `jt_jsn_uniform_submissions_1` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submissions_1` (
   `data_id` int(11) DEFAULT NULL,
   `sb_3` varchar(255) DEFAULT NULL,
   `sb_4` varchar(255) DEFAULT NULL,
@@ -13104,7 +13150,7 @@ INSERT INTO `jt_jsn_uniform_submissions_1` (`data_id`, `sb_3`, `sb_4`, `sb_5`, `
 -- Table structure for table `jt_jsn_uniform_submission_data`
 --
 
-CREATE TABLE `jt_jsn_uniform_submission_data` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submission_data` (
   `submission_data_id` int(11) NOT NULL,
   `submission_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
@@ -13119,7 +13165,7 @@ CREATE TABLE `jt_jsn_uniform_submission_data` (
 -- Table structure for table `jt_jsn_uniform_templates`
 --
 
-CREATE TABLE `jt_jsn_uniform_templates` (
+CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_templates` (
   `template_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
   `template_notify_to` tinyint(1) NOT NULL COMMENT '0 = Send to submitter; 1 = Send to added emails',
@@ -13128,7 +13174,7 @@ CREATE TABLE `jt_jsn_uniform_templates` (
   `template_subject` varchar(255) NOT NULL,
   `template_message` longtext NOT NULL,
   `template_attach` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_templates`
@@ -13144,8 +13190,8 @@ INSERT INTO `jt_jsn_uniform_templates` (`template_id`, `form_id`, `template_noti
 -- Table structure for table `jt_languages`
 --
 
-CREATE TABLE `jt_languages` (
-  `lang_id` int(11) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_languages` (
+  `lang_id` int(11) unsigned NOT NULL,
   `lang_code` char(7) NOT NULL,
   `title` varchar(50) NOT NULL,
   `title_native` varchar(50) NOT NULL,
@@ -13156,9 +13202,9 @@ CREATE TABLE `jt_languages` (
   `metadesc` text NOT NULL,
   `sitename` varchar(1024) NOT NULL DEFAULT '',
   `published` int(11) NOT NULL DEFAULT '0',
-  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `access` int(10) unsigned NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_languages`
@@ -13173,7 +13219,7 @@ INSERT INTO `jt_languages` (`lang_id`, `lang_code`, `title`, `title_native`, `se
 -- Table structure for table `jt_menu`
 --
 
-CREATE TABLE `jt_menu` (
+CREATE TABLE IF NOT EXISTS `jt_menu` (
   `id` int(11) NOT NULL,
   `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
   `title` varchar(255) NOT NULL COMMENT 'The display title of the menu item.',
@@ -13183,34 +13229,34 @@ CREATE TABLE `jt_menu` (
   `link` varchar(1024) NOT NULL COMMENT 'The actually link the menu item refers to.',
   `type` varchar(16) NOT NULL COMMENT 'The type of link: Component, URL, Alias, Separator',
   `published` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'The published state of the menu link.',
-  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
-  `level` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
-  `component_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to #__extensions.id',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to #__users.id',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
+  `level` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
+  `component_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to #__extensions.id',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to #__users.id',
   `checked_out_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'The time the menu item was checked out.',
   `browserNav` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'The click behaviour of the link.',
-  `access` int(10) UNSIGNED DEFAULT NULL,
+  `access` int(10) unsigned DEFAULT NULL,
   `img` varchar(255) NOT NULL COMMENT 'The image of the menu item.',
-  `template_style_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `template_style_id` int(10) unsigned NOT NULL DEFAULT '0',
   `params` text NOT NULL COMMENT 'JSON encoded data for the menu item.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `home` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
+  `home` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
   `language` char(7) NOT NULL DEFAULT '',
   `client_id` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1996 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_menu`
 --
 
 INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 323, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 329, 0, '*', 0),
 (435, 'mainmenu', 'Home', 'home', '', 'home', 'index.php?option=com_content&view=article&id=103', 'component', 1, 1, 1, 22, 326, '2015-10-31 06:30:44', 0, 1, ' ', 0, '{"show_title":"0","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"0","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"0","show_email_icon":"0","show_hits":"","show_tags":"","show_noauth":"","urls_position":"","menu-anchor_title":"Start here","menu-anchor_css":"jsn-icon-home","menu_image":"","menu_text":1,"page_title":"Home","show_page_heading":"0","page_heading":"","pageclass_sfx":"custom-rightwidth-35","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 1, 2, 1, '*', 0),
 (465, 'mainmenu', 'Design', 'design-and-features', '', 'design-and-features', 'index.php?option=com_content&view=article&id=70', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"Eye-Catching","menu-anchor_css":"jsn-icon-image","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 17, 42, 0, '*', 0),
 (466, 'mainmenu', 'Layout', 'layoutt', '', 'layoutt', 'index.php?option=com_content&view=article&id=71', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"36 positions","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 3, 16, 0, '*', 0),
 (467, 'mainmenu', 'Color Variations', 'color-variations', '', 'design-and-features/color-variations', 'index.php?option=com_content&view=article&id=68', 'component', 0, 465, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 18, 31, 0, '*', 0),
-(468, 'mainmenu', 'Menu Styles', 'menu-styless', '', 'menu-styless', 'index.php?option=com_content&view=article&id=72', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_tags":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"Efficient navigation","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 43, 54, 0, '*', 0),
+(468, 'mainmenu', 'Menu Styles', 'menu-styless', '', 'menu-styless', 'index.php?option=com_content&view=article&id=72', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_tags":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"Efficient navigation","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 43, 54, 0, '*', 0),
 (469, 'mainmenu', 'Typography', 'typography', '', 'design-and-features/typography', 'index.php?option=com_content&view=article&id=74', 'component', 0, 465, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 40, 41, 0, '*', 0),
 (470, 'mainmenu', 'Module Styles', 'module-styless', '', 'module-styless', 'index.php?option=com_content&view=article&id=73', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"Make it beautiful","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 121, 122, 0, '*', 0),
 (471, 'mainmenu', 'Font Styles', 'font-styles', '', 'design-and-features/font-styles', 'index.php?option=com_content&view=article&id=69', 'component', 0, 465, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 32, 39, 0, '*', 0),
@@ -13220,11 +13266,11 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (475, 'mainmenu', 'Center | Innerright | Right', 'center--innerright--right', '', 'layoutt/center--innerright--right', 'index.php?option=com_content&view=article&id=87', 'component', 0, 466, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 10, 11, 0, '*', 0),
 (476, 'mainmenu', 'Innerleft | Center | Right', 'innerleft--center--right', '', 'layoutt/innerleft--center--right', 'index.php?option=com_content&view=article&id=88', 'component', 0, 466, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 12, 13, 0, '*', 0),
 (477, 'mainmenu', 'Main content only', 'main-content-only', '', 'layoutt/main-content-only', 'index.php?option=com_content&view=article&id=92', 'component', 0, 466, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 14, 15, 0, '*', 0),
-(478, 'mainmenu', 'Top Menu', 'top-menu', '', 'menu-styless/top-menu', 'index.php?option=com_content&view=article&id=97', 'component', 1, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 44, 45, 0, '*', 0),
-(479, 'mainmenu', 'Main Menu', 'main-menu', '', 'menu-styless/main-menu', 'index.php?option=com_content&view=article&id=93', 'component', 1, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 46, 47, 0, '*', 0),
-(480, 'mainmenu', 'Side Menu', 'side-menu', '', 'menu-styless/side-menu', 'index.php?option=com_content&view=article&id=95', 'component', 1, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 48, 49, 0, '*', 0),
-(481, 'mainmenu', 'Side Menu RTL', 'side-menu-rtl', '', 'menu-styless/side-menu-rtl', 'index.php?option=com_content&view=article&id=96', 'component', 1, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"custom-direction-rtl","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 50, 51, 0, '*', 0),
-(482, 'mainmenu', 'Tree Menu', 'tree-menu', '', 'menu-styless/tree-menu', 'index.php?option=com_content&view=article&id=98', 'component', 1, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 52, 53, 0, '*', 0),
+(478, 'mainmenu', 'Top Menu', 'top-menu', '', 'menu-styless/top-menu', 'index.php?option=com_content&view=article&id=97', 'component', 0, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 44, 45, 0, '*', 0),
+(479, 'mainmenu', 'Main Menu', 'main-menu', '', 'menu-styless/main-menu', 'index.php?option=com_content&view=article&id=93', 'component', 0, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 46, 47, 0, '*', 0),
+(480, 'mainmenu', 'Side Menu', 'side-menu', '', 'menu-styless/side-menu', 'index.php?option=com_content&view=article&id=95', 'component', 0, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 48, 49, 0, '*', 0),
+(481, 'mainmenu', 'Side Menu RTL', 'side-menu-rtl', '', 'menu-styless/side-menu-rtl', 'index.php?option=com_content&view=article&id=96', 'component', 0, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"custom-direction-rtl","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 50, 51, 0, '*', 0),
+(482, 'mainmenu', 'Tree Menu', 'tree-menu', '', 'menu-styless/tree-menu', 'index.php?option=com_content&view=article&id=98', 'component', 0, 468, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 52, 53, 0, '*', 0),
 (483, 'mainmenu', 'Features', 'advanced-stuff', '', 'advanced-stuff', 'index.php?option=com_content&view=article&id=99', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"Unique","menu-anchor_css":"jsn-icon-settings","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 55, 82, 0, '*', 0),
 (484, 'mainmenu', 'Easy to Start', 'easy-to-start', '', 'advanced-stuff/easy-to-start', 'index.php?option=com_content&view=article&id=77', 'component', 0, 483, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 56, 57, 0, '*', 0),
 (485, 'mainmenu', 'Painless Configuration', 'painless-configuration', '', 'advanced-stuff/painless-configuration', 'index.php?option=com_content&view=article&id=84', 'component', 0, 483, 2, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 58, 59, 0, '*', 0),
@@ -13251,7 +13297,7 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (507, 'mustsee', 'RTL Support', 'rtl-support', '', 'rtl-support', 'index.php?option=com_content&view=article&id=85&Itemid=488', 'url', 1, 1, 1, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"show_item_navigation":"","show_author":""}', 159, 160, 0, '*', 0),
 (508, 'mainmenu', 'Joomla!', 'j-stuff', '', 'j-stuff', 'index.php?option=com_content&view=article&id=48', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"Default stuff","menu-anchor_css":"jsn-icon-selection","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 83, 120, 0, '*', 0),
 (509, 'mainmenu', 'Weblinks', 'weblinks', '', 'j-stuff/weblinks', 'index.php?option=com_weblinks&view=category&id=32', 'component', 0, 508, 2, 21, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_category_title":"1","show_description":"1","show_description_image":"1","maxLevel":"-1","show_empty_categories":"1","show_subcat_desc":"1","show_cat_num_links":"1","show_pagination_limit":"1","show_headings":"1","show_link_description":"1","show_link_hits":"1","show_pagination":"1","show_pagination_results":"1","show_feed_link":"","feed_summary":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":1,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 112, 113, 0, '*', 0),
-(510, 'mainmenu', 'Newsfeeds', 'newsfeeds', '', 'j-stuff/newsfeeds', 'index.php?option=com_newsfeeds&view=category&id=17', 'component', 0, 508, 2, 17, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_category_title":"1","show_description":"1","show_description_image":"1","maxLevel":"-1","show_empty_categories":"1","show_subcat_desc":"1","show_cat_items":"1","show_pagination_limit":"1","show_headings":"1","show_articles":"1","show_link":"","show_pagination":"1","show_pagination_results":"1","show_feed_image":"1","show_feed_description":"1","show_item_description":"1","feed_character_count":"0","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":1,"page_heading":"Newsfeeds","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 114, 115, 0, '*', 0),
+(510, 'mainmenu', 'Newsfeeds', 'newsfeeds', '', 'j-stuff/newsfeeds', 'index.php?option=com_newsfeeds&view=category&id=17', 'component', 0, 508, 2, 17, 326, '2015-11-14 20:39:57', 0, 1, '', 0, '{"show_category_title":"1","show_description":"1","show_description_image":"1","maxLevel":"-1","show_empty_categories":"1","show_subcat_desc":"1","show_cat_items":"1","show_pagination_limit":"1","show_headings":"1","show_articles":"1","show_link":"","show_pagination":"1","show_pagination_results":"1","show_feed_image":"1","show_feed_description":"1","show_item_description":"1","feed_character_count":"0","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":1,"page_heading":"Newsfeeds","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 114, 115, 0, '*', 0),
 (511, 'mainmenu', 'Search', 'search', '', 'j-stuff/search', 'index.php?option=com_search&view=search&searchword=mobile ready', 'component', 0, 508, 2, 19, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"search_areas":"","show_date":"","searchphrase":"0","ordering":"newest","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 116, 117, 0, '*', 0),
 (512, 'mainmenu', 'Contacts', 'contacts', '', 'j-stuff/contacts', 'index.php?option=com_contact&view=category&id=16', 'component', 0, 508, 2, 8, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_category_title":"","show_description":"","show_description_image":"","maxLevel":"0","show_empty_categories":"","show_subcat_desc":"","show_cat_items":"","show_pagination_limit":"","show_headings":"","show_position_headings":"","show_email_headings":"","show_telephone_headings":"","show_mobile_headings":"","show_fax_headings":"","show_suburb_headings":"","show_state_headings":"","show_country_headings":"","show_pagination":"","show_pagination_results":"","initial_sort":"","presentation_style":"","show_contact_category":"","show_contact_list":"","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","show_links":"","linka_name":"","linkb_name":"","linkc_name":"","linkd_name":"","linke_name":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":"","show_feed_link":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 118, 119, 0, '*', 0),
 (513, 'mainmenu', 'Wrapper', 'wrapper', '', 'j-stuff/wrapper', 'index.php?option=com_wrapper&view=wrapper', 'component', 0, 508, 2, 2, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"url":"www.joomlashine.com","scrolling":"auto","width":"100%","height":"500","height_auto":"0","add_scheme":"1","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 110, 111, 0, '*', 0),
@@ -13341,11 +13387,11 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (1951, 'main', 'JSN_EASYSLIDER_MENU_SLIDERS_TEXT', 'jsn-easyslider-menu-sliders-text', '', 'jsn-easyslider-menu-text/jsn-easyslider-menu-sliders-text', 'index.php?option=com_easyslider&view=sliders', 'component', 0, 1950, 2, 10039, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_easyslider/assets/images/icons-16/icon-items.png', 0, '{}', 262, 263, 0, '', 1),
 (1952, 'main', 'JSN_EASYSLIDER_MENU_CONFIGURARTION_TEXT', 'jsn-easyslider-menu-configurartion-text', '', 'jsn-easyslider-menu-text/jsn-easyslider-menu-configurartion-text', 'index.php?option=com_easyslider&view=configuration', 'component', 0, 1950, 2, 10039, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_easyslider/assets/images/icons-16/icon-configuration.png', 0, '{}', 264, 265, 0, '', 1),
 (1953, 'main', 'JSN_EASYSLIDER_MENU_ABOUT_TEXT', 'jsn-easyslider-menu-about-text', '', 'jsn-easyslider-menu-text/jsn-easyslider-menu-about-text', 'index.php?option=com_easyslider&view=about', 'component', 0, 1950, 2, 10039, 0, '0000-00-00 00:00:00', 0, 1, 'components/com_easyslider/assets/images/icons-16/icon-about.png', 0, '{}', 266, 267, 0, '', 1),
-(1954, 'mainmenu', 'Categories listing', 'hikashop-menu-for-categories-listing', '', 'hikashop-menu-for-categories-listing', 'index.php?option=com_hikashop&view=category&layout=listing', 'component', 1, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_category":{"content_type":"product","layout_type":"inherit","columns":3,"limit":"21","order_dir":"ASC","filter_type":"0","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":0,"product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"","margin":"","rounded_corners":"-1","text_center":"-1","links_on_main_categories":"0","link_to_product_page":"1","enable_carousel":"0"},"hk_product":{"border_visible":"2","add_to_cart":"1","content_type":"product","layout_type":"inherit","columns":"3","limit":"21","order_dir":"ASC","filter_type":"0","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":"0","product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"#FFFFFF","margin":"10","rounded_corners":"1","text_center":"1","links_on_main_categories":"0","link_to_product_page":"1","display_badges":"1","enable_carousel":"0"}}', 269, 270, 0, '*', 0),
-(1955, 'mainmenu', 'Products listing', 'hikashop-menu-for-products-listing', '', 'hikashop-menu-for-products-listing', 'index.php?option=com_hikashop&view=product&layout=listing', 'component', 0, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_product":{"content_type":"product","layout_type":"inherit","columns":3,"limit":"21","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":0,"product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"","margin":"","rounded_corners":"-1","text_center":"-1","links_on_main_categories":"0","link_to_product_page":"1","enable_carousel":"0"}}', 271, 272, 0, '*', 0),
-(1956, 'hikashop_default', 'User control panel', 'hikashop-menu-for-user-control-panel', '', 'hikashop-menu-for-user-control-panel', 'index.php?option=com_hikashop&view=user&layout=cpanel', 'component', 1, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"hk_product":{"content_type":"product","layout_type":"inherit","columns":3,"limit":"21","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":0,"product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"","margin":"","rounded_corners":"-1","text_center":"-1","links_on_main_categories":"0","link_to_product_page":"1","enable_carousel":"0"}}', 273, 274, 0, '*', 0),
+(1954, 'mainmenu', 'Categories listing', 'hikashop-menu-for-categories-listing', '', 'hikashop-menu-for-categories-listing', 'index.php?option=com_hikashop&view=category&layout=listing', 'component', 0, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_category":{"content_type":"product","layout_type":"inherit","columns":3,"limit":"21","order_dir":"ASC","filter_type":"0","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":0,"product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"","margin":"","rounded_corners":"-1","text_center":"-1","links_on_main_categories":"0","link_to_product_page":"1","enable_carousel":"0"},"hk_product":{"border_visible":"2","add_to_cart":"1","content_type":"product","layout_type":"inherit","columns":"3","limit":"21","order_dir":"ASC","filter_type":"0","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":"0","product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"#FFFFFF","margin":"10","rounded_corners":"1","text_center":"1","links_on_main_categories":"0","link_to_product_page":"1","display_badges":"1","enable_carousel":"0"}}', 269, 270, 0, '*', 0),
+(1955, 'mainmenu', 'Products listing', 'hikashop-menu-for-products-listing', '', 'hikashop-menu-for-products-listing', 'index.php?option=com_hikashop&view=product&layout=listing', 'component', -2, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_product":{"content_type":"product","layout_type":"inherit","columns":3,"limit":"21","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":0,"product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"","margin":"","rounded_corners":"-1","text_center":"-1","links_on_main_categories":"0","link_to_product_page":"1","enable_carousel":"0"}}', 271, 272, 0, '*', 0),
+(1956, 'hikashop_default', 'User control panel', 'hikashop-menu-for-user-control-panel', '', 'hikashop-menu-for-user-control-panel', 'index.php?option=com_hikashop&view=user&layout=cpanel', 'component', 1, 1, 1, 10045, 326, '2015-11-14 23:19:34', 0, 1, '', 0, '{"hk_product":{"content_type":"product","layout_type":"inherit","columns":3,"limit":"21","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":0,"product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"","margin":"","rounded_corners":"-1","text_center":"-1","links_on_main_categories":"0","link_to_product_page":"1","enable_carousel":"0"}}', 273, 274, 0, '*', 0),
 (1957, 'hikashop_default', 'Registration form', 'hikashop-menu-for-hikashop-registration', '', 'hikashop-menu-for-hikashop-registration', 'index.php?option=com_hikashop&view=user&layout=form', 'component', 1, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"hk_product":{"content_type":"product","layout_type":"inherit","columns":3,"limit":"21","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","moduleclass_sfx":"","modules":"","content_synchronize":"1","use_module_name":"0","product_order":"ordering","random":0,"product_synchronize":"1","show_price":"1","price_with_tax":"1","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","div_item_layout_type":"img_title","div_custom_fields":"","height":"150","background_color":"","margin":"","rounded_corners":"-1","text_center":"-1","links_on_main_categories":"0","link_to_product_page":"1","enable_carousel":"0"}}', 275, 276, 0, '*', 0),
-(1958, 'hikashop_default', 'Brands listing', 'hikashop-menu-for-brands-listing', '', 'hikashop-menu-for-brands-listing', 'index.php?option=com_hikashop&view=category&layout=listing', 'component', 1, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_category":{"layout_type":"inherit","columns":"3","rows":"7","limit":"21","div_item_layout_type":"img_title","image_width":"","image_height":"","pane_height":"","text_center":"-1","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","ul_class_name":"","show_image":"0","show_description":"1","category":"2","category_order":"category_ordering","order_dir":"ASC","random":"0","filter_type":"0","use_module_name":"0","child_display_type":"nochild","child_limit":"","number_of_products":"0","only_if_products":"0"},"hk_product":{"layout_type":"inherit","columns":"3","rows":"7","limit":"21","div_item_layout_type":"img_title","image_width":"","image_height":"","pane_height":"","text_center":"-1","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","ul_class_name":"","product_order":"ordering","order_dir":"ASC","random":"0","filter_type":"1","use_module_name":"0","show_out_of_stock":"-1","link_to_product_page":"1","show_price":"1","price_display_type":"cheapest","price_with_tax":"1","show_original_price":"1","show_discount":"1","add_to_cart":"-1","show_quantity_field":"-1","show_vote_product":"-1","display_badges":"-1"},"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 277, 278, 0, '*', 0),
+(1958, 'mainmenu', 'Products Listing', 'products-listing', '', 'products-listing', 'index.php?option=com_hikashop&view=product&layout=listing', 'component', 1, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 9, '{"hk_product":{"layout_type":"div","columns":"3","rows":"7","limit":"21","div_item_layout_type":"img_title","image_width":"","image_height":"","pane_height":"","text_center":"1","background_color":"#3bd1f7","margin":"10","border_visible":"1","rounded_corners":"1","ul_class_name":"","show_image":"0","show_description":"0","category":"2","product_order":"ordering","order_dir":"ASC","random":"0","filter_type":"1","use_module_name":"1","show_out_of_stock":"-1","recently_viewed":"-1","link_to_product_page":"1","show_price":"1","price_display_type":"cheapest","price_with_tax":"1","show_original_price":"1","show_discount":"1","add_to_cart":"1","show_quantity_field":"1","show_vote_product":"-1","display_badges":"-1"},"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"Products Listing","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 277, 278, 0, '*', 0),
 (1959, 'main', 'HikaShop', 'hikashop', '', 'hikashop', 'index.php?option=com_hikashop', 'component', 0, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, '../media/com_hikashop/images/icons/icon-16-hikashop.png', 0, '{}', 279, 296, 0, '', 1),
 (1960, 'menu', 'Products', 'Products', '', 'hikashop/Products', 'index.php?option=com_hikashop&ctrl=product', 'component', 0, 1959, 2, 10045, 0, '0000-00-00 00:00:00', 0, NULL, './templates/bluestork/images/menu/icon-16-article.png', 0, '', 280, 281, 0, '*', 1),
 (1961, 'menu', 'Categories', 'Categories', '', 'hikashop/Categories', 'index.php?option=com_hikashop&ctrl=category&filter_id=product', 'component', 0, 1959, 2, 10045, 0, '0000-00-00 00:00:00', 0, NULL, './templates/bluestork/images/menu/icon-16-category.png', 0, '', 282, 283, 0, '*', 1),
@@ -13364,22 +13410,26 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (1974, 'main', 'COM_COMPROFILER_SHOWPLUGINS', 'com-comprofiler-showplugins', '', 'com-comprofiler/com-comprofiler-showplugins', 'index.php?option=com_comprofiler&task=showPlugins&view=showPlugins', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:plugin', 0, '{}', 308, 309, 0, '', 1),
 (1975, 'main', 'COM_COMPROFILER_TOOLS', 'com-comprofiler-tools', '', 'com-comprofiler/com-comprofiler-tools', 'index.php?option=com_comprofiler&task=tools&view=tools', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:maintenance', 0, '{}', 310, 311, 0, '', 1),
 (1976, 'main', 'COM_COMPROFILER_SHOWCONFIG', 'com-comprofiler-showconfig', '', 'com-comprofiler/com-comprofiler-showconfig', 'index.php?option=com_comprofiler&task=showconfig&view=showconfig', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:config', 0, '{}', 312, 313, 0, '', 1),
-(1977, 'communitybuilder', 'CB Profile', 'cb-profile', '', 'cb-profile', 'index.php?option=com_comprofiler&view=userprofile', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 346, 347, 0, '*', 0),
-(1978, 'communitybuilder', 'CB Profile Edit', 'cb-profile-edit', '', 'cb-profile-edit', 'index.php?option=com_comprofiler&view=userdetails', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 344, 345, 0, '*', 0),
-(1979, 'communitybuilder', 'CB Registration', 'cb-registration', '', 'cb-registration', 'index.php?option=com_comprofiler&view=registers', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 342, 343, 0, '*', 0),
-(1980, 'communitybuilder', 'CB Login', 'cb-login', '', 'cb-login', 'index.php?option=com_comprofiler&view=login', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 340, 341, 0, '*', 0),
-(1981, 'communitybuilder', 'CB Logout', 'cb-logout', '', 'cb-logout', 'index.php?option=com_comprofiler&view=logout', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 338, 339, 0, '*', 0),
-(1982, 'communitybuilder', 'CB Forgot Login', 'cb-forgot-login', '', 'cb-forgot-login', 'index.php?option=com_comprofiler&view=lostpassword', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 336, 337, 0, '*', 0),
-(1983, 'communitybuilder', 'CB Userlist', 'cb-userlist', '', 'cb-userlist', 'index.php?option=com_comprofiler&view=userslist', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 334, 335, 0, '*', 0),
-(1984, 'communitybuilder', 'CB Manage Connections', 'cb-manage-connections', '', 'cb-manage-connections', 'index.php?option=com_comprofiler&view=manageconnections', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 332, 333, 0, '*', 0),
-(1985, 'communitybuilder', 'CB Moderate Bans', 'cb-moderate-bans', '', 'cb-moderate-bans', 'index.php?option=com_comprofiler&view=moderatebans', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 330, 331, 0, '*', 0),
-(1986, 'communitybuilder', 'CB Moderate Images', 'cb-moderate-images', '', 'cb-moderate-images', 'index.php?option=com_comprofiler&view=moderateimages', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 328, 329, 0, '*', 0),
-(1987, 'communitybuilder', 'CB Moderate Reports', 'cb-moderate-reports', '', 'cb-moderate-reports', 'index.php?option=com_comprofiler&view=moderatereports', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 326, 327, 0, '*', 0),
-(1988, 'communitybuilder', 'CB Moderate User Approvals', 'cb-moderate-user-approvals', '', 'cb-moderate-user-approvals', 'index.php?option=com_comprofiler&view=pendingapprovaluser', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 324, 325, 0, '*', 0),
+(1977, 'communitybuilder', 'CB Profile', 'cb-profile', '', 'cb-profile', 'index.php?option=com_comprofiler&view=userprofile', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 352, 353, 0, '*', 0),
+(1978, 'communitybuilder', 'CB Profile Edit', 'cb-profile-edit', '', 'cb-profile-edit', 'index.php?option=com_comprofiler&view=userdetails', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 350, 351, 0, '*', 0),
+(1979, 'communitybuilder', 'CB Registration', 'cb-registration', '', 'cb-registration', 'index.php?option=com_comprofiler&view=registers', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 348, 349, 0, '*', 0),
+(1980, 'communitybuilder', 'CB Login', 'cb-login', '', 'cb-login', 'index.php?option=com_comprofiler&view=login', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 346, 347, 0, '*', 0),
+(1981, 'communitybuilder', 'CB Logout', 'cb-logout', '', 'cb-logout', 'index.php?option=com_comprofiler&view=logout', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 344, 345, 0, '*', 0),
+(1982, 'communitybuilder', 'CB Forgot Login', 'cb-forgot-login', '', 'cb-forgot-login', 'index.php?option=com_comprofiler&view=lostpassword', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 342, 343, 0, '*', 0),
+(1983, 'communitybuilder', 'CB Userlist', 'cb-userlist', '', 'cb-userlist', 'index.php?option=com_comprofiler&view=userslist', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 340, 341, 0, '*', 0),
+(1984, 'communitybuilder', 'CB Manage Connections', 'cb-manage-connections', '', 'cb-manage-connections', 'index.php?option=com_comprofiler&view=manageconnections', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 338, 339, 0, '*', 0),
+(1985, 'communitybuilder', 'CB Moderate Bans', 'cb-moderate-bans', '', 'cb-moderate-bans', 'index.php?option=com_comprofiler&view=moderatebans', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 336, 337, 0, '*', 0),
+(1986, 'communitybuilder', 'CB Moderate Images', 'cb-moderate-images', '', 'cb-moderate-images', 'index.php?option=com_comprofiler&view=moderateimages', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 334, 335, 0, '*', 0),
+(1987, 'communitybuilder', 'CB Moderate Reports', 'cb-moderate-reports', '', 'cb-moderate-reports', 'index.php?option=com_comprofiler&view=moderatereports', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 332, 333, 0, '*', 0),
+(1988, 'communitybuilder', 'CB Moderate User Approvals', 'cb-moderate-user-approvals', '', 'cb-moderate-user-approvals', 'index.php?option=com_comprofiler&view=pendingapprovaluser', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 330, 331, 0, '*', 0),
 (1989, 'mainmenu', 'Login', 'login', '', 'login', 'index.php?option=com_comprofiler&view=login', 'component', -2, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 315, 316, 0, '*', 0),
 (1990, 'mainmenu', 'bannerad', 'bannerad', '', 'bannerad', 'index.php?option=com_imageshow&view=show&showlist_id=4&showcase_id=10&w=80%&h=25&jsnisid=1446287221', 'component', 0, 1, 1, 10012, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 317, 318, 0, '*', 0),
-(1991, 'mainmenu', 'News', 'news', '', 'news', 'index.php?option=com_content&view=archive', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"orderby_sec":"alpha","order_date":"created","display_num":"5","filter_field":"","introtext_limit":"100","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","link_titles":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_hits":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 319, 320, 0, '*', 0),
-(1992, 'hikashop_default', 'All Products', 'all-products', '', 'all-products', 'index.php?option=com_hikashop&view=product&layout=listing', 'component', -2, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_product":{"layout_type":"div","columns":"3","rows":"7","limit":"20","div_item_layout_type":"inherit","image_width":"","image_height":"","pane_height":"","text_center":"-1","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","ul_class_name":"","show_image":"0","show_description":"0","category":"2","product_order":"inherit","order_dir":"inherit","random":"-1","filter_type":"0","use_module_name":"0","show_out_of_stock":"-1","recently_viewed":"-1","link_to_product_page":"-1","show_price":"-1","price_display_type":"inherit","price_with_tax":"3","show_original_price":"-1","show_discount":"3","add_to_cart":"-1","show_quantity_field":"-1","show_vote_product":"-1","display_badges":"-1"},"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 321, 322, 0, '*', 0);
+(1991, 'mainmenu', 'News', 'news', '', 'news', 'index.php?option=com_content&view=category&layout=blog&id=86', 'component', 1, 1, 1, 22, 326, '2015-11-15 07:05:52', 0, 1, ' ', 0, '{"layout_type":"blog","show_category_heading_title_text":"","show_category_title":"","show_description":"","show_description_image":"","maxLevel":"","show_empty_categories":"","show_no_articles":"","show_subcat_desc":"","show_cat_num_articles":"","show_cat_tags":"","page_subheading":"","num_leading_articles":"3","num_intro_articles":"0","num_columns":"1","num_links":"3","multi_column_order":"","show_subcategory_content":"","orderby_pri":"","orderby_sec":"","order_date":"","show_pagination":"","show_pagination_results":"","show_featured":"","show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_readmore":"","show_readmore_title":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_tags":"","show_noauth":"","show_feed_link":"","feed_summary":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 319, 320, 0, '*', 0),
+(1992, 'hikashop_default', 'All Products', 'all-products', '', 'all-products', 'index.php?option=com_hikashop&view=product&layout=listing', 'component', -2, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_product":{"layout_type":"div","columns":"3","rows":"7","limit":"20","div_item_layout_type":"inherit","image_width":"","image_height":"","pane_height":"","text_center":"-1","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","ul_class_name":"","show_image":"0","show_description":"0","category":"2","product_order":"inherit","order_dir":"inherit","random":"-1","filter_type":"0","use_module_name":"0","show_out_of_stock":"-1","recently_viewed":"-1","link_to_product_page":"-1","show_price":"-1","price_display_type":"inherit","price_with_tax":"3","show_original_price":"-1","show_discount":"3","add_to_cart":"-1","show_quantity_field":"-1","show_vote_product":"-1","display_badges":"-1"},"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 321, 322, 0, '*', 0),
+(1993, 'mainmenu', 'User Panel', 'user-panel', '', 'user-panel', 'index.php?option=com_hikashop&view=user&layout=cpanel', 'component', 1, 1, 1, 10045, 326, '2015-11-06 01:17:59', 0, 2, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 323, 324, 0, '*', 0);
+INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
+(1994, 'mainmenu', 'Contact Us', 'contact-us', '', 'contact-us', 'index.php?option=com_contact&view=contact&id=10', 'component', 1, 1, 1, 8, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"presentation_style":"","show_contact_category":"","show_contact_list":"","show_tags":"","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","articles_display_num":"","show_links":"","linka_name":"","linkb_name":"","linkc_name":"","linkd_name":"","linke_name":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 325, 326, 0, '*', 0),
+(1995, 'mainmenu', 'Create News Article', 'create-news-article', '', 'create-news-article', 'index.php?option=com_content&view=form&layout=edit', 'component', 1, 1, 1, 22, 326, '2015-11-15 07:05:19', 0, 3, ' ', 0, '{"enable_category":"0","catid":"86","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 327, 328, 0, '*', 0);
 
 -- --------------------------------------------------------
 
@@ -13387,12 +13437,12 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 -- Table structure for table `jt_menu_types`
 --
 
-CREATE TABLE `jt_menu_types` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_menu_types` (
+  `id` int(10) unsigned NOT NULL,
   `menutype` varchar(24) NOT NULL,
   `title` varchar(48) NOT NULL,
   `description` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_menu_types`
@@ -13413,17 +13463,25 @@ INSERT INTO `jt_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 -- Table structure for table `jt_messages`
 --
 
-CREATE TABLE `jt_messages` (
-  `message_id` int(10) UNSIGNED NOT NULL,
-  `user_id_from` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `user_id_to` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `folder_id` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_messages` (
+  `message_id` int(10) unsigned NOT NULL,
+  `user_id_from` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_id_to` int(10) unsigned NOT NULL DEFAULT '0',
+  `folder_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `date_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `state` tinyint(1) NOT NULL DEFAULT '0',
-  `priority` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `priority` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `subject` varchar(255) NOT NULL DEFAULT '',
   `message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jt_messages`
+--
+
+INSERT INTO `jt_messages` (`message_id`, `user_id_from`, `user_id_to`, `folder_id`, `date_time`, `state`, `priority`, `subject`, `message`) VALUES
+(1, 328, 326, 0, '2015-11-15 10:20:56', 0, 0, 'New Article', 'A new Article has been submitted by ''NewsAdmin'' entitled ''Forezine Fest ''15''.'),
+(2, 328, 326, 0, '2015-11-15 10:25:43', 0, 0, 'New Article', 'A new Article has been submitted by ''NewsAdmin'' entitled ''Forezine Fest ''15''.');
 
 -- --------------------------------------------------------
 
@@ -13431,8 +13489,8 @@ CREATE TABLE `jt_messages` (
 -- Table structure for table `jt_messages_cfg`
 --
 
-CREATE TABLE `jt_messages_cfg` (
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_messages_cfg` (
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `cfg_name` varchar(100) NOT NULL DEFAULT '',
   `cfg_value` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -13443,26 +13501,26 @@ CREATE TABLE `jt_messages_cfg` (
 -- Table structure for table `jt_modules`
 --
 
-CREATE TABLE `jt_modules` (
+CREATE TABLE IF NOT EXISTS `jt_modules` (
   `id` int(11) NOT NULL,
-  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(100) NOT NULL DEFAULT '',
   `note` varchar(255) NOT NULL DEFAULT '',
   `content` text NOT NULL,
   `ordering` int(11) NOT NULL DEFAULT '0',
   `position` varchar(50) NOT NULL DEFAULT '',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `module` varchar(50) DEFAULT NULL,
-  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `showtitle` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
+  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `showtitle` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `params` text NOT NULL,
   `client_id` tinyint(4) NOT NULL DEFAULT '0',
   `language` char(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=317 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_modules`
@@ -13481,7 +13539,7 @@ INSERT INTO `jt_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 (14, 0, 'User Status', '', '', 2, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_status', 3, 1, '', 1, '*'),
 (15, 0, 'Title', '', '', 1, 'title', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_title', 3, 1, '', 1, '*'),
 (16, 291, 'Login Form', '', '', 14, 'right', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', -2, 'mod_login', 1, 1, '{"pretext":"","posttext":"","login":"","logout":"","greeting":"1","name":"0","usesecure":"0","usetext":"0","layout":"_:default","moduleclass_sfx":"box-green jsn-icon-user","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
-(17, 0, 'Breadcrumbs', '', '', 1, 'position-2', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_breadcrumbs', 1, 1, '{"moduleclass_sfx":"","showHome":"1","homeText":"Home","showComponent":"1","separator":"","cache":"1","cache_time":"900","cachemode":"itemid"}', 0, '*'),
+(17, 297, 'Breadcrumbs', '', '', 1, 'banner', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_breadcrumbs', 1, 1, '{"showHere":"1","showHome":"1","homeText":"Home","showLast":"1","separator":"-","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h2","header_class":"","style":"Jsn_mobilize-jsnmodule"}', 0, '*'),
 (18, 0, 'Banners', '', '', 1, 'position-5', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_banners', 1, 1, '{"target":"1","count":"1","cid":"1","catid":["27"],"tag_search":"0","ordering":"0","header_text":"","footer_text":"","layout":"","moduleclass_sfx":"","cache":"1","cache_time":"900"}', 0, '*'),
 (25, 0, 'Site Map', '', '', 1, 'sitemapload', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 1, 0, '{"menutype":"mainmenu","startLevel":"2","endLevel":"3","showAllChildren":"1","tag_id":"","class_sfx":"sitemap","window_open":"","layout":"","moduleclass_sfx":"","cache":"0","cache_time":"900","cachemode":"itemid"}', 0, '*'),
 (26, 293, 'This Site', '', '', 1, 'mainbody-top', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_menu', 1, 1, '{"menutype":"mainmenu","base":"","startLevel":"1","endLevel":"1","showAllChildren":"0","tag_id":"","class_sfx":"","window_open":"","layout":"_:default","moduleclass_sfx":"_menu","cache":"0","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
@@ -13540,7 +13598,7 @@ INSERT INTO `jt_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 (101, 277, 'Jissa Copyright', '', '<p>Copyright © 2015 Jissaticket.com. All rights reserved.</p>', 1, 'footer', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_custom', 1, 0, '{"prepare_content":"1","backgroundimage":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (102, 0, 'Position "innerleft"', '', '<p>This is sample module in position <strong>innerleft</strong>. All modules in this position will be arranged in <strong>vertical column</strong>. The whole position will be collapsed, if there are no modules published.</p>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius nisl id lectus ultricies ut elementum nulla ornare. Nulla sed mi massa, at tincidunt felis.</p>', 2, 'innerleft', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_custom', 1, 1, '{"prepare_content":"1","backgroundimage":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static"}', 0, '*'),
 (103, 0, 'Position "innerright"', '', '<p>This is sample module in position <strong>innerright</strong>. All modules in this position will be arranged in <strong>vertical column</strong>. The whole position will be collapsed, if there are no modules published.</p>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc varius nisl id lectus ultricies ut elementum nulla ornare. Nulla sed mi massa, at tincidunt felis.</p>', 1, 'innerright', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_custom', 1, 1, '{"prepare_content":"1","backgroundimage":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static"}', 0, '*'),
-(104, 0, 'Main Menu (Icons & Rich Text)', '', '', 1, 'mainmenu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 1, 0, '{"menutype":"mainmenu","startLevel":"1","endLevel":"0","showAllChildren":"1","tag_id":"","class_sfx":"menu-mainmenu menu-iconmenu menu-richmenu","window_open":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid"}', 0, '*'),
+(104, 0, 'Main Menu (Icons & Rich Text)', '', '', 0, 'mainmenu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_menu', 1, 0, '{"menutype":"mainmenu","startLevel":"1","endLevel":"0","showAllChildren":"1","tag_id":"","class_sfx":"menu-mainmenu menu-iconmenu menu-richmenu","window_open":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid"}', 0, '*'),
 (106, 0, 'Why choose JSN Metro?', '', '<p>Compared to big guys, we produce very little amount of  templates, but with fanatical focus on quality of both product and support. We constantly  refine our templates to make it faster, more stable and easier to use.</p>\n<p>By choosing JSN Metro, you will save a lot time and money.</p>\n', 1, 'user4', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_custom', 1, 1, '{"prepare_content":"1","backgroundimage":"","layout":"_:default","moduleclass_sfx":"solid-2 jsn-icon-star","cache":"1","cache_time":"900","cachemode":"static"}', 0, '*'),
 (107, 0, 'Position "stick-leftbottom"', '', '<a><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/position-stick-x/position-stick-leftbottom.png" width="65" height="190" alt="Sample module in position -stick-leftbottom-" /></a>', 0, 'stick-leftbottom', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_custom', 1, 0, '{"prepare_content":"1","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static"}', 0, '*'),
 (108, 0, 'Position "stick-leftmiddle''', '', '<a><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/extensions/custom-html/position-stick-x/position-stick-leftmiddle.png" width="65" height="190" alt="Sample module in position -stick-leftmiddle-" /></a>', 0, 'stick-leftmiddle', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_custom', 1, 0, '{"prepare_content":"1","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"static"}', 0, '*'),
@@ -13640,24 +13698,26 @@ INSERT INTO `jt_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 (294, 272, 'JSN imageshow Quick Icons', '', '', 0, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_imageshow_quickicon', 1, 1, '', 1, '*'),
 (295, 0, 'Random products', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"product","layout_type":"div","columns":"1","limit":"3","random":"1","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","content_synchronize":"1","product_order":"ordering","product_synchronize":"1","recently_viewed":"0","add_to_cart":"1","add_to_wishlist":"1","link_to_product_page":"1","show_vote_product":"0","show_price":"1","price_with_tax":"3","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"nochild","child_limit":"","links_on_main_categories":"-1","number_of_products":"0","only_if_products":"0","image_width":"","image_height":"","div_item_layout_type":"img_title","pane_height":"","background_color":"#FFFFFF","margin":"10","border_visible":"0","rounded_corners":"1","text_center":"1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
 (296, 0, 'Recently viewed', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"product","layout_type":"div","columns":"1","limit":"3","random":"-1","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","content_synchronize":"0","product_order":"inherit","product_synchronize":"4","recently_viewed":"1","add_to_cart":"-1","add_to_wishlist":"-1","link_to_product_page":"-1","show_vote_product":"-1","show_price":"-1","price_with_tax":"3","show_original_price":"-1","show_discount":"3","price_display_type":"inherit","category_order":"inherit","child_display_type":"inherit","child_limit":"","links_on_main_categories":"-1","number_of_products":"-1","only_if_products":"-1","image_width":"","image_height":"","div_item_layout_type":"inherit","pane_height":"","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","text_center":"-1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
-(297, 0, 'Categories on 1 level', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"category","layout_type":"list","columns":"1","limit":"21","random":"0","order_dir":"ASC","filter_type":"0","selectparentlisting":"2","content_synchronize":"0","product_order":"ordering","product_synchronize":"1","recently_viewed":"0","add_to_cart":"1","add_to_wishlist":"1","link_to_product_page":"1","show_vote_product":"0","show_price":"1","price_with_tax":"0","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"allchilds","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"1","image_width":"","image_height":"","div_item_layout_type":"img_title","pane_height":"","background_color":"#FFFFFF","margin":"10","border_visible":"0","rounded_corners":"1","text_center":"1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
+(297, 0, 'Categories on 1 level', '', '', 0, 'position-7', 326, '2015-11-04 15:32:36', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"category","layout_type":"list","columns":"1","limit":"21","random":"0","order_dir":"ASC","filter_type":"0","selectparentlisting":"2","content_synchronize":"0","product_order":"ordering","product_synchronize":"1","recently_viewed":"0","add_to_cart":"1","add_to_wishlist":"1","link_to_product_page":"1","show_vote_product":"0","show_price":"1","price_with_tax":"0","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"allchilds","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"1","image_width":"","image_height":"","div_item_layout_type":"img_title","pane_height":"","background_color":"#FFFFFF","margin":"10","border_visible":"0","rounded_corners":"1","text_center":"1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
 (298, 0, 'Categories on 2 levels', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"category","layout_type":"list","columns":"1","limit":"21","random":"0","order_dir":"ASC","filter_type":"0","selectparentlisting":"2","content_synchronize":"0","product_order":"ordering","product_synchronize":"1","recently_viewed":"0","add_to_cart":"1","add_to_wishlist":"1","link_to_product_page":"1","show_vote_product":"0","show_price":"1","price_with_tax":"0","show_original_price":"1","show_discount":"1","price_display_type":"cheapest","category_order":"category_ordering","child_display_type":"allchildsexpand","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"1","image_width":"","image_height":"","div_item_layout_type":"img_title","pane_height":"","background_color":"#FFFFFF","margin":"10","border_visible":"0","rounded_corners":"1","text_center":"1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
 (299, 0, 'Best sellers', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"product","layout_type":"div","columns":"1","limit":"21","random":"0","order_dir":"DESC","filter_type":"1","selectparentlisting":"2","content_synchronize":"0","product_order":"product_sales","product_synchronize":"1","recently_viewed":"0","add_to_cart":"-1","add_to_wishlist":"-1","link_to_product_page":"-1","show_vote_product":"-1","show_price":"-1","price_with_tax":"3","show_original_price":"-1","show_discount":"3","price_display_type":"inherit","category_order":"category_ordering","child_display_type":"allchildsexpand","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"1","image_width":"","image_height":"","div_item_layout_type":"inherit","pane_height":"","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","text_center":"-1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
 (300, 0, 'Latest products', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"product","layout_type":"div","columns":"1","limit":"21","random":"0","order_dir":"DESC","filter_type":"1","selectparentlisting":"2","content_synchronize":"0","product_order":"product_created","product_synchronize":"1","recently_viewed":"0","add_to_cart":"-1","add_to_wishlist":"-1","link_to_product_page":"-1","show_vote_product":"-1","show_price":"-1","price_with_tax":"3","show_original_price":"-1","show_discount":"3","price_display_type":"inherit","category_order":"category_ordering","child_display_type":"allchildsexpand","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"1","image_width":"","image_height":"","div_item_layout_type":"inherit","pane_height":"","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","text_center":"-1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
 (301, 0, 'Brands', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1958","content_type":"category","layout_type":"div","columns":"1","limit":"21","random":"0","order_dir":"ASC","filter_type":"0","selectparentlisting":"10","content_synchronize":"0","product_order":"product_average_score","product_synchronize":"1","recently_viewed":"0","add_to_cart":"-1","add_to_wishlist":"-1","link_to_product_page":"-1","show_vote_product":"-1","show_price":"-1","price_with_tax":"3","show_original_price":"-1","show_discount":"3","price_display_type":"inherit","category_order":"category_id","child_display_type":"allchilds","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"0","image_width":"","image_height":"","div_item_layout_type":"inherit","pane_height":"","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","text_center":"-1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
 (302, 0, 'Best rated', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"product","layout_type":"div","columns":"1","limit":"21","random":"0","order_dir":"DESC","filter_type":"1","selectparentlisting":"2","content_synchronize":"0","product_order":"product_average_score","product_synchronize":"1","recently_viewed":"0","add_to_cart":"-1","add_to_wishlist":"-1","link_to_product_page":"-1","show_vote_product":"-1","show_price":"-1","price_with_tax":"3","show_original_price":"-1","show_discount":"3","price_display_type":"inherit","category_order":"category_id","child_display_type":"allchilds","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"0","image_width":"","image_height":"","div_item_layout_type":"inherit","pane_height":"","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","text_center":"-1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
 (303, 0, 'Related products', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '{"hikashopmodule":{"itemid":"1954","content_type":"product","layout_type":"div","columns":"3","limit":"21","random":"0","order_dir":"ASC","filter_type":"1","selectparentlisting":"2","content_synchronize":"1","product_order":"ordering","product_synchronize":"2","recently_viewed":"0","add_to_cart":"-1","add_to_wishlist":"-1","link_to_product_page":"-1","show_vote_product":"-1","show_price":"-1","price_with_tax":"3","show_original_price":"-1","show_discount":"3","price_display_type":"inherit","category_order":"category_id","child_display_type":"allchilds","child_limit":"","links_on_main_categories":"1","number_of_products":"0","only_if_products":"0","image_width":"","image_height":"","div_item_layout_type":"inherit","pane_height":"","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","text_center":"-1","ul_class_name":"","enable_carousel":"0"}}', 0, '*'),
-(304, 0, 'HikaShop Content Module', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop', 1, 1, '', 0, '*'),
+(304, 299, 'HikaShop Content Module', '', '', 1, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_hikashop', 1, 1, '{"moduleclass_sfx":"","hikashopmodule":{"layout_type":"div","columns":"1","rows":"21","limit":"21","div_item_layout_type":"img_title","image_width":"","image_height":"","pane_height":"","text_center":"1","background_color":"#88f0f0","margin":"10","border_visible":"1","rounded_corners":"1","ul_class_name":"","content_type":"product","selectparentlisting":"2","product_order":"ordering","order_dir":"ASC","random":"0","filter_type":"0","content_synchronize":"1","itemid":"0","child_display_type":"nochild","child_limit":"","links_on_main_categories":"0","number_of_products":"0","only_if_products":"0","show_out_of_stock":"-1","product_synchronize":"1","recently_viewed":"0","link_to_product_page":"1","show_price":"1","price_display_type":"cheapest","price_with_tax":"3","show_original_price":"1","show_discount":"1","add_to_cart":"1","show_quantity_field":"1","show_vote_product":"0","display_badges":"1"},"module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (305, 295, 'Your Cart', '', '', 1, 'right', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_hikashop_cart', 1, 1, '{"moduleclass_sfx":"Your Cart","hikashopcartmodule":{"small_cart":"0","image_in_cart":"1","show_cart_proceed":"1","show_cart_product_name":"1","show_cart_quantity":"1","show_cart_delete":"1","show_coupon":"0","show_shipping":"0","msg":"Your Cart is Empty! ","show_price":"1","price_display_type":"cheapest","price_with_tax":"3","show_original_price":"1","show_discount":"1"},"module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (306, 0, 'HikaShop Currency Switcher Module', '', '', 0, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_hikashop_currency', 1, 1, '', 0, '*'),
-(307, 284, 'Login Now!', '', '', 1, 'right', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_cblogin', 1, 1, '{"show_buttons_icons":"0","https_post":"0","cb_plugins":"0","pretext":"","posttext":"","login":"","name_label":"5","name_length":"14","pass_label":"5","pass_length":"14","key_label":"5","key_length":"14","remember_enabled":"1","show_lostpass":"3","show_newaccount":"3","login_message":"0","logoutpretext":"","logoutposttext":"","logout":"index.php","greeting":"1","show_avatar":"1","text_show_profile":"","icon_show_profile":"0","text_edit_profile":"","icon_edit_profile":"0","show_pms":"0","show_pms_icon":"0","show_connection_notifications":"0","show_connection_notifications_icon":"0","logout_message":"0","layout":"_:bootstrap","moduleclass_sfx":"box-2 jsn-icon-user box-blue","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
+(307, 284, 'Login Now!', '', '', 23, 'right', 326, '2015-11-15 02:40:35', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_cblogin', 1, 1, '{"show_buttons_icons":"0","https_post":"0","cb_plugins":"0","pretext":"","posttext":"","login":"","name_label":"5","name_length":"14","pass_label":"5","pass_length":"14","key_label":"5","key_length":"14","remember_enabled":"1","show_lostpass":"3","show_newaccount":"3","login_message":"0","logoutpretext":"","logoutposttext":"","logout":"index.php","greeting":"1","show_avatar":"1","text_show_profile":"","icon_show_profile":"0","text_edit_profile":"","icon_edit_profile":"0","show_pms":"0","show_pms_icon":"0","show_connection_notifications":"0","show_connection_notifications_icon":"0","logout_message":"0","layout":"_:bootstrap","moduleclass_sfx":"box-2 jsn-icon-user box-blue","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (308, 285, 'CB Online', '', '', 3, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_comprofileronline', 1, 1, '{"pretext":"","posttext":"","cb_plugins":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (309, 286, 'CB Workflows', '', '', 2, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_comprofilermoderator', 2, 1, '{"pretext":"","posttext":"","show_banned":"1","show_image_approval":"1","show_user_reports":"1","show_uban_requests":"1","show_user_approval":"1","show_pms":"1","show_connections":"1","cb_plugins":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
 (310, 287, 'CB Admin Dropdown Menu', '', '', 99, 'menu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_cbadmin', 1, 0, '{"mode":"1","menu_cb":"1","menu_cbsubs":"1","menu_cbgj":"1","menu_plugins":"0","feed_entries":"5","feed_duration":"12","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 1, '*'),
 (311, 288, 'Community Builder News', '', '', 99, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_cbadmin', 1, 1, '{"mode":"3","menu_cb":"1","menu_cbsubs":"1","menu_cbgj":"1","menu_plugins":"0","feed_entries":"5","feed_duration":"12","modal_display":"1","modal_width":"800","modal_height":"500","module_tag":"div","bootstrap_size":"6","header_tag":"h3","header_class":"","style":"0"}', 1, '*'),
 (312, 289, 'Community Builder Updates', '', '', 99, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_cbadmin', 1, 1, '{"mode":"4","menu_cb":"1","menu_cbsubs":"1","menu_cbgj":"1","menu_plugins":"0","feed_entries":"5","feed_duration":"12","modal_display":"1","modal_width":"800","modal_height":"500","module_tag":"div","bootstrap_size":"6","header_tag":"h3","header_class":"","style":"0"}', 1, '*'),
 (313, 290, 'CB Admin Version Checker', '', '', 99, 'cpanel', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_cbadmin', 1, 0, '{"mode":"5","menu_cb":"1","menu_cbsubs":"1","menu_cbgj":"1","menu_plugins":"0","feed_entries":"5","feed_duration":"12","modal_display":"1","modal_width":"800","modal_height":"500","module_tag":"div","bootstrap_size":"6","header_tag":"h3","header_class":"","style":"0"}', 1, '*'),
-(314, 294, 'bannerad', '', '', 1, 'topbar', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', -2, 'mod_imageshow', 1, 0, '{"moduleclass_sfx":"","showlist_id":"1","showcase_id":"10","width":"0px","height":"0","pretext":"","posttext":"","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*');
+(314, 294, 'bannerad', '', '', 1, 'topbar', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', -2, 'mod_imageshow', 1, 0, '{"moduleclass_sfx":"","showlist_id":"1","showcase_id":"10","width":"0px","height":"0","pretext":"","posttext":"","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
+(315, 296, 'Product Listing', '', '', 1, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_hikashop', 1, 1, '{"moduleclass_sfx":"","hikashopmodule":{"layout_type":"div","columns":"3","rows":"7","limit":"20","div_item_layout_type":"inherit","image_width":"","image_height":"","pane_height":"","text_center":"-1","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","ul_class_name":"","content_type":"product","selectparentlisting":"12","product_order":"inherit","order_dir":"inherit","random":"0","filter_type":"3","content_synchronize":"1","itemid":"1955","child_display_type":"inherit","child_limit":"","links_on_main_categories":"-1","number_of_products":"-1","only_if_products":"-1","show_out_of_stock":"-1","product_synchronize":"4","recently_viewed":"-1","link_to_product_page":"1","show_price":"1","price_display_type":"inherit","price_with_tax":"3","show_original_price":"-1","show_discount":"3","add_to_cart":"1","show_quantity_field":"1","show_vote_product":"0","display_badges":"0"},"module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
+(316, 298, 'Copy of Main Menu', '', '', 2, 'mainmenu', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', -2, 'mod_menu', 1, 0, '{"menutype":"mainmenu","base":"","startLevel":"1","endLevel":"0","showAllChildren":"0","tag_id":"","class_sfx":"menu-mainmenu menu-iconmenu","window_open":"","layout":"_:default","moduleclass_sfx":"","cache":"1","cache_time":"900","cachemode":"itemid","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*');
 
 -- --------------------------------------------------------
 
@@ -13665,7 +13725,7 @@ INSERT INTO `jt_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 -- Table structure for table `jt_modules_menu`
 --
 
-CREATE TABLE `jt_modules_menu` (
+CREATE TABLE IF NOT EXISTS `jt_modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT '0',
   `menuid` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -14506,9 +14566,17 @@ INSERT INTO `jt_modules_menu` (`moduleid`, `menuid`) VALUES
 (302, 0),
 (303, 0),
 (304, 0),
-(305, 1954),
-(305, 1955),
+(305, 1958),
 (306, 0),
+(307, -1988),
+(307, -1987),
+(307, -1986),
+(307, -1985),
+(307, -1984),
+(307, -1983),
+(307, -1980),
+(307, -1979),
+(307, -1958),
 (307, -1954),
 (308, 0),
 (309, 0),
@@ -14516,7 +14584,18 @@ INSERT INTO `jt_modules_menu` (`moduleid`, `menuid`) VALUES
 (311, 0),
 (312, 0),
 (313, 0),
-(314, 0);
+(314, 0),
+(315, 0),
+(316, -507),
+(316, -506),
+(316, -505),
+(316, -504),
+(316, -503),
+(316, -502),
+(316, -501),
+(316, -500),
+(316, -499),
+(316, -479);
 
 -- --------------------------------------------------------
 
@@ -14524,27 +14603,27 @@ INSERT INTO `jt_modules_menu` (`moduleid`, `menuid`) VALUES
 -- Table structure for table `jt_newsfeeds`
 --
 
-CREATE TABLE `jt_newsfeeds` (
+CREATE TABLE IF NOT EXISTS `jt_newsfeeds` (
   `catid` int(11) NOT NULL DEFAULT '0',
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) unsigned NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `link` varchar(200) NOT NULL DEFAULT '',
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `numarticles` int(10) UNSIGNED NOT NULL DEFAULT '1',
-  `cache_time` int(10) UNSIGNED NOT NULL DEFAULT '3600',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `numarticles` int(10) unsigned NOT NULL DEFAULT '1',
+  `cache_time` int(10) unsigned NOT NULL DEFAULT '3600',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `rtl` tinyint(4) NOT NULL DEFAULT '0',
-  `access` int(10) UNSIGNED DEFAULT NULL,
+  `access` int(10) unsigned DEFAULT NULL,
   `language` char(7) NOT NULL DEFAULT '',
   `params` text NOT NULL,
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
   `metadata` text NOT NULL,
@@ -14552,10 +14631,10 @@ CREATE TABLE `jt_newsfeeds` (
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `description` text NOT NULL,
-  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
-  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `version` int(10) unsigned NOT NULL DEFAULT '1',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `images` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_newsfeeds`
@@ -14573,7 +14652,7 @@ INSERT INTO `jt_newsfeeds` (`catid`, `id`, `name`, `alias`, `link`, `published`,
 -- Table structure for table `jt_overrider`
 --
 
-CREATE TABLE `jt_overrider` (
+CREATE TABLE IF NOT EXISTS `jt_overrider` (
   `id` int(10) NOT NULL COMMENT 'Primary Key',
   `constant` varchar(255) NOT NULL,
   `string` text NOT NULL,
@@ -14586,8 +14665,8 @@ CREATE TABLE `jt_overrider` (
 -- Table structure for table `jt_postinstall_messages`
 --
 
-CREATE TABLE `jt_postinstall_messages` (
-  `postinstall_message_id` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_postinstall_messages` (
+  `postinstall_message_id` bigint(20) unsigned NOT NULL,
   `extension_id` bigint(20) NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
   `title_key` varchar(255) NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
   `description_key` varchar(255) NOT NULL DEFAULT '' COMMENT 'Lang key for description',
@@ -14601,7 +14680,7 @@ CREATE TABLE `jt_postinstall_messages` (
   `condition_method` varchar(255) DEFAULT NULL COMMENT 'Display condition method, must return boolean',
   `version_introduced` varchar(50) NOT NULL DEFAULT '3.2.0' COMMENT 'Version when this message was introduced',
   `enabled` tinyint(3) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_postinstall_messages`
@@ -14617,13 +14696,13 @@ INSERT INTO `jt_postinstall_messages` (`postinstall_message_id`, `extension_id`,
 -- Table structure for table `jt_redirect_links`
 --
 
-CREATE TABLE `jt_redirect_links` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_redirect_links` (
+  `id` int(10) unsigned NOT NULL,
   `old_url` varchar(255) NOT NULL,
   `new_url` varchar(255) DEFAULT NULL,
   `referer` varchar(150) NOT NULL,
   `comment` varchar(255) NOT NULL,
-  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `published` tinyint(4) NOT NULL,
   `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -14636,7 +14715,7 @@ CREATE TABLE `jt_redirect_links` (
 -- Table structure for table `jt_schemas`
 --
 
-CREATE TABLE `jt_schemas` (
+CREATE TABLE IF NOT EXISTS `jt_schemas` (
   `extension_id` int(11) NOT NULL,
   `version_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -14665,10 +14744,10 @@ INSERT INTO `jt_schemas` (`extension_id`, `version_id`) VALUES
 -- Table structure for table `jt_session`
 --
 
-CREATE TABLE `jt_session` (
+CREATE TABLE IF NOT EXISTS `jt_session` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
-  `client_id` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
-  `guest` tinyint(4) UNSIGNED DEFAULT '1',
+  `client_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `guest` tinyint(4) unsigned DEFAULT '1',
   `time` varchar(14) DEFAULT '',
   `data` mediumtext,
   `userid` int(11) DEFAULT '0',
@@ -14680,8 +14759,8 @@ CREATE TABLE `jt_session` (
 --
 
 INSERT INTO `jt_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('g9od1812pjdf79h40efgva7lq5', 1, 0, '1446472600', '__default|a:22:{s:15:"session.counter";i:421;s:19:"session.timer.start";i:1446468140;s:18:"session.timer.last";i:1446472598;s:17:"session.timer.now";i:1446472599;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":7:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:12:"com_hikashop";O:8:"stdClass":9:{s:8:"category";O:8:"stdClass":7:{s:9:"filter_id";s:7:"product";s:12:"filter_order";s:19:"a.category_ordering";s:16:"filter_order_Dir";s:3:"asc";s:10:"limitstart";i:0;s:6:"search";s:0:"";s:10:"list_limit";i:20;s:11:"filter_type";i:0;}s:7:"product";O:8:"stdClass":9:{s:10:"limitstart";i:0;s:9:"filter_id";s:1:"1";s:12:"filter_order";s:14:"b.product_name";s:16:"filter_order_Dir";s:3:"asc";s:6:"search";s:0:"";s:10:"list_limit";i:20;s:11:"filter_type";i:1;s:19:"filter_product_type";s:4:"main";s:16:"filter_published";i:0;}s:7:"zone_id";s:3:"168";s:8:"currency";O:8:"stdClass":5:{s:12:"filter_order";s:13:"a.currency_id";s:16:"filter_order_Dir";s:3:"asc";s:10:"list_limit";i:20;s:10:"limitstart";i:0;s:6:"search";s:3:"php";}s:7:"user_id";i:1;s:4:"zone";O:8:"stdClass":6:{s:12:"filter_order";s:9:"a.zone_id";s:16:"filter_order_Dir";s:3:"asc";s:11:"filter_type";s:0:"";s:10:"list_limit";i:20;s:10:"limitstart";i:0;s:6:"search";s:2:"ph";}s:11:"plugin_type";s:8:"shipping";s:7:"plugins";O:8:"stdClass":3:{s:10:"limitstart";i:0;s:6:"search";s:0:"";s:10:"list_limit";i:20;}s:10:"zone_child";O:8:"stdClass":6:{s:12:"filter_order";s:9:"a.zone_id";s:16:"filter_order_Dir";s:3:"asc";s:11:"filter_type";s:0:"";s:10:"list_limit";i:20;s:10:"limitstart";i:0;s:6:"search";s:11:"philippines";}}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":3:{s:8:"menutype";s:16:"hikashop_default";s:10:"limitstart";i:0;s:4:"list";a:4:{s:9:"direction";s:3:"asc";s:5:"limit";s:2:"20";s:8:"ordering";s:5:"a.lft";s:5:"start";d:0;}}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:2:"id";a:0:{}s:4:"data";N;s:4:"type";N;s:4:"link";N;}}}s:9:"com_users";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:4:"user";O:8:"stdClass":1:{s:4:"data";N;}}}s:11:"com_modules";O:8:"stdClass":3:{s:4:"edit";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:2:"id";a:1:{i:0;i:307;}s:4:"data";N;}}s:3:"add";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:12:"extension_id";N;s:6:"params";N;}}s:7:"modules";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:18:"client_id_previous";i:0;}}}s:13:"com_installer";O:8:"stdClass":2:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";}s:4:"item";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:16:"hikashop_default";}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"326";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:22:"adriandean12@gmail.com";s:8:"password";s:60:"$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2015-10-31 06:00:43";s:13:"lastvisitDate";s:19:"2015-10-31 14:07:13";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"f9e39e75e1cb412b1ddda38e189254de";s:32:"ad549ab47d190b8e46710e78ea7f44b8";s:86:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=10","object_id":"10"}";s:32:"b2c6e8fced6aaf097af57c080c33ffb7";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=9","object_id":"9"}";s:32:"7d6925869348277f4e56e1108dc7e692";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=8","object_id":"8"}";s:32:"c3d75c9b6c5016c81aa141b71cf2a340";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=5","object_id":"5"}";s:32:"b3d1686b132d6d454d6ecdedb82555b2";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=6","object_id":"6"}";s:32:"2d098ab3214ca46c62b646045635dccb";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=4","object_id":"4"}";s:32:"cf6594f3478d8f6eee542e773d9bb823";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=3","object_id":"3"}";s:32:"0b9a8195eac816d0b4a02330d0d42b21";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=2","object_id":"2"}";s:32:"9d8182b8efc045d7c7f284ac0d0a93cb";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=1","object_id":"1"}";s:32:"51169d41ddec6c8079b12316657808d7";s:84:"{"queryString":"option=com_hikashop&ctrl=product&task=edit&cid[]=7","object_id":"7"}";s:18:"rawmode_render_url";s:132:"aHR0cDovL2xvY2FsaG9zdC9qaXNzYXRpY2tldC9pbmRleC5waHA/b3B0aW9uPWNvbV9oaWthc2hvcCZ2aWV3PWNhdGVnb3J5JmxheW91dD1saXN0aW5nJkl0ZW1pZD0xOTU0";s:9:"component";s:201:"<div class="show-message-not-supported-yet" >Component editing for layout <b>"CATEGORIES LISTING"</b> of extension <b>"HIKASHOP"</b> is not supported or plugin for this component not enabled yet.</div>";s:8:"jsondata";s:0:"";s:32:"fbcf9b42df24c768655a3ac602a8661e";s:128:"{"queryString":"option=com_modules&client_id=0&task=module.edit&id=305&tmpl=component&view=module&layout=modal","object_id":305}";}hikashop_category_data|O:8:"stdClass":17:{s:13:"category_name";s:7:"Tickets";s:25:"category_meta_description";s:0:"";s:17:"category_keywords";s:0:"";s:19:"category_page_title";s:0:"";s:14:"category_alias";s:7:"tickets";s:18:"category_canonical";s:0:"";s:18:"category_published";s:1:"1";s:15:"category_layout";s:0:"";s:24:"category_quantity_layout";s:0:"";s:18:"category_parent_id";s:1:"2";s:11:"category_id";i:12;s:13:"category_type";s:7:"product";s:20:"category_description";s:0:"";s:16:"category_site_id";s:0:"";s:17:"category_modified";i:1446468227;s:16:"category_created";i:1446468227;s:16:"category_namekey";s:24:"product_1446468227_14152";}hikashop_product_data|O:8:"stdClass":54:{s:12:"product_name";s:33:"Kiyosaki - Live in Manila Premium";s:12:"product_code";s:33:"Kiyosaki_-_Live_in_Manila_Premium";s:16:"product_quantity";s:4:"2000";s:10:"categories";a:1:{i:0;i:12;}s:23:"product_manufacturer_id";s:0:"";s:17:"product_published";s:1:"1";s:14:"product_tax_id";s:2:"11";s:12:"product_msrp";s:9:"0.0000000";s:18:"product_page_title";s:0:"";s:11:"product_url";s:0:"";s:24:"product_meta_description";s:0:"";s:16:"product_keywords";s:0:"";s:13:"product_alias";s:31:"kiyosaki-live-in-manila-premium";s:17:"product_canonical";s:0:"";s:21:"product_min_per_order";i:0;s:21:"product_max_per_order";i:0;s:18:"product_sale_start";s:0:"";s:16:"product_sale_end";s:0:"";s:20:"product_warehouse_id";s:0:"";s:14:"product_weight";s:5:"0.000";s:19:"product_weight_unit";s:2:"kg";s:14:"product_length";s:5:"0.000";s:13:"product_width";s:5:"0.000";s:14:"product_height";s:5:"0.000";s:22:"product_dimension_unit";s:1:"m";s:14:"product_layout";s:0:"";s:23:"product_quantity_layout";s:0:"";s:10:"product_id";i:9;s:12:"product_type";s:4:"main";s:19:"product_description";s:4308:"<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>";s:7:"related";a:0:{}s:7:"options";a:0:{}s:6:"prices";a:1:{i:0;O:8:"stdClass":7:{s:8:"price_id";s:1:"2";s:17:"price_currency_id";i:123;s:16:"price_product_id";s:1:"9";s:11:"price_value";s:10:"2000.00000";s:18:"price_min_quantity";i:0;s:12:"price_access";s:3:"all";s:13:"price_site_id";s:0:"";}}s:6:"images";a:1:{i:0;i:9;}s:11:"imagesorder";a:1:{i:9;i:0;}s:5:"files";a:0:{}s:16:"product_modified";i:1446469483;s:3:"old";O:8:"stdClass":46:{s:10:"product_id";s:1:"9";s:17:"product_parent_id";s:1:"0";s:12:"product_name";s:33:"Kiyosaki - Live in Manila Premium";s:19:"product_description";s:4308:"<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ornare est urna, quis tristique enim blandit eget. Phasellus dapibus vitae orci quis feugiat. Curabitur pellentesque, quam at accumsan hendrerit, neque leo vestibulum eros, et bibendum nulla quam in tortor. Morbi velit felis, suscipit id finibus tristique, condimentum eu augue. Nunc vestibulum lobortis enim, et dapibus magna consequat vitae. Mauris mattis convallis purus, at lacinia nisl feugiat nec. Nam non elementum mi, sed viverra augue. Donec malesuada, erat eu lacinia sodales, sapien mi suscipit libero, quis varius nibh enim eu tortor. Praesent gravida elit sit amet neque rutrum, non porttitor tortor elementum. Fusce suscipit quis massa quis finibus. Nullam a blandit lorem.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Morbi nisl justo, egestas a ante a, tempus pharetra massa. Aliquam eget vulputate sem, quis dictum velit. Duis auctor, nulla tempor faucibus mattis, dui velit bibendum tellus, id pretium diam sem vitae ligula. Morbi aliquet, nibh eget cursus convallis, est risus egestas odio, euismod viverra sem leo at leo. Pellentesque vitae diam porttitor ipsum iaculis feugiat id et justo. Curabitur aliquam ac risus sed efficitur. Ut euismod mauris non lorem pulvinar, non fringilla velit mollis. Donec scelerisque purus purus, sit amet pellentesque arcu scelerisque eu. Vivamus feugiat, lectus in cursus dictum, risus diam varius velit, et viverra nulla libero vel nisl. Nunc ac libero purus. Donec eu vulputate ante. Fusce cursus felis ac vulputate vehicula. Sed nisl neque, tempus a ullamcorper vulputate, elementum non felis.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Phasellus ultrices, tellus vitae sagittis consequat, mauris ligula porttitor neque, at ultricies massa sapien ac quam. Etiam justo diam, placerat eu orci nec, molestie hendrerit augue. Vivamus in pulvinar nulla. Nullam scelerisque nulla eget enim ullamcorper scelerisque. Aliquam lacinia condimentum nunc, at laoreet nisl efficitur eu. Aliquam accumsan interdum luctus. Quisque tempus urna et tellus imperdiet, ac luctus ex luctus. Cras at magna laoreet, porttitor nisi quis, congue lorem. Sed ullamcorper nibh vel interdum imperdiet.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Donec ullamcorper a magna sit amet ultrices. In eleifend odio eget arcu pharetra, ut varius nibh tincidunt. Maecenas id interdum enim, a luctus ex. Fusce in pharetra nunc. Proin id fringilla mi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus at dignissim urna, quis facilisis lacus. Donec velit justo, sagittis id maximus nec, volutpat vel risus. Aenean pulvinar sollicitudin varius. Nulla nec sem lorem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nullam enim orci, porta a felis eget, tristique lobortis dolor.</p>\r\n<p style="text-align: justify; font-size: 11px; line-height: 14px; margin: 0px 0px 14px; padding: 0px; color: #000000; font-family: Arial, Helvetica, sans;">Integer dapibus, purus a consequat euismod, leo orci pharetra turpis, eget maximus dui justo quis magna. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In rhoncus diam a rutrum mollis. Suspendisse malesuada elementum nibh, in ultrices ligula vestibulum et. Suspendisse varius at massa pulvinar pulvinar. Aenean condimentum, lectus in sodales ornare, urna libero finibus velit, id dignissim mi nisl in leo. Nullam nec enim sed mauris rhoncus euismod et vitae est. Maecenas dictum egestas odio, ac pretium ante tempus molestie. Donec at eros sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>";s:16:"product_quantity";s:4:"2000";s:12:"product_code";s:33:"Kiyosaki_-_Live_in_Manila_Premium";s:17:"product_published";s:1:"1";s:11:"product_hit";s:1:"0";s:15:"product_created";s:10:"1446468886";s:18:"product_sale_start";s:1:"0";s:16:"product_sale_end";s:1:"0";s:16:"product_delay_id";s:1:"0";s:14:"product_tax_id";s:2:"11";s:12:"product_type";s:4:"main";s:17:"product_vendor_id";s:1:"0";s:23:"product_manufacturer_id";s:1:"0";s:11:"product_url";s:0:"";s:14:"product_weight";s:5:"0.000";s:16:"product_keywords";s:0:"";s:19:"product_weight_unit";s:2:"kg";s:16:"product_modified";s:10:"1446469234";s:24:"product_meta_description";s:0:"";s:22:"product_dimension_unit";s:1:"m";s:13:"product_width";s:5:"0.000";s:14:"product_length";s:5:"0.000";s:14:"product_height";s:5:"0.000";s:21:"product_max_per_order";s:1:"0";s:14:"product_access";s:3:"all";s:28:"product_group_after_purchase";s:0:"";s:21:"product_min_per_order";s:1:"0";s:15:"product_contact";s:1:"0";s:30:"product_display_quantity_field";s:1:"0";s:22:"product_last_seen_date";s:1:"0";s:13:"product_sales";s:1:"0";s:16:"product_waitlist";s:1:"0";s:14:"product_layout";s:0:"";s:21:"product_average_score";s:1:"0";s:18:"product_total_vote";s:1:"0";s:18:"product_page_title";s:0:"";s:13:"product_alias";s:31:"kiyosaki-live-in-manila-premium";s:24:"product_price_percentage";s:9:"0.0000000";s:12:"product_msrp";s:9:"0.0000000";s:17:"product_canonical";s:0:"";s:20:"product_warehouse_id";s:1:"0";s:23:"product_quantity_layout";s:0:"";s:5:"alias";s:31:"kiyosaki-live-in-manila-premium";}s:17:"product_parent_id";s:1:"0";s:11:"product_hit";s:1:"0";s:15:"product_created";s:10:"1446468886";s:16:"product_delay_id";s:1:"0";s:17:"product_vendor_id";s:1:"0";s:14:"product_access";s:3:"all";s:28:"product_group_after_purchase";s:0:"";s:15:"product_contact";s:1:"0";s:30:"product_display_quantity_field";s:1:"0";s:22:"product_last_seen_date";s:1:"0";s:13:"product_sales";s:1:"0";s:16:"product_waitlist";s:1:"0";s:21:"product_average_score";s:1:"0";s:18:"product_total_vote";s:1:"0";s:24:"product_price_percentage";s:9:"0.0000000";s:5:"alias";s:31:"kiyosaki-live-in-manila-premium";}check_anticopy_framing|N;check_contentprotect_framing|N;check_system_user|s:5:"10141";', 326, 'admin'),
-('lf0cqppetqmfj72neko377d726', 0, 0, '1446472540', '__default|a:8:{s:15:"session.counter";i:78;s:19:"session.timer.start";i:1446469561;s:18:"session.timer.last";i:1446472539;s:17:"session.timer.now";i:1446472539;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:12:"com_hikashop";O:8:"stdClass":28:{s:12:"ssl_redirect";i:0;s:7:"zone_id";s:3:"168";s:7:"user_id";i:2;s:7:"cart_id";i:0;s:15:"shipping_method";N;s:11:"shipping_id";N;s:13:"shipping_data";N;s:8:"cart_new";s:1:"1";s:14:"payment_method";s:12:"banktransfer";s:10:"payment_id";s:1:"1";s:12:"payment_data";O:8:"stdClass":36:{s:10:"payment_id";s:1:"1";s:12:"payment_name";s:13:"Bank transfer";s:19:"payment_description";s:49:"<p>You can pay by sending us a bank transfer.</p>";s:14:"payment_images";s:13:"Bank_transfer";s:14:"payment_params";O:8:"stdClass":23:{s:16:"payment_currency";i:123;s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:12:"order_status";s:7:"created";s:18:"status_notif_email";s:1:"0";s:11:"information";s:400:"Account owner: XXXXX<br/>\r\n<br/>\r\nOwner address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX<br/>\r\n<br/>\r\nIBAN International Bank Account Number:<br/>\r\n<br/>\r\nXXXX XXXX XXXX XXXX XXXX XXXX XXX<br/>\r\n<br/>\r\nBIC swift Bank Identification Code:<br/>\r\n<br/>\r\nXXXXXXXXXXXXXX<br/>\r\n<br/>\r\nBank name: XXXXXXXXXXX<br/>\r\n<br/>\r\nBank address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX";s:10:"return_url";s:0:"";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"1";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:0:"";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}s:12:"payment_type";s:12:"banktransfer";s:20:"payment_zone_namekey";s:0:"";s:16:"payment_ordering";s:1:"1";s:17:"payment_published";s:1:"1";s:14:"payment_access";s:3:"all";s:24:"payment_shipping_methods";s:0:"";s:16:"payment_currency";s:0:"";s:13:"payment_price";d:0;s:12:"extension_id";s:5:"10066";s:4:"name";s:37:"HikaShop bank transfer payment plugin";s:4:"type";s:6:"plugin";s:7:"element";s:12:"banktransfer";s:6:"folder";s:15:"hikashoppayment";s:9:"client_id";s:1:"0";s:7:"enabled";s:1:"1";s:6:"access";s:1:"1";s:9:"protected";s:1:"0";s:14:"manifest_cache";s:0:"";s:6:"params";s:0:"";s:11:"custom_data";s:0:"";s:11:"system_data";s:0:"";s:11:"checked_out";s:1:"0";s:16:"checked_out_time";s:19:"0000-00-00 00:00:00";s:8:"ordering";s:1:"1";s:5:"state";s:1:"0";s:18:"payment_price_orig";s:7:"0.00000";s:21:"payment_currency_orig";s:1:"1";s:8:"features";a:3:{s:17:"authorize_capture";b:0;s:9:"recurring";b:0;s:6:"refund";b:0;}s:22:"payment_price_with_tax";d:0;s:27:"payment_price_orig_with_tax";s:7:"0.00000";s:5:"total";O:8:"stdClass":1:{s:6:"prices";a:1:{i:0;O:8:"stdClass":6:{s:11:"price_value";d:1500;s:20:"price_value_with_tax";d:1500;s:17:"price_currency_id";i:123;s:5:"taxes";a:1:{s:0:"";O:8:"stdClass":3:{s:11:"tax_namekey";s:0:"";s:8:"tax_rate";s:7:"0.00000";s:10:"tax_amount";i:0;}}s:27:"price_value_without_payment";d:1500;s:36:"price_value_without_payment_with_tax";d:1500;}}}}s:15:"popup_cart_type";s:4:"cart";s:16:"shipping_address";i:1;s:15:"billing_address";i:1;s:14:"shipping_cache";O:8:"stdClass":1:{s:14:"usable_methods";a:3:{s:40:"d317e8c5df4cde0afab07556b6ad17d36424564c";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:0:"";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:0:"";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}}i:1;a:0:{}}}s:40:"144acd453617b707605bdb7406d4ece66657cd08";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:0:"";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";s:1:"0";s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:0:"";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"fbfbd5e48a2a4d37a9a1afe20246fa8ea5e58b7a";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:0:"";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:3:"0,1";s:21:"shipping_warehouse_id";s:1:"0";s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:0:"";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:3:"0,1";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}}}s:18:"checkout_fields_ok";i:0;s:8:"order_id";i:1;s:11:"coupon_code";s:0:"";s:9:"cc_number";s:0:"";s:8:"cc_month";s:0:"";s:7:"cc_year";s:0:"";s:6:"cc_CCV";s:0:"";s:7:"cc_type";s:0:"";s:8:"cc_owner";s:0:"";s:8:"cc_valid";i:0;s:14:"checkout_terms";i:0;s:15:"checkout_fields";N;s:3:"_id";i:0;}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";s:3:"327";s:4:"name";s:15:"albert landayan";s:8:"username";s:14:"albertlandayan";s:5:"email";s:28:"albert.landayan.14@gmail.com";s:8:"password";s:60:"$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"0";s:12:"registerDate";s:19:"2015-11-02 13:07:04";s:13:"lastvisitDate";s:19:"0000-00-00 00:00:00";s:10:"activation";s:0:"";s:6:"params";s:92:"{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}";s:6:"groups";a:1:{i:2;s:1:"2";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"admin_style";s:0:"";s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:0:"";}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:2;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:2;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"340f31fd26d0e5d8199963aaf8b88cff";}ck_submital|a:17:{s:34:"[4eee860cea05ff7fe333e02336887ce6]";b:1;s:34:"[b45192923ffb2a4306f02c659ec44129]";b:1;s:34:"[28cf762b2233ede6258a0ef97f59a05c]";b:1;s:34:"[6dd9b06061109fae25f5aae6452f8683]";b:1;s:34:"[7f91c78a5e7d40d5745d6667742ad779]";b:1;s:34:"[2f4faf26ddc11c50fd30f8463036f167]";b:1;s:34:"[d594ae7d072690927dd6b43b3e29e446]";b:1;s:34:"[efcde909de63b469c9e820c1a59f8bea]";b:1;s:34:"[2966a211d8c8c382bee64d7cc53079d5]";b:1;s:34:"[59de349fefd709647e0c4cd03764a5c5]";b:1;s:34:"[023463a6368b23e29450116df278fd7c]";b:1;s:34:"[2d7d5ba4d137ed43fe0afe10a3ae3554]";b:1;s:34:"[7626259fd23a38afc6d612213590e62f]";b:1;s:34:"[99336e717201c6fae378bed2793a610b]";b:1;s:34:"[efc56b776ce037db601e97150e662091]";b:1;s:34:"[b7f4ccde46e66fc1e4a256388bbbaeed]";b:1;s:34:"[7d949824ea143c310791bebcedfef594]";b:1;}hikashop_address_data|O:8:"stdClass":12:{s:13:"address_title";s:2:"Mr";s:17:"address_firstname";s:6:"albert";s:16:"address_lastname";s:8:"landayan";s:14:"address_street";s:14:"pag-asa street";s:17:"address_post_code";s:4:"1606";s:12:"address_city";s:5:"Pasig";s:17:"address_telephone";s:7:"9111111";s:15:"address_country";s:23:"country_Philippines_168";s:13:"address_state";s:33:"state_NationalCapitalRegion_12851";s:15:"address_user_id";i:2;s:10:"address_id";s:1:"0";s:15:"address_default";i:1;}', 327, 'albertlandayan');
+('oj63nols57tthg3e9q0gds9974', 0, 1, '1447602123', '__default|a:2:{s:22:"session.client.browser";s:108:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.99 Safari/537.36";s:15:"session.counter";i:1;}', 0, ''),
+('qdv9l95jk5qahpt0fcvb0vsmf3', 0, 0, '1447602982', '__default|a:7:{s:15:"session.counter";i:5;s:19:"session.timer.start";i:1447602123;s:18:"session.timer.last";i:1447602140;s:17:"session.timer.now";i:1447602982;s:22:"session.client.browser";s:108:"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.99 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:12:"com_hikashop";O:8:"stdClass":3:{s:16:"shipping_address";s:1:"6";s:15:"billing_address";s:1:"6";s:7:"zone_id";s:4:"4568";}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";s:3:"327";s:4:"name";s:15:"albert landayan";s:8:"username";s:14:"albertlandayan";s:5:"email";s:28:"albert.landayan.14@gmail.com";s:8:"password";s:60:"$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"0";s:12:"registerDate";s:19:"2015-11-02 13:07:04";s:13:"lastvisitDate";s:19:"2015-11-15 15:12:04";s:10:"activation";s:0:"";s:6:"params";s:92:"{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}";s:6:"groups";a:1:{i:2;s:1:"2";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"admin_style";s:0:"";s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:0:"";}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:2;}s:14:"\\0\\0\\0_authLevels";a:4:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:7;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}}', 327, 'albertlandayan');
 
 -- --------------------------------------------------------
 
@@ -14689,38 +14768,38 @@ INSERT INTO `jt_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `u
 -- Table structure for table `jt_tags`
 --
 
-CREATE TABLE `jt_tags` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_tags` (
+  `id` int(10) unsigned NOT NULL,
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
   `rgt` int(11) NOT NULL DEFAULT '0',
-  `level` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `level` int(10) unsigned NOT NULL DEFAULT '0',
   `path` varchar(255) NOT NULL DEFAULT '',
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `note` varchar(255) NOT NULL DEFAULT '',
   `description` mediumtext NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `access` int(10) unsigned NOT NULL DEFAULT '0',
   `params` text NOT NULL,
   `metadesc` varchar(1024) NOT NULL COMMENT 'The meta description for the page.',
   `metakey` varchar(1024) NOT NULL COMMENT 'The meta keywords for the page.',
   `metadata` varchar(2048) NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
-  `modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `modified_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `images` text NOT NULL,
   `urls` text NOT NULL,
-  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `hits` int(10) unsigned NOT NULL DEFAULT '0',
   `language` char(7) NOT NULL,
-  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `version` int(10) unsigned NOT NULL DEFAULT '1',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_tags`
@@ -14735,14 +14814,14 @@ INSERT INTO `jt_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`
 -- Table structure for table `jt_template_styles`
 --
 
-CREATE TABLE `jt_template_styles` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_template_styles` (
+  `id` int(10) unsigned NOT NULL,
   `template` varchar(50) NOT NULL DEFAULT '',
-  `client_id` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `client_id` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `home` char(7) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `params` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_template_styles`
@@ -14762,8 +14841,8 @@ INSERT INTO `jt_template_styles` (`id`, `template`, `client_id`, `home`, `title`
 -- Table structure for table `jt_ucm_base`
 --
 
-CREATE TABLE `jt_ucm_base` (
-  `ucm_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_ucm_base` (
+  `ucm_id` int(10) unsigned NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
   `ucm_type_id` int(11) NOT NULL,
   `ucm_language_id` int(11) NOT NULL
@@ -14775,39 +14854,39 @@ CREATE TABLE `jt_ucm_base` (
 -- Table structure for table `jt_ucm_content`
 --
 
-CREATE TABLE `jt_ucm_content` (
-  `core_content_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_ucm_content` (
+  `core_content_id` int(10) unsigned NOT NULL,
   `core_type_alias` varchar(255) NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
   `core_title` varchar(255) NOT NULL,
   `core_alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `core_body` mediumtext NOT NULL,
   `core_state` tinyint(1) NOT NULL DEFAULT '0',
   `core_checked_out_time` varchar(255) NOT NULL DEFAULT '',
-  `core_checked_out_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `core_access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `core_checked_out_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_access` int(10) unsigned NOT NULL DEFAULT '0',
   `core_params` text NOT NULL,
-  `core_featured` tinyint(4) UNSIGNED NOT NULL DEFAULT '0',
+  `core_featured` tinyint(4) unsigned NOT NULL DEFAULT '0',
   `core_metadata` varchar(2048) NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `core_created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `core_created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `core_created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `core_created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `core_modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
+  `core_modified_user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
   `core_modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `core_language` char(7) NOT NULL,
   `core_publish_up` datetime NOT NULL,
   `core_publish_down` datetime NOT NULL,
-  `core_content_item_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'ID from the individual type table',
-  `asset_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'FK to the #__assets table.',
+  `core_content_item_id` int(10) unsigned DEFAULT NULL COMMENT 'ID from the individual type table',
+  `asset_id` int(10) unsigned DEFAULT NULL COMMENT 'FK to the #__assets table.',
   `core_images` text NOT NULL,
   `core_urls` text NOT NULL,
-  `core_hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `core_version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `core_hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_version` int(10) unsigned NOT NULL DEFAULT '1',
   `core_ordering` int(11) NOT NULL DEFAULT '0',
   `core_metakey` text NOT NULL,
   `core_metadesc` text NOT NULL,
-  `core_catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `core_catid` int(10) unsigned NOT NULL DEFAULT '0',
   `core_xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
-  `core_type_id` int(10) UNSIGNED DEFAULT NULL
+  `core_type_id` int(10) unsigned DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contains core content data in name spaced fields';
 
 -- --------------------------------------------------------
@@ -14816,18 +14895,25 @@ CREATE TABLE `jt_ucm_content` (
 -- Table structure for table `jt_ucm_history`
 --
 
-CREATE TABLE `jt_ucm_history` (
-  `version_id` int(10) UNSIGNED NOT NULL,
-  `ucm_item_id` int(10) UNSIGNED NOT NULL,
-  `ucm_type_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_ucm_history` (
+  `version_id` int(10) unsigned NOT NULL,
+  `ucm_item_id` int(10) unsigned NOT NULL,
+  `ucm_type_id` int(10) unsigned NOT NULL,
   `version_note` varchar(255) NOT NULL DEFAULT '' COMMENT 'Optional version name',
   `save_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `editor_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `character_count` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
+  `editor_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `character_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
   `sha1_hash` varchar(50) NOT NULL DEFAULT '' COMMENT 'SHA1 hash of the version_data column.',
   `version_data` mediumtext NOT NULL COMMENT 'json-encoded string of version data',
   `keep_forever` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=auto delete; 1=keep'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jt_ucm_history`
+--
+
+INSERT INTO `jt_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `version_note`, `save_date`, `editor_user_id`, `character_count`, `sha1_hash`, `version_data`, `keep_forever`) VALUES
+(1, 10, 2, '', '2015-11-06 09:07:55', 326, 1674, '955ef5a422e4241361016e2a7ed0ea55d866e029', '{"id":10,"name":"Contact Us","alias":"contact-us","con_position":"","address":"","suburb":"","state":"","country":"","postcode":"","telephone":"","fax":"","misc":"","image":"","email_to":"adriandean12@gmail.com","default_con":0,"published":"1","checked_out":null,"checked_out_time":null,"ordering":4,"params":"{\\"show_contact_category\\":\\"\\",\\"show_contact_list\\":\\"\\",\\"presentation_style\\":\\"\\",\\"show_tags\\":\\"\\",\\"show_name\\":\\"\\",\\"show_position\\":\\"\\",\\"show_email\\":\\"\\",\\"show_street_address\\":\\"\\",\\"show_suburb\\":\\"\\",\\"show_state\\":\\"\\",\\"show_postcode\\":\\"\\",\\"show_country\\":\\"\\",\\"show_telephone\\":\\"\\",\\"show_mobile\\":\\"\\",\\"show_fax\\":\\"\\",\\"show_webpage\\":\\"\\",\\"show_misc\\":\\"\\",\\"show_image\\":\\"\\",\\"allow_vcard\\":\\"\\",\\"show_articles\\":\\"\\",\\"articles_display_num\\":\\"\\",\\"show_profile\\":\\"\\",\\"show_links\\":\\"\\",\\"linka_name\\":\\"\\",\\"linka\\":false,\\"linkb_name\\":\\"\\",\\"linkb\\":false,\\"linkc_name\\":\\"\\",\\"linkc\\":false,\\"linkd_name\\":\\"\\",\\"linkd\\":false,\\"linke_name\\":\\"\\",\\"linke\\":false,\\"contact_layout\\":\\"\\",\\"show_email_form\\":\\"\\",\\"show_email_copy\\":\\"\\",\\"banned_email\\":\\"\\",\\"banned_subject\\":\\"\\",\\"banned_text\\":\\"\\",\\"validate_session\\":\\"\\",\\"custom_reply\\":\\"\\",\\"redirect\\":\\"\\"}","user_id":0,"catid":"16","access":"1","mobile":"","webpage":false,"sortname1":"","sortname2":"","sortname3":"","language":"*","created":"2015-11-06 09:07:55","created_by":"326","created_by_alias":"","modified":"2015-11-06 09:07:55","modified_by":null,"metakey":"","metadesc":"","metadata":"{\\"robots\\":\\"\\",\\"rights\\":\\"\\"}","featured":"0","xreference":"","publish_up":"0000-00-00 00:00:00","publish_down":"0000-00-00 00:00:00","version":1,"hits":null}', 0);
 
 -- --------------------------------------------------------
 
@@ -14835,7 +14921,7 @@ CREATE TABLE `jt_ucm_history` (
 -- Table structure for table `jt_updates`
 --
 
-CREATE TABLE `jt_updates` (
+CREATE TABLE IF NOT EXISTS `jt_updates` (
   `update_id` int(11) NOT NULL,
   `update_site_id` int(11) DEFAULT '0',
   `extension_id` int(11) DEFAULT '0',
@@ -14850,75 +14936,15 @@ CREATE TABLE `jt_updates` (
   `detailsurl` text NOT NULL,
   `infourl` text NOT NULL,
   `extra_query` varchar(1000) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Available Updates';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='Available Updates';
 
 --
 -- Dumping data for table `jt_updates`
 --
 
 INSERT INTO `jt_updates` (`update_id`, `update_site_id`, `extension_id`, `name`, `description`, `element`, `type`, `folder`, `client_id`, `version`, `data`, `detailsurl`, `infourl`, `extra_query`) VALUES
-(1, 3, 0, 'Armenian', '', 'pkg_hy-AM', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/hy-AM_details.xml', '', ''),
-(2, 3, 0, 'Malay', '', 'pkg_ms-MY', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/ms-MY_details.xml', '', ''),
-(3, 3, 0, 'Romanian', '', 'pkg_ro-RO', 'package', '', 0, '3.4.3.1', '', 'http://update.joomla.org/language/details3/ro-RO_details.xml', '', ''),
-(4, 3, 0, 'Flemish', '', 'pkg_nl-BE', 'package', '', 0, '3.4.5.2', '', 'http://update.joomla.org/language/details3/nl-BE_details.xml', '', ''),
-(5, 3, 0, 'Chinese Traditional', '', 'pkg_zh-TW', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/zh-TW_details.xml', '', ''),
-(6, 3, 0, 'French', '', 'pkg_fr-FR', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/fr-FR_details.xml', '', ''),
-(7, 3, 0, 'Galician', '', 'pkg_gl-ES', 'package', '', 0, '3.3.1.2', '', 'http://update.joomla.org/language/details3/gl-ES_details.xml', '', ''),
-(8, 3, 0, 'German', '', 'pkg_de-DE', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/de-DE_details.xml', '', ''),
-(9, 3, 0, 'Greek', '', 'pkg_el-GR', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/el-GR_details.xml', '', ''),
-(10, 3, 0, 'Japanese', '', 'pkg_ja-JP', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/ja-JP_details.xml', '', ''),
-(11, 3, 0, 'Hebrew', '', 'pkg_he-IL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/he-IL_details.xml', '', ''),
-(12, 3, 0, 'EnglishAU', '', 'pkg_en-AU', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/en-AU_details.xml', '', ''),
-(13, 3, 0, 'EnglishUS', '', 'pkg_en-US', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/en-US_details.xml', '', ''),
-(14, 3, 0, 'Hungarian', '', 'pkg_hu-HU', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/hu-HU_details.xml', '', ''),
-(15, 3, 0, 'Afrikaans', '', 'pkg_af-ZA', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/af-ZA_details.xml', '', ''),
-(16, 3, 0, 'Arabic Unitag', '', 'pkg_ar-AA', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/ar-AA_details.xml', '', ''),
-(17, 3, 0, 'Belarusian', '', 'pkg_be-BY', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/be-BY_details.xml', '', ''),
-(18, 3, 0, 'Bulgarian', '', 'pkg_bg-BG', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/bg-BG_details.xml', '', ''),
-(19, 3, 0, 'Catalan', '', 'pkg_ca-ES', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/ca-ES_details.xml', '', ''),
-(20, 3, 0, 'Chinese Simplified', '', 'pkg_zh-CN', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/zh-CN_details.xml', '', ''),
-(21, 3, 0, 'Croatian', '', 'pkg_hr-HR', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/hr-HR_details.xml', '', ''),
-(22, 3, 0, 'Czech', '', 'pkg_cs-CZ', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/cs-CZ_details.xml', '', ''),
-(23, 3, 0, 'Danish', '', 'pkg_da-DK', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/da-DK_details.xml', '', ''),
-(24, 3, 0, 'Dutch', '', 'pkg_nl-NL', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/nl-NL_details.xml', '', ''),
-(25, 3, 0, 'Estonian', '', 'pkg_et-EE', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/et-EE_details.xml', '', ''),
-(26, 3, 0, 'Italian', '', 'pkg_it-IT', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/it-IT_details.xml', '', ''),
-(27, 3, 0, 'Khmer', '', 'pkg_km-KH', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/km-KH_details.xml', '', ''),
-(28, 3, 0, 'Korean', '', 'pkg_ko-KR', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/ko-KR_details.xml', '', ''),
-(29, 3, 0, 'Latvian', '', 'pkg_lv-LV', 'package', '', 0, '3.4.3.1', '', 'http://update.joomla.org/language/details3/lv-LV_details.xml', '', ''),
-(30, 3, 0, 'Macedonian', '', 'pkg_mk-MK', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/mk-MK_details.xml', '', ''),
-(31, 3, 0, 'Norwegian Bokmal', '', 'pkg_nb-NO', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/nb-NO_details.xml', '', ''),
-(32, 3, 0, 'Norwegian Nynorsk', '', 'pkg_nn-NO', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/nn-NO_details.xml', '', ''),
-(33, 3, 0, 'Persian', '', 'pkg_fa-IR', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/fa-IR_details.xml', '', ''),
-(34, 3, 0, 'Polish', '', 'pkg_pl-PL', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/pl-PL_details.xml', '', ''),
-(35, 3, 0, 'Portuguese', '', 'pkg_pt-PT', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/pt-PT_details.xml', '', ''),
-(36, 3, 0, 'Russian', '', 'pkg_ru-RU', 'package', '', 0, '3.4.1.3', '', 'http://update.joomla.org/language/details3/ru-RU_details.xml', '', ''),
-(37, 3, 0, 'Slovak', '', 'pkg_sk-SK', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/sk-SK_details.xml', '', ''),
-(38, 3, 0, 'Swedish', '', 'pkg_sv-SE', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sv-SE_details.xml', '', ''),
-(39, 3, 0, 'Syriac', '', 'pkg_sy-IQ', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sy-IQ_details.xml', '', ''),
-(40, 3, 0, 'Tamil', '', 'pkg_ta-IN', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/ta-IN_details.xml', '', ''),
-(41, 3, 0, 'Thai', '', 'pkg_th-TH', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/th-TH_details.xml', '', ''),
-(42, 3, 0, 'Turkish', '', 'pkg_tr-TR', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/tr-TR_details.xml', '', ''),
-(43, 3, 0, 'Ukrainian', '', 'pkg_uk-UA', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/uk-UA_details.xml', '', ''),
-(44, 3, 0, 'Uyghur', '', 'pkg_ug-CN', 'package', '', 0, '3.3.0.1', '', 'http://update.joomla.org/language/details3/ug-CN_details.xml', '', ''),
-(45, 3, 0, 'Albanian', '', 'pkg_sq-AL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/sq-AL_details.xml', '', ''),
-(46, 3, 0, 'Hindi', '', 'pkg_hi-IN', 'package', '', 0, '3.3.6.1', '', 'http://update.joomla.org/language/details3/hi-IN_details.xml', '', ''),
-(47, 3, 0, 'Portuguese Brazil', '', 'pkg_pt-BR', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/pt-BR_details.xml', '', ''),
-(48, 3, 0, 'Serbian Latin', '', 'pkg_sr-YU', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sr-YU_details.xml', '', ''),
-(49, 3, 0, 'Spanish', '', 'pkg_es-ES', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/es-ES_details.xml', '', ''),
-(50, 3, 0, 'Bosnian', '', 'pkg_bs-BA', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/bs-BA_details.xml', '', ''),
-(51, 3, 0, 'Serbian Cyrillic', '', 'pkg_sr-RS', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sr-RS_details.xml', '', ''),
-(52, 3, 0, 'Vietnamese', '', 'pkg_vi-VN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/vi-VN_details.xml', '', ''),
-(53, 3, 0, 'Bahasa Indonesia', '', 'pkg_id-ID', 'package', '', 0, '3.3.0.2', '', 'http://update.joomla.org/language/details3/id-ID_details.xml', '', ''),
-(54, 3, 0, 'Finnish', '', 'pkg_fi-FI', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/fi-FI_details.xml', '', ''),
-(55, 3, 0, 'Swahili', '', 'pkg_sw-KE', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/sw-KE_details.xml', '', ''),
-(56, 3, 0, 'Montenegrin', '', 'pkg_srp-ME', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/srp-ME_details.xml', '', ''),
-(57, 3, 0, 'EnglishCA', '', 'pkg_en-CA', 'package', '', 0, '3.3.6.1', '', 'http://update.joomla.org/language/details3/en-CA_details.xml', '', ''),
-(58, 3, 0, 'FrenchCA', '', 'pkg_fr-CA', 'package', '', 0, '3.4.4.3', '', 'http://update.joomla.org/language/details3/fr-CA_details.xml', '', ''),
-(59, 3, 0, 'Welsh', '', 'pkg_cy-GB', 'package', '', 0, '3.3.0.2', '', 'http://update.joomla.org/language/details3/cy-GB_details.xml', '', ''),
-(60, 3, 0, 'Sinhala', '', 'pkg_si-LK', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/si-LK_details.xml', '', ''),
-(61, 3, 0, 'Dari Persian', '', 'pkg_prs-AF', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/prs-AF_details.xml', '', ''),
-(62, 3, 0, 'Turkmen', '', 'pkg_tk-TM', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/tk-TM_details.xml', '', '');
+(1, 6, 10003, 'JSN PowerAdmin', '', 'com_poweradmin', 'component', '', 1, '2.2.8', '', '', '', ''),
+(2, 13, 10156, 'Community Builder', 'Community Builder package', 'pkg_communitybuilder', 'package', '', 0, '2.0.12', '', 'http://update.joomlapolis.net/versions/pkg_communitybuilder.xml', '', '');
 
 -- --------------------------------------------------------
 
@@ -14926,7 +14952,7 @@ INSERT INTO `jt_updates` (`update_id`, `update_site_id`, `extension_id`, `name`,
 -- Table structure for table `jt_update_sites`
 --
 
-CREATE TABLE `jt_update_sites` (
+CREATE TABLE IF NOT EXISTS `jt_update_sites` (
   `update_site_id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT '',
   `type` varchar(20) DEFAULT '',
@@ -14934,26 +14960,27 @@ CREATE TABLE `jt_update_sites` (
   `enabled` int(11) DEFAULT '0',
   `last_check_timestamp` bigint(20) DEFAULT '0',
   `extra_query` varchar(1000) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Update Sites';
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='Update Sites';
 
 --
 -- Dumping data for table `jt_update_sites`
 --
 
 INSERT INTO `jt_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1446470366, ''),
-(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1446470366, ''),
-(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1446470364, ''),
-(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1446470364, ''),
-(5, 'WebInstaller Update Site', 'extension', 'http://appscdn.joomla.org/webapps/jedapps/webinstaller.xml', 1, 1446470364, ''),
-(6, 'poweradmin', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_poweradmin.xml', 1, 1446470364, ''),
-(7, 'imageshow', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_imageshow.xml', 1, 1446470364, ''),
-(8, 'uniform', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_uniform.xml', 1, 1446470364, ''),
-(9, 'mobilize', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_mobilize.xml', 1, 1446470364, ''),
-(10, 'pagebuilder', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_pagebuilder.xml', 1, 1446470364, ''),
-(11, 'easyslider', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_easyslider.xml', 1, 1446470364, ''),
+(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1447554838, ''),
+(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1447554838, ''),
+(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
+(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, ''),
+(5, 'WebInstaller Update Site', 'extension', 'http://appscdn.joomla.org/webapps/jedapps/webinstaller.xml', 1, 1447554835, ''),
+(6, 'poweradmin', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_poweradmin.xml', 1, 1447554835, ''),
+(7, 'imageshow', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_imageshow.xml', 1, 1447554835, ''),
+(8, 'uniform', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_uniform.xml', 1, 1447554835, ''),
+(9, 'mobilize', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_mobilize.xml', 1, 1447554835, ''),
+(10, 'pagebuilder', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_pagebuilder.xml', 1, 1447554835, ''),
+(11, 'easyslider', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_easyslider.xml', 1, 1447554835, ''),
 (12, 'Hikashop', 'extension', 'http://www.hikashop.com/component/updateme/updatexml/component-hikashop/level-Starter/file-extension.xml', 0, 0, ''),
-(13, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1446470364, '');
+(13, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1447554835, ''),
+(14, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1447554835, '');
 
 -- --------------------------------------------------------
 
@@ -14961,7 +14988,7 @@ INSERT INTO `jt_update_sites` (`update_site_id`, `name`, `type`, `location`, `en
 -- Table structure for table `jt_update_sites_extensions`
 --
 
-CREATE TABLE `jt_update_sites_extensions` (
+CREATE TABLE IF NOT EXISTS `jt_update_sites_extensions` (
   `update_site_id` int(11) NOT NULL DEFAULT '0',
   `extension_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links extensions to update sites';
@@ -14983,7 +15010,8 @@ INSERT INTO `jt_update_sites_extensions` (`update_site_id`, `extension_id`) VALU
 (10, 10033),
 (11, 10039),
 (12, 10045),
-(13, 10156);
+(13, 10156),
+(14, 0);
 
 -- --------------------------------------------------------
 
@@ -14991,13 +15019,13 @@ INSERT INTO `jt_update_sites_extensions` (`update_site_id`, `extension_id`) VALU
 -- Table structure for table `jt_usergroups`
 --
 
-CREATE TABLE `jt_usergroups` (
-  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
-  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
+CREATE TABLE IF NOT EXISTS `jt_usergroups` (
+  `id` int(10) unsigned NOT NULL COMMENT 'Primary Key',
+  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
   `title` varchar(100) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_usergroups`
@@ -15020,7 +15048,7 @@ INSERT INTO `jt_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- Table structure for table `jt_users`
 --
 
-CREATE TABLE `jt_users` (
+CREATE TABLE IF NOT EXISTS `jt_users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `username` varchar(150) NOT NULL DEFAULT '',
@@ -15037,15 +15065,16 @@ CREATE TABLE `jt_users` (
   `otpKey` varchar(1000) NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
   `otep` varchar(1000) NOT NULL DEFAULT '' COMMENT 'One time emergency passwords',
   `requireReset` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Require user to reset password on next login'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=329 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_users`
 --
 
 INSERT INTO `jt_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(326, 'Super User', 'admin', 'adriandean12@gmail.com', '$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne', 0, 1, '2015-10-31 06:00:43', '2015-11-02 13:06:00', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
-(327, 'albert landayan', 'albertlandayan', 'albert.landayan.14@gmail.com', '$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki', 0, 0, '2015-11-02 13:07:04', '2015-11-02 13:31:19', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
+(326, 'Super User', 'admin', 'adriandean12@gmail.com', '$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne', 0, 1, '2015-10-31 06:00:43', '2015-11-15 14:39:17', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
+(327, 'albert landayan', 'albertlandayan', 'albert.landayan.14@gmail.com', '$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki', 0, 0, '2015-11-02 13:07:04', '2015-11-15 15:42:15', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(328, 'NewsAdmin', 'NewsAdmin', 'asd@yahoo.com', '$2y$10$M8y/6LHHlcQVIwJpfOmzXeIPatR9k3dvMgqODnKG4zrXoWGPN2W.C', 0, 0, '2015-11-15 03:34:12', '2015-11-15 15:42:03', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -15053,8 +15082,8 @@ INSERT INTO `jt_users` (`id`, `name`, `username`, `email`, `password`, `block`, 
 -- Table structure for table `jt_user_keys`
 --
 
-CREATE TABLE `jt_user_keys` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_user_keys` (
+  `id` int(10) unsigned NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `series` varchar(255) NOT NULL,
@@ -15069,18 +15098,18 @@ CREATE TABLE `jt_user_keys` (
 -- Table structure for table `jt_user_notes`
 --
 
-CREATE TABLE `jt_user_notes` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
-  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `jt_user_notes` (
+  `id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `catid` int(10) unsigned NOT NULL DEFAULT '0',
   `subject` varchar(100) NOT NULL DEFAULT '',
   `body` text NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_user_id` int(10) UNSIGNED NOT NULL,
+  `modified_user_id` int(10) unsigned NOT NULL,
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `review_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -15093,7 +15122,7 @@ CREATE TABLE `jt_user_notes` (
 -- Table structure for table `jt_user_profiles`
 --
 
-CREATE TABLE `jt_user_profiles` (
+CREATE TABLE IF NOT EXISTS `jt_user_profiles` (
   `user_id` int(11) NOT NULL,
   `profile_key` varchar(100) NOT NULL,
   `profile_value` text NOT NULL,
@@ -15106,9 +15135,9 @@ CREATE TABLE `jt_user_profiles` (
 -- Table structure for table `jt_user_usergroup_map`
 --
 
-CREATE TABLE `jt_user_usergroup_map` (
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
-  `group_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id'
+CREATE TABLE IF NOT EXISTS `jt_user_usergroup_map` (
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
+  `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -15117,7 +15146,9 @@ CREATE TABLE `jt_user_usergroup_map` (
 
 INSERT INTO `jt_user_usergroup_map` (`user_id`, `group_id`) VALUES
 (326, 8),
-(327, 2);
+(327, 2),
+(328, 2),
+(328, 5);
 
 -- --------------------------------------------------------
 
@@ -15125,12 +15156,12 @@ INSERT INTO `jt_user_usergroup_map` (`user_id`, `group_id`) VALUES
 -- Table structure for table `jt_viewlevels`
 --
 
-CREATE TABLE `jt_viewlevels` (
-  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
+CREATE TABLE IF NOT EXISTS `jt_viewlevels` (
+  `id` int(10) unsigned NOT NULL COMMENT 'Primary Key',
   `title` varchar(100) NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `rules` varchar(5120) NOT NULL COMMENT 'JSON encoded access control.'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_viewlevels`
@@ -15139,9 +15170,10 @@ CREATE TABLE `jt_viewlevels` (
 INSERT INTO `jt_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 (1, 'Public', 0, '[1]'),
 (2, 'Registered', 2, '[6,2,8]'),
-(3, 'Special', 3, '[6,3,8]'),
+(3, 'Special', 3, '[5]'),
 (5, 'Guest', 1, '[9]'),
-(6, 'Super Users', 4, '[8]');
+(6, 'Super Users', 4, '[8]'),
+(7, 'News Editor', 0, '[2,5]');
 
 -- --------------------------------------------------------
 
@@ -15149,8 +15181,8 @@ INSERT INTO `jt_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 -- Table structure for table `jt_weblinks`
 --
 
-CREATE TABLE `jt_weblinks` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `jt_weblinks` (
+  `id` int(10) unsigned NOT NULL,
   `catid` int(11) NOT NULL DEFAULT '0',
   `title` varchar(250) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -15165,20 +15197,20 @@ CREATE TABLE `jt_weblinks` (
   `params` text NOT NULL,
   `language` char(7) NOT NULL DEFAULT '',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
   `metadata` text NOT NULL,
-  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if link is featured.',
+  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if link is featured.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `version` int(10) unsigned NOT NULL DEFAULT '1',
   `images` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_weblinks`
@@ -15203,122 +15235,79 @@ INSERT INTO `jt_weblinks` (`id`, `catid`, `title`, `alias`, `url`, `description`
 -- Indexes for table `jt_assets`
 --
 ALTER TABLE `jt_assets`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_asset_name` (`name`),
-  ADD KEY `idx_lft_rgt` (`lft`,`rgt`),
-  ADD KEY `idx_parent_id` (`parent_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_asset_name` (`name`), ADD KEY `idx_lft_rgt` (`lft`,`rgt`), ADD KEY `idx_parent_id` (`parent_id`);
 
 --
 -- Indexes for table `jt_associations`
 --
 ALTER TABLE `jt_associations`
-  ADD PRIMARY KEY (`context`,`id`),
-  ADD KEY `idx_key` (`key`);
+  ADD PRIMARY KEY (`context`,`id`), ADD KEY `idx_key` (`key`);
 
 --
 -- Indexes for table `jt_banners`
 --
 ALTER TABLE `jt_banners`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_state` (`state`),
-  ADD KEY `idx_own_prefix` (`own_prefix`),
-  ADD KEY `idx_metakey_prefix` (`metakey_prefix`),
-  ADD KEY `idx_banner_catid` (`catid`),
-  ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_state` (`state`), ADD KEY `idx_own_prefix` (`own_prefix`), ADD KEY `idx_metakey_prefix` (`metakey_prefix`), ADD KEY `idx_banner_catid` (`catid`), ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_banner_clients`
 --
 ALTER TABLE `jt_banner_clients`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_own_prefix` (`own_prefix`),
-  ADD KEY `idx_metakey_prefix` (`metakey_prefix`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_own_prefix` (`own_prefix`), ADD KEY `idx_metakey_prefix` (`metakey_prefix`);
 
 --
 -- Indexes for table `jt_banner_tracks`
 --
 ALTER TABLE `jt_banner_tracks`
-  ADD PRIMARY KEY (`track_date`,`track_type`,`banner_id`),
-  ADD KEY `idx_track_date` (`track_date`),
-  ADD KEY `idx_track_type` (`track_type`),
-  ADD KEY `idx_banner_id` (`banner_id`);
+  ADD PRIMARY KEY (`track_date`,`track_type`,`banner_id`), ADD KEY `idx_track_date` (`track_date`), ADD KEY `idx_track_type` (`track_type`), ADD KEY `idx_banner_id` (`banner_id`);
 
 --
 -- Indexes for table `jt_categories`
 --
 ALTER TABLE `jt_categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `cat_idx` (`extension`,`published`,`access`),
-  ADD KEY `idx_access` (`access`),
-  ADD KEY `idx_checkout` (`checked_out`),
-  ADD KEY `idx_path` (`path`),
-  ADD KEY `idx_left_right` (`lft`,`rgt`),
-  ADD KEY `idx_alias` (`alias`),
-  ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`), ADD KEY `cat_idx` (`extension`,`published`,`access`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_path` (`path`), ADD KEY `idx_left_right` (`lft`,`rgt`), ADD KEY `idx_alias` (`alias`), ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_comprofiler`
 --
 ALTER TABLE `jt_comprofiler`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `user_id` (`user_id`),
-  ADD KEY `apprconfbanid` (`approved`,`confirmed`,`banned`,`id`),
-  ADD KEY `avatappr_apr_conf_ban_avatar` (`avatarapproved`,`approved`,`confirmed`,`banned`,`avatar`(48)),
-  ADD KEY `lastupdatedate` (`lastupdatedate`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `user_id` (`user_id`), ADD KEY `apprconfbanid` (`approved`,`confirmed`,`banned`,`id`), ADD KEY `avatappr_apr_conf_ban_avatar` (`avatarapproved`,`approved`,`confirmed`,`banned`,`avatar`(48)), ADD KEY `lastupdatedate` (`lastupdatedate`);
 
 --
 -- Indexes for table `jt_comprofiler_fields`
 --
 ALTER TABLE `jt_comprofiler_fields`
-  ADD PRIMARY KEY (`fieldid`),
-  ADD KEY `tabid_pub_prof_order` (`tabid`,`published`,`profile`,`ordering`),
-  ADD KEY `readonly_published_tabid` (`readonly`,`published`,`tabid`),
-  ADD KEY `registration_published_order` (`registration`,`published`,`ordering`);
+  ADD PRIMARY KEY (`fieldid`), ADD KEY `tabid_pub_prof_order` (`tabid`,`published`,`profile`,`ordering`), ADD KEY `readonly_published_tabid` (`readonly`,`published`,`tabid`), ADD KEY `registration_published_order` (`registration`,`published`,`ordering`);
 
 --
 -- Indexes for table `jt_comprofiler_field_values`
 --
 ALTER TABLE `jt_comprofiler_field_values`
-  ADD PRIMARY KEY (`fieldvalueid`),
-  ADD KEY `fieldid_ordering` (`fieldid`,`ordering`),
-  ADD KEY `fieldtitle_id` (`fieldtitle`,`fieldid`),
-  ADD KEY `fieldlabel_id` (`fieldlabel`,`fieldid`);
+  ADD PRIMARY KEY (`fieldvalueid`), ADD KEY `fieldid_ordering` (`fieldid`,`ordering`), ADD KEY `fieldtitle_id` (`fieldtitle`,`fieldid`), ADD KEY `fieldlabel_id` (`fieldlabel`,`fieldid`);
 
 --
 -- Indexes for table `jt_comprofiler_lists`
 --
 ALTER TABLE `jt_comprofiler_lists`
-  ADD PRIMARY KEY (`listid`),
-  ADD KEY `pub_ordering` (`published`,`ordering`),
-  ADD KEY `default_published` (`default`,`published`);
+  ADD PRIMARY KEY (`listid`), ADD KEY `pub_ordering` (`published`,`ordering`), ADD KEY `default_published` (`default`,`published`);
 
 --
 -- Indexes for table `jt_comprofiler_members`
 --
 ALTER TABLE `jt_comprofiler_members`
-  ADD PRIMARY KEY (`referenceid`,`memberid`),
-  ADD KEY `pamr` (`pending`,`accepted`,`memberid`,`referenceid`),
-  ADD KEY `aprm` (`accepted`,`pending`,`referenceid`,`memberid`),
-  ADD KEY `membrefid` (`memberid`,`referenceid`);
+  ADD PRIMARY KEY (`referenceid`,`memberid`), ADD KEY `pamr` (`pending`,`accepted`,`memberid`,`referenceid`), ADD KEY `aprm` (`accepted`,`pending`,`referenceid`,`memberid`), ADD KEY `membrefid` (`memberid`,`referenceid`);
 
 --
 -- Indexes for table `jt_comprofiler_plugin`
 --
 ALTER TABLE `jt_comprofiler_plugin`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `element` (`element`),
-  ADD KEY `folder` (`folder`),
-  ADD KEY `idx_folder` (`published`,`client_id`,`viewaccesslevel`,`folder`),
-  ADD KEY `type_pub_order` (`type`,`published`,`ordering`);
+  ADD PRIMARY KEY (`id`), ADD KEY `element` (`element`), ADD KEY `folder` (`folder`), ADD KEY `idx_folder` (`published`,`client_id`,`viewaccesslevel`,`folder`), ADD KEY `type_pub_order` (`type`,`published`,`ordering`);
 
 --
 -- Indexes for table `jt_comprofiler_plugin_blogs`
 --
 ALTER TABLE `jt_comprofiler_plugin_blogs`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `published` (`published`),
-  ADD KEY `user` (`user`),
-  ADD KEY `access` (`access`);
+  ADD PRIMARY KEY (`id`), ADD KEY `published` (`published`), ADD KEY `user` (`user`), ADD KEY `access` (`access`);
 
 --
 -- Indexes for table `jt_comprofiler_ratings`
@@ -15330,73 +15319,43 @@ ALTER TABLE `jt_comprofiler_ratings`
 -- Indexes for table `jt_comprofiler_sessions`
 --
 ALTER TABLE `jt_comprofiler_sessions`
-  ADD PRIMARY KEY (`session_id`),
-  ADD KEY `expiry_time` (`expiry_time`),
-  ADD KEY `userid` (`userid`);
+  ADD PRIMARY KEY (`session_id`), ADD KEY `expiry_time` (`expiry_time`), ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `jt_comprofiler_tabs`
 --
 ALTER TABLE `jt_comprofiler_tabs`
-  ADD PRIMARY KEY (`tabid`),
-  ADD KEY `pluginclass` (`pluginclass`),
-  ADD KEY `enabled_position_ordering` (`enabled`,`position`,`ordering`),
-  ADD KEY `orderreg_enabled_pos_order` (`enabled`,`ordering_register`,`position`,`ordering`);
+  ADD PRIMARY KEY (`tabid`), ADD KEY `pluginclass` (`pluginclass`), ADD KEY `enabled_position_ordering` (`enabled`,`position`,`ordering`), ADD KEY `orderreg_enabled_pos_order` (`enabled`,`ordering_register`,`position`,`ordering`);
 
 --
 -- Indexes for table `jt_comprofiler_userreports`
 --
 ALTER TABLE `jt_comprofiler_userreports`
-  ADD PRIMARY KEY (`reportid`),
-  ADD KEY `status_user_date` (`reportedstatus`,`reporteduser`,`reportedondate`),
-  ADD KEY `reportedbyuser_ondate` (`reportedbyuser`,`reportedondate`);
+  ADD PRIMARY KEY (`reportid`), ADD KEY `status_user_date` (`reportedstatus`,`reporteduser`,`reportedondate`), ADD KEY `reportedbyuser_ondate` (`reportedbyuser`,`reportedondate`);
 
 --
 -- Indexes for table `jt_comprofiler_views`
 --
 ALTER TABLE `jt_comprofiler_views`
-  ADD PRIMARY KEY (`viewer_id`,`profile_id`,`lastip`),
-  ADD KEY `lastview` (`lastview`),
-  ADD KEY `profile_id_lastview` (`profile_id`,`lastview`,`viewer_id`);
+  ADD PRIMARY KEY (`viewer_id`,`profile_id`,`lastip`), ADD KEY `lastview` (`lastview`), ADD KEY `profile_id_lastview` (`profile_id`,`lastview`,`viewer_id`);
 
 --
 -- Indexes for table `jt_contact_details`
 --
 ALTER TABLE `jt_contact_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_access` (`access`),
-  ADD KEY `idx_checkout` (`checked_out`),
-  ADD KEY `idx_state` (`published`),
-  ADD KEY `idx_catid` (`catid`),
-  ADD KEY `idx_createdby` (`created_by`),
-  ADD KEY `idx_featured_catid` (`featured`,`catid`),
-  ADD KEY `idx_language` (`language`),
-  ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`published`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_featured_catid` (`featured`,`catid`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- Indexes for table `jt_content`
 --
 ALTER TABLE `jt_content`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_access` (`access`),
-  ADD KEY `idx_checkout` (`checked_out`),
-  ADD KEY `idx_state` (`state`),
-  ADD KEY `idx_catid` (`catid`),
-  ADD KEY `idx_createdby` (`created_by`),
-  ADD KEY `idx_featured_catid` (`featured`,`catid`),
-  ADD KEY `idx_language` (`language`),
-  ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`state`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_featured_catid` (`featured`,`catid`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- Indexes for table `jt_contentitem_tag_map`
 --
 ALTER TABLE `jt_contentitem_tag_map`
-  ADD UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`),
-  ADD KEY `idx_tag_type` (`tag_id`,`type_id`),
-  ADD KEY `idx_date_id` (`tag_date`,`tag_id`),
-  ADD KEY `idx_tag` (`tag_id`),
-  ADD KEY `idx_type` (`type_id`),
-  ADD KEY `idx_core_content_id` (`core_content_id`);
+  ADD UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`), ADD KEY `idx_tag_type` (`tag_id`,`type_id`), ADD KEY `idx_date_id` (`tag_date`,`tag_id`), ADD KEY `idx_tag` (`tag_id`), ADD KEY `idx_type` (`type_id`), ADD KEY `idx_core_content_id` (`core_content_id`);
 
 --
 -- Indexes for table `jt_content_frontpage`
@@ -15414,17 +15373,13 @@ ALTER TABLE `jt_content_rating`
 -- Indexes for table `jt_content_types`
 --
 ALTER TABLE `jt_content_types`
-  ADD PRIMARY KEY (`type_id`),
-  ADD KEY `idx_alias` (`type_alias`);
+  ADD PRIMARY KEY (`type_id`), ADD KEY `idx_alias` (`type_alias`);
 
 --
 -- Indexes for table `jt_extensions`
 --
 ALTER TABLE `jt_extensions`
-  ADD PRIMARY KEY (`extension_id`),
-  ADD KEY `element_clientid` (`element`,`client_id`),
-  ADD KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
-  ADD KEY `extension` (`type`,`element`,`folder`,`client_id`);
+  ADD PRIMARY KEY (`extension_id`), ADD KEY `element_clientid` (`element`,`client_id`), ADD KEY `element_folder_clientid` (`element`,`folder`,`client_id`), ADD KEY `extension` (`type`,`element`,`folder`,`client_id`);
 
 --
 -- Indexes for table `jt_finder_filters`
@@ -15436,205 +15391,151 @@ ALTER TABLE `jt_finder_filters`
 -- Indexes for table `jt_finder_links`
 --
 ALTER TABLE `jt_finder_links`
-  ADD PRIMARY KEY (`link_id`),
-  ADD KEY `idx_type` (`type_id`),
-  ADD KEY `idx_title` (`title`),
-  ADD KEY `idx_md5` (`md5sum`),
-  ADD KEY `idx_url` (`url`(75)),
-  ADD KEY `idx_published_list` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`list_price`),
-  ADD KEY `idx_published_sale` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`sale_price`);
+  ADD PRIMARY KEY (`link_id`), ADD KEY `idx_type` (`type_id`), ADD KEY `idx_title` (`title`), ADD KEY `idx_md5` (`md5sum`), ADD KEY `idx_url` (`url`(75)), ADD KEY `idx_published_list` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`list_price`), ADD KEY `idx_published_sale` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`sale_price`);
 
 --
 -- Indexes for table `jt_finder_links_terms0`
 --
 ALTER TABLE `jt_finder_links_terms0`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms1`
 --
 ALTER TABLE `jt_finder_links_terms1`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms2`
 --
 ALTER TABLE `jt_finder_links_terms2`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms3`
 --
 ALTER TABLE `jt_finder_links_terms3`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms4`
 --
 ALTER TABLE `jt_finder_links_terms4`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms5`
 --
 ALTER TABLE `jt_finder_links_terms5`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms6`
 --
 ALTER TABLE `jt_finder_links_terms6`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms7`
 --
 ALTER TABLE `jt_finder_links_terms7`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms8`
 --
 ALTER TABLE `jt_finder_links_terms8`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms9`
 --
 ALTER TABLE `jt_finder_links_terms9`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsa`
 --
 ALTER TABLE `jt_finder_links_termsa`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsb`
 --
 ALTER TABLE `jt_finder_links_termsb`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsc`
 --
 ALTER TABLE `jt_finder_links_termsc`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsd`
 --
 ALTER TABLE `jt_finder_links_termsd`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termse`
 --
 ALTER TABLE `jt_finder_links_termse`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsf`
 --
 ALTER TABLE `jt_finder_links_termsf`
-  ADD PRIMARY KEY (`link_id`,`term_id`),
-  ADD KEY `idx_term_weight` (`term_id`,`weight`),
-  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_taxonomy`
 --
 ALTER TABLE `jt_finder_taxonomy`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `parent_id` (`parent_id`),
-  ADD KEY `state` (`state`),
-  ADD KEY `ordering` (`ordering`),
-  ADD KEY `access` (`access`),
-  ADD KEY `idx_parent_published` (`parent_id`,`state`,`access`);
+  ADD PRIMARY KEY (`id`), ADD KEY `parent_id` (`parent_id`), ADD KEY `state` (`state`), ADD KEY `ordering` (`ordering`), ADD KEY `access` (`access`), ADD KEY `idx_parent_published` (`parent_id`,`state`,`access`);
 
 --
 -- Indexes for table `jt_finder_taxonomy_map`
 --
 ALTER TABLE `jt_finder_taxonomy_map`
-  ADD PRIMARY KEY (`link_id`,`node_id`),
-  ADD KEY `link_id` (`link_id`),
-  ADD KEY `node_id` (`node_id`);
+  ADD PRIMARY KEY (`link_id`,`node_id`), ADD KEY `link_id` (`link_id`), ADD KEY `node_id` (`node_id`);
 
 --
 -- Indexes for table `jt_finder_terms`
 --
 ALTER TABLE `jt_finder_terms`
-  ADD PRIMARY KEY (`term_id`),
-  ADD UNIQUE KEY `idx_term` (`term`),
-  ADD KEY `idx_term_phrase` (`term`,`phrase`),
-  ADD KEY `idx_stem_phrase` (`stem`,`phrase`),
-  ADD KEY `idx_soundex_phrase` (`soundex`,`phrase`);
+  ADD PRIMARY KEY (`term_id`), ADD UNIQUE KEY `idx_term` (`term`), ADD KEY `idx_term_phrase` (`term`,`phrase`), ADD KEY `idx_stem_phrase` (`stem`,`phrase`), ADD KEY `idx_soundex_phrase` (`soundex`,`phrase`);
 
 --
 -- Indexes for table `jt_finder_terms_common`
 --
 ALTER TABLE `jt_finder_terms_common`
-  ADD KEY `idx_word_lang` (`term`,`language`),
-  ADD KEY `idx_lang` (`language`);
+  ADD KEY `idx_word_lang` (`term`,`language`), ADD KEY `idx_lang` (`language`);
 
 --
 -- Indexes for table `jt_finder_tokens`
 --
 ALTER TABLE `jt_finder_tokens`
-  ADD KEY `idx_word` (`term`),
-  ADD KEY `idx_context` (`context`);
+  ADD KEY `idx_word` (`term`), ADD KEY `idx_context` (`context`);
 
 --
 -- Indexes for table `jt_finder_tokens_aggregate`
 --
 ALTER TABLE `jt_finder_tokens_aggregate`
-  ADD KEY `token` (`term`),
-  ADD KEY `keyword_id` (`term_id`);
+  ADD KEY `token` (`term`), ADD KEY `keyword_id` (`term_id`);
 
 --
 -- Indexes for table `jt_finder_types`
 --
 ALTER TABLE `jt_finder_types`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `title` (`title`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `title` (`title`);
 
 --
 -- Indexes for table `jt_hikashop_address`
 --
 ALTER TABLE `jt_hikashop_address`
-  ADD PRIMARY KEY (`address_id`),
-  ADD KEY `address_user_id` (`address_user_id`);
+  ADD PRIMARY KEY (`address_id`), ADD KEY `address_user_id` (`address_user_id`);
 
 --
 -- Indexes for table `jt_hikashop_badge`
@@ -15652,23 +15553,19 @@ ALTER TABLE `jt_hikashop_banner`
 -- Indexes for table `jt_hikashop_cart`
 --
 ALTER TABLE `jt_hikashop_cart`
-  ADD PRIMARY KEY (`cart_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `session_id` (`session_id`);
+  ADD PRIMARY KEY (`cart_id`), ADD KEY `user_id` (`user_id`), ADD KEY `session_id` (`session_id`);
 
 --
 -- Indexes for table `jt_hikashop_cart_product`
 --
 ALTER TABLE `jt_hikashop_cart_product`
-  ADD PRIMARY KEY (`cart_product_id`),
-  ADD KEY `cart_id` (`cart_id`);
+  ADD PRIMARY KEY (`cart_product_id`), ADD KEY `cart_id` (`cart_id`);
 
 --
 -- Indexes for table `jt_hikashop_category`
 --
 ALTER TABLE `jt_hikashop_category`
-  ADD PRIMARY KEY (`category_id`),
-  ADD UNIQUE KEY `category_namekey` (`category_namekey`);
+  ADD PRIMARY KEY (`category_id`), ADD UNIQUE KEY `category_namekey` (`category_namekey`);
 
 --
 -- Indexes for table `jt_hikashop_characteristic`
@@ -15680,8 +15577,7 @@ ALTER TABLE `jt_hikashop_characteristic`
 -- Indexes for table `jt_hikashop_click`
 --
 ALTER TABLE `jt_hikashop_click`
-  ADD PRIMARY KEY (`click_id`),
-  ADD KEY `click_partner_id` (`click_partner_id`);
+  ADD PRIMARY KEY (`click_id`), ADD KEY `click_partner_id` (`click_partner_id`);
 
 --
 -- Indexes for table `jt_hikashop_config`
@@ -15693,15 +15589,13 @@ ALTER TABLE `jt_hikashop_config`
 -- Indexes for table `jt_hikashop_currency`
 --
 ALTER TABLE `jt_hikashop_currency`
-  ADD PRIMARY KEY (`currency_id`),
-  ADD UNIQUE KEY `currency_code` (`currency_code`);
+  ADD PRIMARY KEY (`currency_id`), ADD UNIQUE KEY `currency_code` (`currency_code`);
 
 --
 -- Indexes for table `jt_hikashop_discount`
 --
 ALTER TABLE `jt_hikashop_discount`
-  ADD PRIMARY KEY (`discount_id`),
-  ADD UNIQUE KEY `discount_code` (`discount_code`);
+  ADD PRIMARY KEY (`discount_id`), ADD UNIQUE KEY `discount_code` (`discount_code`);
 
 --
 -- Indexes for table `jt_hikashop_download`
@@ -15719,43 +15613,37 @@ ALTER TABLE `jt_hikashop_email_log`
 -- Indexes for table `jt_hikashop_entry`
 --
 ALTER TABLE `jt_hikashop_entry`
-  ADD PRIMARY KEY (`entry_id`),
-  ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`entry_id`), ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `jt_hikashop_field`
 --
 ALTER TABLE `jt_hikashop_field`
-  ADD PRIMARY KEY (`field_id`),
-  ADD UNIQUE KEY `field_namekey` (`field_namekey`);
+  ADD PRIMARY KEY (`field_id`), ADD UNIQUE KEY `field_namekey` (`field_namekey`);
 
 --
 -- Indexes for table `jt_hikashop_file`
 --
 ALTER TABLE `jt_hikashop_file`
-  ADD PRIMARY KEY (`file_id`),
-  ADD KEY `file_type` (`file_type`);
+  ADD PRIMARY KEY (`file_id`), ADD KEY `file_type` (`file_type`);
 
 --
 -- Indexes for table `jt_hikashop_filter`
 --
 ALTER TABLE `jt_hikashop_filter`
-  ADD PRIMARY KEY (`filter_id`),
-  ADD UNIQUE KEY `filter_namekey` (`filter_namekey`);
+  ADD PRIMARY KEY (`filter_id`), ADD UNIQUE KEY `filter_namekey` (`filter_namekey`);
 
 --
 -- Indexes for table `jt_hikashop_geolocation`
 --
 ALTER TABLE `jt_hikashop_geolocation`
-  ADD PRIMARY KEY (`geolocation_id`),
-  ADD KEY `geolocation_type` (`geolocation_type`,`geolocation_ref_id`);
+  ADD PRIMARY KEY (`geolocation_id`), ADD KEY `geolocation_type` (`geolocation_type`,`geolocation_ref_id`);
 
 --
 -- Indexes for table `jt_hikashop_history`
 --
 ALTER TABLE `jt_hikashop_history`
-  ADD PRIMARY KEY (`history_id`),
-  ADD KEY `history_order_id` (`history_order_id`);
+  ADD PRIMARY KEY (`history_id`), ADD KEY `history_order_id` (`history_order_id`);
 
 --
 -- Indexes for table `jt_hikashop_limit`
@@ -15767,22 +15655,19 @@ ALTER TABLE `jt_hikashop_limit`
 -- Indexes for table `jt_hikashop_massaction`
 --
 ALTER TABLE `jt_hikashop_massaction`
-  ADD PRIMARY KEY (`massaction_id`),
-  ADD KEY `massaction_table` (`massaction_table`);
+  ADD PRIMARY KEY (`massaction_id`), ADD KEY `massaction_table` (`massaction_table`);
 
 --
 -- Indexes for table `jt_hikashop_order`
 --
 ALTER TABLE `jt_hikashop_order`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `order_user_id` (`order_user_id`);
+  ADD PRIMARY KEY (`order_id`), ADD KEY `order_user_id` (`order_user_id`);
 
 --
 -- Indexes for table `jt_hikashop_order_product`
 --
 ALTER TABLE `jt_hikashop_order_product`
-  ADD PRIMARY KEY (`order_product_id`),
-  ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`order_product_id`), ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `jt_hikashop_payment`
@@ -15800,25 +15685,19 @@ ALTER TABLE `jt_hikashop_plugin`
 -- Indexes for table `jt_hikashop_price`
 --
 ALTER TABLE `jt_hikashop_price`
-  ADD PRIMARY KEY (`price_id`),
-  ADD KEY `price_product_id` (`price_product_id`);
+  ADD PRIMARY KEY (`price_id`), ADD KEY `price_product_id` (`price_product_id`);
 
 --
 -- Indexes for table `jt_hikashop_product`
 --
 ALTER TABLE `jt_hikashop_product`
-  ADD PRIMARY KEY (`product_id`),
-  ADD UNIQUE KEY `product_code` (`product_code`),
-  ADD KEY `product_parent_id` (`product_parent_id`),
-  ADD KEY `product_main_index` (`product_type`,`product_quantity`,`product_published`);
+  ADD PRIMARY KEY (`product_id`), ADD UNIQUE KEY `product_code` (`product_code`), ADD KEY `product_parent_id` (`product_parent_id`), ADD KEY `product_main_index` (`product_type`,`product_quantity`,`product_published`);
 
 --
 -- Indexes for table `jt_hikashop_product_category`
 --
 ALTER TABLE `jt_hikashop_product_category`
-  ADD PRIMARY KEY (`product_category_id`),
-  ADD UNIQUE KEY `category_id` (`category_id`,`product_id`),
-  ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`product_category_id`), ADD UNIQUE KEY `category_id` (`category_id`,`product_id`), ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `jt_hikashop_product_related`
@@ -15854,16 +15733,13 @@ ALTER TABLE `jt_hikashop_taxation`
 -- Indexes for table `jt_hikashop_user`
 --
 ALTER TABLE `jt_hikashop_user`
-  ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `user_email` (`user_email`),
-  ADD KEY `user_cms_id` (`user_cms_id`);
+  ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `user_email` (`user_email`), ADD KEY `user_cms_id` (`user_cms_id`);
 
 --
 -- Indexes for table `jt_hikashop_variant`
 --
 ALTER TABLE `jt_hikashop_variant`
-  ADD PRIMARY KEY (`variant_characteristic_id`,`variant_product_id`),
-  ADD KEY `variant_product_id` (`variant_product_id`);
+  ADD PRIMARY KEY (`variant_characteristic_id`,`variant_product_id`), ADD KEY `variant_product_id` (`variant_product_id`);
 
 --
 -- Indexes for table `jt_hikashop_vote`
@@ -15893,9 +15769,7 @@ ALTER TABLE `jt_hikashop_widget`
 -- Indexes for table `jt_hikashop_zone`
 --
 ALTER TABLE `jt_hikashop_zone`
-  ADD PRIMARY KEY (`zone_id`),
-  ADD UNIQUE KEY `zone_namekey` (`zone_namekey`),
-  ADD KEY `zone_code_3` (`zone_code_3`);
+  ADD PRIMARY KEY (`zone_id`), ADD UNIQUE KEY `zone_namekey` (`zone_namekey`), ADD KEY `zone_code_3` (`zone_code_3`);
 
 --
 -- Indexes for table `jt_hikashop_zone_link`
@@ -15997,8 +15871,7 @@ ALTER TABLE `jt_jsn_easyslider_item_templates`
 -- Indexes for table `jt_jsn_easyslider_messages`
 --
 ALTER TABLE `jt_jsn_easyslider_messages`
-  ADD PRIMARY KEY (`msg_id`),
-  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_easyslider_sliders`
@@ -16040,8 +15913,7 @@ ALTER TABLE `jt_jsn_mobilize_design`
 -- Indexes for table `jt_jsn_mobilize_messages`
 --
 ALTER TABLE `jt_jsn_mobilize_messages`
-  ADD PRIMARY KEY (`msg_id`),
-  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_mobilize_os`
@@ -16077,8 +15949,7 @@ ALTER TABLE `jt_jsn_pagebuilder_content_custom_css`
 -- Indexes for table `jt_jsn_pagebuilder_messages`
 --
 ALTER TABLE `jt_jsn_pagebuilder_messages`
-  ADD PRIMARY KEY (`msg_id`),
-  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_poweradmin_config`
@@ -16108,22 +15979,19 @@ ALTER TABLE `jt_jsn_uniform_config`
 -- Indexes for table `jt_jsn_uniform_data`
 --
 ALTER TABLE `jt_jsn_uniform_data`
-  ADD PRIMARY KEY (`data_id`),
-  ADD KEY `fk_uniform_data_forms` (`form_id`);
+  ADD PRIMARY KEY (`data_id`), ADD KEY `fk_uniform_data_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_emails`
 --
 ALTER TABLE `jt_jsn_uniform_emails`
-  ADD PRIMARY KEY (`email_id`),
-  ADD KEY `fk_uniform_emails_forms` (`form_id`);
+  ADD PRIMARY KEY (`email_id`), ADD KEY `fk_uniform_emails_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_fields`
 --
 ALTER TABLE `jt_jsn_uniform_fields`
-  ADD PRIMARY KEY (`field_id`),
-  ADD KEY `fk_uniform_fields_forms` (`form_id`);
+  ADD PRIMARY KEY (`field_id`), ADD KEY `fk_uniform_fields_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_forms`
@@ -16141,8 +16009,7 @@ ALTER TABLE `jt_jsn_uniform_form_pages`
 -- Indexes for table `jt_jsn_uniform_messages`
 --
 ALTER TABLE `jt_jsn_uniform_messages`
-  ADD PRIMARY KEY (`msg_id`),
-  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_uniform_submissions`
@@ -16154,56 +16021,37 @@ ALTER TABLE `jt_jsn_uniform_submissions`
 -- Indexes for table `jt_jsn_uniform_submission_data`
 --
 ALTER TABLE `jt_jsn_uniform_submission_data`
-  ADD PRIMARY KEY (`submission_data_id`),
-  ADD KEY `submission_data_id` (`submission_data_id`),
-  ADD KEY `submission_id` (`submission_id`),
-  ADD KEY `form_id` (`form_id`),
-  ADD KEY `field_id` (`field_id`);
+  ADD PRIMARY KEY (`submission_data_id`), ADD KEY `submission_data_id` (`submission_data_id`), ADD KEY `submission_id` (`submission_id`), ADD KEY `form_id` (`form_id`), ADD KEY `field_id` (`field_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_templates`
 --
 ALTER TABLE `jt_jsn_uniform_templates`
-  ADD PRIMARY KEY (`template_id`),
-  ADD KEY `fk_uniform_templates_forms` (`form_id`);
+  ADD PRIMARY KEY (`template_id`), ADD KEY `fk_uniform_templates_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_languages`
 --
 ALTER TABLE `jt_languages`
-  ADD PRIMARY KEY (`lang_id`),
-  ADD UNIQUE KEY `idx_sef` (`sef`),
-  ADD UNIQUE KEY `idx_image` (`image`),
-  ADD UNIQUE KEY `idx_langcode` (`lang_code`),
-  ADD KEY `idx_ordering` (`ordering`),
-  ADD KEY `idx_access` (`access`);
+  ADD PRIMARY KEY (`lang_id`), ADD UNIQUE KEY `idx_sef` (`sef`), ADD UNIQUE KEY `idx_image` (`image`), ADD UNIQUE KEY `idx_langcode` (`lang_code`), ADD KEY `idx_ordering` (`ordering`), ADD KEY `idx_access` (`access`);
 
 --
 -- Indexes for table `jt_menu`
 --
 ALTER TABLE `jt_menu`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`,`language`),
-  ADD KEY `idx_componentid` (`component_id`,`menutype`,`published`,`access`),
-  ADD KEY `idx_menutype` (`menutype`),
-  ADD KEY `idx_left_right` (`lft`,`rgt`),
-  ADD KEY `idx_alias` (`alias`),
-  ADD KEY `idx_path` (`path`(255)),
-  ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`,`language`), ADD KEY `idx_componentid` (`component_id`,`menutype`,`published`,`access`), ADD KEY `idx_menutype` (`menutype`), ADD KEY `idx_left_right` (`lft`,`rgt`), ADD KEY `idx_alias` (`alias`), ADD KEY `idx_path` (`path`(255)), ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_menu_types`
 --
 ALTER TABLE `jt_menu_types`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_menutype` (`menutype`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_menutype` (`menutype`);
 
 --
 -- Indexes for table `jt_messages`
 --
 ALTER TABLE `jt_messages`
-  ADD PRIMARY KEY (`message_id`),
-  ADD KEY `useridto_state` (`user_id_to`,`state`);
+  ADD PRIMARY KEY (`message_id`), ADD KEY `useridto_state` (`user_id_to`,`state`);
 
 --
 -- Indexes for table `jt_messages_cfg`
@@ -16215,10 +16063,7 @@ ALTER TABLE `jt_messages_cfg`
 -- Indexes for table `jt_modules`
 --
 ALTER TABLE `jt_modules`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `published` (`published`,`access`),
-  ADD KEY `newsfeeds` (`module`,`published`),
-  ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`), ADD KEY `published` (`published`,`access`), ADD KEY `newsfeeds` (`module`,`published`), ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_modules_menu`
@@ -16230,14 +16075,7 @@ ALTER TABLE `jt_modules_menu`
 -- Indexes for table `jt_newsfeeds`
 --
 ALTER TABLE `jt_newsfeeds`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_access` (`access`),
-  ADD KEY `idx_checkout` (`checked_out`),
-  ADD KEY `idx_state` (`published`),
-  ADD KEY `idx_catid` (`catid`),
-  ADD KEY `idx_createdby` (`created_by`),
-  ADD KEY `idx_language` (`language`),
-  ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`published`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- Indexes for table `jt_overrider`
@@ -16255,9 +16093,7 @@ ALTER TABLE `jt_postinstall_messages`
 -- Indexes for table `jt_redirect_links`
 --
 ALTER TABLE `jt_redirect_links`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_link_old` (`old_url`),
-  ADD KEY `idx_link_modifed` (`modified_date`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_link_old` (`old_url`), ADD KEY `idx_link_modifed` (`modified_date`);
 
 --
 -- Indexes for table `jt_schemas`
@@ -16269,65 +16105,37 @@ ALTER TABLE `jt_schemas`
 -- Indexes for table `jt_session`
 --
 ALTER TABLE `jt_session`
-  ADD PRIMARY KEY (`session_id`),
-  ADD KEY `userid` (`userid`),
-  ADD KEY `time` (`time`);
+  ADD PRIMARY KEY (`session_id`), ADD KEY `userid` (`userid`), ADD KEY `time` (`time`);
 
 --
 -- Indexes for table `jt_tags`
 --
 ALTER TABLE `jt_tags`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `tag_idx` (`published`,`access`),
-  ADD KEY `idx_access` (`access`),
-  ADD KEY `idx_checkout` (`checked_out`),
-  ADD KEY `idx_path` (`path`),
-  ADD KEY `idx_left_right` (`lft`,`rgt`),
-  ADD KEY `idx_alias` (`alias`),
-  ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`), ADD KEY `tag_idx` (`published`,`access`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_path` (`path`), ADD KEY `idx_left_right` (`lft`,`rgt`), ADD KEY `idx_alias` (`alias`), ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_template_styles`
 --
 ALTER TABLE `jt_template_styles`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_template` (`template`),
-  ADD KEY `idx_home` (`home`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_template` (`template`), ADD KEY `idx_home` (`home`);
 
 --
 -- Indexes for table `jt_ucm_base`
 --
 ALTER TABLE `jt_ucm_base`
-  ADD PRIMARY KEY (`ucm_id`),
-  ADD KEY `idx_ucm_item_id` (`ucm_item_id`),
-  ADD KEY `idx_ucm_type_id` (`ucm_type_id`),
-  ADD KEY `idx_ucm_language_id` (`ucm_language_id`);
+  ADD PRIMARY KEY (`ucm_id`), ADD KEY `idx_ucm_item_id` (`ucm_item_id`), ADD KEY `idx_ucm_type_id` (`ucm_type_id`), ADD KEY `idx_ucm_language_id` (`ucm_language_id`);
 
 --
 -- Indexes for table `jt_ucm_content`
 --
 ALTER TABLE `jt_ucm_content`
-  ADD PRIMARY KEY (`core_content_id`),
-  ADD KEY `tag_idx` (`core_state`,`core_access`),
-  ADD KEY `idx_access` (`core_access`),
-  ADD KEY `idx_alias` (`core_alias`),
-  ADD KEY `idx_language` (`core_language`),
-  ADD KEY `idx_title` (`core_title`),
-  ADD KEY `idx_modified_time` (`core_modified_time`),
-  ADD KEY `idx_created_time` (`core_created_time`),
-  ADD KEY `idx_content_type` (`core_type_alias`),
-  ADD KEY `idx_core_modified_user_id` (`core_modified_user_id`),
-  ADD KEY `idx_core_checked_out_user_id` (`core_checked_out_user_id`),
-  ADD KEY `idx_core_created_user_id` (`core_created_user_id`),
-  ADD KEY `idx_core_type_id` (`core_type_id`);
+  ADD PRIMARY KEY (`core_content_id`), ADD KEY `tag_idx` (`core_state`,`core_access`), ADD KEY `idx_access` (`core_access`), ADD KEY `idx_alias` (`core_alias`), ADD KEY `idx_language` (`core_language`), ADD KEY `idx_title` (`core_title`), ADD KEY `idx_modified_time` (`core_modified_time`), ADD KEY `idx_created_time` (`core_created_time`), ADD KEY `idx_content_type` (`core_type_alias`), ADD KEY `idx_core_modified_user_id` (`core_modified_user_id`), ADD KEY `idx_core_checked_out_user_id` (`core_checked_out_user_id`), ADD KEY `idx_core_created_user_id` (`core_created_user_id`), ADD KEY `idx_core_type_id` (`core_type_id`);
 
 --
 -- Indexes for table `jt_ucm_history`
 --
 ALTER TABLE `jt_ucm_history`
-  ADD PRIMARY KEY (`version_id`),
-  ADD KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`),
-  ADD KEY `idx_save_date` (`save_date`);
+  ADD PRIMARY KEY (`version_id`), ADD KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`), ADD KEY `idx_save_date` (`save_date`);
 
 --
 -- Indexes for table `jt_updates`
@@ -16351,39 +16159,25 @@ ALTER TABLE `jt_update_sites_extensions`
 -- Indexes for table `jt_usergroups`
 --
 ALTER TABLE `jt_usergroups`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
-  ADD KEY `idx_usergroup_title_lookup` (`title`),
-  ADD KEY `idx_usergroup_adjacency_lookup` (`parent_id`),
-  ADD KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE;
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`), ADD KEY `idx_usergroup_title_lookup` (`title`), ADD KEY `idx_usergroup_adjacency_lookup` (`parent_id`), ADD KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE;
 
 --
 -- Indexes for table `jt_users`
 --
 ALTER TABLE `jt_users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_name` (`name`),
-  ADD KEY `idx_block` (`block`),
-  ADD KEY `username` (`username`),
-  ADD KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_name` (`name`), ADD KEY `idx_block` (`block`), ADD KEY `username` (`username`), ADD KEY `email` (`email`);
 
 --
 -- Indexes for table `jt_user_keys`
 --
 ALTER TABLE `jt_user_keys`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `series` (`series`),
-  ADD UNIQUE KEY `series_2` (`series`),
-  ADD UNIQUE KEY `series_3` (`series`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `series` (`series`), ADD UNIQUE KEY `series_2` (`series`), ADD UNIQUE KEY `series_3` (`series`), ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `jt_user_notes`
 --
 ALTER TABLE `jt_user_notes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_user_id` (`user_id`),
-  ADD KEY `idx_category_id` (`catid`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_user_id` (`user_id`), ADD KEY `idx_category_id` (`catid`);
 
 --
 -- Indexes for table `jt_user_profiles`
@@ -16401,22 +16195,13 @@ ALTER TABLE `jt_user_usergroup_map`
 -- Indexes for table `jt_viewlevels`
 --
 ALTER TABLE `jt_viewlevels`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idx_assetgroup_title_lookup` (`title`);
+  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_assetgroup_title_lookup` (`title`);
 
 --
 -- Indexes for table `jt_weblinks`
 --
 ALTER TABLE `jt_weblinks`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idx_access` (`access`),
-  ADD KEY `idx_checkout` (`checked_out`),
-  ADD KEY `idx_state` (`state`),
-  ADD KEY `idx_catid` (`catid`),
-  ADD KEY `idx_createdby` (`created_by`),
-  ADD KEY `idx_featured_catid` (`featured`,`catid`),
-  ADD KEY `idx_language` (`language`),
-  ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`state`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_featured_catid` (`featured`,`catid`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -16426,27 +16211,27 @@ ALTER TABLE `jt_weblinks`
 -- AUTO_INCREMENT for table `jt_assets`
 --
 ALTER TABLE `jt_assets`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=296;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',AUTO_INCREMENT=303;
 --
 -- AUTO_INCREMENT for table `jt_banners`
 --
 ALTER TABLE `jt_banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jt_banner_clients`
 --
 ALTER TABLE `jt_banner_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_categories`
 --
 ALTER TABLE `jt_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_fields`
 --
 ALTER TABLE `jt_comprofiler_fields`
-  MODIFY `fieldid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `fieldid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_field_values`
 --
@@ -16461,12 +16246,12 @@ ALTER TABLE `jt_comprofiler_lists`
 -- AUTO_INCREMENT for table `jt_comprofiler_plugin`
 --
 ALTER TABLE `jt_comprofiler_plugin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_plugin_blogs`
 --
 ALTER TABLE `jt_comprofiler_plugin_blogs`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_ratings`
 --
@@ -16476,7 +16261,7 @@ ALTER TABLE `jt_comprofiler_ratings`
 -- AUTO_INCREMENT for table `jt_comprofiler_tabs`
 --
 ALTER TABLE `jt_comprofiler_tabs`
-  MODIFY `tabid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `tabid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_userreports`
 --
@@ -16486,157 +16271,157 @@ ALTER TABLE `jt_comprofiler_userreports`
 -- AUTO_INCREMENT for table `jt_contact_details`
 --
 ALTER TABLE `jt_contact_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_content`
 --
 ALTER TABLE `jt_content`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
 --
 -- AUTO_INCREMENT for table `jt_content_types`
 --
 ALTER TABLE `jt_content_types`
-  MODIFY `type_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jt_extensions`
 --
 ALTER TABLE `jt_extensions`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10158;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10158;
 --
 -- AUTO_INCREMENT for table `jt_finder_filters`
 --
 ALTER TABLE `jt_finder_filters`
-  MODIFY `filter_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_finder_links`
 --
 ALTER TABLE `jt_finder_links`
-  MODIFY `link_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_finder_taxonomy`
 --
 ALTER TABLE `jt_finder_taxonomy`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_finder_terms`
 --
 ALTER TABLE `jt_finder_terms`
-  MODIFY `term_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `term_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_finder_types`
 --
 ALTER TABLE `jt_finder_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_address`
 --
 ALTER TABLE `jt_hikashop_address`
-  MODIFY `address_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `address_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_badge`
 --
 ALTER TABLE `jt_hikashop_badge`
-  MODIFY `badge_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `badge_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_banner`
 --
 ALTER TABLE `jt_hikashop_banner`
-  MODIFY `banner_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `banner_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_cart`
 --
 ALTER TABLE `jt_hikashop_cart`
-  MODIFY `cart_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cart_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_cart_product`
 --
 ALTER TABLE `jt_hikashop_cart_product`
-  MODIFY `cart_product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `cart_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_category`
 --
 ALTER TABLE `jt_hikashop_category`
-  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `category_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_characteristic`
 --
 ALTER TABLE `jt_hikashop_characteristic`
-  MODIFY `characteristic_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `characteristic_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_click`
 --
 ALTER TABLE `jt_hikashop_click`
-  MODIFY `click_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `click_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_currency`
 --
 ALTER TABLE `jt_hikashop_currency`
-  MODIFY `currency_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
+  MODIFY `currency_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_discount`
 --
 ALTER TABLE `jt_hikashop_discount`
-  MODIFY `discount_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `discount_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_email_log`
 --
 ALTER TABLE `jt_hikashop_email_log`
-  MODIFY `email_log_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `email_log_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_entry`
 --
 ALTER TABLE `jt_hikashop_entry`
-  MODIFY `entry_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `entry_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_field`
 --
 ALTER TABLE `jt_hikashop_field`
-  MODIFY `field_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `field_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_file`
 --
 ALTER TABLE `jt_hikashop_file`
-  MODIFY `file_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `file_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_filter`
 --
 ALTER TABLE `jt_hikashop_filter`
-  MODIFY `filter_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `filter_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_geolocation`
 --
 ALTER TABLE `jt_hikashop_geolocation`
-  MODIFY `geolocation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `geolocation_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_history`
 --
 ALTER TABLE `jt_hikashop_history`
-  MODIFY `history_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `history_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_limit`
 --
 ALTER TABLE `jt_hikashop_limit`
-  MODIFY `limit_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `limit_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_massaction`
 --
 ALTER TABLE `jt_hikashop_massaction`
-  MODIFY `massaction_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `massaction_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_order`
 --
 ALTER TABLE `jt_hikashop_order`
-  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_order_product`
 --
 ALTER TABLE `jt_hikashop_order_product`
-  MODIFY `order_product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_payment`
 --
 ALTER TABLE `jt_hikashop_payment`
-  MODIFY `payment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_plugin`
 --
@@ -16646,22 +16431,22 @@ ALTER TABLE `jt_hikashop_plugin`
 -- AUTO_INCREMENT for table `jt_hikashop_price`
 --
 ALTER TABLE `jt_hikashop_price`
-  MODIFY `price_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_product`
 --
 ALTER TABLE `jt_hikashop_product`
-  MODIFY `product_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `product_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_product_category`
 --
 ALTER TABLE `jt_hikashop_product_category`
-  MODIFY `product_category_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `product_category_id` int(255) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_shipping`
 --
 ALTER TABLE `jt_hikashop_shipping`
-  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_shipping_price`
 --
@@ -16671,17 +16456,17 @@ ALTER TABLE `jt_hikashop_shipping_price`
 -- AUTO_INCREMENT for table `jt_hikashop_taxation`
 --
 ALTER TABLE `jt_hikashop_taxation`
-  MODIFY `taxation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `taxation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_user`
 --
 ALTER TABLE `jt_hikashop_user`
-  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_vote`
 --
 ALTER TABLE `jt_hikashop_vote`
-  MODIFY `vote_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `vote_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_waitlist`
 --
@@ -16696,77 +16481,77 @@ ALTER TABLE `jt_hikashop_warehouse`
 -- AUTO_INCREMENT for table `jt_hikashop_widget`
 --
 ALTER TABLE `jt_hikashop_widget`
-  MODIFY `widget_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `widget_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_zone`
 --
 ALTER TABLE `jt_hikashop_zone`
-  MODIFY `zone_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4569;
+  MODIFY `zone_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4569;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_images`
 --
 ALTER TABLE `jt_imageshow_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_log`
 --
 ALTER TABLE `jt_imageshow_log`
-  MODIFY `log_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `log_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_showcase`
 --
 ALTER TABLE `jt_imageshow_showcase`
-  MODIFY `showcase_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `showcase_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_showlist`
 --
 ALTER TABLE `jt_imageshow_showlist`
-  MODIFY `showlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `showlist_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_source_profile`
 --
 ALTER TABLE `jt_imageshow_source_profile`
-  MODIFY `external_source_profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `external_source_profile_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_carousel`
 --
 ALTER TABLE `jt_imageshow_theme_carousel`
-  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_classic_flash`
 --
 ALTER TABLE `jt_imageshow_theme_classic_flash`
-  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_classic_javascript`
 --
 ALTER TABLE `jt_imageshow_theme_classic_javascript`
-  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_classic_parameters`
 --
 ALTER TABLE `jt_imageshow_theme_classic_parameters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_flow`
 --
 ALTER TABLE `jt_imageshow_theme_flow`
-  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_grid`
 --
 ALTER TABLE `jt_imageshow_theme_grid`
-  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_slider`
 --
 ALTER TABLE `jt_imageshow_theme_slider`
-  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_strip`
 --
 ALTER TABLE `jt_imageshow_theme_strip`
-  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_jsn_easyslider_item_templates`
 --
@@ -16781,7 +16566,7 @@ ALTER TABLE `jt_jsn_easyslider_messages`
 -- AUTO_INCREMENT for table `jt_jsn_easyslider_sliders`
 --
 ALTER TABLE `jt_jsn_easyslider_sliders`
-  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_jsn_easyslider_slide_templates`
 --
@@ -16791,12 +16576,12 @@ ALTER TABLE `jt_jsn_easyslider_slide_templates`
 -- AUTO_INCREMENT for table `jt_jsn_imageshow_messages`
 --
 ALTER TABLE `jt_jsn_imageshow_messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_design`
 --
 ALTER TABLE `jt_jsn_mobilize_design`
-  MODIFY `design_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `design_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_messages`
 --
@@ -16806,22 +16591,22 @@ ALTER TABLE `jt_jsn_mobilize_messages`
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_os`
 --
 ALTER TABLE `jt_jsn_mobilize_os`
-  MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_os_support`
 --
 ALTER TABLE `jt_jsn_mobilize_os_support`
-  MODIFY `support_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `support_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_profiles`
 --
 ALTER TABLE `jt_jsn_mobilize_profiles`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_jsn_pagebuilder_content_custom_css`
 --
 ALTER TABLE `jt_jsn_pagebuilder_content_custom_css`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_jsn_pagebuilder_messages`
 --
@@ -16836,32 +16621,32 @@ ALTER TABLE `jt_jsn_poweradmin_favourite`
 -- AUTO_INCREMENT for table `jt_jsn_poweradmin_history`
 --
 ALTER TABLE `jt_jsn_poweradmin_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=107;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_data`
 --
 ALTER TABLE `jt_jsn_uniform_data`
-  MODIFY `data_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_emails`
 --
 ALTER TABLE `jt_jsn_uniform_emails`
-  MODIFY `email_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `email_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_fields`
 --
 ALTER TABLE `jt_jsn_uniform_fields`
-  MODIFY `field_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `field_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_forms`
 --
 ALTER TABLE `jt_jsn_uniform_forms`
-  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_form_pages`
 --
 ALTER TABLE `jt_jsn_uniform_form_pages`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_messages`
 --
@@ -16871,7 +16656,7 @@ ALTER TABLE `jt_jsn_uniform_messages`
 -- AUTO_INCREMENT for table `jt_jsn_uniform_submissions`
 --
 ALTER TABLE `jt_jsn_uniform_submissions`
-  MODIFY `submission_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `submission_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_submission_data`
 --
@@ -16881,37 +16666,37 @@ ALTER TABLE `jt_jsn_uniform_submission_data`
 -- AUTO_INCREMENT for table `jt_jsn_uniform_templates`
 --
 ALTER TABLE `jt_jsn_uniform_templates`
-  MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_languages`
 --
 ALTER TABLE `jt_languages`
-  MODIFY `lang_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_menu`
 --
 ALTER TABLE `jt_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1993;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1996;
 --
 -- AUTO_INCREMENT for table `jt_menu_types`
 --
 ALTER TABLE `jt_menu_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `jt_messages`
 --
 ALTER TABLE `jt_messages`
-  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_modules`
 --
 ALTER TABLE `jt_modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=317;
 --
 -- AUTO_INCREMENT for table `jt_newsfeeds`
 --
 ALTER TABLE `jt_newsfeeds`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_overrider`
 --
@@ -16921,72 +16706,72 @@ ALTER TABLE `jt_overrider`
 -- AUTO_INCREMENT for table `jt_postinstall_messages`
 --
 ALTER TABLE `jt_postinstall_messages`
-  MODIFY `postinstall_message_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `postinstall_message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_redirect_links`
 --
 ALTER TABLE `jt_redirect_links`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_tags`
 --
 ALTER TABLE `jt_tags`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_template_styles`
 --
 ALTER TABLE `jt_template_styles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_ucm_content`
 --
 ALTER TABLE `jt_ucm_content`
-  MODIFY `core_content_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_ucm_history`
 --
 ALTER TABLE `jt_ucm_history`
-  MODIFY `version_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_updates`
 --
 ALTER TABLE `jt_updates`
-  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_update_sites`
 --
 ALTER TABLE `jt_update_sites`
-  MODIFY `update_site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `update_site_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jt_usergroups`
 --
 ALTER TABLE `jt_usergroups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=10;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `jt_users`
 --
 ALTER TABLE `jt_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=328;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=329;
 --
 -- AUTO_INCREMENT for table `jt_user_keys`
 --
 ALTER TABLE `jt_user_keys`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_user_notes`
 --
 ALTER TABLE `jt_user_notes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_viewlevels`
 --
 ALTER TABLE `jt_viewlevels`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=7;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `jt_weblinks`
 --
 ALTER TABLE `jt_weblinks`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
