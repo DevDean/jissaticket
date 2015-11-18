@@ -2780,3 +2780,10 @@ smartphone layout (320 - 480): everything is layout in single column
 		padding: 0;
 	}
 }
+div.contact h3 {
+  display: none;
+}
+legend
+{
+	display: none;
+}
