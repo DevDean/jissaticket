@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.12
+-- version 4.5.0.2
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2015 at 12:02 PM
--- Server version: 5.6.25
--- PHP Version: 5.6.11
+-- Generation Time: Nov 20, 2015 at 01:11 PM
+-- Server version: 10.0.17-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,16 +26,16 @@ SET time_zone = "+00:00";
 -- Table structure for table `jt_assets`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_assets` (
-  `id` int(10) unsigned NOT NULL COMMENT 'Primary Key',
+CREATE TABLE `jt_assets` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
   `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set parent.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `level` int(10) unsigned NOT NULL COMMENT 'The cached level in the nested tree.',
+  `level` int(10) UNSIGNED NOT NULL COMMENT 'The cached level in the nested tree.',
   `name` varchar(50) NOT NULL COMMENT 'The unique name for the asset.\n',
   `title` varchar(100) NOT NULL COMMENT 'The descriptive title for the asset.',
   `rules` varchar(5120) NOT NULL COMMENT 'JSON encoded access control.'
-) ENGINE=InnoDB AUTO_INCREMENT=302 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_assets`
@@ -325,7 +325,7 @@ INSERT INTO `jt_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `titl
 -- Table structure for table `jt_associations`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_associations` (
+CREATE TABLE `jt_associations` (
   `id` int(11) NOT NULL COMMENT 'A reference to the associated item.',
   `context` varchar(50) NOT NULL COMMENT 'The context of the associated item.',
   `key` char(32) NOT NULL COMMENT 'The key for the association computed from an md5 on associated ids.'
@@ -337,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `jt_associations` (
 -- Table structure for table `jt_banners`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_banners` (
+CREATE TABLE `jt_banners` (
   `id` int(11) NOT NULL,
   `cid` int(11) NOT NULL DEFAULT '0',
   `type` int(11) NOT NULL DEFAULT '0',
@@ -348,10 +348,10 @@ CREATE TABLE IF NOT EXISTS `jt_banners` (
   `clicks` int(11) NOT NULL DEFAULT '0',
   `clickurl` varchar(200) NOT NULL DEFAULT '',
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `catid` int(10) unsigned NOT NULL DEFAULT '0',
+  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `description` text NOT NULL,
   `custombannercode` varchar(2048) NOT NULL,
-  `sticky` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `sticky` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `params` text NOT NULL,
@@ -360,19 +360,19 @@ CREATE TABLE IF NOT EXISTS `jt_banners` (
   `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
   `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
   `track_impressions` tinyint(4) NOT NULL DEFAULT '-1',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `reset` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `language` char(7) NOT NULL DEFAULT '',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
-  `version` int(10) unsigned NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_banners`
@@ -390,14 +390,14 @@ INSERT INTO `jt_banners` (`id`, `cid`, `type`, `name`, `alias`, `imptotal`, `imp
 -- Table structure for table `jt_banner_clients`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_banner_clients` (
+CREATE TABLE `jt_banner_clients` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `contact` varchar(255) NOT NULL DEFAULT '',
   `email` varchar(255) NOT NULL DEFAULT '',
   `extrainfo` text NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `metakey` text NOT NULL,
   `own_prefix` tinyint(4) NOT NULL DEFAULT '0',
@@ -405,7 +405,7 @@ CREATE TABLE IF NOT EXISTS `jt_banner_clients` (
   `purchase_type` tinyint(4) NOT NULL DEFAULT '-1',
   `track_clicks` tinyint(4) NOT NULL DEFAULT '-1',
   `track_impressions` tinyint(4) NOT NULL DEFAULT '-1'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_banner_clients`
@@ -420,11 +420,11 @@ INSERT INTO `jt_banner_clients` (`id`, `name`, `contact`, `email`, `extrainfo`, 
 -- Table structure for table `jt_banner_tracks`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_banner_tracks` (
+CREATE TABLE `jt_banner_tracks` (
   `track_date` datetime NOT NULL,
-  `track_type` int(10) unsigned NOT NULL,
-  `banner_id` int(10) unsigned NOT NULL,
-  `count` int(10) unsigned NOT NULL DEFAULT '0'
+  `track_type` int(10) UNSIGNED NOT NULL,
+  `banner_id` int(10) UNSIGNED NOT NULL,
+  `count` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -433,13 +433,13 @@ CREATE TABLE IF NOT EXISTS `jt_banner_tracks` (
 -- Table structure for table `jt_categories`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_categories` (
+CREATE TABLE `jt_categories` (
   `id` int(11) NOT NULL,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
   `rgt` int(11) NOT NULL DEFAULT '0',
-  `level` int(10) unsigned NOT NULL DEFAULT '0',
+  `level` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `path` varchar(255) NOT NULL DEFAULT '',
   `extension` varchar(50) NOT NULL DEFAULT '',
   `title` varchar(255) NOT NULL,
@@ -447,21 +447,21 @@ CREATE TABLE IF NOT EXISTS `jt_categories` (
   `note` varchar(255) NOT NULL DEFAULT '',
   `description` mediumtext,
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `access` int(10) unsigned DEFAULT NULL,
+  `access` int(10) UNSIGNED DEFAULT NULL,
   `params` text NOT NULL,
   `metadesc` varchar(1024) NOT NULL COMMENT 'The meta description for the page.',
   `metakey` varchar(1024) NOT NULL COMMENT 'The meta keywords for the page.',
   `metadata` varchar(2048) NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `language` char(7) NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_categories`
@@ -552,7 +552,7 @@ INSERT INTO `jt_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level
 -- Table structure for table `jt_comprofiler`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler` (
+CREATE TABLE `jt_comprofiler` (
   `id` int(11) NOT NULL DEFAULT '0',
   `user_id` int(11) NOT NULL DEFAULT '0',
   `firstname` varchar(100) DEFAULT NULL,
@@ -576,7 +576,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler` (
   `bannedby` int(11) DEFAULT NULL,
   `unbannedby` int(11) DEFAULT NULL,
   `bannedreason` mediumtext,
-  `acceptedterms` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `acceptedterms` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `cb_schoolcompany` text,
   `cb_position` text,
   `cb_lastname` text
@@ -597,7 +597,7 @@ INSERT INTO `jt_comprofiler` (`id`, `user_id`, `firstname`, `middlename`, `lastn
 -- Table structure for table `jt_comprofiler_fields`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_fields` (
+CREATE TABLE `jt_comprofiler_fields` (
   `fieldid` int(11) NOT NULL,
   `name` varchar(50) NOT NULL DEFAULT '',
   `tablecolumns` text NOT NULL,
@@ -625,7 +625,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_fields` (
   `pluginid` int(11) NOT NULL DEFAULT '0',
   `cssclass` varchar(255) DEFAULT NULL,
   `params` mediumtext
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_fields`
@@ -661,7 +661,7 @@ INSERT INTO `jt_comprofiler_fields` (`fieldid`, `name`, `tablecolumns`, `table`,
 -- Table structure for table `jt_comprofiler_field_values`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_field_values` (
+CREATE TABLE `jt_comprofiler_field_values` (
   `fieldvalueid` int(11) NOT NULL,
   `fieldid` int(11) NOT NULL DEFAULT '0',
   `fieldtitle` varchar(255) NOT NULL DEFAULT '',
@@ -676,13 +676,13 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_field_values` (
 -- Table structure for table `jt_comprofiler_lists`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_lists` (
+CREATE TABLE `jt_comprofiler_lists` (
   `listid` int(11) NOT NULL,
   `title` varchar(255) NOT NULL DEFAULT '',
   `description` mediumtext,
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `default` tinyint(1) NOT NULL DEFAULT '0',
-  `viewaccesslevel` int(10) unsigned NOT NULL DEFAULT '0',
+  `viewaccesslevel` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `usergroupids` varchar(255) DEFAULT NULL,
   `ordering` int(11) NOT NULL DEFAULT '0',
   `params` mediumtext
@@ -694,7 +694,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_lists` (
 -- Table structure for table `jt_comprofiler_members`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_members` (
+CREATE TABLE `jt_comprofiler_members` (
   `referenceid` int(11) NOT NULL DEFAULT '0',
   `memberid` int(11) NOT NULL DEFAULT '0',
   `accepted` tinyint(1) NOT NULL DEFAULT '1',
@@ -711,22 +711,22 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_members` (
 -- Table structure for table `jt_comprofiler_plugin`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_plugin` (
+CREATE TABLE `jt_comprofiler_plugin` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `element` varchar(100) NOT NULL DEFAULT '',
   `type` varchar(100) DEFAULT '',
   `folder` varchar(100) DEFAULT '',
-  `viewaccesslevel` int(10) unsigned NOT NULL DEFAULT '0',
+  `viewaccesslevel` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `backend_menu` varchar(255) NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `published` tinyint(3) NOT NULL DEFAULT '0',
   `iscore` tinyint(3) NOT NULL DEFAULT '0',
   `client_id` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `params` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_plugin`
@@ -750,8 +750,8 @@ INSERT INTO `jt_comprofiler_plugin` (`id`, `name`, `element`, `type`, `folder`, 
 -- Table structure for table `jt_comprofiler_plugin_blogs`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_plugin_blogs` (
-  `id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_comprofiler_plugin_blogs` (
+  `id` int(11) UNSIGNED NOT NULL,
   `user` int(11) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `blog_intro` text,
@@ -770,7 +770,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_plugin_blogs` (
 -- Table structure for table `jt_comprofiler_ratings`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_ratings` (
+CREATE TABLE `jt_comprofiler_ratings` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `type` varchar(255) NOT NULL DEFAULT 'field',
@@ -787,15 +787,15 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_ratings` (
 -- Table structure for table `jt_comprofiler_sessions`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_sessions` (
+CREATE TABLE `jt_comprofiler_sessions` (
   `username` varchar(50) NOT NULL DEFAULT '',
-  `userid` int(11) unsigned NOT NULL DEFAULT '0',
+  `userid` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `ui` tinyint(4) NOT NULL DEFAULT '0',
   `incoming_ip` varchar(39) NOT NULL DEFAULT '',
   `client_ip` varchar(39) NOT NULL DEFAULT '',
   `session_id` varchar(33) NOT NULL DEFAULT '',
   `session_data` mediumtext NOT NULL,
-  `expiry_time` int(14) unsigned NOT NULL DEFAULT '0'
+  `expiry_time` int(14) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -804,7 +804,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_sessions` (
 -- Table structure for table `jt_comprofiler_tabs`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_tabs` (
+CREATE TABLE `jt_comprofiler_tabs` (
   `tabid` int(11) NOT NULL,
   `title` varchar(50) NOT NULL DEFAULT '',
   `description` text,
@@ -819,9 +819,9 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_tabs` (
   `sys` tinyint(4) NOT NULL DEFAULT '0',
   `displaytype` varchar(255) NOT NULL DEFAULT '',
   `position` varchar(255) NOT NULL DEFAULT '',
-  `viewaccesslevel` int(10) unsigned NOT NULL DEFAULT '0',
+  `viewaccesslevel` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `cssclass` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_tabs`
@@ -849,7 +849,7 @@ INSERT INTO `jt_comprofiler_tabs` (`tabid`, `title`, `description`, `ordering`, 
 -- Table structure for table `jt_comprofiler_userreports`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_userreports` (
+CREATE TABLE `jt_comprofiler_userreports` (
   `reportid` int(11) NOT NULL,
   `reporteduser` int(11) NOT NULL DEFAULT '0',
   `reportedbyuser` int(11) NOT NULL DEFAULT '0',
@@ -864,7 +864,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_userreports` (
 -- Table structure for table `jt_comprofiler_views`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_comprofiler_views` (
+CREATE TABLE `jt_comprofiler_views` (
   `viewer_id` int(11) NOT NULL DEFAULT '0',
   `profile_id` int(11) NOT NULL DEFAULT '0',
   `lastip` varchar(50) NOT NULL DEFAULT '',
@@ -880,7 +880,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_views` (
 -- Table structure for table `jt_contact_details`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_contact_details` (
+CREATE TABLE `jt_contact_details` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -895,15 +895,15 @@ CREATE TABLE IF NOT EXISTS `jt_contact_details` (
   `misc` mediumtext,
   `image` varchar(255) DEFAULT NULL,
   `email_to` varchar(255) DEFAULT NULL,
-  `default_con` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `default_con` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `params` text NOT NULL,
   `user_id` int(11) NOT NULL DEFAULT '0',
   `catid` int(11) NOT NULL DEFAULT '0',
-  `access` int(10) unsigned DEFAULT NULL,
+  `access` int(10) UNSIGNED DEFAULT NULL,
   `mobile` varchar(255) NOT NULL DEFAULT '',
   `webpage` varchar(255) NOT NULL DEFAULT '',
   `sortname1` varchar(255) NOT NULL,
@@ -911,20 +911,20 @@ CREATE TABLE IF NOT EXISTS `jt_contact_details` (
   `sortname3` varchar(255) NOT NULL,
   `language` char(7) NOT NULL,
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
+  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_contact_details`
@@ -948,38 +948,38 @@ INSERT INTO `jt_contact_details` (`id`, `name`, `alias`, `con_position`, `addres
 -- Table structure for table `jt_content`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_content` (
-  `id` int(10) unsigned NOT NULL,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+CREATE TABLE `jt_content` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(255) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `introtext` mediumtext NOT NULL,
   `fulltext` mediumtext NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `catid` int(10) unsigned NOT NULL DEFAULT '0',
+  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `images` text NOT NULL,
   `urls` text NOT NULL,
   `attribs` varchar(5120) NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
+  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if article is featured.',
   `language` char(7) NOT NULL COMMENT 'The language code for the article.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.'
-) ENGINE=InnoDB AUTO_INCREMENT=114 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_content`
@@ -1091,7 +1091,7 @@ INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 (100, 208, 'K2 Support', 'k2-support', '<p>One of hottest features in JSN Metro is extended styles adapted for a very popular Joomla! extension <strong>K2</strong>. Technically extended styles are overrides of default extension&rsquo;s style (images + CSS) and located in folder &ldquo;<strong>/ext/k2&rdquo;</strong> inside template folder.</p>\n<p>Extended style for K2 includes adapted tabs color, additional module styles, fixed alignment issues and some other minor visual enhancement.</p>\n<h3>Component styling</h3>\n<p>Here is how K2 component will look like after extended styles applied.</p>\n<p class="content-center"><img width="600" height="445" src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-style-after.png" /></p>\n<h3>Module styling</h3>\n<p>Besides from extended component styling you can use template module styles for K2 modules as well.</p>\n<div class="grid-layout">\n<div>\n<p class="content-center"><img width="300" height="455" src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-module-content.png" /></p>\n<ul><li>K2 Content Module (mod_k2_content) with module style <strong>box-green jsn-icon-article</strong> applied</li></ul>\n</div>\n<div>\n  <p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-module-comment-login.png" width="300" height="580" /></p>\n  <ul>\n    <li>K2 Comments Module (mod_k2_comments) with module style <strong>box-blue jsn-icon-comment</strong> applied</li>\n    <li>K2 Login Module (mod_k2_login) with module style <strong>box-yellow jsn-icon-user</strong> applied </li>\n  </ul>\n</div>\n</div>\n<p class="text-info">The K2 extensions is not included in the template package and you have to download separately at http://www.getk2.org</p>', '', 0, 79, '2011-04-01 04:24:28', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 1, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (101, 209, 'JSN Metro Product Tour', 'jsn-metro-product-tour', '<h3>Easy to start</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-easy-start.jpg" alt="Easy to Start" class="image-border" /></p>\r\n<p>One of the fastest and easiest ways to learn template is to install sample data and start playing with it. JSN Metro provides unique mechanism of <strong>installing sample data directly on your current website</strong>. Just few steps and the demo website is here.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=77&amp;Itemid=484" class="link-button button-light"><span class="link-icon jsn-icon-info">More about easy start</span></a></p>\r\n\r\n\r\n\r\n<h3>Painless Configuration</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-configuration.jpg" alt="Painless Configuration" class="image-border" /></p>\r\n<p>All JoomlaShine templates can be effortlessly configured by template parameters. In template setting page, you will find <strong>40+ template parameters</strong> arranged into logical groups for convenient operation. All parameters are equipped with description text for easier understanding.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=84&amp;Itemid=485" class="link-button button-light"><span class="link-icon jsn-icon-info">More about configuration</span></a></p>\r\n\r\n\r\n\r\n<h3>Flexible layout</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-layout.jpg" alt="Flexible layout" class="image-border" /></p>\r\n<p>JSN Metro provides <strong>36+ module positions </strong>allowing you to have multiple layout configurations. Module positions are designed in smart way to cover all possible spot where you might want to put content. You can specify width of both overall layout and specific columns conveniently via template parameters.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=71&amp;Itemid=466" class="link-button button-light"><span class="link-icon jsn-icon-info">More about layout</span></a></p>\r\n\r\n\r\n<h3>Versatile Menu Styles</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-menu-styles.jpg" alt="Menu Styles" class="image-border" /></p>\r\n<p>JSN Metro provides <strong>3 menu styles</strong> to present your website navigation. The default Joomla! built-in menu module is utilized, so you don''t need to install any external menu modules.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=72&amp;Itemid=468" class="link-button button-light"><span class="link-icon jsn-icon-info">More about menu styles</span></a></p>\r\n\r\n<h3>Native RTL Support</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-rtl-support.jpg" alt="RTL Support" class="image-border" /></p>\r\n<p>All JoomlaShine templates are equipped with <strong>native RTL layout support</strong>. We spent huge amount of time tweaking every tiny details of the template to make it look absolutely awesome in RTL mode. Everything is horizontally-flipped including dropdown main menu and side menu.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=85&amp;Itemid=488" class="link-button button-light"><span class="link-icon jsn-icon-info">More about RTL support</span></a></p>\r\n\r\n\r\n<h3>Cool Image Gallery</h3>\r\n{imageshow sl=1 sc=3 max-width=650 h=400 /}\r\n<p>The image gallery you see on this website is another cool product <strong>JSN ImageShow</strong> from JoomlaShine.com. With transition technology applied, you get smooth experience and consistent performance in all browsers.</p>\r\n<p>For mobile device, we have built special lightweight Javascript version, so you can be absolutely sure about images presentation.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=79&amp;Itemid=487" class="link-button button-light"><span class="link-icon jsn-icon-info">More about image gallery</span></a></p>\r\n\r\n\r\n<h3>Manage Joomla easily</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-poweradmin.jpg" alt="JSN PowerAdmin" class="image-border" /></p>\r\n<p>When you install sample data template, you will have one more powerful  extension to manage your Joomla site: <strong>JSN  PowerAdmin</strong>. It provides <strong>s</strong>potlight  search, giving results as you type. When you find the desired  item, just click it to open the edit page.</p>\r\n	JSN PowerAdmin allows you to have full control under your Joomla website in  single screen. You can manipulate elements by using convenient GUI with  drag-n-drop operations</p>\r\n<p class="content-center"><a href="http://rc.joomlashine.com/demo/joomla-templates/jsn_metro/j25/free/index.php?option=com_content&view=article&id=109&Itemid=994" target="_blank" class="link-button button-light"><span class="link-icon jsn-icon-info">More about JSN PowerAdmin</span></a></p>\r\n\r\n\r\n<h3>Great Docs & Support</h3>\r\n<div style="max-width: 680px; margin: 0px auto; padding: 0 20px 10px; border: 8px solid #EEE; ">\r\n<div class="grid-layout">\r\n<div style="width: 49%; float: left">\r\n<h3>Documentation</h3>\r\n<p>JSN Metro is equipped with very comprehensive documentation package that will help you with template utilization.</p>\r\n<ul>\r\n<li><h4>Configuration Manual</h4>This PDF document gives you detailed description of every template feature. You can print and use this document as a reference every time. You also can watch <a href="http://www.youtube.com/playlist?list=PL068EB32BB584F3F7">our play list JoomlaShine Template Configuration</a>. </li>\r\n<li><h4>Customization Manual</h4>This PDF document gives you easy-to-understand instruction how to customize template elements to make it suites you or your client. You also can watch <a href="http://www.youtube.com/playlist?list=PL0B473CA36B16C3FD">our playlist JoomlaShine Template Customization</a>. </li> \r\n</ul>\r\n</div>\r\n<div style="width: 49%; float: right">\r\n<h3>Support</h3>\r\n<p>When purchasing our products you are backed up with professional and timely support providing via:</p>\r\n<ul>\r\n<li><h4>Support Forum</h4>In the <a href="http://www.joomlashine.com/forum.html">support forum</a> we provide support for everyone who bought the <strong>PRO Edition</strong> of our products. Here you will get support from our support team as well as thousands of active members.</li>\r\n<li><h4>Dedicated Ticket Support</h4><a href="http://www.joomlashine.com/dedicated-support.html">Dedicated Ticket Support</a> is for developers who bought<strong> PRO UNLIMITED Edition </strong>of our products. With ticket support we can investigate the issue in-depth and provide a solution much faster. <strong>12-hour</strong> response time is guaranteed.</p> </li>\r\n</ul>\r\n</div>\r\n</div>\r\n<p class="content-center"><br /><a href="http://www.joomlashine.com/joomla-templates/jsn-metro-docs.zip" class="link-button button-light"><span class="link-icon jsn-icon-download">Download documentation</span></a></p>\r\n</div>', '', 1, 80, '2011-04-01 04:41:44', 42, '', '2013-06-19 10:01:33', 42, 0, '0000-00-00 00:00:00', '2011-04-01 04:41:44', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 34, 3, '', '', 1, 540, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (102, 210, '5 reasons to choose JSN Metro', '5-reasons-to-choose-jsn-metro', '<h3>Beautiful Design</h3>\n<p>JSN Metro has incredibly beautiful clean design with ultra flexible layout built-up from 28 module positions. The combination of 6 colors variation, 5 menu styles and 6 module styles results in a really remarkable website. In addition, super rich typography makes your content look stunning and clear for all users.</p>\n<p><strong>Read more:</strong> <a href="layout.html">Layout</a> - <a href="colors-varitation.html">Colors Variation</a> - <a href="menu-styles.html">Menu Styles</a> - <a href="typography.html">Typography</a> - <a href="modules-styles.html">Module Styles</a> <a href="font-styles.html">Font Styles</a>.</p>\n<h3>Stable Feature Rich Core</h3>\n<p>For us, JSN Metro is not just a template, but whole piece of software for which we spent more then 2 years. As the result you get ultra stable template with native RTL support and flawlessly running on IE6. Even more than that, there are multiple SEO &amp; Accessibility features which make your website greatly visible for both search engines and people with disabilities.</p>\n<p><strong>Read more:</strong> <a href="rtl-support.html">RTL Layout Support</a> - <a href="ie6-support.html">IE6 Support</a> - <a href="seo-accessibility.html">SEO &amp; Accessibility</a> - <a href="flash-gallery.html">Flash Gallery</a>.</p>\n<h3>Dead-easy Configuration</h3>\n<p>You will be surprised how such a capable template can be so easily handled. Majority of template features are conveniently managed by over 40 template parameters. You dont have to be a CSS master or PHP guru. Just set parameters as you want and enjoy the result.</p>\n<p><strong>Read more:</strong> <a href="template-parameters.html">Template Parameters</a>.</p>\n<h3>Outstanding Docs &amp; Support</h3>\n<p>Even when the template is deadly easy to use, we still provide very comprehensive documentation package of 3 PDF documents. So its really hard to get things done wrong, but if even so, you can get timely and professional support from our team as well as friendly community.</p>\n<p><strong>Next Step:</strong> <a href="download-jsn-metro-docs.html">Download template documentation</a> for free.</p>\n<h3>Cost Effective Solution</h3>\n<p>All the benefits is available for you for just 29$. Our ultimate goal is to offer you a solution that in turns must bring you much more profit. Even more, we provide 30-days money back guarantee, so this is absolutely risk-free. Just give it a try and you wont look back.</p>\n<p><strong>Next Step:</strong> <a href="buy-now.html">Download JSN Metro</a>.</p>', '', 1, 80, '2011-04-01 07:17:52', 42, '', '2012-07-16 10:36:08', 43, 0, '0000-00-00 00:00:00', '2011-04-01 07:17:52', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 2, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(103, 211, 'Welcome to JSN Metro', 'introducing-jsn-metro', '<div id="jsn-article-demo">\r\n	<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/content-html/demo-image1.jpg" alt="Demo Image"/>\r\n	<div class="demo-caption">\r\n		<h2 class="demo-tilte"><a href="">Welcome to JSN Metro</a></h2>\r\n		<p>JSN Metro is the latest innovation in the Metro legacy. The look itself echoes the visual language of airport and metro system signage as undoubtedly straightforward, making it increasingly popular to both web and mobile user. Its interfaces are supposed to encourage the sense of depth, experiment and usage. </p>\r\n<p>About the design, JSN Metro is color drenched with lots of pop. Its flat color variations deliver superb vignettes, mind-blowing saturation and knockout contrast. </p> \r\n		<a href="index.php?option=com_content&view=article&id=101&Itemid=497" class="readmore">Read more</a>\r\n	</div>\r\n</div>', '', 1, 80, '2011-04-01 07:18:18', 42, '', '2013-06-19 10:39:13', 42, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"1","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 94, 1, '', '', 1, 4381, '{"robots":"","author":"","rights":"","xreference":""}', 1, '*', ''),
+(103, 211, 'Welcome to JSN Metro', 'introducing-jsn-metro', '<div id="jsn-article-demo">\r\n	<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/content-html/demo-image1.jpg" alt="Demo Image"/>\r\n	<div class="demo-caption">\r\n		<h2 class="demo-tilte"><a href="">Welcome to JSN Metro</a></h2>\r\n		<p>JSN Metro is the latest innovation in the Metro legacy. The look itself echoes the visual language of airport and metro system signage as undoubtedly straightforward, making it increasingly popular to both web and mobile user. Its interfaces are supposed to encourage the sense of depth, experiment and usage. </p>\r\n<p>About the design, JSN Metro is color drenched with lots of pop. Its flat color variations deliver superb vignettes, mind-blowing saturation and knockout contrast. </p> \r\n		<a href="index.php?option=com_content&view=article&id=101&Itemid=497" class="readmore">Read more</a>\r\n	</div>\r\n</div>', '', 1, 80, '2011-04-01 07:18:18', 42, '', '2013-06-19 10:39:13', 42, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"1","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 94, 1, '', '', 1, 4385, '{"robots":"","author":"","rights":"","xreference":""}', 1, '*', ''),
 (104, 212, 'JSN Metro Showcase', 'jsn-metro-showcase', '<p>Here, wed like to show you how JSN Metro can be utilized for multiple kinds of websites, staring from simple personal website ending with professional news portal. All content are fictions and serves for demo purpose only.</p>\n<ul type="disc">\n <li>News Portal / Online magazine</li>\n <li>Personal website / Blog</li>\n <li>Corporate website / Service providers</li>\n <li>Community website / Fan clubs</li>\n <li>Online shops</li>\n</ul>\n<p>Here are some real life examples of JSN Metro.</p>', '', 1, 80, '2011-04-01 07:18:37', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:37', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (105, 216, 'Main content only (2)', 'main-content-only-2', '<p>Here you can see how content are presented only in main content area. Sometimes, you will need a lot of space to present content and that how it will looks like.</p>\n<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit dui eu augue faucibus non interdum odio elementum. Praesent faucibus lorem sed massa condimentum in semper lacus aliquet. Aliquam viverra erat a libero accumsan a egestas lorem hendrerit. Donec id elit dolor. Phasellus est ligula, hendrerit id vehicula sit amet, placerat ut diam. Sed eu fringilla lectus. Aliquam augue lorem, suscipit eu consequat vel, viverra id diam. Praesent lectus elit, interdum a imperdiet vitae, cursus at velit. </p>\n<p class="content-center"><a href="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/layout/layout-full.png" target="_blank" class="link-button button-light"><span class="link-icon jsn-icon-info">See all module positions outline</span></a></p>\n', '', -2, 81, '2011-04-01 03:14:14', 42, '', '2011-11-21 04:55:09', 0, 0, '0000-00-00 00:00:00', '2011-04-01 03:14:14', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (106, 231, 'Form Builder', 'form-builder', '<p><strong><a href="http://www.joomlashine.com/joomla-extensions/jsn-uniform-details.html">JSN UniForm</a></strong> will bring you the new indulgence since you find out it is the easiest-to-use form extension for your site. Contact us, survey and job application are just some of thousand forms that this single extension can help you to create and control. Besides the intuitive <strong>drag-n-drop operation</strong>, <strong>flexible form presentation</strong> and <strong>multiple pages layout</strong>, JSN UniForm also assists you to deeply understand your collected data with the multiple admins email notification, clean result display or submission filter. </p>\r\n\r\n<p>Below is the survey form created by the <strong>Free Edition</strong> of JSN UniForm. </p>\r\n{uniform form=1/}\r\n<p class="text-info">This extension is NOT included in the template package, but you can download it for free. <a href="http://www.joomlashine.com/joomla-extensions/jsn-uniform-details.html" class="link-action">Read more</a>.</p>', '', 1, 20, '2012-11-09 02:44:31', 42, '', '2013-01-30 04:52:59', 42, 0, '0000-00-00 00:00:00', '2012-11-09 02:44:31', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 1, '', '', 1, 26, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
@@ -1110,11 +1110,11 @@ INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 -- Table structure for table `jt_contentitem_tag_map`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_contentitem_tag_map` (
+CREATE TABLE `jt_contentitem_tag_map` (
   `type_alias` varchar(255) NOT NULL DEFAULT '',
-  `core_content_id` int(10) unsigned NOT NULL COMMENT 'PK from the core content table',
+  `core_content_id` int(10) UNSIGNED NOT NULL COMMENT 'PK from the core content table',
   `content_item_id` int(11) NOT NULL COMMENT 'PK from the content type table',
-  `tag_id` int(10) unsigned NOT NULL COMMENT 'PK from the tag table',
+  `tag_id` int(10) UNSIGNED NOT NULL COMMENT 'PK from the tag table',
   `tag_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Date of most recent save for this tag-item',
   `type_id` mediumint(8) NOT NULL COMMENT 'PK from the content_type table'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Maps items from content tables to tags';
@@ -1125,7 +1125,7 @@ CREATE TABLE IF NOT EXISTS `jt_contentitem_tag_map` (
 -- Table structure for table `jt_content_frontpage`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_content_frontpage` (
+CREATE TABLE `jt_content_frontpage` (
   `content_id` int(11) NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1143,10 +1143,10 @@ INSERT INTO `jt_content_frontpage` (`content_id`, `ordering`) VALUES
 -- Table structure for table `jt_content_rating`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_content_rating` (
+CREATE TABLE `jt_content_rating` (
   `content_id` int(11) NOT NULL DEFAULT '0',
-  `rating_sum` int(10) unsigned NOT NULL DEFAULT '0',
-  `rating_count` int(10) unsigned NOT NULL DEFAULT '0',
+  `rating_sum` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `rating_count` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `lastip` varchar(50) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -1156,8 +1156,8 @@ CREATE TABLE IF NOT EXISTS `jt_content_rating` (
 -- Table structure for table `jt_content_types`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_content_types` (
-  `type_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_content_types` (
+  `type_id` int(10) UNSIGNED NOT NULL,
   `type_title` varchar(255) NOT NULL DEFAULT '',
   `type_alias` varchar(255) NOT NULL DEFAULT '',
   `table` varchar(255) NOT NULL DEFAULT '',
@@ -1165,7 +1165,7 @@ CREATE TABLE IF NOT EXISTS `jt_content_types` (
   `field_mappings` text NOT NULL,
   `router` varchar(255) NOT NULL DEFAULT '',
   `content_history_options` varchar(5120) DEFAULT NULL COMMENT 'JSON string for com_contenthistory options'
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_content_types`
@@ -1193,9 +1193,9 @@ INSERT INTO `jt_content_types` (`type_id`, `type_title`, `type_alias`, `table`, 
 -- Table structure for table `jt_core_log_searches`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_core_log_searches` (
+CREATE TABLE `jt_core_log_searches` (
   `search_term` varchar(128) NOT NULL DEFAULT '',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0'
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1204,7 +1204,7 @@ CREATE TABLE IF NOT EXISTS `jt_core_log_searches` (
 -- Table structure for table `jt_extensions`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_extensions` (
+CREATE TABLE `jt_extensions` (
   `extension_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `type` varchar(20) NOT NULL,
@@ -1212,17 +1212,17 @@ CREATE TABLE IF NOT EXISTS `jt_extensions` (
   `folder` varchar(100) NOT NULL,
   `client_id` tinyint(3) NOT NULL,
   `enabled` tinyint(3) NOT NULL DEFAULT '1',
-  `access` int(10) unsigned NOT NULL DEFAULT '1',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `protected` tinyint(3) NOT NULL DEFAULT '0',
   `manifest_cache` text NOT NULL,
   `params` text NOT NULL,
   `custom_data` text NOT NULL,
   `system_data` text NOT NULL,
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) DEFAULT '0',
   `state` int(11) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=10159 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_extensions`
@@ -1527,19 +1527,19 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 -- Table structure for table `jt_finder_filters`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_filters` (
-  `filter_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_finder_filters` (
+  `filter_id` int(10) UNSIGNED NOT NULL,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `state` tinyint(1) NOT NULL DEFAULT '1',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL,
+  `created_by` int(10) UNSIGNED NOT NULL,
   `created_by_alias` varchar(255) NOT NULL,
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `map_count` int(10) unsigned NOT NULL DEFAULT '0',
+  `map_count` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `data` text NOT NULL,
   `params` mediumtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1550,8 +1550,8 @@ CREATE TABLE IF NOT EXISTS `jt_finder_filters` (
 -- Table structure for table `jt_finder_links`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links` (
-  `link_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_finder_links` (
+  `link_id` int(10) UNSIGNED NOT NULL,
   `url` varchar(255) NOT NULL,
   `route` varchar(255) NOT NULL,
   `title` varchar(255) DEFAULT NULL,
@@ -1566,8 +1566,8 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links` (
   `publish_end_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `start_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `end_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `list_price` double unsigned NOT NULL DEFAULT '0',
-  `sale_price` double unsigned NOT NULL DEFAULT '0',
+  `list_price` double UNSIGNED NOT NULL DEFAULT '0',
+  `sale_price` double UNSIGNED NOT NULL DEFAULT '0',
   `type_id` int(11) NOT NULL,
   `object` mediumblob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1578,10 +1578,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links` (
 -- Table structure for table `jt_finder_links_terms0`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms0` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms0` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1590,10 +1590,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms0` (
 -- Table structure for table `jt_finder_links_terms1`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms1` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms1` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1602,10 +1602,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms1` (
 -- Table structure for table `jt_finder_links_terms2`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms2` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms2` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1614,10 +1614,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms2` (
 -- Table structure for table `jt_finder_links_terms3`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms3` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms3` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1626,10 +1626,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms3` (
 -- Table structure for table `jt_finder_links_terms4`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms4` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms4` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1638,10 +1638,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms4` (
 -- Table structure for table `jt_finder_links_terms5`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms5` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms5` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1650,10 +1650,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms5` (
 -- Table structure for table `jt_finder_links_terms6`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms6` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms6` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1662,10 +1662,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms6` (
 -- Table structure for table `jt_finder_links_terms7`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms7` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms7` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1674,10 +1674,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms7` (
 -- Table structure for table `jt_finder_links_terms8`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms8` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms8` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1686,10 +1686,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms8` (
 -- Table structure for table `jt_finder_links_terms9`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_terms9` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_terms9` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1698,10 +1698,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_terms9` (
 -- Table structure for table `jt_finder_links_termsa`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_termsa` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_termsa` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1710,10 +1710,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_termsa` (
 -- Table structure for table `jt_finder_links_termsb`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_termsb` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_termsb` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1722,10 +1722,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_termsb` (
 -- Table structure for table `jt_finder_links_termsc`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_termsc` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_termsc` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1734,10 +1734,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_termsc` (
 -- Table structure for table `jt_finder_links_termsd`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_termsd` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_termsd` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1746,10 +1746,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_termsd` (
 -- Table structure for table `jt_finder_links_termse`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_termse` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_termse` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1758,10 +1758,10 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_termse` (
 -- Table structure for table `jt_finder_links_termsf`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_links_termsf` (
-  `link_id` int(10) unsigned NOT NULL,
-  `term_id` int(10) unsigned NOT NULL,
-  `weight` float unsigned NOT NULL
+CREATE TABLE `jt_finder_links_termsf` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `term_id` int(10) UNSIGNED NOT NULL,
+  `weight` float UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1770,14 +1770,14 @@ CREATE TABLE IF NOT EXISTS `jt_finder_links_termsf` (
 -- Table structure for table `jt_finder_taxonomy`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_taxonomy` (
-  `id` int(10) unsigned NOT NULL,
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_finder_taxonomy` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL,
-  `state` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  `access` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `ordering` tinyint(1) unsigned NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `state` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
+  `access` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `ordering` tinyint(1) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_finder_taxonomy`
@@ -1792,9 +1792,9 @@ INSERT INTO `jt_finder_taxonomy` (`id`, `parent_id`, `title`, `state`, `access`,
 -- Table structure for table `jt_finder_taxonomy_map`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_taxonomy_map` (
-  `link_id` int(10) unsigned NOT NULL,
-  `node_id` int(10) unsigned NOT NULL
+CREATE TABLE `jt_finder_taxonomy_map` (
+  `link_id` int(10) UNSIGNED NOT NULL,
+  `node_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -1803,13 +1803,13 @@ CREATE TABLE IF NOT EXISTS `jt_finder_taxonomy_map` (
 -- Table structure for table `jt_finder_terms`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_terms` (
-  `term_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_finder_terms` (
+  `term_id` int(10) UNSIGNED NOT NULL,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `weight` float unsigned NOT NULL DEFAULT '0',
+  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `weight` float UNSIGNED NOT NULL DEFAULT '0',
   `soundex` varchar(75) NOT NULL,
   `links` int(10) NOT NULL DEFAULT '0',
   `language` char(3) NOT NULL DEFAULT ''
@@ -1821,7 +1821,7 @@ CREATE TABLE IF NOT EXISTS `jt_finder_terms` (
 -- Table structure for table `jt_finder_terms_common`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_terms_common` (
+CREATE TABLE `jt_finder_terms_common` (
   `term` varchar(75) NOT NULL,
   `language` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -1953,13 +1953,13 @@ INSERT INTO `jt_finder_terms_common` (`term`, `language`) VALUES
 -- Table structure for table `jt_finder_tokens`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_tokens` (
+CREATE TABLE `jt_finder_tokens` (
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `weight` float unsigned NOT NULL DEFAULT '1',
-  `context` tinyint(1) unsigned NOT NULL DEFAULT '2',
+  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `weight` float UNSIGNED NOT NULL DEFAULT '1',
+  `context` tinyint(1) UNSIGNED NOT NULL DEFAULT '2',
   `language` char(3) NOT NULL DEFAULT ''
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
@@ -1969,17 +1969,17 @@ CREATE TABLE IF NOT EXISTS `jt_finder_tokens` (
 -- Table structure for table `jt_finder_tokens_aggregate`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_tokens_aggregate` (
-  `term_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_finder_tokens_aggregate` (
+  `term_id` int(10) UNSIGNED NOT NULL,
   `map_suffix` char(1) NOT NULL,
   `term` varchar(75) NOT NULL,
   `stem` varchar(75) NOT NULL,
-  `common` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `phrase` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `term_weight` float unsigned NOT NULL,
-  `context` tinyint(1) unsigned NOT NULL DEFAULT '2',
-  `context_weight` float unsigned NOT NULL,
-  `total_weight` float unsigned NOT NULL,
+  `common` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `phrase` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `term_weight` float UNSIGNED NOT NULL,
+  `context` tinyint(1) UNSIGNED NOT NULL DEFAULT '2',
+  `context_weight` float UNSIGNED NOT NULL,
+  `total_weight` float UNSIGNED NOT NULL,
   `language` char(3) NOT NULL DEFAULT ''
 ) ENGINE=MEMORY DEFAULT CHARSET=utf8;
 
@@ -1989,8 +1989,8 @@ CREATE TABLE IF NOT EXISTS `jt_finder_tokens_aggregate` (
 -- Table structure for table `jt_finder_types`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_finder_types` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_finder_types` (
+  `id` int(10) UNSIGNED NOT NULL,
   `title` varchar(100) NOT NULL,
   `mime` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -2001,9 +2001,9 @@ CREATE TABLE IF NOT EXISTS `jt_finder_types` (
 -- Table structure for table `jt_hikashop_address`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_address` (
-  `address_id` int(10) unsigned NOT NULL,
-  `address_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_hikashop_address` (
+  `address_id` int(10) UNSIGNED NOT NULL,
+  `address_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `address_title` varchar(255) DEFAULT NULL,
   `address_firstname` varchar(255) DEFAULT NULL,
   `address_middle_name` varchar(255) DEFAULT NULL,
@@ -2021,7 +2021,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_address` (
   `address_published` tinyint(4) NOT NULL DEFAULT '1',
   `address_vat` varchar(255) DEFAULT NULL,
   `address_default` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_address`
@@ -2039,18 +2039,18 @@ INSERT INTO `jt_hikashop_address` (`address_id`, `address_user_id`, `address_tit
 -- Table structure for table `jt_hikashop_badge`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_badge` (
-  `badge_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_badge` (
+  `badge_id` int(11) UNSIGNED NOT NULL,
   `badge_name` varchar(255) NOT NULL DEFAULT '',
   `badge_image` varchar(255) NOT NULL DEFAULT '',
-  `badge_start` int(10) unsigned NOT NULL DEFAULT '0',
-  `badge_end` int(10) unsigned NOT NULL DEFAULT '0',
+  `badge_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `badge_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `badge_product_id` varchar(255) NOT NULL DEFAULT '',
   `badge_category_id` varchar(255) NOT NULL DEFAULT '',
   `badge_category_childs` tinyint(4) NOT NULL DEFAULT '0',
   `badge_discount_id` varchar(255) NOT NULL DEFAULT '',
-  `badge_ordering` int(10) unsigned NOT NULL DEFAULT '0',
-  `badge_size` float(12,2) unsigned NOT NULL,
+  `badge_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `badge_size` float(12,2) UNSIGNED NOT NULL,
   `badge_position` varchar(255) NOT NULL DEFAULT 'bottomleft',
   `badge_vertical_distance` int(10) NOT NULL DEFAULT '0',
   `badge_horizontal_distance` int(10) NOT NULL DEFAULT '0',
@@ -2067,8 +2067,8 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_badge` (
 -- Table structure for table `jt_hikashop_banner`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_banner` (
-  `banner_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_banner` (
+  `banner_id` int(10) UNSIGNED NOT NULL,
   `banner_title` varchar(255) NOT NULL DEFAULT '',
   `banner_url` varchar(255) NOT NULL DEFAULT '',
   `banner_image_url` varchar(255) NOT NULL DEFAULT '',
@@ -2083,18 +2083,18 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_banner` (
 -- Table structure for table `jt_hikashop_cart`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_cart` (
-  `cart_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_hikashop_cart` (
+  `cart_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `session_id` varchar(255) NOT NULL,
-  `cart_modified` int(10) unsigned NOT NULL DEFAULT '0',
+  `cart_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `cart_coupon` varchar(255) NOT NULL DEFAULT '',
   `cart_type` varchar(25) NOT NULL DEFAULT 'cart',
   `cart_current` int(11) NOT NULL DEFAULT '0',
   `cart_share` varchar(255) NOT NULL DEFAULT 'nobody',
   `cart_name` varchar(50) NOT NULL DEFAULT '',
   `cart_params` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_cart`
@@ -2113,16 +2113,16 @@ INSERT INTO `jt_hikashop_cart` (`cart_id`, `user_id`, `session_id`, `cart_modifi
 -- Table structure for table `jt_hikashop_cart_product`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_cart_product` (
-  `cart_product_id` int(10) unsigned NOT NULL,
-  `cart_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `cart_product_quantity` int(10) unsigned NOT NULL DEFAULT '1',
-  `cart_product_parent_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `cart_product_modified` int(10) unsigned NOT NULL DEFAULT '0',
-  `cart_product_option_parent_id` int(10) unsigned DEFAULT '0',
+CREATE TABLE `jt_hikashop_cart_product` (
+  `cart_product_id` int(10) UNSIGNED NOT NULL,
+  `cart_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cart_product_quantity` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `cart_product_parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cart_product_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `cart_product_option_parent_id` int(10) UNSIGNED DEFAULT '0',
   `cart_product_wishlist_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_cart_product`
@@ -2143,22 +2143,22 @@ INSERT INTO `jt_hikashop_cart_product` (`cart_product_id`, `cart_id`, `product_i
 -- Table structure for table `jt_hikashop_category`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_category` (
-  `category_id` int(10) unsigned NOT NULL,
-  `category_parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_hikashop_category` (
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `category_parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `category_type` varchar(255) NOT NULL,
   `category_name` varchar(255) NOT NULL,
   `category_description` text NOT NULL,
   `category_published` tinyint(4) NOT NULL DEFAULT '0',
-  `category_ordering` int(10) unsigned NOT NULL DEFAULT '0',
-  `category_left` int(10) unsigned NOT NULL DEFAULT '0',
-  `category_right` int(10) unsigned NOT NULL DEFAULT '0',
-  `category_depth` int(10) unsigned NOT NULL DEFAULT '0',
+  `category_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `category_left` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `category_right` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `category_depth` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `category_namekey` varchar(255) NOT NULL,
-  `category_created` int(10) unsigned NOT NULL DEFAULT '0',
-  `category_modified` int(10) unsigned NOT NULL DEFAULT '0',
+  `category_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `category_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `category_access` varchar(255) NOT NULL DEFAULT 'all',
-  `category_menu` int(10) unsigned DEFAULT '0',
+  `category_menu` int(10) UNSIGNED DEFAULT '0',
   `category_keywords` text NOT NULL,
   `category_meta_description` varchar(255) NOT NULL DEFAULT '',
   `category_layout` varchar(255) NOT NULL DEFAULT '',
@@ -2167,7 +2167,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_category` (
   `category_site_id` varchar(255) DEFAULT '',
   `category_canonical` varchar(255) NOT NULL DEFAULT '',
   `category_quantity_layout` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_category`
@@ -2193,16 +2193,16 @@ INSERT INTO `jt_hikashop_category` (`category_id`, `category_parent_id`, `catego
 -- Table structure for table `jt_hikashop_characteristic`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_characteristic` (
-  `characteristic_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_characteristic` (
+  `characteristic_id` int(10) UNSIGNED NOT NULL,
   `characteristic_parent_id` int(10) NOT NULL DEFAULT '0',
   `characteristic_value` varchar(255) NOT NULL DEFAULT '0',
   `characteristic_alias` varchar(255) NOT NULL DEFAULT '',
   `characteristic_display_type` varchar(255) NOT NULL DEFAULT '',
   `characteristic_params` text NOT NULL,
-  `characteristic_ordering` int(12) unsigned NOT NULL DEFAULT '0',
+  `characteristic_ordering` int(12) UNSIGNED NOT NULL DEFAULT '0',
   `characteristic_display_method` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2210,15 +2210,15 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_characteristic` (
 -- Table structure for table `jt_hikashop_click`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_click` (
-  `click_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_click` (
+  `click_id` int(10) UNSIGNED NOT NULL,
   `click_ip` varchar(255) NOT NULL DEFAULT '',
-  `click_created` int(10) unsigned NOT NULL DEFAULT '0',
-  `click_partner_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `click_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `click_partner_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `click_partner_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `click_referer` varchar(255) NOT NULL DEFAULT '',
   `click_partner_paid` tinyint(4) NOT NULL DEFAULT '0',
-  `click_partner_currency_id` int(10) unsigned NOT NULL DEFAULT '0'
+  `click_partner_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2227,7 +2227,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_click` (
 -- Table structure for table `jt_hikashop_config`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_config` (
+CREATE TABLE `jt_hikashop_config` (
   `config_namekey` varchar(200) NOT NULL,
   `config_value` text NOT NULL,
   `config_default` text NOT NULL
@@ -2350,7 +2350,7 @@ INSERT INTO `jt_hikashop_config` (`config_namekey`, `config_value`, `config_defa
 ('catalogue', '0', ''),
 ('redirect_url_after_add_cart', 'ask_user', ''),
 ('redirect_url_when_cart_is_empty', 'index.php/products-listing', ''),
-('cart_retaining_period_checked', '1447255204', ''),
+('cart_retaining_period_checked', '1448021303', ''),
 ('auto_submit_methods', '1', ''),
 ('clean_cart_when_order_created', 'order_confirmed', 'order_confirmed'),
 ('category_image', '1', '1'),
@@ -2502,8 +2502,8 @@ INSERT INTO `jt_hikashop_config` (`config_namekey`, `config_value`, `config_defa
 -- Table structure for table `jt_hikashop_currency`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_currency` (
-  `currency_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_currency` (
+  `currency_id` int(10) UNSIGNED NOT NULL,
   `currency_symbol` varchar(255) NOT NULL,
   `currency_code` varchar(255) NOT NULL,
   `currency_format` char(10) NOT NULL DEFAULT '%i',
@@ -2513,8 +2513,8 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_currency` (
   `currency_locale` text NOT NULL,
   `currency_displayed` tinyint(4) NOT NULL DEFAULT '0',
   `currency_percent_fee` decimal(4,2) NOT NULL DEFAULT '0.00',
-  `currency_modified` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
+  `currency_modified` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_currency`
@@ -2709,28 +2709,28 @@ INSERT INTO `jt_hikashop_currency` (`currency_id`, `currency_symbol`, `currency_
 -- Table structure for table `jt_hikashop_discount`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_discount` (
-  `discount_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_discount` (
+  `discount_id` int(10) UNSIGNED NOT NULL,
   `discount_type` varchar(255) NOT NULL DEFAULT 'discount',
-  `discount_start` int(10) unsigned NOT NULL DEFAULT '0',
-  `discount_end` int(10) unsigned NOT NULL DEFAULT '0',
+  `discount_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `discount_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `discount_flat_amount` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `discount_percent_amount` decimal(12,3) NOT NULL DEFAULT '0.000',
   `discount_minimum_order` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `discount_quota` int(10) unsigned NOT NULL DEFAULT '0',
-  `discount_used_times` int(10) unsigned NOT NULL DEFAULT '0',
+  `discount_quota` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `discount_used_times` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `discount_code` varchar(255) NOT NULL DEFAULT '',
   `discount_published` tinyint(4) NOT NULL DEFAULT '0',
   `discount_product_id` varchar(255) NOT NULL DEFAULT '',
   `discount_category_id` varchar(255) NOT NULL DEFAULT '',
   `discount_zone_id` varchar(255) NOT NULL DEFAULT '',
-  `discount_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `discount_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `discount_category_childs` tinyint(4) NOT NULL DEFAULT '0',
-  `discount_auto_load` tinyint(3) unsigned DEFAULT '0',
+  `discount_auto_load` tinyint(3) UNSIGNED DEFAULT '0',
   `discount_access` varchar(255) NOT NULL DEFAULT 'all',
-  `discount_tax_id` int(10) unsigned DEFAULT '0',
-  `discount_minimum_products` int(10) unsigned DEFAULT '0',
-  `discount_quota_per_user` int(10) unsigned DEFAULT '0',
+  `discount_tax_id` int(10) UNSIGNED DEFAULT '0',
+  `discount_minimum_products` int(10) UNSIGNED DEFAULT '0',
+  `discount_quota_per_user` int(10) UNSIGNED DEFAULT '0',
   `discount_coupon_nodoubling` tinyint(4) DEFAULT NULL,
   `discount_coupon_product_only` tinyint(4) DEFAULT NULL,
   `discount_affiliate` int(10) NOT NULL DEFAULT '0',
@@ -2743,9 +2743,9 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_discount` (
 -- Table structure for table `jt_hikashop_download`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_download` (
-  `file_id` int(10) unsigned NOT NULL,
-  `order_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_download` (
+  `file_id` int(10) UNSIGNED NOT NULL,
+  `order_id` int(10) UNSIGNED NOT NULL,
   `file_pos` int(10) NOT NULL DEFAULT '1',
   `download_number` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -2756,8 +2756,8 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_download` (
 -- Table structure for table `jt_hikashop_email_log`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_email_log` (
-  `email_log_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_email_log` (
+  `email_log_id` int(10) UNSIGNED NOT NULL,
   `email_log_sender_email` varchar(255) NOT NULL DEFAULT '',
   `email_log_sender_name` varchar(255) NOT NULL DEFAULT '',
   `email_log_recipient_email` varchar(255) NOT NULL DEFAULT '',
@@ -2773,7 +2773,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_email_log` (
   `email_log_ref_id` varchar(255) NOT NULL DEFAULT '',
   `email_log_params` text NOT NULL,
   `email_log_date` int(10) NOT NULL,
-  `email_log_published` tinyint(3) unsigned NOT NULL DEFAULT '1'
+  `email_log_published` tinyint(3) UNSIGNED NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2782,9 +2782,9 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_email_log` (
 -- Table structure for table `jt_hikashop_entry`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_entry` (
-  `entry_id` int(10) unsigned NOT NULL,
-  `order_id` int(10) unsigned NOT NULL
+CREATE TABLE `jt_hikashop_entry` (
+  `entry_id` int(10) UNSIGNED NOT NULL,
+  `order_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2793,28 +2793,28 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_entry` (
 -- Table structure for table `jt_hikashop_field`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_field` (
-  `field_id` smallint(5) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_field` (
+  `field_id` smallint(5) UNSIGNED NOT NULL,
   `field_table` varchar(50) DEFAULT NULL,
   `field_realname` varchar(250) NOT NULL,
   `field_namekey` varchar(50) NOT NULL,
   `field_type` varchar(50) DEFAULT NULL,
   `field_value` longtext NOT NULL,
-  `field_published` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `field_ordering` smallint(5) unsigned DEFAULT '99',
+  `field_published` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
+  `field_ordering` smallint(5) UNSIGNED DEFAULT '99',
   `field_options` text,
-  `field_core` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `field_required` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `field_core` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `field_required` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `field_default` varchar(250) DEFAULT NULL,
   `field_access` varchar(255) NOT NULL DEFAULT 'all',
   `field_categories` text NOT NULL,
   `field_with_sub_categories` tinyint(1) NOT NULL DEFAULT '0',
   `field_products` text NOT NULL,
-  `field_frontcomp` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `field_backend` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `field_backend_listing` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `field_frontcomp` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `field_backend` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
+  `field_backend_listing` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `field_display` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_field`
@@ -2826,11 +2826,11 @@ INSERT INTO `jt_hikashop_field` (`field_id`, `field_table`, `field_realname`, `f
 (3, 'address', 'Middle name', 'address_middle_name', 'text', '', 0, 3, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
 (4, 'address', 'Lastname', 'address_lastname', 'text', '', 1, 4, 'a:14:{s:12:"errormessage";s:31:"Please input a proper Last Name";s:5:"regex";s:13:"^[a-zA-Z\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
 (5, 'address', 'Company', 'address_company', 'text', '', 0, 5, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
-(6, 'address', 'Street', 'address_street', 'text', '', 1, 6, 'a:15:{s:12:"errormessage";s:42:"Please Enter a Proper Street Number / Name";s:5:"regex";s:19:"^[0-9a-zA-Z -,\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";s:10:"customtext";s:51:"Street Number, Phase Number / Building Number / etc";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
-(7, 'address', 'Complement', 'address_street2', 'text', '', 1, 7, 'a:15:{s:12:"errormessage";s:28:"Please enter a valid address";s:5:"regex";s:19:"^[0-9a-zA-Z -,\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";s:10:"customtext";s:51:"Street Name, Subdivision Name / Baraggay Name / etc";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
+(6, 'address', 'Street', 'address_street', 'text', '', 1, 6, 'a:14:{s:12:"errormessage";s:42:"Please Enter a Proper Street Number / Name";s:5:"regex";s:19:"^[0-9a-zA-Z -,\\s]*$";s:11:"placeholder";s:25:"Street#, Phase#/Building#";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
+(7, 'address', 'Complement', 'address_street2', 'text', '', 1, 7, 'a:14:{s:12:"errormessage";s:28:"Please enter a valid address";s:5:"regex";s:19:"^[0-9a-zA-Z -,\\s]*$";s:11:"placeholder";s:35:"Street, Baranggay/Subdivision/Purok";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
 (8, 'address', 'Post code', 'address_post_code', 'text', '', 1, 8, 'a:14:{s:12:"errormessage";s:15:"Incorrect Input";s:5:"regex";s:8:"^[0-9]*$";s:11:"placeholder";s:11:"Number Only";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"4";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:1:"4";s:6:"format";s:8:"%Y-%m-%d";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
 (9, 'address', 'City', 'address_city', 'text', '', 1, 9, 'a:14:{s:12:"errormessage";s:25:"Please Enter a valid City";s:5:"regex";s:13:"^[a-zA-Z\\s]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:1:"0";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:0:"";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
-(10, 'address', 'Telephone', 'address_telephone', 'text', '', 1, 10, 'a:15:{s:12:"errormessage";s:37:"Please Enter a valid Cellphone Number";s:5:"regex";s:8:"^[0-9]*$";s:11:"placeholder";s:0:"";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:2:"11";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:2:"11";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";s:10:"customtext";s:19:"Format: 09XXXXXXXXX";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
+(10, 'address', 'Telephone', 'address_telephone', 'text', '', 1, 10, 'a:14:{s:12:"errormessage";s:37:"Please Enter a valid Cellphone Number";s:5:"regex";s:8:"^[0-9]*$";s:11:"placeholder";s:11:"09XXXXXXXXX";s:4:"cols";s:0:"";s:9:"filtering";s:1:"1";s:9:"maxlength";s:2:"11";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:12:"pleaseselect";s:1:"0";s:4:"size";s:2:"11";s:6:"format";s:0:"";s:5:"allow";s:0:"";s:8:"readonly";s:1:"0";s:12:"translatable";s:1:"0";}', 1, 1, '', 'all', 'all', 0, '', 1, 1, 0, ''),
 (11, 'address', 'Telephone', 'address_telephone2', 'text', '', 0, 11, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
 (12, 'address', 'Fax', 'address_fax', 'text', '', 0, 12, 'a:5:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 0, '', 'all', '', 0, '', 1, 1, 0, ''),
 (13, 'address', 'Country', 'address_country', 'zone', '', 1, 13, 'a:6:{s:12:"errormessage";s:0:"";s:4:"cols";s:0:"";s:4:"rows";s:0:"";s:9:"zone_type";s:7:"country";s:4:"size";s:0:"";s:6:"format";s:0:"";}', 1, 1, 'country_Philippines_168', 'all', '', 0, '', 1, 1, 0, ''),
@@ -2843,17 +2843,17 @@ INSERT INTO `jt_hikashop_field` (`field_id`, `field_table`, `field_realname`, `f
 -- Table structure for table `jt_hikashop_file`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_file` (
-  `file_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_file` (
+  `file_id` int(10) UNSIGNED NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `file_description` text NOT NULL,
   `file_path` varchar(255) NOT NULL,
   `file_type` varchar(255) NOT NULL DEFAULT 'category',
-  `file_ref_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `file_free_download` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `file_ordering` int(10) unsigned NOT NULL DEFAULT '0',
+  `file_ref_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `file_free_download` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `file_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `file_limit` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_file`
@@ -2878,23 +2878,23 @@ INSERT INTO `jt_hikashop_file` (`file_id`, `file_name`, `file_description`, `fil
 -- Table structure for table `jt_hikashop_filter`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_filter` (
-  `filter_id` smallint(5) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_filter` (
+  `filter_id` smallint(5) UNSIGNED NOT NULL,
   `filter_name` varchar(250) NOT NULL,
   `filter_namekey` varchar(50) NOT NULL,
-  `filter_published` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `filter_published` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
   `filter_type` varchar(50) DEFAULT NULL,
   `filter_category_id` varchar(255) NOT NULL,
-  `filter_ordering` smallint(5) unsigned DEFAULT '99',
+  `filter_ordering` smallint(5) UNSIGNED DEFAULT '99',
   `filter_options` text,
   `filter_data` text NOT NULL,
   `filter_access` varchar(250) NOT NULL DEFAULT 'all',
   `filter_direct_application` tinyint(3) NOT NULL DEFAULT '0',
   `filter_value` text NOT NULL,
-  `filter_category_childs` tinyint(3) unsigned NOT NULL,
-  `filter_height` int(50) unsigned NOT NULL,
-  `filter_deletable` tinyint(3) unsigned NOT NULL,
-  `filter_dynamic` tinyint(3) unsigned NOT NULL
+  `filter_category_childs` tinyint(3) UNSIGNED NOT NULL,
+  `filter_height` int(50) UNSIGNED NOT NULL,
+  `filter_deletable` tinyint(3) UNSIGNED NOT NULL,
+  `filter_dynamic` tinyint(3) UNSIGNED NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -2903,12 +2903,12 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_filter` (
 -- Table structure for table `jt_hikashop_geolocation`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_geolocation` (
-  `geolocation_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_geolocation` (
+  `geolocation_id` int(10) UNSIGNED NOT NULL,
   `geolocation_ip` varchar(255) NOT NULL DEFAULT '',
   `geolocation_type` varchar(255) NOT NULL DEFAULT 'order',
-  `geolocation_ref_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `geolocation_created` int(10) unsigned NOT NULL DEFAULT '0',
+  `geolocation_ref_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `geolocation_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `geolocation_latitude` decimal(9,6) NOT NULL DEFAULT '0.000000',
   `geolocation_longitude` decimal(9,6) NOT NULL DEFAULT '0.000000',
   `geolocation_postal_code` varchar(255) NOT NULL DEFAULT '',
@@ -2925,22 +2925,22 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_geolocation` (
 -- Table structure for table `jt_hikashop_history`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_history` (
-  `history_id` int(10) unsigned NOT NULL,
-  `history_order_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `history_created` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_hikashop_history` (
+  `history_id` int(10) UNSIGNED NOT NULL,
+  `history_order_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `history_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `history_ip` varchar(255) NOT NULL DEFAULT '',
   `history_new_status` varchar(255) NOT NULL DEFAULT '',
   `history_reason` text NOT NULL,
   `history_notified` tinyint(4) NOT NULL DEFAULT '0',
   `history_amount` varchar(255) NOT NULL DEFAULT '',
-  `history_package_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `history_package_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `history_payment_id` varchar(255) NOT NULL DEFAULT '',
   `history_payment_method` varchar(255) NOT NULL DEFAULT '',
   `history_data` longtext NOT NULL,
   `history_type` varchar(255) NOT NULL DEFAULT '',
-  `history_user_id` int(10) unsigned DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+  `history_user_id` int(10) UNSIGNED DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_history`
@@ -2955,8 +2955,8 @@ INSERT INTO `jt_hikashop_history` (`history_id`, `history_order_id`, `history_cr
 -- Table structure for table `jt_hikashop_limit`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_limit` (
-  `limit_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_limit` (
+  `limit_id` int(11) UNSIGNED NOT NULL,
   `limit_product_id` int(11) NOT NULL DEFAULT '0',
   `limit_category_id` int(11) NOT NULL DEFAULT '0',
   `limit_per_product` tinyint(4) NOT NULL DEFAULT '0',
@@ -2980,13 +2980,13 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_limit` (
 -- Table structure for table `jt_hikashop_massaction`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_massaction` (
-  `massaction_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_massaction` (
+  `massaction_id` int(10) UNSIGNED NOT NULL,
   `massaction_name` varchar(255) NOT NULL DEFAULT '',
   `massaction_description` text NOT NULL,
   `massaction_table` varchar(255) NOT NULL DEFAULT 'product',
   `massaction_published` tinyint(4) NOT NULL DEFAULT '1',
-  `massaction_lasttime` int(10) unsigned NOT NULL DEFAULT '0',
+  `massaction_lasttime` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `massaction_triggers` text NOT NULL,
   `massaction_filters` text NOT NULL,
   `massaction_actions` text NOT NULL,
@@ -2999,20 +2999,20 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_massaction` (
 -- Table structure for table `jt_hikashop_order`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_order` (
-  `order_id` int(10) unsigned NOT NULL,
-  `order_billing_address_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `order_shipping_address_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `order_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_hikashop_order` (
+  `order_id` int(10) UNSIGNED NOT NULL,
+  `order_billing_address_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_shipping_address_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `order_status` varchar(255) NOT NULL DEFAULT '',
   `order_type` varchar(255) NOT NULL DEFAULT 'sale',
   `order_number` varchar(255) NOT NULL DEFAULT '',
-  `order_created` int(10) unsigned NOT NULL DEFAULT '0',
-  `order_modified` int(10) unsigned NOT NULL DEFAULT '0',
-  `order_invoice_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_invoice_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `order_invoice_number` varchar(255) NOT NULL DEFAULT '',
-  `order_invoice_created` int(10) unsigned NOT NULL DEFAULT '0',
-  `order_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_invoice_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `order_currency_info` text NOT NULL,
   `order_full_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_tax_info` text NOT NULL,
@@ -3029,13 +3029,13 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_order` (
   `order_shipping_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_shipping_tax` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_shipping_params` text NOT NULL,
-  `order_partner_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_partner_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `order_partner_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_partner_paid` int(11) NOT NULL DEFAULT '0',
-  `order_partner_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_partner_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `order_ip` varchar(255) NOT NULL DEFAULT '',
   `order_site_id` varchar(255) DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_order`
@@ -3050,25 +3050,25 @@ INSERT INTO `jt_hikashop_order` (`order_id`, `order_billing_address_id`, `order_
 -- Table structure for table `jt_hikashop_order_product`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_order_product` (
-  `order_product_id` int(10) unsigned NOT NULL,
-  `order_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `product_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `order_product_quantity` int(10) unsigned NOT NULL DEFAULT '1',
+CREATE TABLE `jt_hikashop_order_product` (
+  `order_product_id` int(10) UNSIGNED NOT NULL,
+  `order_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `order_product_quantity` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `order_product_name` varchar(255) NOT NULL DEFAULT '',
   `order_product_code` varchar(255) NOT NULL DEFAULT '',
   `order_product_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_tax` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_tax_info` text NOT NULL,
   `order_product_options` text NOT NULL,
-  `order_product_option_parent_id` int(10) unsigned DEFAULT '0',
+  `order_product_option_parent_id` int(10) UNSIGNED DEFAULT '0',
   `order_product_wishlist_id` int(11) NOT NULL DEFAULT '0',
   `order_product_shipping_id` varchar(255) NOT NULL DEFAULT '',
   `order_product_shipping_method` varchar(255) NOT NULL DEFAULT '',
   `order_product_shipping_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_shipping_tax` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `order_product_shipping_params` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_order_product`
@@ -3083,21 +3083,21 @@ INSERT INTO `jt_hikashop_order_product` (`order_product_id`, `order_id`, `produc
 -- Table structure for table `jt_hikashop_payment`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_payment` (
-  `payment_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_payment` (
+  `payment_id` int(10) UNSIGNED NOT NULL,
   `payment_name` varchar(255) NOT NULL DEFAULT '',
   `payment_description` text NOT NULL,
   `payment_images` text NOT NULL,
   `payment_params` text NOT NULL,
   `payment_type` varchar(255) NOT NULL DEFAULT '',
   `payment_zone_namekey` varchar(255) NOT NULL DEFAULT '',
-  `payment_ordering` int(10) unsigned NOT NULL DEFAULT '0',
+  `payment_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `payment_published` tinyint(4) NOT NULL DEFAULT '1',
   `payment_access` varchar(255) NOT NULL DEFAULT 'all',
   `payment_shipping_methods` text NOT NULL,
   `payment_currency` varchar(255) NOT NULL,
   `payment_price` decimal(17,5) NOT NULL DEFAULT '0.00000'
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_payment`
@@ -3114,7 +3114,7 @@ INSERT INTO `jt_hikashop_payment` (`payment_id`, `payment_name`, `payment_descri
 -- Table structure for table `jt_hikashop_plugin`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_plugin` (
+CREATE TABLE `jt_hikashop_plugin` (
   `plugin_id` int(10) NOT NULL,
   `plugin_type` varchar(255) NOT NULL,
   `plugin_published` int(4) NOT NULL DEFAULT '0',
@@ -3131,15 +3131,15 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_plugin` (
 -- Table structure for table `jt_hikashop_price`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_price` (
-  `price_id` int(10) unsigned NOT NULL,
-  `price_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `price_product_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_hikashop_price` (
+  `price_id` int(10) UNSIGNED NOT NULL,
+  `price_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `price_product_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `price_value` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `price_min_quantity` int(10) unsigned NOT NULL DEFAULT '0',
+  `price_min_quantity` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `price_access` varchar(255) NOT NULL DEFAULT 'all',
   `price_site_id` varchar(255) DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_price`
@@ -3163,42 +3163,42 @@ INSERT INTO `jt_hikashop_price` (`price_id`, `price_currency_id`, `price_product
 -- Table structure for table `jt_hikashop_product`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_product` (
-  `product_id` int(11) unsigned NOT NULL,
-  `product_parent_id` int(11) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_hikashop_product` (
+  `product_id` int(11) UNSIGNED NOT NULL,
+  `product_parent_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `product_name` varchar(255) NOT NULL,
   `product_description` text NOT NULL,
   `product_quantity` int(11) NOT NULL DEFAULT '-1',
   `product_code` varchar(255) NOT NULL,
   `product_published` tinyint(4) NOT NULL DEFAULT '0',
-  `product_hit` int(11) unsigned NOT NULL DEFAULT '0',
-  `product_created` int(11) unsigned NOT NULL DEFAULT '0',
-  `product_sale_start` int(10) unsigned NOT NULL DEFAULT '0',
-  `product_sale_end` int(10) unsigned NOT NULL DEFAULT '0',
-  `product_delay_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `product_tax_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_hit` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `product_created` int(11) UNSIGNED NOT NULL DEFAULT '0',
+  `product_sale_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_sale_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_delay_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_tax_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `product_type` varchar(255) NOT NULL DEFAULT '',
-  `product_vendor_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `product_manufacturer_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_vendor_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `product_manufacturer_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `product_url` varchar(255) NOT NULL,
-  `product_weight` decimal(12,3) unsigned NOT NULL DEFAULT '0.000',
+  `product_weight` decimal(12,3) UNSIGNED NOT NULL DEFAULT '0.000',
   `product_keywords` text NOT NULL,
   `product_weight_unit` varchar(255) NOT NULL DEFAULT 'kg',
-  `product_modified` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_modified` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `product_meta_description` varchar(255) NOT NULL DEFAULT '',
   `product_dimension_unit` varchar(255) NOT NULL DEFAULT 'm',
   `product_width` decimal(12,3) NOT NULL DEFAULT '0.000',
   `product_length` decimal(12,3) NOT NULL DEFAULT '0.000',
   `product_height` decimal(12,3) NOT NULL DEFAULT '0.000',
-  `product_max_per_order` int(10) unsigned DEFAULT '0',
+  `product_max_per_order` int(10) UNSIGNED DEFAULT '0',
   `product_access` varchar(255) NOT NULL DEFAULT 'all',
   `product_group_after_purchase` varchar(255) NOT NULL DEFAULT '',
-  `product_min_per_order` int(10) unsigned DEFAULT '0',
-  `product_contact` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `product_min_per_order` int(10) UNSIGNED DEFAULT '0',
+  `product_contact` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `product_display_quantity_field` smallint(5) NOT NULL DEFAULT '0',
-  `product_last_seen_date` int(10) unsigned DEFAULT '0',
-  `product_sales` int(10) unsigned DEFAULT '0',
-  `product_waitlist` smallint(5) unsigned NOT NULL DEFAULT '0',
+  `product_last_seen_date` int(10) UNSIGNED DEFAULT '0',
+  `product_sales` int(10) UNSIGNED DEFAULT '0',
+  `product_waitlist` smallint(5) UNSIGNED NOT NULL DEFAULT '0',
   `product_layout` varchar(255) NOT NULL DEFAULT '',
   `product_average_score` float NOT NULL,
   `product_total_vote` int(11) NOT NULL DEFAULT '0',
@@ -3207,9 +3207,9 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_product` (
   `product_price_percentage` decimal(15,7) NOT NULL DEFAULT '0.0000000',
   `product_msrp` decimal(15,7) DEFAULT '0.0000000',
   `product_canonical` varchar(255) NOT NULL DEFAULT '',
-  `product_warehouse_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `product_warehouse_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `product_quantity_layout` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_product`
@@ -3233,12 +3233,12 @@ INSERT INTO `jt_hikashop_product` (`product_id`, `product_parent_id`, `product_n
 -- Table structure for table `jt_hikashop_product_category`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_product_category` (
-  `product_category_id` int(255) unsigned NOT NULL,
-  `category_id` int(10) unsigned NOT NULL,
-  `product_id` int(10) unsigned NOT NULL,
-  `ordering` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+CREATE TABLE `jt_hikashop_product_category` (
+  `product_category_id` int(255) UNSIGNED NOT NULL,
+  `category_id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_product_category`
@@ -3262,11 +3262,11 @@ INSERT INTO `jt_hikashop_product_category` (`product_category_id`, `category_id`
 -- Table structure for table `jt_hikashop_product_related`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_product_related` (
-  `product_id` int(10) unsigned NOT NULL,
-  `product_related_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_product_related` (
+  `product_id` int(10) UNSIGNED NOT NULL,
+  `product_related_id` int(10) UNSIGNED NOT NULL,
   `product_related_type` varchar(255) NOT NULL DEFAULT 'related',
-  `product_related_ordering` int(10) unsigned DEFAULT '0'
+  `product_related_ordering` int(10) UNSIGNED DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3275,22 +3275,22 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_product_related` (
 -- Table structure for table `jt_hikashop_shipping`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_shipping` (
+CREATE TABLE `jt_hikashop_shipping` (
   `shipping_id` int(11) NOT NULL,
   `shipping_type` varchar(255) NOT NULL DEFAULT 'manual',
   `shipping_zone_namekey` varchar(255) NOT NULL,
-  `shipping_tax_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `shipping_tax_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `shipping_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `shipping_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `shipping_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `shipping_name` varchar(255) NOT NULL,
   `shipping_description` text NOT NULL,
   `shipping_published` tinyint(4) NOT NULL DEFAULT '1',
-  `shipping_ordering` int(10) unsigned NOT NULL DEFAULT '0',
+  `shipping_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `shipping_currency` varchar(255) NOT NULL,
   `shipping_params` text NOT NULL,
   `shipping_images` varchar(255) NOT NULL DEFAULT '',
   `shipping_access` varchar(255) NOT NULL DEFAULT 'all'
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_shipping`
@@ -3306,7 +3306,7 @@ INSERT INTO `jt_hikashop_shipping` (`shipping_id`, `shipping_type`, `shipping_zo
 -- Table structure for table `jt_hikashop_shipping_price`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_shipping_price` (
+CREATE TABLE `jt_hikashop_shipping_price` (
   `shipping_price_id` int(11) NOT NULL,
   `shipping_id` int(11) NOT NULL,
   `shipping_price_ref_id` int(11) NOT NULL,
@@ -3322,7 +3322,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_shipping_price` (
 -- Table structure for table `jt_hikashop_tax`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_tax` (
+CREATE TABLE `jt_hikashop_tax` (
   `tax_namekey` varchar(255) NOT NULL,
   `tax_rate` decimal(17,5) NOT NULL DEFAULT '0.00000'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -3340,8 +3340,8 @@ INSERT INTO `jt_hikashop_tax` (`tax_namekey`, `tax_rate`) VALUES
 -- Table structure for table `jt_hikashop_taxation`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_taxation` (
-  `taxation_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_taxation` (
+  `taxation_id` int(10) UNSIGNED NOT NULL,
   `zone_namekey` varchar(255) NOT NULL,
   `category_namekey` varchar(255) NOT NULL,
   `tax_namekey` varchar(255) NOT NULL,
@@ -3350,13 +3350,13 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_taxation` (
   `taxation_access` varchar(255) NOT NULL DEFAULT 'all',
   `taxation_cumulative` tinyint(4) DEFAULT NULL,
   `taxation_post_code` varchar(255) NOT NULL DEFAULT '',
-  `taxation_date_start` int(10) unsigned NOT NULL DEFAULT '0',
-  `taxation_date_end` int(10) unsigned NOT NULL DEFAULT '0',
+  `taxation_date_start` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `taxation_date_end` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `taxation_internal_code` varchar(15) NOT NULL DEFAULT '' COMMENT 'Accounting internal code',
   `taxation_note` text NOT NULL COMMENT 'Note to add in the invoice when this tax is used - It uses the language file for the translation',
   `taxation_site_id` varchar(255) NOT NULL DEFAULT '' COMMENT 'Reference to JMS site ID',
-  `taxation_ordering` int(10) unsigned NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `taxation_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_taxation`
@@ -3372,22 +3372,22 @@ INSERT INTO `jt_hikashop_taxation` (`taxation_id`, `zone_namekey`, `category_nam
 -- Table structure for table `jt_hikashop_user`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_user` (
-  `user_id` int(10) unsigned NOT NULL,
-  `user_cms_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_user` (
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `user_cms_id` int(10) UNSIGNED NOT NULL,
   `user_email` varchar(255) NOT NULL DEFAULT '',
   `user_partner_email` varchar(255) NOT NULL,
   `user_params` text NOT NULL,
-  `user_partner_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_partner_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `user_partner_price` decimal(17,5) NOT NULL DEFAULT '0.00000',
   `user_partner_paid` tinyint(4) NOT NULL DEFAULT '0',
   `user_created_ip` varchar(255) NOT NULL DEFAULT '',
   `user_unpaid_amount` decimal(17,5) NOT NULL DEFAULT '0.00000',
-  `user_partner_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_created` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_currency_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_partner_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `user_created` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `user_currency_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `user_partner_activated` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_user`
@@ -3404,10 +3404,10 @@ INSERT INTO `jt_hikashop_user` (`user_id`, `user_cms_id`, `user_email`, `user_pa
 -- Table structure for table `jt_hikashop_variant`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_variant` (
-  `variant_characteristic_id` int(10) unsigned NOT NULL,
-  `variant_product_id` int(10) unsigned NOT NULL,
-  `ordering` int(10) unsigned NOT NULL DEFAULT '0'
+CREATE TABLE `jt_hikashop_variant` (
+  `variant_characteristic_id` int(10) UNSIGNED NOT NULL,
+  `variant_product_id` int(10) UNSIGNED NOT NULL,
+  `ordering` int(10) UNSIGNED NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -3416,8 +3416,8 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_variant` (
 -- Table structure for table `jt_hikashop_vote`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_vote` (
-  `vote_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_vote` (
+  `vote_id` int(11) UNSIGNED NOT NULL,
   `vote_ref_id` int(11) NOT NULL,
   `vote_type` varchar(15) NOT NULL,
   `vote_user_id` varchar(255) NOT NULL,
@@ -3427,7 +3427,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_vote` (
   `vote_pseudo` varchar(255) NOT NULL,
   `vote_ip` varchar(255) NOT NULL,
   `vote_email` varchar(255) NOT NULL,
-  `vote_date` int(10) unsigned NOT NULL,
+  `vote_date` int(10) UNSIGNED NOT NULL,
   `vote_published` tinyint(4) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -3437,7 +3437,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_vote` (
 -- Table structure for table `jt_hikashop_vote_user`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_vote_user` (
+CREATE TABLE `jt_hikashop_vote_user` (
   `vote_user_id` int(11) NOT NULL,
   `vote_user_user_id` varchar(26) NOT NULL,
   `vote_user_useful` tinyint(4) NOT NULL
@@ -3449,7 +3449,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_vote_user` (
 -- Table structure for table `jt_hikashop_waitlist`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_waitlist` (
+CREATE TABLE `jt_hikashop_waitlist` (
   `waitlist_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `date` int(11) NOT NULL,
@@ -3464,7 +3464,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_waitlist` (
 -- Table structure for table `jt_hikashop_warehouse`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_warehouse` (
+CREATE TABLE `jt_hikashop_warehouse` (
   `warehouse_id` int(10) NOT NULL,
   `warehouse_name` varchar(255) NOT NULL DEFAULT '',
   `warehouse_published` tinyint(4) NOT NULL DEFAULT '1',
@@ -3480,14 +3480,14 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_warehouse` (
 -- Table structure for table `jt_hikashop_widget`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_widget` (
-  `widget_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_widget` (
+  `widget_id` int(10) UNSIGNED NOT NULL,
   `widget_name` varchar(255) NOT NULL,
   `widget_params` text NOT NULL,
   `widget_published` tinyint(4) NOT NULL DEFAULT '0',
   `widget_ordering` int(11) NOT NULL DEFAULT '0',
   `widget_access` varchar(250) NOT NULL DEFAULT 'all'
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_widget`
@@ -3512,8 +3512,8 @@ INSERT INTO `jt_hikashop_widget` (`widget_id`, `widget_name`, `widget_params`, `
 -- Table structure for table `jt_hikashop_zone`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_zone` (
-  `zone_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_hikashop_zone` (
+  `zone_id` int(10) UNSIGNED NOT NULL,
   `zone_namekey` varchar(255) NOT NULL,
   `zone_name` varchar(255) NOT NULL,
   `zone_name_english` varchar(255) NOT NULL,
@@ -3521,8 +3521,8 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_zone` (
   `zone_code_3` varchar(255) NOT NULL,
   `zone_type` varchar(255) NOT NULL DEFAULT 'country',
   `zone_published` tinyint(4) NOT NULL DEFAULT '0',
-  `zone_currency_id` int(10) unsigned DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=4569 DEFAULT CHARSET=utf8;
+  `zone_currency_id` int(10) UNSIGNED DEFAULT '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_zone`
@@ -7836,7 +7836,7 @@ INSERT INTO `jt_hikashop_zone` (`zone_id`, `zone_namekey`, `zone_name`, `zone_na
 -- Table structure for table `jt_hikashop_zone_link`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_hikashop_zone_link` (
+CREATE TABLE `jt_hikashop_zone_link` (
   `zone_parent_namekey` varchar(255) NOT NULL,
   `zone_child_namekey` varchar(255) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -11943,7 +11943,7 @@ INSERT INTO `jt_hikashop_zone_link` (`zone_parent_namekey`, `zone_child_namekey`
 -- Table structure for table `jt_imageshow_images`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_images` (
+CREATE TABLE `jt_imageshow_images` (
   `image_id` int(11) NOT NULL,
   `showlist_id` int(11) NOT NULL,
   `image_extid` varchar(255) DEFAULT NULL,
@@ -11960,7 +11960,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_images` (
   `image_size` varchar(25) DEFAULT NULL,
   `exif_data` text,
   `image_alt_text` text
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_images`
@@ -11979,15 +11979,15 @@ INSERT INTO `jt_imageshow_images` (`image_id`, `showlist_id`, `image_extid`, `al
 -- Table structure for table `jt_imageshow_log`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_log` (
-  `log_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_log` (
+  `log_id` int(11) UNSIGNED NOT NULL,
   `user_id` int(11) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `result` varchar(255) DEFAULT NULL,
   `screen` varchar(100) DEFAULT NULL,
   `action` varchar(50) DEFAULT NULL,
   `time_created` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_log`
@@ -12018,8 +12018,8 @@ INSERT INTO `jt_imageshow_log` (`log_id`, `user_id`, `url`, `result`, `screen`, 
 -- Table structure for table `jt_imageshow_showcase`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_showcase` (
-  `showcase_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_showcase` (
+  `showcase_id` int(11) UNSIGNED NOT NULL,
   `showcase_title` varchar(255) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '0',
   `ordering` int(11) DEFAULT '0',
@@ -12027,7 +12027,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_showcase` (
   `general_overall_height` char(30) DEFAULT NULL,
   `date_created` datetime DEFAULT '0000-00-00 00:00:00',
   `date_modified` datetime DEFAULT '0000-00-00 00:00:00'
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_showcase`
@@ -12049,7 +12049,7 @@ INSERT INTO `jt_imageshow_showcase` (`showcase_id`, `showcase_title`, `published
 -- Table structure for table `jt_imageshow_showlist`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_showlist` (
+CREATE TABLE `jt_imageshow_showlist` (
   `showlist_id` int(11) NOT NULL,
   `showlist_title` varchar(255) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '0',
@@ -12070,7 +12070,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_showlist` (
   `date_modified` datetime DEFAULT '0000-00-00 00:00:00',
   `image_loading_order` char(30) DEFAULT NULL,
   `show_exif_data` char(100) DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_showlist`
@@ -12087,10 +12087,10 @@ INSERT INTO `jt_imageshow_showlist` (`showlist_id`, `showlist_title`, `published
 -- Table structure for table `jt_imageshow_source_profile`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_source_profile` (
+CREATE TABLE `jt_imageshow_source_profile` (
   `external_source_profile_id` int(11) NOT NULL,
   `external_source_id` int(11) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_source_profile`
@@ -12105,8 +12105,8 @@ INSERT INTO `jt_imageshow_source_profile` (`external_source_profile_id`, `extern
 -- Table structure for table `jt_imageshow_theme_carousel`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_carousel` (
-  `theme_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_theme_carousel` (
+  `theme_id` int(11) UNSIGNED NOT NULL,
   `image_source` char(150) DEFAULT 'thumbnails',
   `image_width` char(150) DEFAULT '',
   `image_height` char(150) DEFAULT '',
@@ -12133,7 +12133,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_carousel` (
   `auto_play` char(150) DEFAULT 'no',
   `slide_timing` char(150) DEFAULT '3',
   `pause_on_mouse_over` char(150) DEFAULT 'yes'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_carousel`
@@ -12148,8 +12148,8 @@ INSERT INTO `jt_imageshow_theme_carousel` (`theme_id`, `image_source`, `image_wi
 -- Table structure for table `jt_imageshow_theme_classic_flash`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_flash` (
-  `theme_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_theme_classic_flash` (
+  `theme_id` int(11) UNSIGNED NOT NULL,
   `imgpanel_presentation_mode` char(30) DEFAULT '0',
   `imgpanel_img_transition_type_fit` char(30) DEFAULT '',
   `imgpanel_img_click_action_fit` char(30) DEFAULT '',
@@ -12226,8 +12226,8 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_flash` (
 -- Table structure for table `jt_imageshow_theme_classic_javascript`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_javascript` (
-  `theme_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_theme_classic_javascript` (
+  `theme_id` int(11) UNSIGNED NOT NULL,
   `imgpanel_presentation_mode` char(30) DEFAULT '0',
   `imgpanel_img_click_action_fit` char(30) DEFAULT '',
   `imgpanel_img_open_link_in_fit` char(30) DEFAULT 'new-browser',
@@ -12263,7 +12263,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_javascript` (
   `general_border_color` char(30) DEFAULT '',
   `general_background_color` char(30) DEFAULT '',
   `general_border_stroke` char(30) DEFAULT ''
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_classic_javascript`
@@ -12278,11 +12278,11 @@ INSERT INTO `jt_imageshow_theme_classic_javascript` (`theme_id`, `imgpanel_prese
 -- Table structure for table `jt_imageshow_theme_classic_parameters`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_classic_parameters` (
+CREATE TABLE `jt_imageshow_theme_classic_parameters` (
   `id` int(11) NOT NULL,
   `general_swf_library` tinyint(1) DEFAULT '0',
   `root_url` tinyint(1) DEFAULT '1'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_classic_parameters`
@@ -12297,8 +12297,8 @@ INSERT INTO `jt_imageshow_theme_classic_parameters` (`id`, `general_swf_library`
 -- Table structure for table `jt_imageshow_theme_flow`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_flow` (
-  `theme_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_theme_flow` (
+  `theme_id` int(11) UNSIGNED NOT NULL,
   `image_source` char(150) DEFAULT 'thumbnails',
   `image_width` char(150) DEFAULT '150',
   `image_height` char(150) DEFAULT '150',
@@ -12327,7 +12327,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_flow` (
   `auto_play` char(150) DEFAULT 'no',
   `slide_timing` char(150) DEFAULT '3',
   `pause_on_mouse_over` char(150) DEFAULT 'yes'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_flow`
@@ -12342,8 +12342,8 @@ INSERT INTO `jt_imageshow_theme_flow` (`theme_id`, `image_source`, `image_width`
 -- Table structure for table `jt_imageshow_theme_grid`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_grid` (
-  `theme_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_theme_grid` (
+  `theme_id` int(11) UNSIGNED NOT NULL,
   `img_layout` char(5) DEFAULT 'fixed',
   `background_color` char(30) DEFAULT '#ffffff',
   `thumbnail_width` int(11) DEFAULT '50',
@@ -12362,7 +12362,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_grid` (
   `open_link_in` char(150) DEFAULT 'current_browser',
   `container_height_type` char(150) DEFAULT 'inherited',
   `container_transparent_background` char(150) DEFAULT 'no'
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_grid`
@@ -12377,7 +12377,7 @@ INSERT INTO `jt_imageshow_theme_grid` (`theme_id`, `img_layout`, `background_col
 -- Table structure for table `jt_imageshow_theme_profile`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_profile` (
+CREATE TABLE `jt_imageshow_theme_profile` (
   `theme_id` int(11) NOT NULL DEFAULT '0',
   `showcase_id` int(11) NOT NULL DEFAULT '0',
   `theme_name` varchar(255) NOT NULL DEFAULT '',
@@ -12404,8 +12404,8 @@ INSERT INTO `jt_imageshow_theme_profile` (`theme_id`, `showcase_id`, `theme_name
 -- Table structure for table `jt_imageshow_theme_slider`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_slider` (
-  `theme_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_theme_slider` (
+  `theme_id` int(11) UNSIGNED NOT NULL,
   `img_transition_effect` char(30) DEFAULT 'random',
   `toolbar_navigation_arrows_presentation` char(30) DEFAULT 'show-on-mouse-over',
   `toolbar_slideshow_player_presentation` char(30) DEFAULT 'hide',
@@ -12428,7 +12428,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_slider` (
   `click_action` char(150) DEFAULT 'no_action',
   `open_link_in` char(150) DEFAULT 'current_browser',
   `img_transparent_background` char(150) DEFAULT 'no'
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_slider`
@@ -12444,8 +12444,8 @@ INSERT INTO `jt_imageshow_theme_slider` (`theme_id`, `img_transition_effect`, `t
 -- Table structure for table `jt_imageshow_theme_strip`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_strip` (
-  `theme_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_imageshow_theme_strip` (
+  `theme_id` int(11) UNSIGNED NOT NULL,
   `slideshow_sliding_speed` char(150) NOT NULL DEFAULT '500',
   `image_orientation` char(150) NOT NULL DEFAULT 'horizontal',
   `image_width` char(150) NOT NULL DEFAULT '130',
@@ -12474,7 +12474,7 @@ CREATE TABLE IF NOT EXISTS `jt_imageshow_theme_strip` (
   `open_link_in` char(150) DEFAULT 'current_browser',
   `slideshow_auto_play` char(150) DEFAULT 'no',
   `slideshow_delay_time` char(150) DEFAULT '3000'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_imageshow_theme_strip`
@@ -12490,7 +12490,7 @@ INSERT INTO `jt_imageshow_theme_strip` (`theme_id`, `slideshow_sliding_speed`, `
 -- Table structure for table `jt_jsn_easyslider_config`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_config` (
+CREATE TABLE `jt_jsn_easyslider_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12511,7 +12511,7 @@ INSERT INTO `jt_jsn_easyslider_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_easyslider_item_templates`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_item_templates` (
+CREATE TABLE `jt_jsn_easyslider_item_templates` (
   `model_id` int(11) NOT NULL,
   `collection_id` varchar(30) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -12525,7 +12525,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_item_templates` (
 -- Table structure for table `jt_jsn_easyslider_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_messages` (
+CREATE TABLE `jt_jsn_easyslider_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -12538,14 +12538,14 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_messages` (
 -- Table structure for table `jt_jsn_easyslider_sliders`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_sliders` (
+CREATE TABLE `jt_jsn_easyslider_sliders` (
   `slider_id` int(11) NOT NULL,
   `slider_title` varchar(255) NOT NULL,
   `slider_data` longtext,
   `published` int(11) NOT NULL,
   `ordering` int(11) NOT NULL,
   `access` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_easyslider_sliders`
@@ -12560,7 +12560,7 @@ INSERT INTO `jt_jsn_easyslider_sliders` (`slider_id`, `slider_title`, `slider_da
 -- Table structure for table `jt_jsn_easyslider_slide_templates`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_slide_templates` (
+CREATE TABLE `jt_jsn_easyslider_slide_templates` (
   `model_id` int(11) NOT NULL,
   `collection_id` varchar(30) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -12574,7 +12574,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_easyslider_slide_templates` (
 -- Table structure for table `jt_jsn_imageshow_config`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_imageshow_config` (
+CREATE TABLE `jt_jsn_imageshow_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12598,12 +12598,12 @@ INSERT INTO `jt_jsn_imageshow_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_imageshow_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_imageshow_messages` (
+CREATE TABLE `jt_jsn_imageshow_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
   `ordering` int(11) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_imageshow_messages`
@@ -12620,7 +12620,7 @@ INSERT INTO `jt_jsn_imageshow_messages` (`msg_id`, `msg_screen`, `published`, `o
 -- Table structure for table `jt_jsn_mobilize_config`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_config` (
+CREATE TABLE `jt_jsn_mobilize_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12642,12 +12642,12 @@ INSERT INTO `jt_jsn_mobilize_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_mobilize_design`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_design` (
+CREATE TABLE `jt_jsn_mobilize_design` (
   `design_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_design`
@@ -12683,7 +12683,7 @@ INSERT INTO `jt_jsn_mobilize_design` (`design_id`, `profile_id`, `name`, `value`
 -- Table structure for table `jt_jsn_mobilize_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_messages` (
+CREATE TABLE `jt_jsn_mobilize_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -12696,13 +12696,13 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_messages` (
 -- Table structure for table `jt_jsn_mobilize_os`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_os` (
+CREATE TABLE `jt_jsn_mobilize_os` (
   `os_id` int(11) NOT NULL,
   `os_value` varchar(255) NOT NULL,
   `os_type` varchar(50) NOT NULL,
   `os_title` varchar(255) NOT NULL,
   `os_order` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_os`
@@ -12728,11 +12728,11 @@ INSERT INTO `jt_jsn_mobilize_os` (`os_id`, `os_value`, `os_type`, `os_title`, `o
 -- Table structure for table `jt_jsn_mobilize_os_support`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_os_support` (
+CREATE TABLE `jt_jsn_mobilize_os_support` (
   `support_id` int(11) NOT NULL,
   `profile_id` int(11) NOT NULL,
   `os_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_os_support`
@@ -12750,7 +12750,7 @@ INSERT INTO `jt_jsn_mobilize_os_support` (`support_id`, `profile_id`, `os_id`) V
 -- Table structure for table `jt_jsn_mobilize_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_profiles` (
+CREATE TABLE `jt_jsn_mobilize_profiles` (
   `profile_id` int(11) NOT NULL,
   `profile_title` varchar(255) NOT NULL,
   `profile_description` text NOT NULL,
@@ -12759,7 +12759,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_mobilize_profiles` (
   `profile_optimize_images` int(11) NOT NULL,
   `ordering` int(11) NOT NULL,
   `profile_device` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_mobilize_profiles`
@@ -12774,7 +12774,7 @@ INSERT INTO `jt_jsn_mobilize_profiles` (`profile_id`, `profile_title`, `profile_
 -- Table structure for table `jt_jsn_pagebuilder_config`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_config` (
+CREATE TABLE `jt_jsn_pagebuilder_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12785,9 +12785,9 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_config` (
 -- Table structure for table `jt_jsn_pagebuilder_content_custom_css`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_content_custom_css` (
-  `id` bigint(20) unsigned NOT NULL,
-  `content` bigint(20) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_jsn_pagebuilder_content_custom_css` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `content` bigint(20) UNSIGNED NOT NULL DEFAULT '0',
   `css_key` varchar(255) DEFAULT NULL,
   `css_value` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12798,7 +12798,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_content_custom_css` (
 -- Table structure for table `jt_jsn_pagebuilder_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_messages` (
+CREATE TABLE `jt_jsn_pagebuilder_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -12811,7 +12811,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_pagebuilder_messages` (
 -- Table structure for table `jt_jsn_poweradmin_config`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_config` (
+CREATE TABLE `jt_jsn_poweradmin_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12829,7 +12829,7 @@ INSERT INTO `jt_jsn_poweradmin_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_poweradmin_favourite`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_favourite` (
+CREATE TABLE `jt_jsn_poweradmin_favourite` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `title` varchar(500) NOT NULL,
@@ -12844,9 +12844,9 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_favourite` (
 -- Table structure for table `jt_jsn_poweradmin_history`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_history` (
+CREATE TABLE `jt_jsn_poweradmin_history` (
   `id` int(11) NOT NULL,
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
   `object_key` varchar(255) NOT NULL,
   `object_id` int(11) NOT NULL,
   `component` varchar(255) NOT NULL,
@@ -12860,8 +12860,8 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_history` (
   `icon` varchar(255) NOT NULL,
   `css` varchar(100) NOT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
-  `visited` int(10) unsigned NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+  `visited` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_jsn_poweradmin_history`
@@ -12905,7 +12905,7 @@ INSERT INTO `jt_jsn_poweradmin_history` (`id`, `user_id`, `object_key`, `object_
 -- Table structure for table `jt_jsn_poweradmin_menu_assets`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_menu_assets` (
+CREATE TABLE `jt_jsn_poweradmin_menu_assets` (
   `menuId` int(16) NOT NULL,
   `assets` text,
   `type` enum('css','js') NOT NULL DEFAULT 'css',
@@ -12918,7 +12918,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_poweradmin_menu_assets` (
 -- Table structure for table `jt_jsn_uniform_config`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_config` (
+CREATE TABLE `jt_jsn_uniform_config` (
   `name` varchar(255) NOT NULL,
   `value` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -12939,10 +12939,10 @@ INSERT INTO `jt_jsn_uniform_config` (`name`, `value`) VALUES
 -- Table structure for table `jt_jsn_uniform_data`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_data` (
-  `data_id` int(10) unsigned NOT NULL,
-  `form_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned DEFAULT NULL,
+CREATE TABLE `jt_jsn_uniform_data` (
+  `data_id` int(10) UNSIGNED NOT NULL,
+  `form_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
   `data_ip` varchar(40) NOT NULL,
   `data_country` varchar(45) NOT NULL,
   `data_country_code` varchar(4) NOT NULL,
@@ -12950,10 +12950,10 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_data` (
   `data_browser_version` varchar(20) NOT NULL,
   `data_browser_agent` varchar(255) NOT NULL,
   `data_os` varchar(45) NOT NULL,
-  `data_created_by` int(10) unsigned NOT NULL COMMENT '0 = Guest',
+  `data_created_by` int(10) UNSIGNED NOT NULL COMMENT '0 = Guest',
   `data_created_at` datetime NOT NULL,
-  `data_state` tinyint(1) unsigned NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  `data_state` tinyint(1) UNSIGNED NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_data`
@@ -12970,14 +12970,14 @@ INSERT INTO `jt_jsn_uniform_data` (`data_id`, `form_id`, `user_id`, `data_ip`, `
 -- Table structure for table `jt_jsn_uniform_emails`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_emails` (
+CREATE TABLE `jt_jsn_uniform_emails` (
   `email_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
-  `user_id` int(10) unsigned DEFAULT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
   `email_name` varchar(70) DEFAULT NULL,
   `email_address` varchar(255) NOT NULL,
   `email_state` tinyint(1) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_emails`
@@ -12992,7 +12992,7 @@ INSERT INTO `jt_jsn_uniform_emails` (`email_id`, `form_id`, `user_id`, `email_na
 -- Table structure for table `jt_jsn_uniform_fields`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_fields` (
+CREATE TABLE `jt_jsn_uniform_fields` (
   `field_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
   `field_type` varchar(45) NOT NULL,
@@ -13000,9 +13000,9 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_fields` (
   `field_title` varchar(255) DEFAULT NULL,
   `field_instructions` text,
   `field_position` varchar(50) NOT NULL,
-  `field_ordering` int(10) unsigned NOT NULL DEFAULT '0',
+  `field_ordering` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `field_settings` text
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_fields`
@@ -13024,24 +13024,24 @@ INSERT INTO `jt_jsn_uniform_fields` (`field_id`, `form_id`, `field_type`, `field
 -- Table structure for table `jt_jsn_uniform_forms`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_forms` (
+CREATE TABLE `jt_jsn_uniform_forms` (
   `form_id` int(11) NOT NULL,
   `form_title` varchar(255) NOT NULL,
   `form_description` text,
   `form_layout` varchar(50) NOT NULL,
   `form_theme` varchar(45) NOT NULL,
   `form_style` text NOT NULL,
-  `form_notify_submitter` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `form_post_action` tinyint(1) unsigned NOT NULL COMMENT '1 = Redirect to URL; 2 = Redirect to Menu Item; 3 = Show Article; 4 = Show custom message',
+  `form_notify_submitter` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
+  `form_post_action` tinyint(1) UNSIGNED NOT NULL COMMENT '1 = Redirect to URL; 2 = Redirect to Menu Item; 3 = Show Article; 4 = Show custom message',
   `form_post_action_data` text NOT NULL,
-  `form_captcha` tinyint(1) unsigned NOT NULL,
-  `form_state` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `form_captcha` tinyint(1) UNSIGNED NOT NULL,
+  `form_state` tinyint(1) UNSIGNED NOT NULL DEFAULT '1',
   `form_access` int(11) NOT NULL,
-  `form_created_by` int(10) unsigned NOT NULL,
+  `form_created_by` int(10) UNSIGNED NOT NULL,
   `form_created_at` datetime DEFAULT NULL,
-  `form_modified_by` int(10) unsigned DEFAULT '0',
+  `form_modified_by` int(10) UNSIGNED DEFAULT '0',
   `form_modified_at` datetime DEFAULT NULL,
-  `form_checked_out` int(10) unsigned DEFAULT '0',
+  `form_checked_out` int(10) UNSIGNED DEFAULT '0',
   `form_checked_out_time` datetime DEFAULT NULL,
   `form_submission_cout` int(11) NOT NULL,
   `form_last_submitted` datetime NOT NULL,
@@ -13050,7 +13050,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_forms` (
   `form_settings` longtext NOT NULL,
   `form_edit_submission` int(11) NOT NULL,
   `form_payment_type` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_forms`
@@ -13065,14 +13065,14 @@ INSERT INTO `jt_jsn_uniform_forms` (`form_id`, `form_title`, `form_description`,
 -- Table structure for table `jt_jsn_uniform_form_pages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_form_pages` (
+CREATE TABLE `jt_jsn_uniform_form_pages` (
   `page_id` int(11) NOT NULL,
   `page_title` varchar(255) NOT NULL,
   `form_id` int(11) NOT NULL,
   `page_content` text NOT NULL,
   `page_template` text NOT NULL,
   `page_container` longtext NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_form_pages`
@@ -13087,7 +13087,7 @@ INSERT INTO `jt_jsn_uniform_form_pages` (`page_id`, `page_title`, `form_id`, `pa
 -- Table structure for table `jt_jsn_uniform_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_messages` (
+CREATE TABLE `jt_jsn_uniform_messages` (
   `msg_id` int(11) NOT NULL,
   `msg_screen` varchar(150) DEFAULT NULL,
   `published` tinyint(1) DEFAULT '1',
@@ -13100,10 +13100,10 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_messages` (
 -- Table structure for table `jt_jsn_uniform_submissions`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submissions` (
-  `submission_id` int(10) unsigned NOT NULL,
-  `form_id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned DEFAULT NULL,
+CREATE TABLE `jt_jsn_uniform_submissions` (
+  `submission_id` int(10) UNSIGNED NOT NULL,
+  `form_id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED DEFAULT NULL,
   `submission_ip` varchar(40) NOT NULL,
   `submission_country` varchar(45) NOT NULL,
   `submission_country_code` varchar(4) NOT NULL,
@@ -13111,9 +13111,9 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submissions` (
   `submission_browser_version` varchar(20) NOT NULL,
   `submission_browser_agent` varchar(255) NOT NULL,
   `submission_os` varchar(45) NOT NULL,
-  `submission_created_by` int(10) unsigned NOT NULL COMMENT '0 = Guest',
+  `submission_created_by` int(10) UNSIGNED NOT NULL COMMENT '0 = Guest',
   `submission_created_at` datetime NOT NULL,
-  `submission_state` tinyint(1) unsigned NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
+  `submission_state` tinyint(1) UNSIGNED NOT NULL COMMENT '-1 = Trashed; 0 = Unpublish; 1 = Published'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -13122,7 +13122,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submissions` (
 -- Table structure for table `jt_jsn_uniform_submissions_1`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submissions_1` (
+CREATE TABLE `jt_jsn_uniform_submissions_1` (
   `data_id` int(11) DEFAULT NULL,
   `sb_3` varchar(255) DEFAULT NULL,
   `sb_4` varchar(255) DEFAULT NULL,
@@ -13149,7 +13149,7 @@ INSERT INTO `jt_jsn_uniform_submissions_1` (`data_id`, `sb_3`, `sb_4`, `sb_5`, `
 -- Table structure for table `jt_jsn_uniform_submission_data`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submission_data` (
+CREATE TABLE `jt_jsn_uniform_submission_data` (
   `submission_data_id` int(11) NOT NULL,
   `submission_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
@@ -13164,7 +13164,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_submission_data` (
 -- Table structure for table `jt_jsn_uniform_templates`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_templates` (
+CREATE TABLE `jt_jsn_uniform_templates` (
   `template_id` int(11) NOT NULL,
   `form_id` int(11) NOT NULL,
   `template_notify_to` tinyint(1) NOT NULL COMMENT '0 = Send to submitter; 1 = Send to added emails',
@@ -13173,7 +13173,7 @@ CREATE TABLE IF NOT EXISTS `jt_jsn_uniform_templates` (
   `template_subject` varchar(255) NOT NULL,
   `template_message` longtext NOT NULL,
   `template_attach` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_jsn_uniform_templates`
@@ -13189,8 +13189,8 @@ INSERT INTO `jt_jsn_uniform_templates` (`template_id`, `form_id`, `template_noti
 -- Table structure for table `jt_languages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_languages` (
-  `lang_id` int(11) unsigned NOT NULL,
+CREATE TABLE `jt_languages` (
+  `lang_id` int(11) UNSIGNED NOT NULL,
   `lang_code` char(7) NOT NULL,
   `title` varchar(50) NOT NULL,
   `title_native` varchar(50) NOT NULL,
@@ -13201,9 +13201,9 @@ CREATE TABLE IF NOT EXISTS `jt_languages` (
   `metadesc` text NOT NULL,
   `sitename` varchar(1024) NOT NULL DEFAULT '',
   `published` int(11) NOT NULL DEFAULT '0',
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `ordering` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_languages`
@@ -13218,7 +13218,7 @@ INSERT INTO `jt_languages` (`lang_id`, `lang_code`, `title`, `title_native`, `se
 -- Table structure for table `jt_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_menu` (
+CREATE TABLE `jt_menu` (
   `id` int(11) NOT NULL,
   `menutype` varchar(24) NOT NULL COMMENT 'The type of menu this item belongs to. FK to #__menu_types.menutype',
   `title` varchar(255) NOT NULL COMMENT 'The display title of the menu item.',
@@ -13228,22 +13228,22 @@ CREATE TABLE IF NOT EXISTS `jt_menu` (
   `link` varchar(1024) NOT NULL COMMENT 'The actually link the menu item refers to.',
   `type` varchar(16) NOT NULL COMMENT 'The type of link: Component, URL, Alias, Separator',
   `published` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'The published state of the menu link.',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
-  `level` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
-  `component_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to #__extensions.id',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to #__users.id',
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '1' COMMENT 'The parent menu item in the menu tree.',
+  `level` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'The relative level in the tree.',
+  `component_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to #__extensions.id',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to #__users.id',
   `checked_out_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'The time the menu item was checked out.',
   `browserNav` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'The click behaviour of the link.',
-  `access` int(10) unsigned DEFAULT NULL,
+  `access` int(10) UNSIGNED DEFAULT NULL,
   `img` varchar(255) NOT NULL COMMENT 'The image of the menu item.',
-  `template_style_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `template_style_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `params` text NOT NULL COMMENT 'JSON encoded data for the menu item.',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
-  `home` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
+  `home` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
   `language` char(7) NOT NULL DEFAULT '',
   `client_id` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=2005 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_menu`
@@ -13416,7 +13416,7 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (1990, 'mainmenu', 'bannerad', 'bannerad', '', 'bannerad', 'index.php?option=com_imageshow&view=show&showlist_id=4&showcase_id=10&w=80%&h=25&jsnisid=1446287221', 'component', 0, 1, 1, 10012, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 317, 318, 0, '*', 0),
 (1991, 'mainmenu', 'News', 'news', '', 'news', 'index.php?option=com_content&view=category&layout=blog&id=86', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"layout_type":"blog","show_category_heading_title_text":"","show_category_title":"","show_description":"","show_description_image":"","maxLevel":"","show_empty_categories":"","show_no_articles":"","show_subcat_desc":"","show_cat_num_articles":"","show_cat_tags":"","page_subheading":"","num_leading_articles":"","num_intro_articles":"","num_columns":"","num_links":"","multi_column_order":"","show_subcategory_content":"","orderby_pri":"","orderby_sec":"alpha","order_date":"created","show_pagination":"","show_pagination_results":"","show_featured":"","show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"0","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_readmore":"","show_readmore_title":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_tags":"","show_noauth":"","show_feed_link":"","feed_summary":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 319, 320, 0, '*', 0),
 (1992, 'hikashop_default', 'All Products', 'all-products', '', 'all-products', 'index.php?option=com_hikashop&view=product&layout=listing', 'component', -2, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_product":{"layout_type":"div","columns":"3","rows":"7","limit":"20","div_item_layout_type":"inherit","image_width":"","image_height":"","pane_height":"","text_center":"-1","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","ul_class_name":"","show_image":"0","show_description":"0","category":"2","product_order":"inherit","order_dir":"inherit","random":"-1","filter_type":"0","use_module_name":"0","show_out_of_stock":"-1","recently_viewed":"-1","link_to_product_page":"-1","show_price":"-1","price_display_type":"inherit","price_with_tax":"3","show_original_price":"-1","show_discount":"3","add_to_cart":"-1","show_quantity_field":"-1","show_vote_product":"-1","display_badges":"-1"},"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 321, 322, 0, '*', 0),
-(1993, 'mainmenu', 'User Panel', 'user-panel', '', 'user-panel', 'index.php?option=com_hikashop&view=user&layout=cpanel', 'component', 1, 1, 1, 10045, 326, '2015-11-06 01:17:59', 0, 2, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 323, 324, 0, '*', 0),
+(1993, 'mainmenu', 'User Panel', 'user-panel', '', 'user-panel', 'index.php?option=com_comprofiler&view=userprofile', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 2, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 323, 324, 0, '*', 0),
 (1994, 'mainmenu', 'Contact Us', 'contact-us', '', 'contact-us', 'index.php?option=com_contact&view=contact&id=10', 'component', 1, 1, 1, 8, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"presentation_style":"","show_contact_category":"","show_contact_list":"","show_tags":"","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","articles_display_num":"","show_links":"","linka_name":"","linkb_name":"","linkc_name":"","linkd_name":"","linke_name":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 325, 326, 0, '*', 0),
 (1995, 'mainmenu', 'Create News Article', 'create-news-article', '', 'create-news-article', 'index.php?option=com_content&view=form&layout=edit', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"enable_category":"0","catid":"86","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 327, 328, 0, '*', 0),
 (1996, 'main', 'COM_COMPROFILER', 'com-comprofiler', '', 'com-comprofiler', 'index.php?option=com_comprofiler', 'component', 0, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, '../components/com_comprofiler/images/icon-16-cb.png', 0, '{}', 329, 346, 0, '', 1),
@@ -13436,12 +13436,12 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 -- Table structure for table `jt_menu_types`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_menu_types` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_menu_types` (
+  `id` int(10) UNSIGNED NOT NULL,
   `menutype` varchar(24) NOT NULL,
   `title` varchar(48) NOT NULL,
   `description` varchar(255) NOT NULL DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_menu_types`
@@ -13462,17 +13462,17 @@ INSERT INTO `jt_menu_types` (`id`, `menutype`, `title`, `description`) VALUES
 -- Table structure for table `jt_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_messages` (
-  `message_id` int(10) unsigned NOT NULL,
-  `user_id_from` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_id_to` int(10) unsigned NOT NULL DEFAULT '0',
-  `folder_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_messages` (
+  `message_id` int(10) UNSIGNED NOT NULL,
+  `user_id_from` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `user_id_to` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `folder_id` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
   `date_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `state` tinyint(1) NOT NULL DEFAULT '0',
-  `priority` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `priority` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `subject` varchar(255) NOT NULL DEFAULT '',
   `message` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_messages`
@@ -13487,8 +13487,8 @@ INSERT INTO `jt_messages` (`message_id`, `user_id_from`, `user_id_to`, `folder_i
 -- Table structure for table `jt_messages_cfg`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_messages_cfg` (
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_messages_cfg` (
+  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `cfg_name` varchar(100) NOT NULL DEFAULT '',
   `cfg_value` varchar(255) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -13499,26 +13499,26 @@ CREATE TABLE IF NOT EXISTS `jt_messages_cfg` (
 -- Table structure for table `jt_modules`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_modules` (
+CREATE TABLE `jt_modules` (
   `id` int(11) NOT NULL,
-  `asset_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
+  `asset_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'FK to the #__assets table.',
   `title` varchar(100) NOT NULL DEFAULT '',
   `note` varchar(255) NOT NULL DEFAULT '',
   `content` text NOT NULL,
   `ordering` int(11) NOT NULL DEFAULT '0',
   `position` varchar(50) NOT NULL DEFAULT '',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `published` tinyint(1) NOT NULL DEFAULT '0',
   `module` varchar(50) DEFAULT NULL,
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
-  `showtitle` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `showtitle` tinyint(3) UNSIGNED NOT NULL DEFAULT '1',
   `params` text NOT NULL,
   `client_id` tinyint(4) NOT NULL DEFAULT '0',
   `language` char(7) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=317 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_modules`
@@ -13723,7 +13723,7 @@ INSERT INTO `jt_modules` (`id`, `asset_id`, `title`, `note`, `content`, `orderin
 -- Table structure for table `jt_modules_menu`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_modules_menu` (
+CREATE TABLE `jt_modules_menu` (
   `moduleid` int(11) NOT NULL DEFAULT '0',
   `menuid` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -14601,27 +14601,27 @@ INSERT INTO `jt_modules_menu` (`moduleid`, `menuid`) VALUES
 -- Table structure for table `jt_newsfeeds`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_newsfeeds` (
+CREATE TABLE `jt_newsfeeds` (
   `catid` int(11) NOT NULL DEFAULT '0',
-  `id` int(10) unsigned NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `link` varchar(200) NOT NULL DEFAULT '',
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `numarticles` int(10) unsigned NOT NULL DEFAULT '1',
-  `cache_time` int(10) unsigned NOT NULL DEFAULT '3600',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `numarticles` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `cache_time` int(10) UNSIGNED NOT NULL DEFAULT '3600',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `rtl` tinyint(4) NOT NULL DEFAULT '0',
-  `access` int(10) unsigned DEFAULT NULL,
+  `access` int(10) UNSIGNED DEFAULT NULL,
   `language` char(7) NOT NULL DEFAULT '',
   `params` text NOT NULL,
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
   `metadata` text NOT NULL,
@@ -14629,10 +14629,10 @@ CREATE TABLE IF NOT EXISTS `jt_newsfeeds` (
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `description` text NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `images` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_newsfeeds`
@@ -14650,7 +14650,7 @@ INSERT INTO `jt_newsfeeds` (`catid`, `id`, `name`, `alias`, `link`, `published`,
 -- Table structure for table `jt_overrider`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_overrider` (
+CREATE TABLE `jt_overrider` (
   `id` int(10) NOT NULL COMMENT 'Primary Key',
   `constant` varchar(255) NOT NULL,
   `string` text NOT NULL,
@@ -14663,8 +14663,8 @@ CREATE TABLE IF NOT EXISTS `jt_overrider` (
 -- Table structure for table `jt_postinstall_messages`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_postinstall_messages` (
-  `postinstall_message_id` bigint(20) unsigned NOT NULL,
+CREATE TABLE `jt_postinstall_messages` (
+  `postinstall_message_id` bigint(20) UNSIGNED NOT NULL,
   `extension_id` bigint(20) NOT NULL DEFAULT '700' COMMENT 'FK to #__extensions',
   `title_key` varchar(255) NOT NULL DEFAULT '' COMMENT 'Lang key for the title',
   `description_key` varchar(255) NOT NULL DEFAULT '' COMMENT 'Lang key for description',
@@ -14678,7 +14678,7 @@ CREATE TABLE IF NOT EXISTS `jt_postinstall_messages` (
   `condition_method` varchar(255) DEFAULT NULL COMMENT 'Display condition method, must return boolean',
   `version_introduced` varchar(50) NOT NULL DEFAULT '3.2.0' COMMENT 'Version when this message was introduced',
   `enabled` tinyint(3) NOT NULL DEFAULT '1'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_postinstall_messages`
@@ -14694,13 +14694,13 @@ INSERT INTO `jt_postinstall_messages` (`postinstall_message_id`, `extension_id`,
 -- Table structure for table `jt_redirect_links`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_redirect_links` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_redirect_links` (
+  `id` int(10) UNSIGNED NOT NULL,
   `old_url` varchar(255) NOT NULL,
   `new_url` varchar(255) DEFAULT NULL,
   `referer` varchar(150) NOT NULL,
   `comment` varchar(255) NOT NULL,
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `published` tinyint(4) NOT NULL,
   `created_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -14713,7 +14713,7 @@ CREATE TABLE IF NOT EXISTS `jt_redirect_links` (
 -- Table structure for table `jt_schemas`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_schemas` (
+CREATE TABLE `jt_schemas` (
   `extension_id` int(11) NOT NULL,
   `version_id` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -14742,10 +14742,10 @@ INSERT INTO `jt_schemas` (`extension_id`, `version_id`) VALUES
 -- Table structure for table `jt_session`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_session` (
+CREATE TABLE `jt_session` (
   `session_id` varchar(200) NOT NULL DEFAULT '',
-  `client_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
-  `guest` tinyint(4) unsigned DEFAULT '1',
+  `client_id` tinyint(3) UNSIGNED NOT NULL DEFAULT '0',
+  `guest` tinyint(4) UNSIGNED DEFAULT '1',
   `time` varchar(14) DEFAULT '',
   `data` mediumtext,
   `userid` int(11) DEFAULT '0',
@@ -14757,9 +14757,8 @@ CREATE TABLE IF NOT EXISTS `jt_session` (
 --
 
 INSERT INTO `jt_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('a2sst4oco7padbeshbpgh7bho5', 0, 0, '1448017197', '__default|a:8:{s:15:"session.counter";i:40;s:19:"session.timer.start";i:1448015524;s:18:"session.timer.last";i:1448017192;s:17:"session.timer.now";i:1448017196;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:12:"com_hikashop";O:8:"stdClass":14:{s:16:"shipping_address";s:1:"7";s:15:"billing_address";s:1:"7";s:7:"zone_id";s:4:"4568";s:12:"ssl_redirect";i:0;s:7:"user_id";i:2;s:7:"cart_id";i:15;s:15:"popup_cart_type";s:4:"cart";s:14:"shipping_cache";O:8:"stdClass":1:{s:14:"usable_methods";a:6:{s:40:"080701b6a313720ffb95e2e6d61f0d4ca53544af";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"c21a8b33e2ed681301322d152570ee8d1714865a";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"3abc35bcdba285df3a8101c315c17f8a48891ec0";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"0d4ae6e6b3e65a6e6419cd895d0d102ab50b697d";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"9a840a05fdbd1c2e1229fad7dccb9ff82b095560";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"4c85ec4d7b12d1f133c8b44b609a84b1699693d1";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}}}s:15:"shipping_method";a:1:{i:0;s:8:"manual@0";}s:11:"shipping_id";a:1:{i:0;s:3:"3@0";}s:13:"shipping_data";a:1:{i:0;r:462;}s:14:"payment_method";s:12:"banktransfer";s:10:"payment_id";s:1:"1";s:12:"payment_data";O:8:"stdClass":34:{s:10:"payment_id";s:1:"1";s:12:"payment_name";s:13:"Bank transfer";s:19:"payment_description";s:49:"<p>You can pay by sending us a bank transfer.</p>";s:14:"payment_images";s:13:"Bank_transfer";s:14:"payment_params";O:8:"stdClass":23:{s:16:"payment_currency";s:3:"123";s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:12:"order_status";s:7:"created";s:18:"status_notif_email";s:1:"1";s:11:"information";s:371:"Account owner: XXXXX<br/>\r\n<br/>\r\nOwner address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX<br/>\r\n<br/>\r\nBank Account Number:<br/>\r\n<br/>\r\nXXXX XXXX XXXX XXXX XXXX XXXX XXX<br/>\r\n<br/>\r\nBank Identification Code:<br/>\r\n<br/>\r\nXXXXXXXXXXXXXX<br/>\r\n<br/>\r\nBank name: XXXXXXXXXXX<br/>\r\n<br/>\r\nBank address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX";s:10:"return_url";s:0:"";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"1";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:0:"";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}s:12:"payment_type";s:12:"banktransfer";s:20:"payment_zone_namekey";s:23:"country_Philippines_168";s:16:"payment_ordering";s:1:"1";s:17:"payment_published";s:1:"1";s:14:"payment_access";s:3:"all";s:24:"payment_shipping_methods";s:0:"";s:16:"payment_currency";s:0:"";s:13:"payment_price";d:0;s:12:"extension_id";s:5:"10066";s:4:"name";s:37:"HikaShop bank transfer payment plugin";s:4:"type";s:6:"plugin";s:7:"element";s:12:"banktransfer";s:6:"folder";s:15:"hikashoppayment";s:9:"client_id";s:1:"0";s:7:"enabled";s:1:"1";s:6:"access";s:1:"1";s:9:"protected";s:1:"0";s:14:"manifest_cache";s:0:"";s:6:"params";s:0:"";s:11:"custom_data";s:0:"";s:11:"system_data";s:0:"";s:11:"checked_out";s:1:"0";s:16:"checked_out_time";s:19:"0000-00-00 00:00:00";s:8:"ordering";s:1:"1";s:5:"state";s:1:"0";s:8:"features";a:3:{s:17:"authorize_capture";b:0;s:9:"recurring";b:0;s:6:"refund";b:0;}s:22:"payment_price_with_tax";d:0;s:27:"payment_price_orig_with_tax";N;s:5:"total";O:8:"stdClass":1:{s:6:"prices";a:1:{i:0;O:8:"stdClass":8:{s:11:"price_value";d:1050;s:20:"price_value_with_tax";d:1050;s:17:"price_currency_id";i:123;s:5:"taxes";a:1:{s:0:"";O:8:"stdClass":3:{s:11:"tax_namekey";s:0:"";s:8:"tax_rate";s:7:"0.00000";s:10:"tax_amount";i:0;}}s:37:"price_value_without_shipping_with_tax";d:800;s:28:"price_value_without_shipping";d:800;s:27:"price_value_without_payment";d:1050;s:36:"price_value_without_payment_with_tax";d:1050;}}}}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";s:3:"327";s:4:"name";s:15:"albert landayan";s:8:"username";s:14:"albertlandayan";s:5:"email";s:28:"albert.landayan.14@gmail.com";s:8:"password";s:60:"$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"0";s:12:"registerDate";s:19:"2015-11-02 13:07:04";s:13:"lastvisitDate";s:19:"2015-11-19 03:48:17";s:10:"activation";s:0:"";s:6:"params";s:92:"{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}";s:6:"groups";a:1:{i:2;s:1:"2";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"admin_style";s:0:"";s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:0:"";}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:2;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:2;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"272921869300a635a3150795188db9ab";}ck_submital|a:4:{s:34:"[6b6af07941dcd5bc429d65be76addd25]";b:1;s:34:"[255000da98285355ca370ca1392a6519]";b:1;s:34:"[84836767270d90c73a3fb6f54ff97ae6]";b:1;s:34:"[002009d191611dec7e43498994846864]";b:1;}hikashop_address_data|O:8:"stdClass":12:{s:13:"address_title";s:2:"Mr";s:17:"address_firstname";s:6:"albert";s:16:"address_lastname";s:8:"landayan";s:14:"address_street";s:6:"asdasd";s:15:"address_street2";s:6:"asdasd";s:17:"address_post_code";s:4:"1606";s:12:"address_city";s:5:"pasig";s:17:"address_telephone";s:11:"09165542324";s:15:"address_country";s:23:"country_Philippines_168";s:13:"address_state";s:33:"state_NationalCapitalRegion_12851";s:15:"address_user_id";i:2;s:10:"address_id";s:1:"7";}', 327, 'albertlandayan'),
-('h3m8reukmiqfq0ga7ho6bhj634', 0, 0, '1448016597', '__default|a:8:{s:15:"session.counter";i:19;s:19:"session.timer.start";i:1448015719;s:18:"session.timer.last";i:1448016517;s:17:"session.timer.now";i:1448016596;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:12:"com_hikashop";O:8:"stdClass":7:{s:12:"ssl_redirect";i:0;s:7:"zone_id";s:4:"4568";s:7:"user_id";i:2;s:7:"cart_id";s:2:"14";s:15:"popup_cart_type";s:4:"cart";s:16:"shipping_address";s:1:"6";s:15:"billing_address";s:1:"6";}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";s:3:"327";s:4:"name";s:15:"albert landayan";s:8:"username";s:14:"albertlandayan";s:5:"email";s:28:"albert.landayan.14@gmail.com";s:8:"password";s:60:"$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"0";s:12:"registerDate";s:19:"2015-11-02 13:07:04";s:13:"lastvisitDate";s:19:"2015-11-20 10:37:56";s:10:"activation";s:0:"";s:6:"params";s:92:"{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}";s:6:"groups";a:1:{i:2;s:1:"2";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"admin_style";s:0:"";s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:0:"";}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:2;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:2;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"4877c91dad73425927e110443808eb05";}', 327, 'albertlandayan'),
-('kugfm97k8vdr5dd2rn2fndjku2', 1, 0, '1448016594', '__default|a:9:{s:15:"session.counter";i:26;s:19:"session.timer.start";i:1448015976;s:18:"session.timer.last";i:1448016589;s:17:"session.timer.now";i:1448016593;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":5:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:13:"com_installer";O:8:"stdClass":3:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";s:6:"update";O:8:"stdClass":4:{s:6:"filter";O:8:"stdClass":4:{s:6:"search";s:0:"";s:9:"client_id";s:0:"";s:4:"type";s:0:"";s:5:"group";s:0:"";}s:8:"ordercol";s:4:"name";s:9:"orderdirn";s:3:"asc";s:10:"limitstart";s:1:"0";}}s:23:"com_comprofiler_install";s:0:"";s:6:"global";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"limit";i:20;}}s:9:"com_menus";O:8:"stdClass":1:{s:5:"items";O:8:"stdClass":3:{s:8:"menutype";s:8:"mainmenu";s:10:"limitstart";i:0;s:4:"list";a:4:{s:9:"direction";s:3:"asc";s:5:"limit";i:20;s:8:"ordering";s:5:"a.lft";s:5:"start";d:0;}}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"326";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:22:"adriandean12@gmail.com";s:8:"password";s:60:"$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2015-10-31 06:00:43";s:13:"lastvisitDate";s:19:"2015-11-20 08:35:33";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"483c3a5cadab063beb35983170b0ae93";s:32:"0787f31a1ebe1fa06bd8e1b918e9137e";s:116:"{"queryString":"option=com_installer&view=update&task=update.find&ac68d3912d0d7a729288efcb0bdd1af0=1","object_id":0}";}cb|a:1:{s:5:"state";a:1:{s:14:"pluginsbrowser";a:11:{s:6:"search";s:0:"";s:7:"orderby";s:12:"ordering_asc";s:16:"filter_published";s:0:"";s:22:"filter_viewaccesslevel";s:0:"";s:11:"filter_type";s:0:"";s:21:"batch_viewaccesslevel";s:0:"";s:8:"ordering";a:10:{i:0;s:1:"1";i:1;s:1:"1";i:2;s:1:"1";i:3;s:1:"2";i:4;s:1:"3";i:5;s:1:"4";i:6;s:1:"5";i:7;s:1:"6";i:8;s:1:"7";i:9;s:2:"99";}s:5:"idcid";a:1:{i:0;s:2:"20";}s:5:"limit";i:20;s:10:"limitstart";i:0;s:7:"subtask";s:20:"setfield/published/1";}}}', 326, 'admin');
+('772nkig1tetdv1mqvrtrjg20m2', 1, 0, '1448021416', '__default|a:9:{s:15:"session.counter";i:43;s:19:"session.timer.start";i:1448021076;s:18:"session.timer.last";i:1448021414;s:17:"session.timer.now";i:1448021415;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":3:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:13:"com_installer";O:8:"stdClass":2:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":3:{s:8:"menutype";s:8:"mainmenu";s:10:"limitstart";i:0;s:4:"list";a:4:{s:9:"direction";s:3:"asc";s:5:"limit";s:2:"20";s:8:"ordering";s:5:"a.lft";s:5:"start";d:0;}}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:2:"id";a:1:{i:0;i:1993;}s:4:"data";N;s:4:"type";N;s:4:"link";N;}}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"326";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:22:"adriandean12@gmail.com";s:8:"password";s:60:"$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2015-10-31 06:00:43";s:13:"lastvisitDate";s:19:"2015-11-20 10:39:57";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"c7048eaa7d2d9b8cb80fc84e83fe1afa";s:32:"e0bf137ea54f5f28a355784a00d37bed";s:82:"{"queryString":"option=com_hikashop&ctrl=field&task=edit&cid[]=7","object_id":"7"}";}check_anticopy_framing|N;check_contentprotect_framing|N;check_system_user|s:5:"10141";', 326, 'admin'),
+('t4699ervod584ti8e0tj1k52u7', 0, 0, '1448021269', '__default|a:8:{s:15:"session.counter";i:7;s:19:"session.timer.start";i:1448021088;s:18:"session.timer.last";i:1448021266;s:17:"session.timer.now";i:1448021268;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:12:"com_hikashop";O:8:"stdClass":6:{s:16:"shipping_address";s:1:"7";s:15:"billing_address";s:1:"7";s:7:"zone_id";s:4:"4568";s:12:"ssl_redirect";i:0;s:7:"user_id";i:2;s:7:"cart_id";s:2:"15";}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";s:3:"327";s:4:"name";s:15:"albert landayan";s:8:"username";s:14:"albertlandayan";s:5:"email";s:28:"albert.landayan.14@gmail.com";s:8:"password";s:60:"$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"0";s:12:"registerDate";s:19:"2015-11-02 13:07:04";s:13:"lastvisitDate";s:19:"2015-11-20 10:46:03";s:10:"activation";s:0:"";s:6:"params";s:92:"{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}";s:6:"groups";a:1:{i:2;s:1:"2";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"admin_style";s:0:"";s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:0:"";}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:2;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:2;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"668a80526274f220265f180076729598";}', 327, 'albertlandayan');
 
 -- --------------------------------------------------------
 
@@ -14767,38 +14766,38 @@ INSERT INTO `jt_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `u
 -- Table structure for table `jt_tags`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_tags` (
-  `id` int(10) unsigned NOT NULL,
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_tags` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `lft` int(11) NOT NULL DEFAULT '0',
   `rgt` int(11) NOT NULL DEFAULT '0',
-  `level` int(10) unsigned NOT NULL DEFAULT '0',
+  `level` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `path` varchar(255) NOT NULL DEFAULT '',
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `note` varchar(255) NOT NULL DEFAULT '',
   `description` mediumtext NOT NULL,
   `published` tinyint(1) NOT NULL DEFAULT '0',
-  `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `access` int(10) unsigned NOT NULL DEFAULT '0',
+  `access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `params` text NOT NULL,
   `metadesc` varchar(1024) NOT NULL COMMENT 'The meta description for the page.',
   `metakey` varchar(1024) NOT NULL COMMENT 'The meta keywords for the page.',
   `metadata` varchar(2048) NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
-  `modified_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `images` text NOT NULL,
   `urls` text NOT NULL,
-  `hits` int(10) unsigned NOT NULL DEFAULT '0',
+  `hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `language` char(7) NOT NULL,
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_tags`
@@ -14813,14 +14812,14 @@ INSERT INTO `jt_tags` (`id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `title`
 -- Table structure for table `jt_template_styles`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_template_styles` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_template_styles` (
+  `id` int(10) UNSIGNED NOT NULL,
   `template` varchar(50) NOT NULL DEFAULT '',
-  `client_id` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `client_id` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
   `home` char(7) NOT NULL DEFAULT '0',
   `title` varchar(255) NOT NULL DEFAULT '',
   `params` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_template_styles`
@@ -14840,8 +14839,8 @@ INSERT INTO `jt_template_styles` (`id`, `template`, `client_id`, `home`, `title`
 -- Table structure for table `jt_ucm_base`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_ucm_base` (
-  `ucm_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_ucm_base` (
+  `ucm_id` int(10) UNSIGNED NOT NULL,
   `ucm_item_id` int(10) NOT NULL,
   `ucm_type_id` int(11) NOT NULL,
   `ucm_language_id` int(11) NOT NULL
@@ -14853,39 +14852,39 @@ CREATE TABLE IF NOT EXISTS `jt_ucm_base` (
 -- Table structure for table `jt_ucm_content`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_ucm_content` (
-  `core_content_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_ucm_content` (
+  `core_content_id` int(10) UNSIGNED NOT NULL,
   `core_type_alias` varchar(255) NOT NULL DEFAULT '' COMMENT 'FK to the content types table',
   `core_title` varchar(255) NOT NULL,
   `core_alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
   `core_body` mediumtext NOT NULL,
   `core_state` tinyint(1) NOT NULL DEFAULT '0',
   `core_checked_out_time` varchar(255) NOT NULL DEFAULT '',
-  `core_checked_out_user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `core_access` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_checked_out_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `core_access` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `core_params` text NOT NULL,
-  `core_featured` tinyint(4) unsigned NOT NULL DEFAULT '0',
+  `core_featured` tinyint(4) UNSIGNED NOT NULL DEFAULT '0',
   `core_metadata` varchar(2048) NOT NULL COMMENT 'JSON encoded metadata properties.',
-  `core_created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `core_created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `core_created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `core_modified_user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
+  `core_modified_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Most recent user that modified',
   `core_modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `core_language` char(7) NOT NULL,
   `core_publish_up` datetime NOT NULL,
   `core_publish_down` datetime NOT NULL,
-  `core_content_item_id` int(10) unsigned DEFAULT NULL COMMENT 'ID from the individual type table',
-  `asset_id` int(10) unsigned DEFAULT NULL COMMENT 'FK to the #__assets table.',
+  `core_content_item_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'ID from the individual type table',
+  `asset_id` int(10) UNSIGNED DEFAULT NULL COMMENT 'FK to the #__assets table.',
   `core_images` text NOT NULL,
   `core_urls` text NOT NULL,
-  `core_hits` int(10) unsigned NOT NULL DEFAULT '0',
-  `core_version` int(10) unsigned NOT NULL DEFAULT '1',
+  `core_hits` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `core_version` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `core_ordering` int(11) NOT NULL DEFAULT '0',
   `core_metakey` text NOT NULL,
   `core_metadesc` text NOT NULL,
-  `core_catid` int(10) unsigned NOT NULL DEFAULT '0',
+  `core_catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `core_xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
-  `core_type_id` int(10) unsigned DEFAULT NULL
+  `core_type_id` int(10) UNSIGNED DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contains core content data in name spaced fields';
 
 -- --------------------------------------------------------
@@ -14894,18 +14893,18 @@ CREATE TABLE IF NOT EXISTS `jt_ucm_content` (
 -- Table structure for table `jt_ucm_history`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_ucm_history` (
-  `version_id` int(10) unsigned NOT NULL,
-  `ucm_item_id` int(10) unsigned NOT NULL,
-  `ucm_type_id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_ucm_history` (
+  `version_id` int(10) UNSIGNED NOT NULL,
+  `ucm_item_id` int(10) UNSIGNED NOT NULL,
+  `ucm_type_id` int(10) UNSIGNED NOT NULL,
   `version_note` varchar(255) NOT NULL DEFAULT '' COMMENT 'Optional version name',
   `save_date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `editor_user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `character_count` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
+  `editor_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `character_count` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Number of characters in this version.',
   `sha1_hash` varchar(50) NOT NULL DEFAULT '' COMMENT 'SHA1 hash of the version_data column.',
   `version_data` mediumtext NOT NULL COMMENT 'json-encoded string of version data',
   `keep_forever` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=auto delete; 1=keep'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_ucm_history`
@@ -14920,7 +14919,7 @@ INSERT INTO `jt_ucm_history` (`version_id`, `ucm_item_id`, `ucm_type_id`, `versi
 -- Table structure for table `jt_updates`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_updates` (
+CREATE TABLE `jt_updates` (
   `update_id` int(11) NOT NULL,
   `update_site_id` int(11) DEFAULT '0',
   `extension_id` int(11) DEFAULT '0',
@@ -14935,76 +14934,7 @@ CREATE TABLE IF NOT EXISTS `jt_updates` (
   `detailsurl` text NOT NULL,
   `infourl` text NOT NULL,
   `extra_query` varchar(1000) DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8 COMMENT='Available Updates';
-
---
--- Dumping data for table `jt_updates`
---
-
-INSERT INTO `jt_updates` (`update_id`, `update_site_id`, `extension_id`, `name`, `description`, `element`, `type`, `folder`, `client_id`, `version`, `data`, `detailsurl`, `infourl`, `extra_query`) VALUES
-(1, 3, 0, 'Armenian', '', 'pkg_hy-AM', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/hy-AM_details.xml', '', ''),
-(2, 3, 0, 'Malay', '', 'pkg_ms-MY', 'package', '', 0, '3.4.1.2', '', 'http://update.joomla.org/language/details3/ms-MY_details.xml', '', ''),
-(3, 3, 0, 'Romanian', '', 'pkg_ro-RO', 'package', '', 0, '3.4.3.1', '', 'http://update.joomla.org/language/details3/ro-RO_details.xml', '', ''),
-(4, 3, 0, 'Flemish', '', 'pkg_nl-BE', 'package', '', 0, '3.4.5.2', '', 'http://update.joomla.org/language/details3/nl-BE_details.xml', '', ''),
-(5, 3, 0, 'Chinese Traditional', '', 'pkg_zh-TW', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/zh-TW_details.xml', '', ''),
-(6, 3, 0, 'French', '', 'pkg_fr-FR', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/fr-FR_details.xml', '', ''),
-(7, 3, 0, 'Galician', '', 'pkg_gl-ES', 'package', '', 0, '3.3.1.2', '', 'http://update.joomla.org/language/details3/gl-ES_details.xml', '', ''),
-(8, 3, 0, 'German', '', 'pkg_de-DE', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/de-DE_details.xml', '', ''),
-(9, 3, 0, 'Greek', '', 'pkg_el-GR', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/el-GR_details.xml', '', ''),
-(10, 3, 0, 'Japanese', '', 'pkg_ja-JP', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/ja-JP_details.xml', '', ''),
-(11, 3, 0, 'Hebrew', '', 'pkg_he-IL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/he-IL_details.xml', '', ''),
-(12, 3, 0, 'EnglishAU', '', 'pkg_en-AU', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/en-AU_details.xml', '', ''),
-(13, 3, 0, 'EnglishUS', '', 'pkg_en-US', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/en-US_details.xml', '', ''),
-(14, 3, 0, 'Hungarian', '', 'pkg_hu-HU', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/hu-HU_details.xml', '', ''),
-(15, 3, 0, 'Afrikaans', '', 'pkg_af-ZA', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/af-ZA_details.xml', '', ''),
-(16, 3, 0, 'Arabic Unitag', '', 'pkg_ar-AA', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/ar-AA_details.xml', '', ''),
-(17, 3, 0, 'Belarusian', '', 'pkg_be-BY', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/be-BY_details.xml', '', ''),
-(18, 3, 0, 'Bulgarian', '', 'pkg_bg-BG', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/bg-BG_details.xml', '', ''),
-(19, 3, 0, 'Catalan', '', 'pkg_ca-ES', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/ca-ES_details.xml', '', ''),
-(20, 3, 0, 'Chinese Simplified', '', 'pkg_zh-CN', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/zh-CN_details.xml', '', ''),
-(21, 3, 0, 'Croatian', '', 'pkg_hr-HR', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/hr-HR_details.xml', '', ''),
-(22, 3, 0, 'Czech', '', 'pkg_cs-CZ', 'package', '', 0, '3.4.1.1', '', 'http://update.joomla.org/language/details3/cs-CZ_details.xml', '', ''),
-(23, 3, 0, 'Danish', '', 'pkg_da-DK', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/da-DK_details.xml', '', ''),
-(24, 3, 0, 'Dutch', '', 'pkg_nl-NL', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/nl-NL_details.xml', '', ''),
-(25, 3, 0, 'Estonian', '', 'pkg_et-EE', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/et-EE_details.xml', '', ''),
-(26, 3, 0, 'Italian', '', 'pkg_it-IT', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/it-IT_details.xml', '', ''),
-(27, 3, 0, 'Khmer', '', 'pkg_km-KH', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/km-KH_details.xml', '', ''),
-(28, 3, 0, 'Korean', '', 'pkg_ko-KR', 'package', '', 0, '3.4.4.2', '', 'http://update.joomla.org/language/details3/ko-KR_details.xml', '', ''),
-(29, 3, 0, 'Latvian', '', 'pkg_lv-LV', 'package', '', 0, '3.4.3.1', '', 'http://update.joomla.org/language/details3/lv-LV_details.xml', '', ''),
-(30, 3, 0, 'Macedonian', '', 'pkg_mk-MK', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/mk-MK_details.xml', '', ''),
-(31, 3, 0, 'Norwegian Bokmal', '', 'pkg_nb-NO', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/nb-NO_details.xml', '', ''),
-(32, 3, 0, 'Norwegian Nynorsk', '', 'pkg_nn-NO', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/nn-NO_details.xml', '', ''),
-(33, 3, 0, 'Persian', '', 'pkg_fa-IR', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/fa-IR_details.xml', '', ''),
-(34, 3, 0, 'Polish', '', 'pkg_pl-PL', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/pl-PL_details.xml', '', ''),
-(35, 3, 0, 'Portuguese', '', 'pkg_pt-PT', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/pt-PT_details.xml', '', ''),
-(36, 3, 0, 'Russian', '', 'pkg_ru-RU', 'package', '', 0, '3.4.1.3', '', 'http://update.joomla.org/language/details3/ru-RU_details.xml', '', ''),
-(37, 3, 0, 'Slovak', '', 'pkg_sk-SK', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/sk-SK_details.xml', '', ''),
-(38, 3, 0, 'Swedish', '', 'pkg_sv-SE', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sv-SE_details.xml', '', ''),
-(39, 3, 0, 'Syriac', '', 'pkg_sy-IQ', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sy-IQ_details.xml', '', ''),
-(40, 3, 0, 'Tamil', '', 'pkg_ta-IN', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/ta-IN_details.xml', '', ''),
-(41, 3, 0, 'Thai', '', 'pkg_th-TH', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/th-TH_details.xml', '', ''),
-(42, 3, 0, 'Turkish', '', 'pkg_tr-TR', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/tr-TR_details.xml', '', ''),
-(43, 3, 0, 'Ukrainian', '', 'pkg_uk-UA', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/uk-UA_details.xml', '', ''),
-(44, 3, 0, 'Uyghur', '', 'pkg_ug-CN', 'package', '', 0, '3.3.0.1', '', 'http://update.joomla.org/language/details3/ug-CN_details.xml', '', ''),
-(45, 3, 0, 'Albanian', '', 'pkg_sq-AL', 'package', '', 0, '3.1.1.1', '', 'http://update.joomla.org/language/details3/sq-AL_details.xml', '', ''),
-(46, 3, 0, 'Hindi', '', 'pkg_hi-IN', 'package', '', 0, '3.3.6.1', '', 'http://update.joomla.org/language/details3/hi-IN_details.xml', '', ''),
-(47, 3, 0, 'Portuguese Brazil', '', 'pkg_pt-BR', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/pt-BR_details.xml', '', ''),
-(48, 3, 0, 'Serbian Latin', '', 'pkg_sr-YU', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sr-YU_details.xml', '', ''),
-(49, 3, 0, 'Spanish', '', 'pkg_es-ES', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/es-ES_details.xml', '', ''),
-(50, 3, 0, 'Bosnian', '', 'pkg_bs-BA', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/bs-BA_details.xml', '', ''),
-(51, 3, 0, 'Serbian Cyrillic', '', 'pkg_sr-RS', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/sr-RS_details.xml', '', ''),
-(52, 3, 0, 'Vietnamese', '', 'pkg_vi-VN', 'package', '', 0, '3.2.1.1', '', 'http://update.joomla.org/language/details3/vi-VN_details.xml', '', ''),
-(53, 3, 0, 'Bahasa Indonesia', '', 'pkg_id-ID', 'package', '', 0, '3.3.0.2', '', 'http://update.joomla.org/language/details3/id-ID_details.xml', '', ''),
-(54, 3, 0, 'Finnish', '', 'pkg_fi-FI', 'package', '', 0, '3.4.2.1', '', 'http://update.joomla.org/language/details3/fi-FI_details.xml', '', ''),
-(55, 3, 0, 'Swahili', '', 'pkg_sw-KE', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/sw-KE_details.xml', '', ''),
-(56, 3, 0, 'Montenegrin', '', 'pkg_srp-ME', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/srp-ME_details.xml', '', ''),
-(57, 3, 0, 'EnglishCA', '', 'pkg_en-CA', 'package', '', 0, '3.3.6.1', '', 'http://update.joomla.org/language/details3/en-CA_details.xml', '', ''),
-(58, 3, 0, 'FrenchCA', '', 'pkg_fr-CA', 'package', '', 0, '3.4.4.3', '', 'http://update.joomla.org/language/details3/fr-CA_details.xml', '', ''),
-(59, 3, 0, 'Welsh', '', 'pkg_cy-GB', 'package', '', 0, '3.3.0.2', '', 'http://update.joomla.org/language/details3/cy-GB_details.xml', '', ''),
-(60, 3, 0, 'Sinhala', '', 'pkg_si-LK', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/si-LK_details.xml', '', ''),
-(61, 3, 0, 'Dari Persian', '', 'pkg_prs-AF', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/prs-AF_details.xml', '', ''),
-(62, 3, 0, 'Turkmen', '', 'pkg_tk-TM', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/tk-TM_details.xml', '', ''),
-(63, 6, 10003, 'JSN PowerAdmin', '', 'com_poweradmin', 'component', '', 1, '2.2.8', '', '', '', '');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Available Updates';
 
 -- --------------------------------------------------------
 
@@ -15012,7 +14942,7 @@ INSERT INTO `jt_updates` (`update_id`, `update_site_id`, `extension_id`, `name`,
 -- Table structure for table `jt_update_sites`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_update_sites` (
+CREATE TABLE `jt_update_sites` (
   `update_site_id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT '',
   `type` varchar(20) DEFAULT '',
@@ -15020,27 +14950,27 @@ CREATE TABLE IF NOT EXISTS `jt_update_sites` (
   `enabled` int(11) DEFAULT '0',
   `last_check_timestamp` bigint(20) DEFAULT '0',
   `extra_query` varchar(1000) DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='Update Sites';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Update Sites';
 
 --
 -- Dumping data for table `jt_update_sites`
 --
 
 INSERT INTO `jt_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1448016026, ''),
-(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1448016026, ''),
-(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1448016026, ''),
-(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1448016026, ''),
-(5, 'WebInstaller Update Site', 'extension', 'http://appscdn.joomla.org/webapps/jedapps/webinstaller.xml', 1, 1448016026, ''),
-(6, 'poweradmin', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_poweradmin.xml', 1, 1448016026, ''),
-(7, 'imageshow', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_imageshow.xml', 1, 1448016026, ''),
-(8, 'uniform', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_uniform.xml', 1, 1448016026, ''),
-(9, 'mobilize', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_mobilize.xml', 1, 1448016026, ''),
-(10, 'pagebuilder', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_pagebuilder.xml', 1, 1448016026, ''),
-(11, 'easyslider', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_easyslider.xml', 1, 1448016026, ''),
+(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1448021137, ''),
+(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1448021137, ''),
+(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 0, ''),
+(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 0, ''),
+(5, 'WebInstaller Update Site', 'extension', 'http://appscdn.joomla.org/webapps/jedapps/webinstaller.xml', 1, 0, ''),
+(6, 'poweradmin', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_poweradmin.xml', 1, 0, ''),
+(7, 'imageshow', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_imageshow.xml', 1, 0, ''),
+(8, 'uniform', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_uniform.xml', 1, 0, ''),
+(9, 'mobilize', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_mobilize.xml', 1, 0, ''),
+(10, 'pagebuilder', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_pagebuilder.xml', 1, 0, ''),
+(11, 'easyslider', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_easyslider.xml', 1, 0, ''),
 (12, 'Hikashop', 'extension', 'http://www.hikashop.com/component/updateme/updatexml/component-hikashop/level-Starter/file-extension.xml', 0, 0, ''),
-(13, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1448016026, ''),
-(14, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1448016026, '');
+(13, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 0, ''),
+(14, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -15048,7 +14978,7 @@ INSERT INTO `jt_update_sites` (`update_site_id`, `name`, `type`, `location`, `en
 -- Table structure for table `jt_update_sites_extensions`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_update_sites_extensions` (
+CREATE TABLE `jt_update_sites_extensions` (
   `update_site_id` int(11) NOT NULL DEFAULT '0',
   `extension_id` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Links extensions to update sites';
@@ -15079,13 +15009,13 @@ INSERT INTO `jt_update_sites_extensions` (`update_site_id`, `extension_id`) VALU
 -- Table structure for table `jt_usergroups`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_usergroups` (
-  `id` int(10) unsigned NOT NULL COMMENT 'Primary Key',
-  `parent_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
+CREATE TABLE `jt_usergroups` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
+  `parent_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Adjacency List Reference Id',
   `lft` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set lft.',
   `rgt` int(11) NOT NULL DEFAULT '0' COMMENT 'Nested set rgt.',
   `title` varchar(100) NOT NULL DEFAULT ''
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_usergroups`
@@ -15108,7 +15038,7 @@ INSERT INTO `jt_usergroups` (`id`, `parent_id`, `lft`, `rgt`, `title`) VALUES
 -- Table structure for table `jt_users`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_users` (
+CREATE TABLE `jt_users` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `username` varchar(150) NOT NULL DEFAULT '',
@@ -15125,15 +15055,15 @@ CREATE TABLE IF NOT EXISTS `jt_users` (
   `otpKey` varchar(1000) NOT NULL DEFAULT '' COMMENT 'Two factor authentication encrypted keys',
   `otep` varchar(1000) NOT NULL DEFAULT '' COMMENT 'One time emergency passwords',
   `requireReset` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Require user to reset password on next login'
-) ENGINE=InnoDB AUTO_INCREMENT=329 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_users`
 --
 
 INSERT INTO `jt_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(326, 'Super User', 'admin', 'adriandean12@gmail.com', '$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne', 0, 1, '2015-10-31 06:00:43', '2015-11-20 10:39:57', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
-(327, 'albert landayan', 'albertlandayan', 'albert.landayan.14@gmail.com', '$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki', 0, 0, '2015-11-02 13:07:04', '2015-11-20 10:46:03', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(326, 'Super User', 'admin', 'adriandean12@gmail.com', '$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne', 0, 1, '2015-10-31 06:00:43', '2015-11-20 12:04:43', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
+(327, 'albert landayan', 'albertlandayan', 'albert.landayan.14@gmail.com', '$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki', 0, 0, '2015-11-02 13:07:04', '2015-11-20 12:07:40', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (328, 'NewsAdmin', 'NewsAdmin', 'nlpaguntalan@mymail.mapua.edu.ph', '$2y$10$cJo6D.PomWGbRbnv1iT6Me9JmA1FjM71o2oHkY7djGi1ix9PsisxO', 0, 0, '2015-11-19 03:39:27', '2015-11-19 03:47:45', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
@@ -15142,8 +15072,8 @@ INSERT INTO `jt_users` (`id`, `name`, `username`, `email`, `password`, `block`, 
 -- Table structure for table `jt_user_keys`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_user_keys` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_user_keys` (
+  `id` int(10) UNSIGNED NOT NULL,
   `user_id` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
   `series` varchar(255) NOT NULL,
@@ -15158,18 +15088,18 @@ CREATE TABLE IF NOT EXISTS `jt_user_keys` (
 -- Table structure for table `jt_user_notes`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_user_notes` (
-  `id` int(10) unsigned NOT NULL,
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `catid` int(10) unsigned NOT NULL DEFAULT '0',
+CREATE TABLE `jt_user_notes` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
+  `catid` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `subject` varchar(100) NOT NULL DEFAULT '',
   `body` text NOT NULL,
   `state` tinyint(3) NOT NULL DEFAULT '0',
-  `checked_out` int(10) unsigned NOT NULL DEFAULT '0',
+  `checked_out` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_user_id` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_user_id` int(10) unsigned NOT NULL,
+  `modified_user_id` int(10) UNSIGNED NOT NULL,
   `modified_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `review_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -15182,7 +15112,7 @@ CREATE TABLE IF NOT EXISTS `jt_user_notes` (
 -- Table structure for table `jt_user_profiles`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_user_profiles` (
+CREATE TABLE `jt_user_profiles` (
   `user_id` int(11) NOT NULL,
   `profile_key` varchar(100) NOT NULL,
   `profile_value` text NOT NULL,
@@ -15195,9 +15125,9 @@ CREATE TABLE IF NOT EXISTS `jt_user_profiles` (
 -- Table structure for table `jt_user_usergroup_map`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_user_usergroup_map` (
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
-  `group_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id'
+CREATE TABLE `jt_user_usergroup_map` (
+  `user_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__users.id',
+  `group_id` int(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Foreign Key to #__usergroups.id'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -15216,12 +15146,12 @@ INSERT INTO `jt_user_usergroup_map` (`user_id`, `group_id`) VALUES
 -- Table structure for table `jt_viewlevels`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_viewlevels` (
-  `id` int(10) unsigned NOT NULL COMMENT 'Primary Key',
+CREATE TABLE `jt_viewlevels` (
+  `id` int(10) UNSIGNED NOT NULL COMMENT 'Primary Key',
   `title` varchar(100) NOT NULL DEFAULT '',
   `ordering` int(11) NOT NULL DEFAULT '0',
   `rules` varchar(5120) NOT NULL COMMENT 'JSON encoded access control.'
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_viewlevels`
@@ -15240,8 +15170,8 @@ INSERT INTO `jt_viewlevels` (`id`, `title`, `ordering`, `rules`) VALUES
 -- Table structure for table `jt_weblinks`
 --
 
-CREATE TABLE IF NOT EXISTS `jt_weblinks` (
-  `id` int(10) unsigned NOT NULL,
+CREATE TABLE `jt_weblinks` (
+  `id` int(10) UNSIGNED NOT NULL,
   `catid` int(11) NOT NULL DEFAULT '0',
   `title` varchar(250) NOT NULL DEFAULT '',
   `alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT '',
@@ -15256,20 +15186,20 @@ CREATE TABLE IF NOT EXISTS `jt_weblinks` (
   `params` text NOT NULL,
   `language` char(7) NOT NULL DEFAULT '',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `created_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `created_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `created_by_alias` varchar(255) NOT NULL DEFAULT '',
   `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `modified_by` int(10) unsigned NOT NULL DEFAULT '0',
+  `modified_by` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `metakey` text NOT NULL,
   `metadesc` text NOT NULL,
   `metadata` text NOT NULL,
-  `featured` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Set if link is featured.',
+  `featured` tinyint(3) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'Set if link is featured.',
   `xreference` varchar(50) NOT NULL COMMENT 'A reference to enable linkages to external data sets.',
   `publish_up` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `publish_down` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `version` int(10) unsigned NOT NULL DEFAULT '1',
+  `version` int(10) UNSIGNED NOT NULL DEFAULT '1',
   `images` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_weblinks`
@@ -16517,27 +16447,27 @@ ALTER TABLE `jt_weblinks`
 -- AUTO_INCREMENT for table `jt_assets`
 --
 ALTER TABLE `jt_assets`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',AUTO_INCREMENT=302;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=302;
 --
 -- AUTO_INCREMENT for table `jt_banners`
 --
 ALTER TABLE `jt_banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jt_banner_clients`
 --
 ALTER TABLE `jt_banner_clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_categories`
 --
 ALTER TABLE `jt_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_fields`
 --
 ALTER TABLE `jt_comprofiler_fields`
-  MODIFY `fieldid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=57;
+  MODIFY `fieldid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_field_values`
 --
@@ -16552,12 +16482,12 @@ ALTER TABLE `jt_comprofiler_lists`
 -- AUTO_INCREMENT for table `jt_comprofiler_plugin`
 --
 ALTER TABLE `jt_comprofiler_plugin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_plugin_blogs`
 --
 ALTER TABLE `jt_comprofiler_plugin_blogs`
-  MODIFY `id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_ratings`
 --
@@ -16567,7 +16497,7 @@ ALTER TABLE `jt_comprofiler_ratings`
 -- AUTO_INCREMENT for table `jt_comprofiler_tabs`
 --
 ALTER TABLE `jt_comprofiler_tabs`
-  MODIFY `tabid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+  MODIFY `tabid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_userreports`
 --
@@ -16577,157 +16507,157 @@ ALTER TABLE `jt_comprofiler_userreports`
 -- AUTO_INCREMENT for table `jt_contact_details`
 --
 ALTER TABLE `jt_contact_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_content`
 --
 ALTER TABLE `jt_content`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=114;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 --
 -- AUTO_INCREMENT for table `jt_content_types`
 --
 ALTER TABLE `jt_content_types`
-  MODIFY `type_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `type_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jt_extensions`
 --
 ALTER TABLE `jt_extensions`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10159;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10159;
 --
 -- AUTO_INCREMENT for table `jt_finder_filters`
 --
 ALTER TABLE `jt_finder_filters`
-  MODIFY `filter_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `filter_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_finder_links`
 --
 ALTER TABLE `jt_finder_links`
-  MODIFY `link_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `link_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_finder_taxonomy`
 --
 ALTER TABLE `jt_finder_taxonomy`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_finder_terms`
 --
 ALTER TABLE `jt_finder_terms`
-  MODIFY `term_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `term_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_finder_types`
 --
 ALTER TABLE `jt_finder_types`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_address`
 --
 ALTER TABLE `jt_hikashop_address`
-  MODIFY `address_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `address_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_badge`
 --
 ALTER TABLE `jt_hikashop_badge`
-  MODIFY `badge_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `badge_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_banner`
 --
 ALTER TABLE `jt_hikashop_banner`
-  MODIFY `banner_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `banner_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_cart`
 --
 ALTER TABLE `jt_hikashop_cart`
-  MODIFY `cart_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `cart_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_cart_product`
 --
 ALTER TABLE `jt_hikashop_cart_product`
-  MODIFY `cart_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `cart_product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_category`
 --
 ALTER TABLE `jt_hikashop_category`
-  MODIFY `category_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `category_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_characteristic`
 --
 ALTER TABLE `jt_hikashop_characteristic`
-  MODIFY `characteristic_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `characteristic_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_click`
 --
 ALTER TABLE `jt_hikashop_click`
-  MODIFY `click_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `click_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_currency`
 --
 ALTER TABLE `jt_hikashop_currency`
-  MODIFY `currency_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
+  MODIFY `currency_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=182;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_discount`
 --
 ALTER TABLE `jt_hikashop_discount`
-  MODIFY `discount_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `discount_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_email_log`
 --
 ALTER TABLE `jt_hikashop_email_log`
-  MODIFY `email_log_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `email_log_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_entry`
 --
 ALTER TABLE `jt_hikashop_entry`
-  MODIFY `entry_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `entry_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_field`
 --
 ALTER TABLE `jt_hikashop_field`
-  MODIFY `field_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+  MODIFY `field_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_file`
 --
 ALTER TABLE `jt_hikashop_file`
-  MODIFY `file_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `file_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_filter`
 --
 ALTER TABLE `jt_hikashop_filter`
-  MODIFY `filter_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `filter_id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_geolocation`
 --
 ALTER TABLE `jt_hikashop_geolocation`
-  MODIFY `geolocation_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `geolocation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_history`
 --
 ALTER TABLE `jt_hikashop_history`
-  MODIFY `history_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `history_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_limit`
 --
 ALTER TABLE `jt_hikashop_limit`
-  MODIFY `limit_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `limit_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_massaction`
 --
 ALTER TABLE `jt_hikashop_massaction`
-  MODIFY `massaction_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `massaction_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_order`
 --
 ALTER TABLE `jt_hikashop_order`
-  MODIFY `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `order_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_order_product`
 --
 ALTER TABLE `jt_hikashop_order_product`
-  MODIFY `order_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `order_product_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_payment`
 --
 ALTER TABLE `jt_hikashop_payment`
-  MODIFY `payment_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `payment_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_plugin`
 --
@@ -16737,22 +16667,22 @@ ALTER TABLE `jt_hikashop_plugin`
 -- AUTO_INCREMENT for table `jt_hikashop_price`
 --
 ALTER TABLE `jt_hikashop_price`
-  MODIFY `price_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `price_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_product`
 --
 ALTER TABLE `jt_hikashop_product`
-  MODIFY `product_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `product_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_product_category`
 --
 ALTER TABLE `jt_hikashop_product_category`
-  MODIFY `product_category_id` int(255) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
+  MODIFY `product_category_id` int(255) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_shipping`
 --
 ALTER TABLE `jt_hikashop_shipping`
-  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `shipping_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_shipping_price`
 --
@@ -16762,17 +16692,17 @@ ALTER TABLE `jt_hikashop_shipping_price`
 -- AUTO_INCREMENT for table `jt_hikashop_taxation`
 --
 ALTER TABLE `jt_hikashop_taxation`
-  MODIFY `taxation_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `taxation_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_user`
 --
 ALTER TABLE `jt_hikashop_user`
-  MODIFY `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `user_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_vote`
 --
 ALTER TABLE `jt_hikashop_vote`
-  MODIFY `vote_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `vote_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_waitlist`
 --
@@ -16787,77 +16717,77 @@ ALTER TABLE `jt_hikashop_warehouse`
 -- AUTO_INCREMENT for table `jt_hikashop_widget`
 --
 ALTER TABLE `jt_hikashop_widget`
-  MODIFY `widget_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `widget_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_zone`
 --
 ALTER TABLE `jt_hikashop_zone`
-  MODIFY `zone_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4569;
+  MODIFY `zone_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4569;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_images`
 --
 ALTER TABLE `jt_imageshow_images`
-  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=51;
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_log`
 --
 ALTER TABLE `jt_imageshow_log`
-  MODIFY `log_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+  MODIFY `log_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_showcase`
 --
 ALTER TABLE `jt_imageshow_showcase`
-  MODIFY `showcase_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `showcase_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_showlist`
 --
 ALTER TABLE `jt_imageshow_showlist`
-  MODIFY `showlist_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `showlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_source_profile`
 --
 ALTER TABLE `jt_imageshow_source_profile`
-  MODIFY `external_source_profile_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `external_source_profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_carousel`
 --
 ALTER TABLE `jt_imageshow_theme_carousel`
-  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_classic_flash`
 --
 ALTER TABLE `jt_imageshow_theme_classic_flash`
-  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_classic_javascript`
 --
 ALTER TABLE `jt_imageshow_theme_classic_javascript`
-  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_classic_parameters`
 --
 ALTER TABLE `jt_imageshow_theme_classic_parameters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_flow`
 --
 ALTER TABLE `jt_imageshow_theme_flow`
-  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_grid`
 --
 ALTER TABLE `jt_imageshow_theme_grid`
-  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_slider`
 --
 ALTER TABLE `jt_imageshow_theme_slider`
-  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_imageshow_theme_strip`
 --
 ALTER TABLE `jt_imageshow_theme_strip`
-  MODIFY `theme_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `theme_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_jsn_easyslider_item_templates`
 --
@@ -16872,7 +16802,7 @@ ALTER TABLE `jt_jsn_easyslider_messages`
 -- AUTO_INCREMENT for table `jt_jsn_easyslider_sliders`
 --
 ALTER TABLE `jt_jsn_easyslider_sliders`
-  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `slider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_jsn_easyslider_slide_templates`
 --
@@ -16882,12 +16812,12 @@ ALTER TABLE `jt_jsn_easyslider_slide_templates`
 -- AUTO_INCREMENT for table `jt_jsn_imageshow_messages`
 --
 ALTER TABLE `jt_jsn_imageshow_messages`
-  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `msg_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_design`
 --
 ALTER TABLE `jt_jsn_mobilize_design`
-  MODIFY `design_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `design_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_messages`
 --
@@ -16897,22 +16827,22 @@ ALTER TABLE `jt_jsn_mobilize_messages`
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_os`
 --
 ALTER TABLE `jt_jsn_mobilize_os`
-  MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `os_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_os_support`
 --
 ALTER TABLE `jt_jsn_mobilize_os_support`
-  MODIFY `support_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=35;
+  MODIFY `support_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT for table `jt_jsn_mobilize_profiles`
 --
 ALTER TABLE `jt_jsn_mobilize_profiles`
-  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `profile_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_jsn_pagebuilder_content_custom_css`
 --
 ALTER TABLE `jt_jsn_pagebuilder_content_custom_css`
-  MODIFY `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_jsn_pagebuilder_messages`
 --
@@ -16927,32 +16857,32 @@ ALTER TABLE `jt_jsn_poweradmin_favourite`
 -- AUTO_INCREMENT for table `jt_jsn_poweradmin_history`
 --
 ALTER TABLE `jt_jsn_poweradmin_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_data`
 --
 ALTER TABLE `jt_jsn_uniform_data`
-  MODIFY `data_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `data_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_emails`
 --
 ALTER TABLE `jt_jsn_uniform_emails`
-  MODIFY `email_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `email_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_fields`
 --
 ALTER TABLE `jt_jsn_uniform_fields`
-  MODIFY `field_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `field_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_forms`
 --
 ALTER TABLE `jt_jsn_uniform_forms`
-  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `form_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_form_pages`
 --
 ALTER TABLE `jt_jsn_uniform_form_pages`
-  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `page_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_messages`
 --
@@ -16962,7 +16892,7 @@ ALTER TABLE `jt_jsn_uniform_messages`
 -- AUTO_INCREMENT for table `jt_jsn_uniform_submissions`
 --
 ALTER TABLE `jt_jsn_uniform_submissions`
-  MODIFY `submission_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `submission_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_jsn_uniform_submission_data`
 --
@@ -16972,37 +16902,37 @@ ALTER TABLE `jt_jsn_uniform_submission_data`
 -- AUTO_INCREMENT for table `jt_jsn_uniform_templates`
 --
 ALTER TABLE `jt_jsn_uniform_templates`
-  MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `template_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_languages`
 --
 ALTER TABLE `jt_languages`
-  MODIFY `lang_id` int(11) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `lang_id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_menu`
 --
 ALTER TABLE `jt_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2005;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2005;
 --
 -- AUTO_INCREMENT for table `jt_menu_types`
 --
 ALTER TABLE `jt_menu_types`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `jt_messages`
 --
 ALTER TABLE `jt_messages`
-  MODIFY `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `message_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_modules`
 --
 ALTER TABLE `jt_modules`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=317;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=317;
 --
 -- AUTO_INCREMENT for table `jt_newsfeeds`
 --
 ALTER TABLE `jt_newsfeeds`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `jt_overrider`
 --
@@ -17012,72 +16942,72 @@ ALTER TABLE `jt_overrider`
 -- AUTO_INCREMENT for table `jt_postinstall_messages`
 --
 ALTER TABLE `jt_postinstall_messages`
-  MODIFY `postinstall_message_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `postinstall_message_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `jt_redirect_links`
 --
 ALTER TABLE `jt_redirect_links`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_tags`
 --
 ALTER TABLE `jt_tags`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_template_styles`
 --
 ALTER TABLE `jt_template_styles`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `jt_ucm_content`
 --
 ALTER TABLE `jt_ucm_content`
-  MODIFY `core_content_id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `core_content_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_ucm_history`
 --
 ALTER TABLE `jt_ucm_history`
-  MODIFY `version_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `version_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `jt_updates`
 --
 ALTER TABLE `jt_updates`
-  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=65;
+  MODIFY `update_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_update_sites`
 --
 ALTER TABLE `jt_update_sites`
-  MODIFY `update_site_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+  MODIFY `update_site_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `jt_usergroups`
 --
 ALTER TABLE `jt_usergroups`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `jt_users`
 --
 ALTER TABLE `jt_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=329;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=329;
 --
 -- AUTO_INCREMENT for table `jt_user_keys`
 --
 ALTER TABLE `jt_user_keys`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_user_notes`
 --
 ALTER TABLE `jt_user_notes`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `jt_viewlevels`
 --
 ALTER TABLE `jt_viewlevels`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Primary Key',AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'Primary Key', AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `jt_weblinks`
 --
 ALTER TABLE `jt_weblinks`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

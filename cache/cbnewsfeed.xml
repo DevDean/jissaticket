@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! 1.5 - Open Source Content Management" -->
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+	<channel>
+		<title>Joomlapolis News</title>
+		<description>Joomla social networking and Subscription Management software. Community Builder is the top rated, best supported, most complete and reliable community system there is for Joomla!</description>
+		<link>http://www.joomlapolis.com:80/news</link>
+		<lastBuildDate>Fri, 20 Nov 2015 11:29:08 +0000</lastBuildDate>
+		<generator>Joomla! 1.5 - Open Source Content Management</generator>
+		<language>en-gb</language>
+		<item>
+			<title>GroupJive 3.0 RC 1 released</title>
+			<link>http://www.joomlapolis.com:80/news/18519-groupjive-30-rc-1-released</link>
+			<guid>http://www.joomlapolis.com:80/news/18519-groupjive-30-rc-1-released</guid>
+			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201511/gj30rc1_2.gif" alt="gj30rc1 2" width="489" height="432" /></p>
+<p style="text-align: center;">GroupJive 3.0 RC 1 can be <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=784">downloaded</a> by all <a href="http://www.joomlapolis.com:80/support/membership">paid members</a>.</p>
+<p>GroupJive 3.0 RC 1 is fully compatible with latest Community Builder 2.0.12 (required) and can be installed on live websites.</p>
+<p>All community feedback (thank you) and comments from our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18516:groupjive-30-beta-1-ready-for-testing&amp;catid=6:news&amp;Itemid=19">GroupJive 3.0 beta 1</a> testing round have been addressed and the GroupJive 3.0 RC 1 can be installed over GroupJive 2.7 environments. The built-in migration script will take care of everything and make all needed database conversions.</p>
+<p>The recommended process for installation is:</p>
+<ol>
+<li>Take backup of your website - always!</li>
+<li>Make sure you have Community Builder 2.0.12 or better installed. If not upgrade first amd take another backup.</li>
+<li><a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=784">Download</a> and unzip the GroupJive 3.0 RC1 package</li>
+<li>Install all elements (CB plugins, Joomla module, Joomla search plugin)</li>
+<li>If you are installing over GroupJive 2.7, test all frontend Joomla menus - everything should work as backwards compatibility is built-in. If something does not work you may have to create new Joomla menu items of type Community Builder -&gt; Plugins -&gt; CB GroupJive.</li>
+<li>If this is a clean (first time) install, then after installation you should publish all plugins and create any Joomla menu items needed fo access from frontend.</li>
+<li>Test everything</li>
+</ol>
+<p>We are also working on new documentation in the form of a GroupJive Primer book that should be ready for public release later this month. Video tutorials are also planned. Language projects have been added on Transifex and we have already pushed new CB 2.0.12 compatible language plugins with GroupJive 3.0 support.</p>
+<p>Finally, to integrate with the CB Activity add-on you will need that latest CB Auto Actions 6.3.2 release and the latest CB Activity nightly build. Both can be downloaded by Professional/Developer members from the CB 2.0 add-ons compatibility chart.</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231733-groupjive-30-rc-1-released">Discuss this on our forums</a>.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Thu, 05 Nov 2015 16:41:52 +0000</pubDate>
+		</item>
+		<item>
+			<title>CB 2.0.12 released and paving the way for GroupJive 3.0 RC</title>
+			<link>http://www.joomlapolis.com:80/news/18518-cb-2012-released-and-paving-the-way-for-groupjive-30-rc</link>
+			<guid>http://www.joomlapolis.com:80/news/18518-cb-2012-released-and-paving-the-way-for-groupjive-30-rc</guid>
+			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201511/cb2012_500.gif" alt="cb2012 500" width="500" height="179" />&nbsp;</p>
+<p style="text-align: center;"><a href="http://www.joomlapolis.com:80/community-builder">Community Builder 2.0.12</a> is here and is required for upcoming GroupJive 3.0 RC release<br /><a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=782&amp;Itemid=105">Download it now</a> - it's <strong>free</strong> and <strong>super stable</strong></p>
+<p><strong>Community Builder 2.0.12</strong> is a maintenance release that fixes <strong>14 bugs</strong> and adds <strong>4 new internal features</strong> (see forum discussion for full changelog) paving the way for the upcoming GroupJive 3.0 RC release.</p>
+<p>CB 2.0+ websites can be upgraded to latest CB 2.0.12 <strong>using the built-in Joomla upgrader</strong> or with a <strong>simple install over</strong> (precautionary backup always recommended) as all previous settings are kept.</p>
+<p>Community Builder 2.0.12 is released as a required upgrade for the upcoming GroupJive 3.0 RC release.</p>
+<p>The <a href="http://www.joomlapolis.com:80/component/docman/doc_details/753-cb-20-primer-book-101">CB Primer Book</a> is valid and the <a href="http://www.joomlapolis.com:80/cb-20-addon-status">CB 2.0 Add-on compatibility</a> chart has been updated. New CB 2.0.12 Language plugins are available in the <a href="http://www.joomlapolis.com:80/cb-solutions/languages">Language Download area</a>.</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231698-nov-2015-edit-cb-2012-released-and-paving-the-way-for-groupjive-30-rc">Discuss this on our forums</a> !</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Mon, 02 Nov 2015 02:16:21 +0000</pubDate>
+		</item>
+		<item>
+			<title>Critical Security Joomla 3.4.5 released</title>
+			<link>http://www.joomlapolis.com:80/news/18517-critical-security-joomla-345-released</link>
+			<guid>http://www.joomlapolis.com:80/news/18517-critical-security-joomla-345-released</guid>
+			<description><![CDATA[<p><a href="http://www.joomla.org/announcements/release-news/5634-joomla-3-4-5-released.html" target="_blank"><img style="display: block; margin-left: auto; margin-right: auto;" src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201510/j345now.gif" alt="j345now" width="580" height="159" /></a></p>
+<p>&nbsp;</p>
+<p>Our newsletter recipients have already been notified that Joomla 3.4.5 has fixed a critical security vulnerability and that all Joomla 3.2.0 and above webistes need to <strong>upgrade to Joomla 3.4.5 immediately</strong>.</p>
+<p>Community Builder 1.9.1 and 2.0.11 are fully compatible with this new Joomla 3.4.5 release.</p>
+<p>CB Team member Beat is on the JSST (Joomla Security Strike Team) and he has been contributing to make this Joomla security release happen. He strongly recommends that every Joomla 3.x website must be upgraded to Joomla 3.4.5 now.</p>
+<p><strong>Beat says:</strong> "If you have Joomla 3.2.0 or above, stop reading and start upgrading to Joomla 3.4.5, <strong>now</strong>!"</p>
+<p>Please <a href="http://www.joomla.org/announcements/release-news/5634-joomla-3-4-5-released.html" target="_blank">read the official Joomla release announcement</a> and start upgrading.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Thu, 22 Oct 2015 13:13:19 +0000</pubDate>
+		</item>
+		<item>
+			<title>GroupJive 3.0 beta 1 ready for testing</title>
+			<link>http://www.joomlapolis.com:80/news/18516-groupjive-30-beta-1-ready-for-testing</link>
+			<guid>http://www.joomlapolis.com:80/news/18516-groupjive-30-beta-1-ready-for-testing</guid>
+			<description><![CDATA[<p style="text-align: center;">&nbsp;<img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201510/groupjive30b1_500.gif" alt="groupjive30b1 500" width="500" height="449" /></p>
+<p style="text-align: center;">GroupJive 3.0 beta 1 can be <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=781">downloaded</a> by all <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18216&amp;Itemid=135">paid members</a>.</p>
+<p>GroupJive 3.0 beta 1 is <strong>fully compatible</strong> with Community Builder 2.0.11+ and is ready for test sites.</p>
+<p>GroupJive 3.0 is a complete rewrite using CB 2.0+ framework and libraries and has been restyled to match the CB 2.0 profile canvas layout.</p>
+<h3>Main features and changes list</h3>
+<p>GroupJive 3.0 has many new featres and changes compared to the previous 2.7 release:</p>
+<ul>
+<li>Rewritten for CB 2.0 compatibility</li>
+<li>New responsive (yes, mobile ready) canvas layout design</li>
+<li>Adds Community Builder plugin joomla menu item support for all integrations</li>
+<li>Language files for each GroupJive integration plugin that will be included in CB Language plugins (no more need for separate GroupJive language plugin)</li>
+<li>Intergration plugins now push their own menu items to the CB Admin Navigation module</li>
+<li>Updated forum integration for Kunena 4.0+</li>
+<li>Updated support for CB Antispam</li>
+<li>Nested categories and nested groups features have been dropped.</li>
+<li>New component buttons for administration accessible from plugin management page</li>
+</ul>
+<p>You can see <a href="https://forge.joomlapolis.com/projects/groupjive/issues?query_id=71" target="_blank">full changelog</a> on our forge.</p>
+<p>Please note that this beta release does not have a migration script (planned for Release Candidate), so it should not be installed over previous GroupJive environments.</p>
+<h3>GroupJive 3.0 beta 1 installation recommendations</h3>
+<p>GroupJive 3.0 beta 1 is not a stable release and:</p>
+<ul>
+<li>should only be installed on CB 2.0.11+ sites that do not have previously installed versions of GroupJive</li>
+<li>can be installed on live sites but you might encounter errors (that will be fixed of course in next beta/RC builds)</li>
+<li>is recommended for testing pruposes</li>
+<li>After you install you should make configuration changes to your CB Admin Dropdown Menu module (administrative):<br />Set <strong>Menu</strong> -&gt;<strong> CB GroupJive Menu</strong> to <strong>Hide</strong> and <strong>Menu</strong> -&gt; <strong>Plugin Menus</strong> to <strong>Show</strong></li>
+</ul>
+<h3>Testing feedback and Roadmap Comments</h3>
+<p>All <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18216&amp;Itemid=135">paid members</a> can <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=781">download GroupJive 3.0.0 beta 1</a>&nbsp; and start testing by installing and publishing all its elements (main plugin, integration plugins, Joomla module and Joomla search plugin) on your Community Builder 2.0.11 environment. It is recommended to upgrade first to latest <a href="http://www.joomlapolis.com:80/component/docman/doc_details/640-community-builder-nightly-build">CB Nightly Release</a>.</p>
+<p>So here is a list of steps to help you quickly get started:</p>
+<ol>
+<li>Upgrade to latest CB 2.0.11 Nightly release</li>
+<li>Download the CB GroupJive 3.0 beta one distribution</li>
+<li>Unzip distribution package to reveal individual CB plugins, Joomla module and Joomla plugin</li>
+<li>Install the CB Plugins using the CB Plugin Manager and then publish them</li>
+<li>Optionally Install Joomla module and Joomla search plugin and publish</li>
+<li>Create a new Joomla menu (give it a name like GroupJive) of menu type Community Builder -&gt; Plugin<br />Select CB GroupJive from Plugin dropdown and save<br />Then Select All Categories in the Action parameter<br />Save menu</li>
+<li>Create as many categories as you want from the CB GroupJive -&gt; Categories button</li>
+<li>You can also create groups from the CB GroupJive -&gt; Groups button</li>
+<li>Access GroupJive from your website frontend by clicking on the Joomla menu you created in step 6</li>
+</ol>
+<p>You can explore options and settings to quickly get the hang of things and study all available tooltips. We are working on a GroupJive Primer Book that should be available when release candidate status is reached,</p>
+<p>Please post any problems or feedback on the discussion thread below so we can quickly address and fix. Depending on feedback and issues identified we will be issuing either a new beta release or we will be going directly to a Release Candidate process.</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231468-groupjive-30-beta-1-ready-for-testing">Discuss this on our forums</a><br /><br /></p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Tue, 13 Oct 2015 00:00:00 +0000</pubDate>
+		</item>
+		<item>
+			<title>Untapped potential</title>
+			<link>http://www.joomlapolis.com:80/news/18515-untapped-potential</link>
+			<guid>http://www.joomlapolis.com:80/news/18515-untapped-potential</guid>
+			<description><![CDATA[<p style="text-align: center;"><a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18216&amp;Itemid=135"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201510/untapped_500.jpg" alt="untapped 500" width="500" height="294" /></a></p>
+<p style="text-align: center;">Are you aware of how Community Builder solutions can help you?</p>
+<p>Sometimes it just takes a good presentation and some friendly discussions to put things in perspective.</p>
+<p>This is exactly what happened during my "<a href="http://www.meetup.com/Joomla-Users-Group-of-New-Jersey/events/225075118/" target="_blank">Lunch and Learn with Joomlapolis (Community Builder)</a>" presentation last week at the New Jersey user group event.</p>
+<p>The aftermath comments like "great presentation", "I learned a lot", "great improvements", "eye-opener", "hugely customizable" were very much appreciated.</p>
+<p>But, the best reward for me was the excitement I saw in people's eyes when I was able to propose CB powered solutions and add-ons for their specific use case needs.</p>
+<p>Most people (I am also guilty :-( ) usually just dive in and start playing with Community Builder. This is certainly the quickest approach but it is also not the most productive one.</p>
+<p>During the NJ meeting I noticed that most of the attendees were not aware of the new <a href="http://www.joomlapolis.com:80/component/docman/doc_details/753-cb-20-primer-book-101">CB PRIMER Book</a> (you need to be logged in to download) and how it could help you understand and tap into the great solution providing potential of Community Builder. It is a great read and it will inspire you to learn and explore CB much more and easier than the heads-on approach.</p>
+<p>And if reading is not your cup of tea, you can check out our <a href="https://www.youtube.com/Joomlapolis/playlists" target="_blank">short and sweet video tutorials</a>.</p>
+<p>Once people realize how powerful CB is they can continue the free discovery process by monitoring the <a href="http://www.joomlapolis.com:80/index.php?option=com_kunena&amp;view=home&amp;Itemid=17">open-to-all support forums</a> and see even more CB powered solution proposals given to our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18216&amp;Itemid=135">paid supporters</a>.</p>
+<p>A big <strong>thank you</strong> to the New Jersey Joomla user group for organizing the presentation and giving me the opportunity to meet everyone.</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231410-untapped-potential">Discuss this on our forums</a>.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Wed, 07 Oct 2015 20:44:35 +0000</pubDate>
+		</item>
+		<item>
+			<title>Joomla! World Conference 2015</title>
+			<link>http://www.joomlapolis.com:80/news/18514-joomla-world-conference-2015</link>
+			<guid>http://www.joomlapolis.com:80/news/18514-joomla-world-conference-2015</guid>
+			<description><![CDATA[<p style="text-align: center;"><a href="https://conference.joomla.org" target="_blank"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201509/jwc15-logo_500.png" alt="jwc15-logo 500" width="500" height="500" /></a></p>
+<p>The annual <a href="https://conference.joomla.org" target="_blank">Joomla! World Conference</a> is coming soon!</p>
+<p>JWC15 will be happening in <strong>Bangalore, India</strong>, on <strong>November 6-8</strong>. This year Joomla celebrates it’s 10th year, with three days of amazing <strong>keynotes</strong>, <strong>workshops</strong>, and <strong>sessions</strong> where you can learn, connect with Joomla experts, and help plan the next decade of Joomla.</p>
+<p>Joomlapolis and CB Team members will not be able to make it but there will surely be many Community Builders present!</p>
+<p>Check your Joomlapolis newsletter for a great 20% off coupon on all JWC tickets.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Mon, 28 Sep 2015 12:09:45 +0000</pubDate>
+		</item>
+		<item>
+			<title>CB 2.0.11 released and recommended for new Joomla 3.4.4</title>
+			<link>http://www.joomlapolis.com:80/news/18513-cb-2011-released-and-recommended-for-new-joomla-344</link>
+			<guid>http://www.joomlapolis.com:80/news/18513-cb-2011-released-and-recommended-for-new-joomla-344</guid>
+			<description><![CDATA[<p style="text-align: center;">&nbsp;<a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=780&amp;Itemid=105"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201509/cb2011b_500.gif" alt="cb2011b 500" width="500" height="178" /></a></p>
+<p style="text-align: center;"><a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=12&amp;Itemid=2">Community Builder 2.0.11</a> is here and is recommended for all Joomla 3.4 websites<br /><a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=780&amp;Itemid=105">Download it now</a> - it's <strong>free</strong> and <strong>super stable</strong></p>
+<p><strong><br /></strong></p>
+<p><strong>Community Builder 2.0.11</strong> is a maintenance release that fixes <strong>15 bugs</strong> and adds <strong>9 new internal features</strong> (see forum discussion for full changelog) and it is highly <strong>recommended for all Joomla versions</strong> - including the <a href="https://www.joomla.org/announcements/release-news/5628-joomla-3-4-4-released.html" target="_blank">recently released Joomla 3.4.4</a>.</p>
+<p>CB 2.0+ websites can be upgraded to latest CB 2.0.11 <strong>using the built-in Joomla upgrader</strong> or with a <strong>simple install over</strong> (precautionary backup always recommended) as all previous settings are kept.</p>
+<p>CB 1.9.1 websites should also be upgraded to CB 2.0.11 following the process described in video #30 of our <a href="https://www.youtube.com/playlist?list=PLp0puRITgC7PuyzPsMUECDI46VE7IFSAX" target="_blank">CB 2.0 video tutorial series</a>.</p>
+<p>The <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=753">CB Primer Book</a> is remains valid and the <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18463&amp;Itemid=198">CB 2.0 Add-on compatibility</a> chart has been updated. New CB 2.0.11 Language plugins are also available in the <a href="http://www.joomlapolis.com:80/cb-solutions/languages">Language Download area</a>.</p>
+<p>All <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=123&amp;Itemid=57">Professional add-ons</a> and our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=40&amp;Itemid=4">CBSubs Paid Subscription</a> solution work great with this new release and add tremendous value and flexibility to all your Joomla websites.&nbsp;</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231250-cb-2011-released-and-recommended-for-new-joomla-344">Discuss this on our forums</a> !</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Wed, 23 Sep 2015 07:13:24 +0000</pubDate>
+		</item>
+		<item>
+			<title>CB 2.0.10 already translated in 19 languages!</title>
+			<link>http://www.joomlapolis.com:80/news/18512-cb-2010-already-translated-in-19-languages</link>
+			<guid>http://www.joomlapolis.com:80/news/18512-cb-2010-already-translated-in-19-languages</guid>
+			<description><![CDATA[<p><a href="http://www.joomlapolis.com:80/cb-solutions/languages"><img style="display: block; margin-left: auto; margin-right: auto;" src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201509/cblanguages_580.gif" alt="cblanguages 580" width="500" height="178" /></a></p>
+<p style="text-align: center;"><a href="http://www.joomlapolis.com:80/cb-solutions/languages">Visit our languages downloads</a></p>
+<p>&nbsp;</p>
+<p><a href="http://www.joomlapolis.com:80/community-builder">Community Builder 2.0.10</a> is already translated in <strong>19 languages</strong> and there are actually a total of <strong>45 language projects</strong> maintained on our <a href="https://www.transifex.com/joomlapolis/cb/" target="_blank">Community Builder transifex area</a> by our very <strong>strong international community</strong>!</p>
+<p>We also have <a href="https://www.transifex.com/joomlapolis/public/" target="_blank">individual project areas</a> for each of our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=123&amp;Itemid=57">Professional add-ons</a>, <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=135&amp;Itemid=99">Groupjive</a> and for our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=40&amp;Itemid=4">CBSubs - Paid Subscriptions</a> solution.</p>
+<p>To make things <strong>even easier</strong> for our international users we automatically grab updated translations from transifex and generate new language plugins and push them to our <a href="http://www.joomlapolis.com:80/cb-solutions/languages">Languages Download</a> area.</p>
+<p>&nbsp;</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231167-cb-2010-already-translated-in-19-languages">Discuss this on our forums</a>.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Tue, 15 Sep 2015 10:52:05 +0000</pubDate>
+		</item>
+		<item>
+			<title>9 more  things you can do with CB Auto Actions</title>
+			<link>http://www.joomlapolis.com:80/news/18511-9-more-things-you-can-do-with-cb-auto-actions</link>
+			<guid>http://www.joomlapolis.com:80/news/18511-9-more-things-you-can-do-with-cb-auto-actions</guid>
+			<description><![CDATA[<p><img style="margin-right: 10px; margin-bottom: 5px; float: left;" src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201501/geers2_226.gif" alt="geers2 226" width="226" height="213" />One of the most powerful tools available for Community Builder is the CB Auto Actions plugin.</p>
+<p>In a nutshell, this tool lets you act when something happens in your community.</p>
+<p>Without the assistance of CB Auto Actions such functionality could only be possible by coding a Joomla or CB plugin.</p>
+<p>With CB Auto Action things are much simpler. Just decide what community event is important and what you want to do when such an event happens.</p>
+<p>The latest CB Auto Actions add-on has many built-in System Actions you can study, clone and modify to your liking.</p>
+<p>There are also many hands-on examples available in the <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=section&amp;id=3&amp;Itemid=129">tutorials section</a>, the <a href="https://www.youtube.com/playlist?list=PLp0puRITgC7McQcw0Sli1qfSUQGwmflzi" target="_blank">video channel</a> and on our freely readable forum responses.</p>
+<p>Here are <strong>5 cool workflows</strong> you can implement using CB Auto Actions <strong>without writing a single line of code</strong>:</p>
+<ul>
+<li>Send a personalized welcoming email to users when they login to your site for the very first time.</li>
+<li>Inform your moderation team when users update a specific field in their user profiles.</li>
+<li>Login redirect users to specific website pages based on their profile information (e.g., male users are directed to appropriate landing page for men).</li>
+<li>Keep track of active users by incrementing a CB field after every user login.</li>
+<li>Add users to Joomla groups based on profile data (e.g.,&nbsp; female users are added to specific group).</li>
+</ul>
+<p>These are just 5 examples, but there are infinite possibilities!</p>
+<p>Just in the last few weeks, some of our members configured some<strong> awesome workflows</strong> with CB Auto Actions&nbsp; - <strong>without a single line of code</strong> - which will surely inspire you. Check out these forum discussions were our users really thought up some great concepts and put CB Auto Actions to work for them:</p>
+<ul>
+<li><a href="http://www.joomlapolis.com:80/forum/153-professional-member-support/231009-cb-auto-action-to-update-a-field-in-another-table-of-the-db">CB Auto Action to update a field in another table of the DB</a></li>
+<li><a href="http://www.joomlapolis.com:80/forum/153-professional-member-support/227885-solved-set-default-value-for-registration-from-get-parameter">Set default value for registration from GET parameter</a></li>
+<li><a href="http://www.joomlapolis.com:80/forum/255-developer-members-support/230987-gallery-notifications-problem">Gallery notifications</a></li>
+<li><a href="http://www.joomlapolis.com:80/forum/153-professional-member-support/230940-solved-privacy-for-registered-users">Privacy for registered users</a></li>
+</ul>
+<p>So join the discussion and share your CB Auto Action use cases.<br />The best examples will be converted to video tutorials!<br /><br /><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231078-9-more-things-you-can-do-with-cb-auto-actions">Discuss this and share your auto action masterpiece here</a>!</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Tue, 08 Sep 2015 07:50:09 +0000</pubDate>
+		</item>
+		<item>
+			<title>JoomlArt templates now supporting Community Builder 2.0</title>
+			<link>http://www.joomlapolis.com:80/news/18510-joomlart-templates-now-supporting-community-builder-20</link>
+			<guid>http://www.joomlapolis.com:80/news/18510-joomlart-templates-now-supporting-community-builder-20</guid>
+			<description><![CDATA[<p><img style="display: block; margin-left: auto; margin-right: auto;" src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201508/jasocial_580.gif" alt="jasocial 580" width="500" height="314" /></p>
+<p>More great news for Community Builder compatible Joomla templates.</p>
+<p>JoomlArt announces the release of JA Social II, a commercial Joomla template focused on communities that supports Community Builder 2.0. With this release JoomlArt now has two templates with full support for Community Builder and is committed to continue producing CB 2.0 compatible Joomla templates.</p>
+<p>Both templates are responsive, have RTL support and are powered by the Joomla T3 framework and Bootstrap 3.</p>
+<p>More information and template demos are available:</p>
+<ul>
+<li><a href="http://www.joomlart.com/joomla/templates/ja-social-ii%20" target="_blank">JA Social II info</a> | <a href="http://ja-social-ii.demo.joomlart.com/index.php/en/home-cb" target="_blank">demo</a></li>
+<li><a href="http://www.joomlart.com/joomla/templates/uber" target="_blank">UBER info</a> | <a href="http://uber.demo.joomlart.com/index.php/cb-userlist" target="_blank">demo</a></li>
+</ul>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/230976-joomlart-templates-now-supporting-community-builder-20">Discuss this great Joomla template CB 2.0 compatibility news on our forums</a>.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Thu, 27 Aug 2015 10:20:31 +0000</pubDate>
+		</item>
+	</channel>
+</rss>
