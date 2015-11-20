@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.4" type="module" client="site" method="upgrade">
+	<name>JE Quick Contact</name> 
+    <version>3.4</version>
+    <creationDate>February, 2015</creationDate>
+    <author>jExtensions.com</author>
+    <authorEmail>support@jExtensions.com</authorEmail>
+    <authorUrl>http://jExtensions.com</authorUrl>
+    <copyright>Copyright 2015 - jExtensions.com</copyright>
+    <license>GNU/GPL</license>
+	<description><![CDATA[
+	<h1 class="sub-heading">JE Quick Contact</h1>	
+	<div class="description">Download more free extensions from <a href="http://jextensions.com/" target="_blank">jExtensions.com</a><br/>
+	Need help? <a href="http://jextensions.com/jquery-ajax-quick-contact-module/" target="_blank">Click here to visit the support page</a>.<br/>
+	</div>
+		]]>
+	</description>
+	
+	<files>
+		<filename module="mod_je_quickcontact">mod_je_quickcontact.php</filename>
+		<filename>index.html</filename>
+		<folder>css/</folder>
+		<folder>js/</folder>
+		<folder>php/</folder>
+		<folder>images/</folder>
+	</files>
+
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_je_quickcontact/php">
+			<fieldset name="basic">
+				<field name="jQuery" type="list" default="0" label="jQuery" description="Enable or Disable the latest jQuery version. Make sure that jQuery is loaded only once on your website.">
+					<option value="0">Disable</option>
+					<option	value="1">Enable</option>
+				</field>
+				
+				<field name="popUp" type="list" default="0" label="Display Type" description="">
+					<option value="0">Normal</option>
+					<option	value="1">Pop-up</option>
+				</field>
+				<field name="popUpButton" type="text" default="Quick Contact" label="Pop Up Button Text" description="Change pop-up button text here." />
+								
+				<field type="spacer" name="&lt;div class=&quot;sub-heading&quot;&gt;Contact Form&lt;/div&gt;" />
+				<field name="name" type="text" default="Name" label="Name Label" description="Change name label text." />
+				<field name="email" type="text" default="Email" label="Email Label" description="Change email lable text." />
+				<field name="message" type="text" default="Message" label="Message Label" description="Change message label text." />
+				<field name="captcha_label" type="list" default="1" label="Captcha" description="Enable or Disable captcha.">
+					<option value="1">Enable</option>
+					<option value="2">Disable</option>
+				</field>				
+				<field name="captcha" type="text" default="Captcha" label="Captcha Label" description="Change captcha lable text." />
+				<field name="submit" type="text" default="Send" label="Submit Button Text" description="Change submit button text." />
+				
+				<field type="spacer" name="&lt;div class=&quot;sub-heading&quot;&gt;Custom Labels&lt;/div&gt;" />
+				
+				<field type="spacer" name="Soon will include possibility to add new lables." />
+			
+								
+				<field type="spacer" name="&lt;div class=&quot;sub-heading&quot;&gt;Email&lt;/div&gt;" />
+				
+				<field name="recipient" type="email" default="" label="Recipient Email" description="Email address to receive the emails sent via JE Quick Contact." />
+				<field name="subject" type="text" default="JE Quick Contact" label="Email Subject" description="Subject of Quick Contact emails." />
+								
+				<field type="spacer" name="&lt;div class=&quot;sub-heading&quot;&gt;Colors and Styles&lt;/div&gt;" />
+				
+				<field name="buttonBg" type="jscolor" default="#E60000" label="Button Background" description="" />
+				<field name="buttonBgH" type="jscolor" default="#333333" label="Button Bg Hover" description="" />
+				<field name="buttonText" type="jscolor" default="#ffffff" label="Button Text" description="" />				
+
+				<field name="input_bg" type="jscolor" default="#F5F5F5" label="Input Background" description="" />
+				<field name="input_brd" type="jscolor" default="#dddddd" label="Input Border Color" description="" />
+				<field name="input_text" type="jscolor" default="#333333" label="Input Text Color" description="" />
+
+
+							
+				<field type="asset" />
+			</fieldset>		
+		</fields>
+	</config>
+</extension>

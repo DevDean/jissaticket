@@ -1,0 +1,21 @@
+#je_contact { margin:0}
+#je_contact #je_hide { display:none}
+#je_contact form { margin:0; padding:0;}
+#je_contact .input{ display:block; margin:0 0 5px 0;}
+#je_contact .error  {clear:both; display:block; padding: 2px 6px; margin:5px 0 0 0; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); border-width:1px; border-style:solid; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;  font-size:11px; background-color: #f2dede; border-color: #eed3d7; color: #b94a48; width:100%;
+-moz-box-sizing: border-box; -webkit-appearance: none; -webkit-box-sizing: border-box; box-sizing: border-box;  }
+#je_contact .success{clear:both; display:block; padding: 10px; margin:0; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); border-width:1px; border-style:solid; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px;  font-size:12px; background-color:#dff0d8;border-color:#d6e9c6;color:#468847;
+-moz-box-sizing: border-box; -webkit-appearance: none; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+
+#je_contact input,#je_contact textarea{ width: 100%; -moz-box-sizing: border-box; -webkit-appearance: none; -webkit-box-sizing: border-box; box-sizing: border-box; display: block; padding: 0 10px; height:40px; line-height:40px; -webkit-border-radius: 6px; -moz-border-radius: 6px; -o-border-radius: 6px; border-radius: 6px; margin:0 0 10px 0; padding: 0 10px; height:40px; line-height:40px}
+.qcbutton a.je_button {-webkit-border-radius: 6px; -moz-border-radius: 6px; -o-border-radius: 6px; border-radius: 6px; }
+.qcbutton ul { margin:0; padding:0}
+.qcbutton ul li { list-style:none; margin:0; padding:0}
+#je_contact label { display:inline-block; margin:0;}
+#je_contact textarea{height:auto;}
+
+#je_contact button[type="submit"], .qcbutton a.je_button{ border: transparent; cursor: pointer; display: inline-block; outline: none;  position: relative; padding:0 15px; height:30px; line-height:30px; text-shadow:none }
+
+
+#je_contact button[type="submit"]:hover, .qcbutton a.je_button:hover{ text-decoration:none}
