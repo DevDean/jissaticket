@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.11
+-- version 4.4.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2015 at 10:34 AM
--- Server version: 5.6.24
--- PHP Version: 5.6.8
+-- Generation Time: Nov 20, 2015 at 12:02 PM
+-- Server version: 5.6.25
+-- PHP Version: 5.6.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `jissaticket`
@@ -726,22 +726,23 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_plugin` (
   `checked_out` int(11) unsigned NOT NULL DEFAULT '0',
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `params` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_plugin`
 --
 
 INSERT INTO `jt_comprofiler_plugin` (`id`, `name`, `element`, `type`, `folder`, `viewaccesslevel`, `backend_menu`, `ordering`, `published`, `iscore`, `client_id`, `checked_out`, `checked_out_time`, `params`) VALUES
-(1, 'CB Core', 'cb.core', 'user', 'plug_cbcore', 1, '', 1, 1, 1, 0, 0, '0000-00-00 00:00:00', '{"name_style":"1","name_format":"3","date_format":"m\\/d\\/Y","time_format":"H:i:s","calendar_type":"2","allow_email_display":"3","allow_email_public":"0","allow_email_replyto":"1","allow_email":"1","allow_website":"1","allow_onlinestatus":"1","icons_display":"3","login_type":"0","reg_admin_allowcbregistration":"1","emailpass":"0","reg_admin_approval":"0","reg_confirmation":"0","reg_username_checker":"1","reg_show_login_on_page":"0","reg_email_name":"REGISTRATION_EMAIL_FROM_NAME","reg_email_from":"","reg_email_replyto":"","reg_email_html":"0","reg_pend_appr_sub":"YOUR_REGISTRATION_IS_PENDING_APPROVAL_SUBJECT","reg_pend_appr_msg":"YOUR_REGISTRATION_IS_PENDING_APPROVAL_MESSAGE","reg_welcome_sub":"YOUR_REGISTRATION_IS_APPROVED_SUBJECT","reg_welcome_msg":"YOUR_REGISTRATION_IS_APPROVED_MESSAGE","reg_layout":"flat","reg_show_icons_explain":"0","reg_title_img":"general","reg_intro_msg":"REGISTRATION_GREETING","reg_conclusion_msg":"REGISTRATION_CONCLUSION","reg_first_visit_url":"index.php?option=com_comprofiler&view=userprofile","usernameedit":"1","usernamefallback":"name","adminrequiredfields":"1","profile_viewaccesslevel":"2","maxEmailsPerHr":"10","profile_recordviews":"1","minHitsInterval":"60","templatedir":"default","use_divs":"1","left2colsWidth":"40","left3colsWidth":"32","right3colsWidth":"32","showEmptyTabs":"1","showEmptyFields":"1","emptyFieldsText":"-","frontend_userparams":"1","profile_edit_layout":"tabbed","profile_edit_show_icons_explain":"0","html_filter_allowed_tags":"","conversiontype":"4","avatarResizeAlways":"1","avatarHeight":"500","avatarWidth":"200","avatarSize":"2000","thumbHeight":"86","thumbWidth":"60","avatarMaintainRatio":"1","moderator_viewaccesslevel":"3","allowModUserApproval":"1","moderatorEmail":"1","allowUserReports":"1","avatarUploadApproval":"1","allowModeratorsUserEdit":"0","allowUserBanning":"1","allowConnections":"1","connectionDisplay":"0","connectionPath":"1","useMutualConnections":"1","conNotifyType":"0","autoAddConnections":"1","connection_categories":"Friend\\r\\nCo Worker\\r\\nFamily","translations_debug":"0","enableSpoofCheck":"1","noVersionCheck":"0","templateBootstrap":"1","templateFontawesme":"1","jsJquery":"1","jsJqueryMigrate":"1"}'),
-(2, 'CB Connections', 'cb.connections', 'user', 'plug_cbconnections', 1, '', 3, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
+(1, 'CB Core', 'cb.core', 'user', 'plug_cbcore', 1, '', 1, 1, 1, 0, 0, '0000-00-00 00:00:00', '{"name_style":"1","name_format":"3","date_format":"m\\/d\\/Y","time_format":"H:i:s","calendar_type":"2","allow_email_display":"3","allow_email_public":"0","allow_email_replyto":"1","allow_email":"1","allow_website":"1","allow_onlinestatus":"1","icons_display":"3","login_type":"0","reg_admin_allowcbregistration":"1","emailpass":"0","reg_admin_approval":"0","reg_confirmation":"0","reg_username_checker":"1","reg_show_login_on_page":"0","reg_email_name":"REGISTRATION_EMAIL_FROM_NAME","reg_email_from":"","reg_email_replyto":"","reg_email_html":"0","reg_pend_appr_sub":"YOUR_REGISTRATION_IS_PENDING_APPROVAL_SUBJECT","reg_pend_appr_msg":"YOUR_REGISTRATION_IS_PENDING_APPROVAL_MESSAGE","reg_welcome_sub":"YOUR_REGISTRATION_IS_APPROVED_SUBJECT","reg_welcome_msg":"YOUR_REGISTRATION_IS_APPROVED_MESSAGE","reg_layout":"flat","reg_show_icons_explain":"0","reg_title_img":"general","reg_intro_msg":"REGISTRATION_GREETING","reg_conclusion_msg":"REGISTRATION_CONCLUSION","reg_first_visit_url":"index.php?option=com_comprofiler&view=userprofile","usernameedit":"1","usernamefallback":"name","adminrequiredfields":"1","profile_viewaccesslevel":"2","maxEmailsPerHr":"10","profile_recordviews":"1","minHitsInterval":"60","templatedir":"default","use_divs":"1","left2colsWidth":"40","left3colsWidth":"32","right3colsWidth":"32","showEmptyTabs":"1","showEmptyFields":"1","emptyFieldsText":"-","frontend_userparams":"1","profile_edit_layout":"tabbed","profile_edit_show_icons_explain":"0","html_filter_allowed_tags":"","conversiontype":"4","avatarResizeAlways":"1","avatarHeight":"500","avatarWidth":"200","avatarSize":"2000","thumbHeight":"86","thumbWidth":"60","avatarMaintainRatio":"1","moderator_viewaccesslevel":"3","allowModUserApproval":"1","moderatorEmail":"1","allowUserReports":"1","avatarUploadApproval":"1","allowModeratorsUserEdit":"0","allowUserBanning":"1","allowConnections":"1","connectionDisplay":"0","connectionPath":"1","useMutualConnections":"1","conNotifyType":"0","autoAddConnections":"1","connection_categories":"Friend\\r\\nCo Worker\\r\\nFamily","translations_debug":"0","enableSpoofCheck":"1","noVersionCheck":"0","templateBootstrap":"1","templateFontawesme":"1","jsJquery":"1","jsJqueryMigrate":"1","version":"2.0.12","BootstrapOffWarning":"","FontawesomeOffWarning":"","jQueryOffWarning":"","jQueryMigrateOffWarning":"","footerfWarning":""}'),
+(2, 'CB Connections', 'cb.connections', 'user', 'plug_cbconnections', 6, '', 3, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
 (7, 'Default', 'default', 'templates', 'default', 1, '', 1, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
 (13, 'Default language (English)', 'default_language', 'language', 'default_language', 1, '', 1, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
 (14, 'CB Menu', 'cb.menu', 'user', 'plug_cbmenu', 1, '', 2, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
-(15, 'Private Message System', 'pms.mypmspro', 'user', 'plug_pms_mypmspro', 1, '', 8, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
-(17, 'CB Articles', 'cbarticles', 'user', 'plug_cbarticles', 1, '', 8, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
-(18, 'CB Forums', 'cbforums', 'user', 'plug_cbforums', 1, '', 9, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
-(19, 'CB Blogs', 'cbblogs', 'user', 'plug_cbblogs', 1, '', 10, 1, 1, 0, 0, '0000-00-00 00:00:00', '');
+(15, 'Private Message System', 'pms.mypmspro', 'user', 'plug_pms_mypmspro', 1, '', 4, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
+(17, 'CB Articles', 'cbarticles', 'user', 'plug_cbarticles', 1, '', 5, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
+(18, 'CB Forums', 'cbforums', 'user', 'plug_cbforums', 1, '', 6, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
+(19, 'CB Blogs', 'cbblogs', 'user', 'plug_cbblogs', 1, '', 7, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
+(20, 'HikaShop CB Plugin', 'hikashop', 'user', 'plug_hikashopcbplugin', 1, '', 99, 1, 0, 0, 0, '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -820,7 +821,7 @@ CREATE TABLE IF NOT EXISTS `jt_comprofiler_tabs` (
   `position` varchar(255) NOT NULL DEFAULT '',
   `viewaccesslevel` int(10) unsigned NOT NULL DEFAULT '0',
   `cssclass` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `jt_comprofiler_tabs`
@@ -839,7 +840,8 @@ INSERT INTO `jt_comprofiler_tabs` (`tabid`, `title`, `description`, `ordering`, 
 (19, '_UE_PROFILE_PAGE_TITLE', '', 1, 10, '1', 1, 'getPageTitleTab', 1, 1, NULL, 1, 'html', 'canvas_title_middle', 1, NULL),
 (20, '_UE_PORTRAIT', '', 1, 11, '1', 1, 'getPortraitTab', 1, 1, NULL, 1, 'html', 'canvas_photo', 1, NULL),
 (21, '_UE_USER_STATUS', '', 1, 10, '.5', 1, 'getStatusTab', 14, 1, NULL, 1, 'html', 'canvas_main_right', 1, NULL),
-(22, '_UE_PMSTAB', '', 6, 10, '.5', 0, 'getmypmsproTab', 15, 0, NULL, 1, 'menunested', 'canvas_main_middle', 1, NULL);
+(22, '_UE_PMSTAB', '', 6, 10, '.5', 0, 'getmypmsproTab', 15, 0, NULL, 1, 'menunested', 'canvas_main_middle', 1, NULL),
+(23, 'Orders', 'Enables the user to manage his orders made with HikaShop', 99, 12, '.5', 1, 'getHikaShopTab', 20, 0, NULL, 0, '', '', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -1089,7 +1091,7 @@ INSERT INTO `jt_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `full
 (100, 208, 'K2 Support', 'k2-support', '<p>One of hottest features in JSN Metro is extended styles adapted for a very popular Joomla! extension <strong>K2</strong>. Technically extended styles are overrides of default extension&rsquo;s style (images + CSS) and located in folder &ldquo;<strong>/ext/k2&rdquo;</strong> inside template folder.</p>\n<p>Extended style for K2 includes adapted tabs color, additional module styles, fixed alignment issues and some other minor visual enhancement.</p>\n<h3>Component styling</h3>\n<p>Here is how K2 component will look like after extended styles applied.</p>\n<p class="content-center"><img width="600" height="445" src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-style-after.png" /></p>\n<h3>Module styling</h3>\n<p>Besides from extended component styling you can use template module styles for K2 modules as well.</p>\n<div class="grid-layout">\n<div>\n<p class="content-center"><img width="300" height="455" src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-module-content.png" /></p>\n<ul><li>K2 Content Module (mod_k2_content) with module style <strong>box-green jsn-icon-article</strong> applied</li></ul>\n</div>\n<div>\n  <p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/advanced-stuff/extended-styles/ext-k2-module-comment-login.png" width="300" height="580" /></p>\n  <ul>\n    <li>K2 Comments Module (mod_k2_comments) with module style <strong>box-blue jsn-icon-comment</strong> applied</li>\n    <li>K2 Login Module (mod_k2_login) with module style <strong>box-yellow jsn-icon-user</strong> applied </li>\n  </ul>\n</div>\n</div>\n<p class="text-info">The K2 extensions is not included in the template package and you have to download separately at http://www.getk2.org</p>', '', 0, 79, '2011-04-01 04:24:28', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 1, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (101, 209, 'JSN Metro Product Tour', 'jsn-metro-product-tour', '<h3>Easy to start</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-easy-start.jpg" alt="Easy to Start" class="image-border" /></p>\r\n<p>One of the fastest and easiest ways to learn template is to install sample data and start playing with it. JSN Metro provides unique mechanism of <strong>installing sample data directly on your current website</strong>. Just few steps and the demo website is here.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=77&amp;Itemid=484" class="link-button button-light"><span class="link-icon jsn-icon-info">More about easy start</span></a></p>\r\n\r\n\r\n\r\n<h3>Painless Configuration</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-configuration.jpg" alt="Painless Configuration" class="image-border" /></p>\r\n<p>All JoomlaShine templates can be effortlessly configured by template parameters. In template setting page, you will find <strong>40+ template parameters</strong> arranged into logical groups for convenient operation. All parameters are equipped with description text for easier understanding.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=84&amp;Itemid=485" class="link-button button-light"><span class="link-icon jsn-icon-info">More about configuration</span></a></p>\r\n\r\n\r\n\r\n<h3>Flexible layout</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-layout.jpg" alt="Flexible layout" class="image-border" /></p>\r\n<p>JSN Metro provides <strong>36+ module positions </strong>allowing you to have multiple layout configurations. Module positions are designed in smart way to cover all possible spot where you might want to put content. You can specify width of both overall layout and specific columns conveniently via template parameters.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=71&amp;Itemid=466" class="link-button button-light"><span class="link-icon jsn-icon-info">More about layout</span></a></p>\r\n\r\n\r\n<h3>Versatile Menu Styles</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-menu-styles.jpg" alt="Menu Styles" class="image-border" /></p>\r\n<p>JSN Metro provides <strong>3 menu styles</strong> to present your website navigation. The default Joomla! built-in menu module is utilized, so you don''t need to install any external menu modules.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=72&amp;Itemid=468" class="link-button button-light"><span class="link-icon jsn-icon-info">More about menu styles</span></a></p>\r\n\r\n<h3>Native RTL Support</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-rtl-support.jpg" alt="RTL Support" class="image-border" /></p>\r\n<p>All JoomlaShine templates are equipped with <strong>native RTL layout support</strong>. We spent huge amount of time tweaking every tiny details of the template to make it look absolutely awesome in RTL mode. Everything is horizontally-flipped including dropdown main menu and side menu.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=85&amp;Itemid=488" class="link-button button-light"><span class="link-icon jsn-icon-info">More about RTL support</span></a></p>\r\n\r\n\r\n<h3>Cool Image Gallery</h3>\r\n{imageshow sl=1 sc=3 max-width=650 h=400 /}\r\n<p>The image gallery you see on this website is another cool product <strong>JSN ImageShow</strong> from JoomlaShine.com. With transition technology applied, you get smooth experience and consistent performance in all browsers.</p>\r\n<p>For mobile device, we have built special lightweight Javascript version, so you can be absolutely sure about images presentation.</p>\r\n<p class="content-center"><a href="index.php?option=com_content&amp;view=article&amp;id=79&amp;Itemid=487" class="link-button button-light"><span class="link-icon jsn-icon-info">More about image gallery</span></a></p>\r\n\r\n\r\n<h3>Manage Joomla easily</h3>\r\n<p class="content-center"><img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/general/product-tour/slide-poweradmin.jpg" alt="JSN PowerAdmin" class="image-border" /></p>\r\n<p>When you install sample data template, you will have one more powerful  extension to manage your Joomla site: <strong>JSN  PowerAdmin</strong>. It provides <strong>s</strong>potlight  search, giving results as you type. When you find the desired  item, just click it to open the edit page.</p>\r\n	JSN PowerAdmin allows you to have full control under your Joomla website in  single screen. You can manipulate elements by using convenient GUI with  drag-n-drop operations</p>\r\n<p class="content-center"><a href="http://rc.joomlashine.com/demo/joomla-templates/jsn_metro/j25/free/index.php?option=com_content&view=article&id=109&Itemid=994" target="_blank" class="link-button button-light"><span class="link-icon jsn-icon-info">More about JSN PowerAdmin</span></a></p>\r\n\r\n\r\n<h3>Great Docs & Support</h3>\r\n<div style="max-width: 680px; margin: 0px auto; padding: 0 20px 10px; border: 8px solid #EEE; ">\r\n<div class="grid-layout">\r\n<div style="width: 49%; float: left">\r\n<h3>Documentation</h3>\r\n<p>JSN Metro is equipped with very comprehensive documentation package that will help you with template utilization.</p>\r\n<ul>\r\n<li><h4>Configuration Manual</h4>This PDF document gives you detailed description of every template feature. You can print and use this document as a reference every time. You also can watch <a href="http://www.youtube.com/playlist?list=PL068EB32BB584F3F7">our play list JoomlaShine Template Configuration</a>. </li>\r\n<li><h4>Customization Manual</h4>This PDF document gives you easy-to-understand instruction how to customize template elements to make it suites you or your client. You also can watch <a href="http://www.youtube.com/playlist?list=PL0B473CA36B16C3FD">our playlist JoomlaShine Template Customization</a>. </li> \r\n</ul>\r\n</div>\r\n<div style="width: 49%; float: right">\r\n<h3>Support</h3>\r\n<p>When purchasing our products you are backed up with professional and timely support providing via:</p>\r\n<ul>\r\n<li><h4>Support Forum</h4>In the <a href="http://www.joomlashine.com/forum.html">support forum</a> we provide support for everyone who bought the <strong>PRO Edition</strong> of our products. Here you will get support from our support team as well as thousands of active members.</li>\r\n<li><h4>Dedicated Ticket Support</h4><a href="http://www.joomlashine.com/dedicated-support.html">Dedicated Ticket Support</a> is for developers who bought<strong> PRO UNLIMITED Edition </strong>of our products. With ticket support we can investigate the issue in-depth and provide a solution much faster. <strong>12-hour</strong> response time is guaranteed.</p> </li>\r\n</ul>\r\n</div>\r\n</div>\r\n<p class="content-center"><br /><a href="http://www.joomlashine.com/joomla-templates/jsn-metro-docs.zip" class="link-button button-light"><span class="link-icon jsn-icon-download">Download documentation</span></a></p>\r\n</div>', '', 1, 80, '2011-04-01 04:41:44', 42, '', '2013-06-19 10:01:33', 42, 0, '0000-00-00 00:00:00', '2011-04-01 04:41:44', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 34, 3, '', '', 1, 540, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (102, 210, '5 reasons to choose JSN Metro', '5-reasons-to-choose-jsn-metro', '<h3>Beautiful Design</h3>\n<p>JSN Metro has incredibly beautiful clean design with ultra flexible layout built-up from 28 module positions. The combination of 6 colors variation, 5 menu styles and 6 module styles results in a really remarkable website. In addition, super rich typography makes your content look stunning and clear for all users.</p>\n<p><strong>Read more:</strong> <a href="layout.html">Layout</a> - <a href="colors-varitation.html">Colors Variation</a> - <a href="menu-styles.html">Menu Styles</a> - <a href="typography.html">Typography</a> - <a href="modules-styles.html">Module Styles</a> <a href="font-styles.html">Font Styles</a>.</p>\n<h3>Stable Feature Rich Core</h3>\n<p>For us, JSN Metro is not just a template, but whole piece of software for which we spent more then 2 years. As the result you get ultra stable template with native RTL support and flawlessly running on IE6. Even more than that, there are multiple SEO &amp; Accessibility features which make your website greatly visible for both search engines and people with disabilities.</p>\n<p><strong>Read more:</strong> <a href="rtl-support.html">RTL Layout Support</a> - <a href="ie6-support.html">IE6 Support</a> - <a href="seo-accessibility.html">SEO &amp; Accessibility</a> - <a href="flash-gallery.html">Flash Gallery</a>.</p>\n<h3>Dead-easy Configuration</h3>\n<p>You will be surprised how such a capable template can be so easily handled. Majority of template features are conveniently managed by over 40 template parameters. You dont have to be a CSS master or PHP guru. Just set parameters as you want and enjoy the result.</p>\n<p><strong>Read more:</strong> <a href="template-parameters.html">Template Parameters</a>.</p>\n<h3>Outstanding Docs &amp; Support</h3>\n<p>Even when the template is deadly easy to use, we still provide very comprehensive documentation package of 3 PDF documents. So its really hard to get things done wrong, but if even so, you can get timely and professional support from our team as well as friendly community.</p>\n<p><strong>Next Step:</strong> <a href="download-jsn-metro-docs.html">Download template documentation</a> for free.</p>\n<h3>Cost Effective Solution</h3>\n<p>All the benefits is available for you for just 29$. Our ultimate goal is to offer you a solution that in turns must bring you much more profit. Even more, we provide 30-days money back guarantee, so this is absolutely risk-free. Just give it a try and you wont look back.</p>\n<p><strong>Next Step:</strong> <a href="buy-now.html">Download JSN Metro</a>.</p>', '', 1, 80, '2011-04-01 07:17:52', 42, '', '2012-07-16 10:36:08', 43, 0, '0000-00-00 00:00:00', '2011-04-01 07:17:52', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 2, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
-(103, 211, 'Welcome to JSN Metro', 'introducing-jsn-metro', '<div id="jsn-article-demo">\r\n	<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/content-html/demo-image1.jpg" alt="Demo Image"/>\r\n	<div class="demo-caption">\r\n		<h2 class="demo-tilte"><a href="">Welcome to JSN Metro</a></h2>\r\n		<p>JSN Metro is the latest innovation in the Metro legacy. The look itself echoes the visual language of airport and metro system signage as undoubtedly straightforward, making it increasingly popular to both web and mobile user. Its interfaces are supposed to encourage the sense of depth, experiment and usage. </p>\r\n<p>About the design, JSN Metro is color drenched with lots of pop. Its flat color variations deliver superb vignettes, mind-blowing saturation and knockout contrast. </p> \r\n		<a href="index.php?option=com_content&view=article&id=101&Itemid=497" class="readmore">Read more</a>\r\n	</div>\r\n</div>', '', 1, 80, '2011-04-01 07:18:18', 42, '', '2013-06-19 10:39:13', 42, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"1","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 94, 1, '', '', 1, 4376, '{"robots":"","author":"","rights":"","xreference":""}', 1, '*', ''),
+(103, 211, 'Welcome to JSN Metro', 'introducing-jsn-metro', '<div id="jsn-article-demo">\r\n	<img src="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/content-html/demo-image1.jpg" alt="Demo Image"/>\r\n	<div class="demo-caption">\r\n		<h2 class="demo-tilte"><a href="">Welcome to JSN Metro</a></h2>\r\n		<p>JSN Metro is the latest innovation in the Metro legacy. The look itself echoes the visual language of airport and metro system signage as undoubtedly straightforward, making it increasingly popular to both web and mobile user. Its interfaces are supposed to encourage the sense of depth, experiment and usage. </p>\r\n<p>About the design, JSN Metro is color drenched with lots of pop. Its flat color variations deliver superb vignettes, mind-blowing saturation and knockout contrast. </p> \r\n		<a href="index.php?option=com_content&view=article&id=101&Itemid=497" class="readmore">Read more</a>\r\n	</div>\r\n</div>', '', 1, 80, '2011-04-01 07:18:18', 42, '', '2013-06-19 10:39:13', 42, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:18', '0000-00-00 00:00:00', '', '', '{"show_title":"1","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 94, 1, '', '', 1, 4381, '{"robots":"","author":"","rights":"","xreference":""}', 1, '*', ''),
 (104, 212, 'JSN Metro Showcase', 'jsn-metro-showcase', '<p>Here, wed like to show you how JSN Metro can be utilized for multiple kinds of websites, staring from simple personal website ending with professional news portal. All content are fictions and serves for demo purpose only.</p>\n<ul type="disc">\n <li>News Portal / Online magazine</li>\n <li>Personal website / Blog</li>\n <li>Corporate website / Service providers</li>\n <li>Community website / Fan clubs</li>\n <li>Online shops</li>\n</ul>\n<p>Here are some real life examples of JSN Metro.</p>', '', 1, 80, '2011-04-01 07:18:37', 42, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2011-04-01 07:18:37', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (105, 216, 'Main content only (2)', 'main-content-only-2', '<p>Here you can see how content are presented only in main content area. Sometimes, you will need a lot of space to present content and that how it will looks like.</p>\n<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce suscipit dui eu augue faucibus non interdum odio elementum. Praesent faucibus lorem sed massa condimentum in semper lacus aliquet. Aliquam viverra erat a libero accumsan a egestas lorem hendrerit. Donec id elit dolor. Phasellus est ligula, hendrerit id vehicula sit amet, placerat ut diam. Sed eu fringilla lectus. Aliquam augue lorem, suscipit eu consequat vel, viverra id diam. Praesent lectus elit, interdum a imperdiet vitae, cursus at velit. </p>\n<p class="content-center"><a href="http://demo.joomlashine.com/joomla-templates/jsn_metro/free/images/content/template-details/design-features/layout/layout-full.png" target="_blank" class="link-button button-light"><span class="link-icon jsn-icon-info">See all module positions outline</span></a></p>\n', '', -2, 81, '2011-04-01 03:14:14', 42, '', '2011-11-21 04:55:09', 0, 0, '0000-00-00 00:00:00', '2011-04-01 03:14:14', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","alternative_readmore":"","article_layout":""}', 1, 0, '', '', 1, 0, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
 (106, 231, 'Form Builder', 'form-builder', '<p><strong><a href="http://www.joomlashine.com/joomla-extensions/jsn-uniform-details.html">JSN UniForm</a></strong> will bring you the new indulgence since you find out it is the easiest-to-use form extension for your site. Contact us, survey and job application are just some of thousand forms that this single extension can help you to create and control. Besides the intuitive <strong>drag-n-drop operation</strong>, <strong>flexible form presentation</strong> and <strong>multiple pages layout</strong>, JSN UniForm also assists you to deeply understand your collected data with the multiple admins email notification, clean result display or submission filter. </p>\r\n\r\n<p>Below is the survey form created by the <strong>Free Edition</strong> of JSN UniForm. </p>\r\n{uniform form=1/}\r\n<p class="text-info">This extension is NOT included in the template package, but you can download it for free. <a href="http://www.joomlashine.com/joomla-extensions/jsn-uniform-details.html" class="link-action">Read more</a>.</p>', '', 1, 20, '2012-11-09 02:44:31', 42, '', '2013-01-30 04:52:59', 42, 0, '0000-00-00 00:00:00', '2012-11-09 02:44:31', '0000-00-00 00:00:00', '', '', '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 3, 1, '', '', 1, 26, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
@@ -1220,7 +1222,7 @@ CREATE TABLE IF NOT EXISTS `jt_extensions` (
   `checked_out_time` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ordering` int(11) DEFAULT '0',
   `state` int(11) DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=10158 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10159 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_extensions`
@@ -1259,7 +1261,7 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (32, 'com_postinstall', 'component', 'com_postinstall', '', 1, 1, 1, 1, '{"name":"com_postinstall","type":"component","creationDate":"September 2013","author":"Joomla! Project","copyright":"(C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.2.0","description":"COM_POSTINSTALL_XML_DESCRIPTION","group":""}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (101, 'SimplePie', 'library', 'simplepie', '', 0, 1, 1, 1, '{"name":"SimplePie","type":"library","creationDate":"2004","author":"SimplePie","copyright":"Copyright (c) 2004-2009, Ryan Parman and Geoffrey Sneddon","authorEmail":"","authorUrl":"http:\\/\\/simplepie.org\\/","version":"1.2","description":"LIB_SIMPLEPIE_XML_DESCRIPTION","group":"","filename":"simplepie"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (102, 'phputf8', 'library', 'phputf8', '', 0, 1, 1, 1, '{"name":"phputf8","type":"library","creationDate":"2006","author":"Harry Fuecks","copyright":"Copyright various authors","authorEmail":"hfuecks@gmail.com","authorUrl":"http:\\/\\/sourceforge.net\\/projects\\/phputf8","version":"0.5","description":"LIB_PHPUTF8_XML_DESCRIPTION","group":"","filename":"phputf8"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(103, 'Joomla! Platform', 'library', 'joomla', '', 0, 1, 1, 1, '{"name":"Joomla! Platform","type":"library","creationDate":"2008","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"http:\\/\\/www.joomla.org","version":"13.1","description":"LIB_JOOMLA_XML_DESCRIPTION","group":"","filename":"joomla"}', '{"mediaversion":"f9f7a71a101f164634e1dce239646664"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(103, 'Joomla! Platform', 'library', 'joomla', '', 0, 1, 1, 1, '{"name":"Joomla! Platform","type":"library","creationDate":"2008","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2015 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"http:\\/\\/www.joomla.org","version":"13.1","description":"LIB_JOOMLA_XML_DESCRIPTION","group":"","filename":"joomla"}', '{"mediaversion":"829d89edd835b50e029ca20ef2c4df25"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (104, 'IDNA Convert', 'library', 'idna_convert', '', 0, 1, 1, 1, '{"name":"IDNA Convert","type":"library","creationDate":"2004","author":"phlyLabs","copyright":"2004-2011 phlyLabs Berlin, http:\\/\\/phlylabs.de","authorEmail":"phlymail@phlylabs.de","authorUrl":"http:\\/\\/phlylabs.de","version":"0.8.0","description":"LIB_IDNA_XML_DESCRIPTION","group":"","filename":"idna_convert"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (105, 'FOF', 'library', 'fof', '', 0, 1, 1, 1, '{"name":"FOF","type":"library","creationDate":"2015-04-22 13:15:32","author":"Nicholas K. Dionysopoulos \\/ Akeeba Ltd","copyright":"(C)2011-2015 Nicholas K. Dionysopoulos","authorEmail":"nicholas@akeebabackup.com","authorUrl":"https:\\/\\/www.akeebabackup.com","version":"2.4.3","description":"LIB_FOF_XML_DESCRIPTION","group":"","filename":"fof"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (106, 'PHPass', 'library', 'phpass', '', 0, 1, 1, 1, '{"name":"PHPass","type":"library","creationDate":"2004-2006","author":"Solar Designer","copyright":"","authorEmail":"solar@openwall.com","authorUrl":"http:\\/\\/www.openwall.com\\/phpass\\/","version":"0.3","description":"LIB_PHPASS_XML_DESCRIPTION","group":"","filename":"phpass"}', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -1509,15 +1511,15 @@ INSERT INTO `jt_extensions` (`extension_id`, `name`, `type`, `element`, `folder`
 (10146, 'HikaShop Content Module', 'module', 'mod_hikashop', '', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10147, 'HikaShop Cart Module', 'module', 'mod_hikashop_cart', '', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10148, 'HikaShop Currency Switcher Module', 'module', 'mod_hikashop_currency', '', 0, 1, 1, 0, '', '', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10149, 'Community Builder Library', 'library', 'CBLib', '', 0, 1, 1, 0, '{"name":"Community Builder Library","type":"library","creationDate":"2015-09-22","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.11","description":"Community Builder Library","group":"","filename":"CBLib"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10150, 'Community Builder System plugin', 'plugin', 'communitybuilder', 'system', 0, 1, 1, 0, '{"name":"Community Builder System plugin","type":"plugin","creationDate":"2015-09-22","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.11","description":"Community Builder System Plugin for Joomla!","group":"","filename":"communitybuilder"}', '{"redirect_urls":"1","rewrite_urls":"0","return_urls":"1","itemids":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10151, 'comprofiler', 'component', 'com_comprofiler', '', 1, 1, 0, 0, '{"name":"comprofiler","type":"component","creationDate":"2015-09-22","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.11","description":"Community Builder for Joomla!","group":"","filename":"comprofiler"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10152, 'Community Builder Login module', 'module', 'mod_cblogin', '', 0, 1, 0, 0, '{"name":"Community Builder Login module","type":"module","creationDate":"2015-09-22","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved2 License","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.11","description":"Login module to be used with Community Builder instead of the Login module.","group":"","filename":"mod_cblogin"}', '{"show_buttons_icons":"0","https_post":"0","cb_plugins":"0","pretext":"","posttext":"","login":"","name_label":"5","name_length":"14","pass_label":"5","pass_length":"14","key_label":"5","key_length":"14","remember_enabled":"1","show_lostpass":"1","show_newaccount":"1","login_message":"0","logoutpretext":"","logoutposttext":"","logout":"index.php","greeting":"1","show_avatar":"1","text_show_profile":"","icon_show_profile":"0","text_edit_profile":"","icon_edit_profile":"0","show_pms":"0","show_pms_icon":"0","show_connection_notifications":"0","show_connection_notifications_icon":"0","logout_message":"0","layout":"_:bootstrap","cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10153, 'Community Builder Online module', 'module', 'mod_comprofileronline', '', 0, 1, 0, 0, '{"name":"Community Builder Online module","type":"module","creationDate":"2015-09-22","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved2 License","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.11","description":"Displays a list of users logged in with a link to their profile.","group":"","filename":"mod_comprofileronline"}', '{"mode":"1","pretext":"","posttext":"","limit":"30","cb_plugins":"0","custom_field":"username","custom_direction":"ASC","label":"1","separator":",","layout":"_:default","cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10154, 'Community Builder Workflows module', 'module', 'mod_comprofilermoderator', '', 0, 1, 0, 0, '{"name":"Community Builder Workflows module","type":"module","creationDate":"2015-09-22","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved2 License","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.11","description":"Displays Notifications of pending actions for the moderator and connections functionality of Community Builder.","group":"","filename":"mod_comprofilermoderator"}', '{"pretext":"","posttext":"","show_banned":"1","show_image_approval":"1","show_user_reports":"1","show_uban_requests":"1","show_user_approval":"1","show_pms":"1","show_connections":"1","cb_plugins":"0","layout":"_:default","cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10155, 'Community Builder Admin module', 'module', 'mod_cbadmin', '', 1, 1, 2, 0, '{"name":"Community Builder Admin module","type":"module","creationDate":"2015-09-22","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com","version":"2.0.11","description":"Community Builder Admin Module for Joomla!","group":"","filename":"mod_cbadmin"}', '{"mode":"1","menu_cb":"1","menu_cbsubs":"1","menu_cbgj":"1","menu_plugins":"0","feed_entries":"5","feed_duration":"12","modal_display":"1","modal_width":"90%","modal_height":"90vh"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10156, 'Community Builder Package', 'package', 'pkg_communitybuilder', '', 0, 1, 1, 0, '{"name":"Community Builder Package","type":"package","creationDate":"2015-09-22","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.11","description":"Community Builder 2.0.11","group":"","filename":"pkg_communitybuilder"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10157, 'System - CB Core Redirect', 'plugin', 'cbcoreredirect', 'system', 0, 0, 1, 0, '{"name":"System - CB Core Redirect","type":"plugin","creationDate":"2012-04-02","author":"Kyle (aka Krileon)","copyright":"(C) 2008-2012 Joomlapolis","authorEmail":"krileon@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com","version":"1.0.0","description":"Automatically redirects from Joomla core user pages (Login, Registration, Forgot Login) to CBs user pages.","group":"","filename":"cbcoreredirect"}', '{"rewrite_urls":"1","itemids":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(10150, 'Community Builder System plugin', 'plugin', 'communitybuilder', 'system', 0, 1, 1, 0, '{"name":"Community Builder System plugin","type":"plugin","creationDate":"2015-11-02","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.12","description":"Community Builder System Plugin for Joomla!","group":"","filename":"communitybuilder"}', '{"redirect_urls":"1","rewrite_urls":"0","return_urls":"1","itemids":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10151, 'comprofiler', 'component', 'com_comprofiler', '', 1, 1, 0, 0, '{"name":"comprofiler","type":"component","creationDate":"2015-11-02","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.12","description":"Community Builder for Joomla!","group":"","filename":"comprofiler"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10152, 'Community Builder Login module', 'module', 'mod_cblogin', '', 0, 1, 0, 0, '{"name":"Community Builder Login module","type":"module","creationDate":"2015-11-02","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved2 License","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.12","description":"Login module to be used with Community Builder instead of the Login module.","group":"","filename":"mod_cblogin"}', '{"show_buttons_icons":"0","https_post":"0","cb_plugins":"0","pretext":"","posttext":"","login":"","name_label":"5","name_length":"14","pass_label":"5","pass_length":"14","key_label":"5","key_length":"14","remember_enabled":"1","show_lostpass":"1","show_newaccount":"1","login_message":"0","logoutpretext":"","logoutposttext":"","logout":"index.php","greeting":"1","show_avatar":"1","text_show_profile":"","icon_show_profile":"0","text_edit_profile":"","icon_edit_profile":"0","show_pms":"0","show_pms_icon":"0","show_connection_notifications":"0","show_connection_notifications_icon":"0","logout_message":"0","layout":"_:bootstrap","cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10153, 'Community Builder Online module', 'module', 'mod_comprofileronline', '', 0, 1, 0, 0, '{"name":"Community Builder Online module","type":"module","creationDate":"2015-11-02","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved2 License","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.12","description":"Displays a list of users logged in with a link to their profile.","group":"","filename":"mod_comprofileronline"}', '{"mode":"1","pretext":"","posttext":"","limit":"30","cb_plugins":"0","custom_field":"username","custom_direction":"ASC","label":"1","separator":",","layout":"_:default","cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10154, 'Community Builder Workflows module', 'module', 'mod_comprofilermoderator', '', 0, 1, 0, 0, '{"name":"Community Builder Workflows module","type":"module","creationDate":"2015-11-02","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved2 License","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.12","description":"Displays Notifications of pending actions for the moderator and connections functionality of Community Builder.","group":"","filename":"mod_comprofilermoderator"}', '{"pretext":"","posttext":"","show_banned":"1","show_image_approval":"1","show_user_reports":"1","show_uban_requests":"1","show_user_approval":"1","show_pms":"1","show_connections":"1","cb_plugins":"0","layout":"_:default","cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10155, 'Community Builder Admin module', 'module', 'mod_cbadmin', '', 1, 1, 2, 0, '{"name":"Community Builder Admin module","type":"module","creationDate":"2015-11-02","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com","version":"2.0.12","description":"Community Builder Admin Module for Joomla!","group":"","filename":"mod_cbadmin"}', '{"mode":"1","menu_cb":"1","menu_cbsubs":"1","menu_cbgj":"1","menu_plugins":"0","feed_entries":"5","feed_duration":"12","modal_display":"1","modal_width":"90%","modal_height":"90vh"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10156, 'Community Builder Package', 'package', 'pkg_communitybuilder', '', 0, 1, 1, 0, '{"name":"Community Builder Package","type":"package","creationDate":"2015-11-02","author":"CB Team","copyright":"Copyright (C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.12","description":"Community Builder 2.0.12","group":"","filename":"pkg_communitybuilder"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10157, 'System - CB Core Redirect', 'plugin', 'cbcoreredirect', 'system', 0, 0, 1, 0, '{"name":"System - CB Core Redirect","type":"plugin","creationDate":"2012-04-02","author":"Kyle (aka Krileon)","copyright":"(C) 2008-2012 Joomlapolis","authorEmail":"krileon@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com","version":"1.0.0","description":"Automatically redirects from Joomla core user pages (Login, Registration, Forgot Login) to CBs user pages.","group":"","filename":"cbcoreredirect"}', '{"rewrite_urls":"1","itemids":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10158, 'Community Builder Library', 'library', 'CBLib', '', 0, 1, 1, 0, '{"name":"Community Builder Library","type":"library","creationDate":"2015-11-02","author":"CB Team","copyright":"(C) 2004-2015 www.joomlapolis.com \\/ Lightning MultiCom SA - and its licensors, all rights reserved","authorEmail":"cbteam@joomlapolis.com","authorUrl":"http:\\/\\/www.joomlapolis.com\\/","version":"2.0.12","description":"Community Builder Library","group":"","filename":"CBLib"}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -2019,7 +2021,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_address` (
   `address_published` tinyint(4) NOT NULL DEFAULT '1',
   `address_vat` varchar(255) DEFAULT NULL,
   `address_default` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_address`
@@ -2027,8 +2029,9 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_address` (
 
 INSERT INTO `jt_hikashop_address` (`address_id`, `address_user_id`, `address_title`, `address_firstname`, `address_middle_name`, `address_lastname`, `address_company`, `address_street`, `address_street2`, `address_post_code`, `address_city`, `address_telephone`, `address_telephone2`, `address_fax`, `address_state`, `address_country`, `address_published`, `address_vat`, `address_default`) VALUES
 (3, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1),
-(6, 2, 'Mr', 'albert', NULL, 'landayan', NULL, '41, Phase 2', 'United Glorietta Subdivision, Caniogan', '1606', 'pasig', '09165542324', NULL, NULL, 'state_NationalCapitalRegion_12851', 'country_Philippines_168', 1, NULL, 1),
-(5, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1);
+(6, 2, 'Mr', 'albert', NULL, 'landayan', NULL, '41, Phase 2', 'United Glorietta Subdivision, Caniogan', '1606', 'pasig', '09165542324', NULL, NULL, 'state_NationalCapitalRegion_12851', 'country_Philippines_168', 0, NULL, 0),
+(5, 0, NULL, NULL, NULL, NULL, NULL, NULL, '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, 1),
+(7, 2, 'Mr', 'albert', NULL, 'landayan', NULL, 'asdasd', 'asdasd', '1606', 'pasig', '09165542324', NULL, NULL, 'state_NationalCapitalRegion_12851', 'country_Philippines_168', 1, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -2091,7 +2094,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_cart` (
   `cart_share` varchar(255) NOT NULL DEFAULT 'nobody',
   `cart_name` varchar(50) NOT NULL DEFAULT '',
   `cart_params` text NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_cart`
@@ -2100,7 +2103,9 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_cart` (
 INSERT INTO `jt_hikashop_cart` (`cart_id`, `user_id`, `session_id`, `cart_modified`, `cart_coupon`, `cart_type`, `cart_current`, `cart_share`, `cart_name`, `cart_params`) VALUES
 (1, 0, 'odigmlb2u3th1nn32otbetsbd3', 1446469523, '', 'cart', 0, 'nobody', '', ''),
 (12, 0, 'r6efanqjh4rp2l6ohmuqua0k66', 1447555282, '', 'cart', 0, 'nobody', '', ''),
-(13, 0, 'a899bkbp2oik7vhs58eailgkc4', 1448000871, '', 'cart', 0, 'nobody', '', '');
+(13, 0, 'a899bkbp2oik7vhs58eailgkc4', 1448000871, '', 'cart', 0, 'nobody', '', ''),
+(14, 0, 'h3m8reukmiqfq0ga7ho6bhj634', 1448015891, '', 'cart', 0, 'nobody', '', ''),
+(15, 327, 'a2sst4oco7padbeshbpgh7bho5', 1448016238, '', 'cart', 0, 'nobody', '', '');
 
 -- --------------------------------------------------------
 
@@ -2117,7 +2122,7 @@ CREATE TABLE IF NOT EXISTS `jt_hikashop_cart_product` (
   `cart_product_modified` int(10) unsigned NOT NULL DEFAULT '0',
   `cart_product_option_parent_id` int(10) unsigned DEFAULT '0',
   `cart_product_wishlist_id` int(11) NOT NULL DEFAULT '0'
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_hikashop_cart_product`
@@ -2128,7 +2133,9 @@ INSERT INTO `jt_hikashop_cart_product` (`cart_product_id`, `cart_id`, `product_i
 (15, 12, 1, 1, 0, 1447555007, 0, 0),
 (16, 12, 2, 1, 0, 1447555275, 0, 0),
 (17, 12, 10, 1, 0, 1447555282, 0, 0),
-(18, 13, 2, 1, 0, 1448000871, 0, 0);
+(18, 13, 2, 1, 0, 1448000871, 0, 0),
+(19, 14, 3, 1, 0, 1448015891, 0, 0),
+(20, 15, 3, 1, 0, 1448015898, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -12870,7 +12877,7 @@ INSERT INTO `jt_jsn_poweradmin_history` (`id`, `user_id`, `object_key`, `object_
 (7, 326, 'option=com_menus&view=item&layout=edit', 468, '', '', '', 'Menu Styles', '', '', '', 'option=com_menus&view=item&layout=edit&id=468', '', '', 0, 1446278758),
 (8, 326, 'option=com_menus&view=item&layout=edit', 1989, '', '', '', 'Login', '', '', '', 'option=com_menus&view=item&layout=edit&id=1989', '', '', 1, 1446281471),
 (9, 326, 'option=com_menus&view=item&layout=edit', 1979, '', '', '', 'CB Registration', '', '', '', 'option=com_menus&view=item&layout=edit&id=1979', '', '', 0, 1446285095),
-(10, 326, 'option=com_comprofiler&view=editrow&task=editrow', 2, '', '', '', 'CB Connections', '', '', '', 'option=com_comprofiler&view=editrow&table=pluginsbrowser&action=editrow&cid=2&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dQbHVnaW5zJnRhc2s9c2hvd1BsdWdpbnM%3D', '', '', 0, 1446283094),
+(10, 326, 'option=com_comprofiler&view=editrow&task=editrow', 2, '', '', '', 'CB Connections', '', '', '', 'option=com_comprofiler&view=editrow&table=pluginsbrowser&cid=2&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dQbHVnaW5zJnRhc2s9c2hvd1BsdWdpbnM=', '', '', 0, 1448016518),
 (11, 326, 'option=com_comprofiler&view=editrow&task=editrow', 7, '', '', '', 'Default', '', '', '', 'option=com_comprofiler&view=editrow&table=pluginsbrowser&action=editrow&cid=7&cbprevstate=b3B0aW9uPWNvbV9jb21wcm9maWxlciZ2aWV3PXNob3dQbHVnaW5zJnRhc2s9c2hvd1BsdWdpbnM%3D', '', '', 0, 1446283486),
 (12, 326, 'option=com_menus&view=item&layout=edit', 1990, '', '', '', 'bannerad', '', '', '', 'option=com_menus&view=item&layout=edit&id=1990', '', '', 0, 1446287342),
 (13, 326, 'option=com_modules&view=module&layout=edit', 314, '', '', '', 'bannerad', '', '', '', 'option=com_modules&view=module&layout=edit&id=314', '', '', 0, 1446287926),
@@ -13236,14 +13243,14 @@ CREATE TABLE IF NOT EXISTS `jt_menu` (
   `home` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT 'Indicates if this menu item is the home or default page.',
   `language` char(7) NOT NULL DEFAULT '',
   `client_id` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=1996 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2005 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `jt_menu`
 --
 
 INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 329, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 347, 0, '*', 0),
 (435, 'mainmenu', 'Home', 'home', '', 'home', 'index.php?option=com_content&view=article&id=103', 'component', 1, 1, 1, 22, 326, '2015-10-31 06:30:44', 0, 1, ' ', 0, '{"show_title":"0","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"0","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"0","show_email_icon":"0","show_hits":"","show_tags":"","show_noauth":"","urls_position":"","menu-anchor_title":"Start here","menu-anchor_css":"jsn-icon-home","menu_image":"","menu_text":1,"page_title":"Home","show_page_heading":"0","page_heading":"","pageclass_sfx":"custom-rightwidth-35","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 1, 2, 1, '*', 0),
 (465, 'mainmenu', 'Design', 'design-and-features', '', 'design-and-features', 'index.php?option=com_content&view=article&id=70', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"Eye-Catching","menu-anchor_css":"jsn-icon-image","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 17, 42, 0, '*', 0),
 (466, 'mainmenu', 'Layout', 'layoutt', '', 'layoutt', 'index.php?option=com_content&view=article&id=71', 'component', 0, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"show_title":"","link_titles":"","show_intro":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_noauth":"","urls_position":"","menu-anchor_title":"36 positions","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 3, 16, 0, '*', 0),
@@ -13393,35 +13400,35 @@ INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link
 (1965, 'menu', 'Discounts', 'Discounts', '', 'hikashop/Discounts', 'index.php?option=com_hikashop&ctrl=discount', 'component', 0, 1959, 2, 10045, 0, '0000-00-00 00:00:00', 0, NULL, './templates/bluestork/images/menu/icon-16-default.png', 0, '', 290, 291, 0, '*', 1),
 (1966, 'menu', 'Help', 'Help', '', 'hikashop/Help', 'index.php?option=com_hikashop&ctrl=documentation', 'component', 0, 1959, 2, 10045, 0, '0000-00-00 00:00:00', 0, NULL, './templates/bluestork/images/menu/icon-16-help.png', 0, '', 292, 293, 0, '*', 1),
 (1967, 'menu', 'Update / About', 'Update / About', '', 'hikashop/Update / About', 'index.php?option=com_hikashop&ctrl=update', 'component', 0, 1959, 2, 10045, 0, '0000-00-00 00:00:00', 0, NULL, './templates/bluestork/images/menu/icon-16-help-jrd.png', 0, '', 294, 295, 0, '*', 1),
-(1968, 'main', 'COM_COMPROFILER', 'com-comprofiler', '', 'com-comprofiler', 'index.php?option=com_comprofiler', 'component', 0, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, '../components/com_comprofiler/images/icon-16-cb.png', 0, '{}', 297, 314, 0, '', 1),
-(1969, 'main', 'COM_COMPROFILER_CONTROLPANEL', 'com-comprofiler-controlpanel', '', 'com-comprofiler/com-comprofiler-controlpanel', 'index.php?option=com_comprofiler', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:cpanel', 0, '{}', 298, 299, 0, '', 1),
-(1970, 'main', 'COM_COMPROFILER_SHOWUSERS', 'com-comprofiler-showusers', '', 'com-comprofiler/com-comprofiler-showusers', 'index.php?option=com_comprofiler&task=showusers&view=showusers', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:user', 0, '{}', 300, 301, 0, '', 1),
-(1971, 'main', 'COM_COMPROFILER_SHOWTAB', 'com-comprofiler-showtab', '', 'com-comprofiler/com-comprofiler-showtab', 'index.php?option=com_comprofiler&task=showTab&view=showTab', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:themes', 0, '{}', 302, 303, 0, '', 1),
-(1972, 'main', 'COM_COMPROFILER_SHOWFIELD', 'com-comprofiler-showfield', '', 'com-comprofiler/com-comprofiler-showfield', 'index.php?option=com_comprofiler&task=showField&view=showField', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:content', 0, '{}', 304, 305, 0, '', 1),
-(1973, 'main', 'COM_COMPROFILER_SHOWLISTS', 'com-comprofiler-showlists', '', 'com-comprofiler/com-comprofiler-showlists', 'index.php?option=com_comprofiler&task=showLists&view=showLists', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:search', 0, '{}', 306, 307, 0, '', 1),
-(1974, 'main', 'COM_COMPROFILER_SHOWPLUGINS', 'com-comprofiler-showplugins', '', 'com-comprofiler/com-comprofiler-showplugins', 'index.php?option=com_comprofiler&task=showPlugins&view=showPlugins', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:plugin', 0, '{}', 308, 309, 0, '', 1),
-(1975, 'main', 'COM_COMPROFILER_TOOLS', 'com-comprofiler-tools', '', 'com-comprofiler/com-comprofiler-tools', 'index.php?option=com_comprofiler&task=tools&view=tools', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:maintenance', 0, '{}', 310, 311, 0, '', 1),
-(1976, 'main', 'COM_COMPROFILER_SHOWCONFIG', 'com-comprofiler-showconfig', '', 'com-comprofiler/com-comprofiler-showconfig', 'index.php?option=com_comprofiler&task=showconfig&view=showconfig', 'component', 0, 1968, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:config', 0, '{}', 312, 313, 0, '', 1),
-(1977, 'communitybuilder', 'CB Profile', 'cb-profile', '', 'cb-profile', 'index.php?option=com_comprofiler&view=userprofile', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 352, 353, 0, '*', 0),
-(1978, 'communitybuilder', 'CB Profile Edit', 'cb-profile-edit', '', 'cb-profile-edit', 'index.php?option=com_comprofiler&view=userdetails', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 350, 351, 0, '*', 0),
-(1979, 'communitybuilder', 'CB Registration', 'cb-registration', '', 'cb-registration', 'index.php?option=com_comprofiler&view=registers', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 348, 349, 0, '*', 0),
-(1980, 'communitybuilder', 'CB Login', 'cb-login', '', 'cb-login', 'index.php?option=com_comprofiler&view=login', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 346, 347, 0, '*', 0),
-(1981, 'communitybuilder', 'CB Logout', 'cb-logout', '', 'cb-logout', 'index.php?option=com_comprofiler&view=logout', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 344, 345, 0, '*', 0),
-(1982, 'communitybuilder', 'CB Forgot Login', 'cb-forgot-login', '', 'cb-forgot-login', 'index.php?option=com_comprofiler&view=lostpassword', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 342, 343, 0, '*', 0),
-(1983, 'communitybuilder', 'CB Userlist', 'cb-userlist', '', 'cb-userlist', 'index.php?option=com_comprofiler&view=userslist', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 340, 341, 0, '*', 0),
-(1984, 'communitybuilder', 'CB Manage Connections', 'cb-manage-connections', '', 'cb-manage-connections', 'index.php?option=com_comprofiler&view=manageconnections', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 338, 339, 0, '*', 0),
-(1985, 'communitybuilder', 'CB Moderate Bans', 'cb-moderate-bans', '', 'cb-moderate-bans', 'index.php?option=com_comprofiler&view=moderatebans', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 336, 337, 0, '*', 0),
-(1986, 'communitybuilder', 'CB Moderate Images', 'cb-moderate-images', '', 'cb-moderate-images', 'index.php?option=com_comprofiler&view=moderateimages', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 334, 335, 0, '*', 0),
-(1987, 'communitybuilder', 'CB Moderate Reports', 'cb-moderate-reports', '', 'cb-moderate-reports', 'index.php?option=com_comprofiler&view=moderatereports', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 332, 333, 0, '*', 0),
-(1988, 'communitybuilder', 'CB Moderate User Approvals', 'cb-moderate-user-approvals', '', 'cb-moderate-user-approvals', 'index.php?option=com_comprofiler&view=pendingapprovaluser', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 330, 331, 0, '*', 0),
+(1977, 'communitybuilder', 'CB Profile', 'cb-profile', '', 'cb-profile', 'index.php?option=com_comprofiler&view=userprofile', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 370, 371, 0, '*', 0),
+(1978, 'communitybuilder', 'CB Profile Edit', 'cb-profile-edit', '', 'cb-profile-edit', 'index.php?option=com_comprofiler&view=userdetails', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 368, 369, 0, '*', 0),
+(1979, 'communitybuilder', 'CB Registration', 'cb-registration', '', 'cb-registration', 'index.php?option=com_comprofiler&view=registers', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 366, 367, 0, '*', 0),
+(1980, 'communitybuilder', 'CB Login', 'cb-login', '', 'cb-login', 'index.php?option=com_comprofiler&view=login', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 364, 365, 0, '*', 0),
+(1981, 'communitybuilder', 'CB Logout', 'cb-logout', '', 'cb-logout', 'index.php?option=com_comprofiler&view=logout', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 362, 363, 0, '*', 0),
+(1982, 'communitybuilder', 'CB Forgot Login', 'cb-forgot-login', '', 'cb-forgot-login', 'index.php?option=com_comprofiler&view=lostpassword', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 360, 361, 0, '*', 0),
+(1983, 'communitybuilder', 'CB Userlist', 'cb-userlist', '', 'cb-userlist', 'index.php?option=com_comprofiler&view=userslist', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 358, 359, 0, '*', 0),
+(1984, 'communitybuilder', 'CB Manage Connections', 'cb-manage-connections', '', 'cb-manage-connections', 'index.php?option=com_comprofiler&view=manageconnections', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 356, 357, 0, '*', 0),
+(1985, 'communitybuilder', 'CB Moderate Bans', 'cb-moderate-bans', '', 'cb-moderate-bans', 'index.php?option=com_comprofiler&view=moderatebans', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 354, 355, 0, '*', 0),
+(1986, 'communitybuilder', 'CB Moderate Images', 'cb-moderate-images', '', 'cb-moderate-images', 'index.php?option=com_comprofiler&view=moderateimages', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 352, 353, 0, '*', 0),
+(1987, 'communitybuilder', 'CB Moderate Reports', 'cb-moderate-reports', '', 'cb-moderate-reports', 'index.php?option=com_comprofiler&view=moderatereports', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 350, 351, 0, '*', 0),
+(1988, 'communitybuilder', 'CB Moderate User Approvals', 'cb-moderate-user-approvals', '', 'cb-moderate-user-approvals', 'index.php?option=com_comprofiler&view=pendingapprovaluser', 'component', 1, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{}', 348, 349, 0, '*', 0),
 (1989, 'mainmenu', 'Login', 'login', '', 'login', 'index.php?option=com_comprofiler&view=login', 'component', -2, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 315, 316, 0, '*', 0),
 (1990, 'mainmenu', 'bannerad', 'bannerad', '', 'bannerad', 'index.php?option=com_imageshow&view=show&showlist_id=4&showcase_id=10&w=80%&h=25&jsnisid=1446287221', 'component', 0, 1, 1, 10012, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 317, 318, 0, '*', 0),
 (1991, 'mainmenu', 'News', 'news', '', 'news', 'index.php?option=com_content&view=category&layout=blog&id=86', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"layout_type":"blog","show_category_heading_title_text":"","show_category_title":"","show_description":"","show_description_image":"","maxLevel":"","show_empty_categories":"","show_no_articles":"","show_subcat_desc":"","show_cat_num_articles":"","show_cat_tags":"","page_subheading":"","num_leading_articles":"","num_intro_articles":"","num_columns":"","num_links":"","multi_column_order":"","show_subcategory_content":"","orderby_pri":"","orderby_sec":"alpha","order_date":"created","show_pagination":"","show_pagination_results":"","show_featured":"","show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"0","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_vote":"","show_readmore":"","show_readmore_title":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_hits":"","show_tags":"","show_noauth":"","show_feed_link":"","feed_summary":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 319, 320, 0, '*', 0),
 (1992, 'hikashop_default', 'All Products', 'all-products', '', 'all-products', 'index.php?option=com_hikashop&view=product&layout=listing', 'component', -2, 1, 1, 10045, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"hk_product":{"layout_type":"div","columns":"3","rows":"7","limit":"20","div_item_layout_type":"inherit","image_width":"","image_height":"","pane_height":"","text_center":"-1","background_color":"","margin":"","border_visible":"-1","rounded_corners":"-1","ul_class_name":"","show_image":"0","show_description":"0","category":"2","product_order":"inherit","order_dir":"inherit","random":"-1","filter_type":"0","use_module_name":"0","show_out_of_stock":"-1","recently_viewed":"-1","link_to_product_page":"-1","show_price":"-1","price_display_type":"inherit","price_with_tax":"3","show_original_price":"-1","show_discount":"3","add_to_cart":"-1","show_quantity_field":"-1","show_vote_product":"-1","display_badges":"-1"},"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 321, 322, 0, '*', 0),
-(1993, 'mainmenu', 'User Panel', 'user-panel', '', 'user-panel', 'index.php?option=com_hikashop&view=user&layout=cpanel', 'component', 1, 1, 1, 10045, 326, '2015-11-06 01:17:59', 0, 2, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 323, 324, 0, '*', 0);
-INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
+(1993, 'mainmenu', 'User Panel', 'user-panel', '', 'user-panel', 'index.php?option=com_hikashop&view=user&layout=cpanel', 'component', 1, 1, 1, 10045, 326, '2015-11-06 01:17:59', 0, 2, ' ', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 323, 324, 0, '*', 0),
 (1994, 'mainmenu', 'Contact Us', 'contact-us', '', 'contact-us', 'index.php?option=com_contact&view=contact&id=10', 'component', 1, 1, 1, 8, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"presentation_style":"","show_contact_category":"","show_contact_list":"","show_tags":"","show_name":"","show_position":"","show_email":"","show_street_address":"","show_suburb":"","show_state":"","show_postcode":"","show_country":"","show_telephone":"","show_mobile":"","show_fax":"","show_webpage":"","show_misc":"","show_image":"","allow_vcard":"","show_articles":"","articles_display_num":"","show_links":"","linka_name":"","linkb_name":"","linkc_name":"","linkd_name":"","linke_name":"","show_email_form":"","show_email_copy":"","banned_email":"","banned_subject":"","banned_text":"","validate_session":"","custom_reply":"","redirect":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 325, 326, 0, '*', 0),
-(1995, 'mainmenu', 'Create News Article', 'create-news-article', '', 'create-news-article', 'index.php?option=com_content&view=form&layout=edit', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"enable_category":"0","catid":"86","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 327, 328, 0, '*', 0);
+(1995, 'mainmenu', 'Create News Article', 'create-news-article', '', 'create-news-article', 'index.php?option=com_content&view=form&layout=edit', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 1, ' ', 0, '{"enable_category":"0","catid":"86","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":"","page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 327, 328, 0, '*', 0),
+(1996, 'main', 'COM_COMPROFILER', 'com-comprofiler', '', 'com-comprofiler', 'index.php?option=com_comprofiler', 'component', 0, 1, 1, 10151, 0, '0000-00-00 00:00:00', 0, 1, '../components/com_comprofiler/images/icon-16-cb.png', 0, '{}', 329, 346, 0, '', 1),
+(1997, 'main', 'COM_COMPROFILER_CONTROLPANEL', 'com-comprofiler-controlpanel', '', 'com-comprofiler/com-comprofiler-controlpanel', 'index.php?option=com_comprofiler', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:cpanel', 0, '{}', 330, 331, 0, '', 1),
+(1998, 'main', 'COM_COMPROFILER_SHOWUSERS', 'com-comprofiler-showusers', '', 'com-comprofiler/com-comprofiler-showusers', 'index.php?option=com_comprofiler&task=showusers&view=showusers', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:user', 0, '{}', 332, 333, 0, '', 1),
+(1999, 'main', 'COM_COMPROFILER_SHOWTAB', 'com-comprofiler-showtab', '', 'com-comprofiler/com-comprofiler-showtab', 'index.php?option=com_comprofiler&task=showTab&view=showTab', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:themes', 0, '{}', 334, 335, 0, '', 1);
+INSERT INTO `jt_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
+(2000, 'main', 'COM_COMPROFILER_SHOWFIELD', 'com-comprofiler-showfield', '', 'com-comprofiler/com-comprofiler-showfield', 'index.php?option=com_comprofiler&task=showField&view=showField', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:content', 0, '{}', 336, 337, 0, '', 1),
+(2001, 'main', 'COM_COMPROFILER_SHOWLISTS', 'com-comprofiler-showlists', '', 'com-comprofiler/com-comprofiler-showlists', 'index.php?option=com_comprofiler&task=showLists&view=showLists', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:search', 0, '{}', 338, 339, 0, '', 1),
+(2002, 'main', 'COM_COMPROFILER_SHOWPLUGINS', 'com-comprofiler-showplugins', '', 'com-comprofiler/com-comprofiler-showplugins', 'index.php?option=com_comprofiler&task=showPlugins&view=showPlugins', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:plugin', 0, '{}', 340, 341, 0, '', 1),
+(2003, 'main', 'COM_COMPROFILER_TOOLS', 'com-comprofiler-tools', '', 'com-comprofiler/com-comprofiler-tools', 'index.php?option=com_comprofiler&task=tools&view=tools', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:maintenance', 0, '{}', 342, 343, 0, '', 1),
+(2004, 'main', 'COM_COMPROFILER_SHOWCONFIG', 'com-comprofiler-showconfig', '', 'com-comprofiler/com-comprofiler-showconfig', 'index.php?option=com_comprofiler&task=showconfig&view=showconfig', 'component', 0, 1996, 2, 10151, 0, '0000-00-00 00:00:00', 0, 1, 'class:config', 0, '{}', 344, 345, 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -14750,8 +14757,9 @@ CREATE TABLE IF NOT EXISTS `jt_session` (
 --
 
 INSERT INTO `jt_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('a899bkbp2oik7vhs58eailgkc4', 0, 1, '1448011640', '__default|a:7:{s:15:"session.counter";i:24;s:19:"session.timer.start";i:1448008537;s:18:"session.timer.last";i:1448011346;s:17:"session.timer.now";i:1448011640;s:22:"session.client.browser";s:108:"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":26:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:1:"9";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:12:"requireReset";N;s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:9;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:5;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}}', 0, ''),
-('d2fjeun0g2ijmssce4k6e6mtr4', 1, 0, '1448012006', '__default|a:9:{s:15:"session.counter";i:57;s:19:"session.timer.start";i:1448008503;s:18:"session.timer.last";i:1448011974;s:17:"session.timer.now";i:1448011984;s:22:"session.client.browser";s:108:"Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":2:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:13:"com_installer";O:8:"stdClass":2:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"326";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:22:"adriandean12@gmail.com";s:8:"password";s:60:"$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2015-10-31 06:00:43";s:13:"lastvisitDate";s:19:"2015-11-20 06:36:09";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"1fa251b6c98284281f4881caa60af5ef";s:32:"bbb8e9aa1a04562182b36554bddb9a63";s:101:"{"queryString":"option=com_imageshow&controller=showcase&task=edit&cid[]=10&theme=","object_id":"10"}";}', 326, 'admin');
+('a2sst4oco7padbeshbpgh7bho5', 0, 0, '1448017197', '__default|a:8:{s:15:"session.counter";i:40;s:19:"session.timer.start";i:1448015524;s:18:"session.timer.last";i:1448017192;s:17:"session.timer.now";i:1448017196;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:12:"com_hikashop";O:8:"stdClass":14:{s:16:"shipping_address";s:1:"7";s:15:"billing_address";s:1:"7";s:7:"zone_id";s:4:"4568";s:12:"ssl_redirect";i:0;s:7:"user_id";i:2;s:7:"cart_id";i:15;s:15:"popup_cart_type";s:4:"cart";s:14:"shipping_cache";O:8:"stdClass":1:{s:14:"usable_methods";a:6:{s:40:"080701b6a313720ffb95e2e6d61f0d4ca53544af";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"c21a8b33e2ed681301322d152570ee8d1714865a";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"3abc35bcdba285df3a8101c315c17f8a48891ec0";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"0d4ae6e6b3e65a6e6419cd895d0d102ab50b697d";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"9a840a05fdbd1c2e1229fad7dccb9ff82b095560";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}s:40:"4c85ec4d7b12d1f133c8b44b609a84b1699693d1";a:1:{s:6:"manual";a:2:{i:0;a:2:{i:3;O:8:"stdClass":18:{s:11:"shipping_id";s:1:"3";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:5:"Fedex";s:20:"shipping_description";s:22:"<p>Ship Thru Fedex</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"1";s:17:"shipping_currency";s:0:"";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:5:"fedex";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;s:23:"shipping_price_with_tax";s:9:"250.00000";s:28:"shipping_price_orig_with_tax";N;}i:4;O:8:"stdClass":16:{s:11:"shipping_id";s:1:"4";s:13:"shipping_type";s:6:"manual";s:21:"shipping_zone_namekey";s:23:"country_Philippines_168";s:15:"shipping_tax_id";s:1:"0";s:14:"shipping_price";s:9:"250.00000";s:20:"shipping_currency_id";s:3:"123";s:13:"shipping_name";s:3:"UPS";s:20:"shipping_description";s:20:"<p>Ship Thru UPS</p>";s:18:"shipping_published";s:1:"1";s:17:"shipping_ordering";s:1:"2";s:17:"shipping_currency";s:5:",123,";s:15:"shipping_params";O:8:"stdClass":24:{s:19:"shipping_percentage";s:1:"0";s:20:"shipping_per_product";s:1:"0";s:26:"shipping_price_per_product";s:0:"";s:25:"shipping_override_address";s:1:"0";s:30:"shipping_override_address_text";s:0:"";s:17:"override_tax_zone";s:0:"";s:25:"shipping_warehouse_filter";s:0:"";s:18:"shipping_min_price";s:1:"0";s:18:"shipping_max_price";s:1:"0";s:25:"shipping_virtual_included";s:1:"1";s:22:"shipping_price_use_tax";s:1:"1";s:21:"shipping_min_quantity";s:0:"";s:21:"shipping_max_quantity";s:0:"";s:19:"shipping_min_weight";s:1:"0";s:20:"shipping_weight_unit";s:2:"kg";s:19:"shipping_max_weight";s:2:"50";s:19:"shipping_min_volume";s:1:"0";s:18:"shipping_size_unit";s:1:"m";s:19:"shipping_max_volume";s:1:"0";s:19:"shipping_zip_prefix";s:0:"";s:16:"shipping_min_zip";s:0:"";s:16:"shipping_max_zip";s:0:"";s:19:"shipping_zip_suffix";s:0:"";s:24:"shipping_max_weight_orig";s:2:"50";}s:15:"shipping_images";s:3:"ups";s:15:"shipping_access";s:3:"all";s:11:"shippingkey";s:1:"0";s:21:"shipping_warehouse_id";i:0;}}i:1;a:0:{}}}}}s:15:"shipping_method";a:1:{i:0;s:8:"manual@0";}s:11:"shipping_id";a:1:{i:0;s:3:"3@0";}s:13:"shipping_data";a:1:{i:0;r:462;}s:14:"payment_method";s:12:"banktransfer";s:10:"payment_id";s:1:"1";s:12:"payment_data";O:8:"stdClass":34:{s:10:"payment_id";s:1:"1";s:12:"payment_name";s:13:"Bank transfer";s:19:"payment_description";s:49:"<p>You can pay by sending us a bank transfer.</p>";s:14:"payment_images";s:13:"Bank_transfer";s:14:"payment_params";O:8:"stdClass":23:{s:16:"payment_currency";s:3:"123";s:18:"payment_percentage";s:1:"0";s:14:"payment_tax_id";s:0:"";s:17:"payment_algorithm";s:1:"0";s:12:"order_status";s:7:"created";s:18:"status_notif_email";s:1:"1";s:11:"information";s:371:"Account owner: XXXXX<br/>\r\n<br/>\r\nOwner address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX<br/>\r\n<br/>\r\nBank Account Number:<br/>\r\n<br/>\r\nXXXX XXXX XXXX XXXX XXXX XXXX XXX<br/>\r\n<br/>\r\nBank Identification Code:<br/>\r\n<br/>\r\nXXXXXXXXXXXXXX<br/>\r\n<br/>\r\nBank name: XXXXXXXXXXX<br/>\r\n<br/>\r\nBank address:<br/>\r\n<br/>\r\nXX XXXX XXXXXX<br/>\r\n<br/>\r\nXXXXX XXXXXXXX";s:10:"return_url";s:0:"";s:17:"payment_min_price";s:0:"";s:17:"payment_max_price";s:0:"";s:21:"payment_price_use_tax";s:1:"1";s:20:"payment_min_quantity";s:0:"";s:20:"payment_max_quantity";s:0:"";s:18:"payment_min_weight";s:0:"";s:19:"payment_weight_unit";s:2:"kg";s:18:"payment_max_weight";s:0:"";s:18:"payment_min_volume";s:0:"";s:17:"payment_size_unit";s:1:"m";s:18:"payment_max_volume";s:0:"";s:18:"payment_zip_prefix";s:0:"";s:15:"payment_min_zip";s:0:"";s:15:"payment_max_zip";s:0:"";s:18:"payment_zip_suffix";s:0:"";}s:12:"payment_type";s:12:"banktransfer";s:20:"payment_zone_namekey";s:23:"country_Philippines_168";s:16:"payment_ordering";s:1:"1";s:17:"payment_published";s:1:"1";s:14:"payment_access";s:3:"all";s:24:"payment_shipping_methods";s:0:"";s:16:"payment_currency";s:0:"";s:13:"payment_price";d:0;s:12:"extension_id";s:5:"10066";s:4:"name";s:37:"HikaShop bank transfer payment plugin";s:4:"type";s:6:"plugin";s:7:"element";s:12:"banktransfer";s:6:"folder";s:15:"hikashoppayment";s:9:"client_id";s:1:"0";s:7:"enabled";s:1:"1";s:6:"access";s:1:"1";s:9:"protected";s:1:"0";s:14:"manifest_cache";s:0:"";s:6:"params";s:0:"";s:11:"custom_data";s:0:"";s:11:"system_data";s:0:"";s:11:"checked_out";s:1:"0";s:16:"checked_out_time";s:19:"0000-00-00 00:00:00";s:8:"ordering";s:1:"1";s:5:"state";s:1:"0";s:8:"features";a:3:{s:17:"authorize_capture";b:0;s:9:"recurring";b:0;s:6:"refund";b:0;}s:22:"payment_price_with_tax";d:0;s:27:"payment_price_orig_with_tax";N;s:5:"total";O:8:"stdClass":1:{s:6:"prices";a:1:{i:0;O:8:"stdClass":8:{s:11:"price_value";d:1050;s:20:"price_value_with_tax";d:1050;s:17:"price_currency_id";i:123;s:5:"taxes";a:1:{s:0:"";O:8:"stdClass":3:{s:11:"tax_namekey";s:0:"";s:8:"tax_rate";s:7:"0.00000";s:10:"tax_amount";i:0;}}s:37:"price_value_without_shipping_with_tax";d:800;s:28:"price_value_without_shipping";d:800;s:27:"price_value_without_payment";d:1050;s:36:"price_value_without_payment_with_tax";d:1050;}}}}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";s:3:"327";s:4:"name";s:15:"albert landayan";s:8:"username";s:14:"albertlandayan";s:5:"email";s:28:"albert.landayan.14@gmail.com";s:8:"password";s:60:"$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"0";s:12:"registerDate";s:19:"2015-11-02 13:07:04";s:13:"lastvisitDate";s:19:"2015-11-19 03:48:17";s:10:"activation";s:0:"";s:6:"params";s:92:"{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}";s:6:"groups";a:1:{i:2;s:1:"2";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"admin_style";s:0:"";s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:0:"";}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:2;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:2;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"272921869300a635a3150795188db9ab";}ck_submital|a:4:{s:34:"[6b6af07941dcd5bc429d65be76addd25]";b:1;s:34:"[255000da98285355ca370ca1392a6519]";b:1;s:34:"[84836767270d90c73a3fb6f54ff97ae6]";b:1;s:34:"[002009d191611dec7e43498994846864]";b:1;}hikashop_address_data|O:8:"stdClass":12:{s:13:"address_title";s:2:"Mr";s:17:"address_firstname";s:6:"albert";s:16:"address_lastname";s:8:"landayan";s:14:"address_street";s:6:"asdasd";s:15:"address_street2";s:6:"asdasd";s:17:"address_post_code";s:4:"1606";s:12:"address_city";s:5:"pasig";s:17:"address_telephone";s:11:"09165542324";s:15:"address_country";s:23:"country_Philippines_168";s:13:"address_state";s:33:"state_NationalCapitalRegion_12851";s:15:"address_user_id";i:2;s:10:"address_id";s:1:"7";}', 327, 'albertlandayan'),
+('h3m8reukmiqfq0ga7ho6bhj634', 0, 0, '1448016597', '__default|a:8:{s:15:"session.counter";i:19;s:19:"session.timer.start";i:1448015719;s:18:"session.timer.last";i:1448016517;s:17:"session.timer.now";i:1448016596;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":1:{s:12:"com_hikashop";O:8:"stdClass":7:{s:12:"ssl_redirect";i:0;s:7:"zone_id";s:4:"4568";s:7:"user_id";i:2;s:7:"cart_id";s:2:"14";s:15:"popup_cart_type";s:4:"cart";s:16:"shipping_address";s:1:"6";s:15:"billing_address";s:1:"6";}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";s:3:"327";s:4:"name";s:15:"albert landayan";s:8:"username";s:14:"albertlandayan";s:5:"email";s:28:"albert.landayan.14@gmail.com";s:8:"password";s:60:"$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"0";s:12:"registerDate";s:19:"2015-11-02 13:07:04";s:13:"lastvisitDate";s:19:"2015-11-20 10:37:56";s:10:"activation";s:0:"";s:6:"params";s:92:"{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}";s:6:"groups";a:1:{i:2;s:1:"2";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":6:{s:11:"admin_style";s:0:"";s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:0:"";}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:2;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:2;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"4877c91dad73425927e110443808eb05";}', 327, 'albertlandayan'),
+('kugfm97k8vdr5dd2rn2fndjku2', 1, 0, '1448016594', '__default|a:9:{s:15:"session.counter";i:26;s:19:"session.timer.start";i:1448015976;s:18:"session.timer.last";i:1448016589;s:17:"session.timer.now";i:1448016593;s:22:"session.client.browser";s:109:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36";s:8:"registry";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":5:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:5:"en-GB";}s:13:"com_installer";O:8:"stdClass":3:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";s:6:"update";O:8:"stdClass":4:{s:6:"filter";O:8:"stdClass":4:{s:6:"search";s:0:"";s:9:"client_id";s:0:"";s:4:"type";s:0:"";s:5:"group";s:0:"";}s:8:"ordercol";s:4:"name";s:9:"orderdirn";s:3:"asc";s:10:"limitstart";s:1:"0";}}s:23:"com_comprofiler_install";s:0:"";s:6:"global";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"limit";i:20;}}s:9:"com_menus";O:8:"stdClass":1:{s:5:"items";O:8:"stdClass":3:{s:8:"menutype";s:8:"mainmenu";s:10:"limitstart";i:0;s:4:"list";a:4:{s:9:"direction";s:3:"asc";s:5:"limit";i:20;s:8:"ordering";s:5:"a.lft";s:5:"start";d:0;}}}}s:9:"separator";s:1:".";}s:4:"user";O:5:"JUser":28:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"326";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:22:"adriandean12@gmail.com";s:8:"password";s:60:"$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2015-10-31 06:00:43";s:13:"lastvisitDate";s:19:"2015-11-20 08:35:33";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:12:"requireReset";s:1:"0";s:10:"\\0\\0\\0_params";O:24:"Joomla\\Registry\\Registry":2:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}s:9:"separator";s:1:".";}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:5:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;i:4;i:6;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:13:"\\0\\0\\0userHelper";O:18:"JUserWrapperHelper":0:{}s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;s:6:"otpKey";s:0:"";s:4:"otep";s:0:"";}s:13:"session.token";s:32:"483c3a5cadab063beb35983170b0ae93";s:32:"0787f31a1ebe1fa06bd8e1b918e9137e";s:116:"{"queryString":"option=com_installer&view=update&task=update.find&ac68d3912d0d7a729288efcb0bdd1af0=1","object_id":0}";}cb|a:1:{s:5:"state";a:1:{s:14:"pluginsbrowser";a:11:{s:6:"search";s:0:"";s:7:"orderby";s:12:"ordering_asc";s:16:"filter_published";s:0:"";s:22:"filter_viewaccesslevel";s:0:"";s:11:"filter_type";s:0:"";s:21:"batch_viewaccesslevel";s:0:"";s:8:"ordering";a:10:{i:0;s:1:"1";i:1;s:1:"1";i:2;s:1:"1";i:3;s:1:"2";i:4;s:1:"3";i:5;s:1:"4";i:6;s:1:"5";i:7;s:1:"6";i:8;s:1:"7";i:9;s:2:"99";}s:5:"idcid";a:1:{i:0;s:2:"20";}s:5:"limit";i:20;s:10:"limitstart";i:0;s:7:"subtask";s:20:"setfield/published/1";}}}', 326, 'admin');
 
 -- --------------------------------------------------------
 
@@ -14996,8 +15004,7 @@ INSERT INTO `jt_updates` (`update_id`, `update_site_id`, `extension_id`, `name`,
 (60, 3, 0, 'Sinhala', '', 'pkg_si-LK', 'package', '', 0, '3.3.1.1', '', 'http://update.joomla.org/language/details3/si-LK_details.xml', '', ''),
 (61, 3, 0, 'Dari Persian', '', 'pkg_prs-AF', 'package', '', 0, '3.4.4.1', '', 'http://update.joomla.org/language/details3/prs-AF_details.xml', '', ''),
 (62, 3, 0, 'Turkmen', '', 'pkg_tk-TM', 'package', '', 0, '3.4.5.1', '', 'http://update.joomla.org/language/details3/tk-TM_details.xml', '', ''),
-(63, 6, 10003, 'JSN PowerAdmin', '', 'com_poweradmin', 'component', '', 1, '2.2.8', '', '', '', ''),
-(64, 13, 10156, 'Community Builder', 'Community Builder package', 'pkg_communitybuilder', 'package', '', 0, '2.0.12', '', 'http://update.joomlapolis.net/versions/pkg_communitybuilder.xml', '', '');
+(63, 6, 10003, 'JSN PowerAdmin', '', 'com_poweradmin', 'component', '', 1, '2.2.8', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -15020,20 +15027,20 @@ CREATE TABLE IF NOT EXISTS `jt_update_sites` (
 --
 
 INSERT INTO `jt_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`, `extra_query`) VALUES
-(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1448011986, ''),
-(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1448011986, ''),
-(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1448011986, ''),
-(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1448011986, ''),
-(5, 'WebInstaller Update Site', 'extension', 'http://appscdn.joomla.org/webapps/jedapps/webinstaller.xml', 1, 1448011986, ''),
-(6, 'poweradmin', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_poweradmin.xml', 1, 1448011986, ''),
-(7, 'imageshow', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_imageshow.xml', 1, 1448011986, ''),
-(8, 'uniform', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_uniform.xml', 1, 1448011986, ''),
-(9, 'mobilize', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_mobilize.xml', 1, 1448011986, ''),
-(10, 'pagebuilder', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_pagebuilder.xml', 1, 1448011986, ''),
-(11, 'easyslider', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_easyslider.xml', 1, 1448011986, ''),
+(1, 'Joomla! Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1448016026, ''),
+(2, 'Joomla! Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1448016026, ''),
+(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1448016026, ''),
+(4, 'Joomla! Update Component Update Site', 'extension', 'http://update.joomla.org/core/extensions/com_joomlaupdate.xml', 1, 1448016026, ''),
+(5, 'WebInstaller Update Site', 'extension', 'http://appscdn.joomla.org/webapps/jedapps/webinstaller.xml', 1, 1448016026, ''),
+(6, 'poweradmin', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_poweradmin.xml', 1, 1448016026, ''),
+(7, 'imageshow', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_imageshow.xml', 1, 1448016026, ''),
+(8, 'uniform', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_uniform.xml', 1, 1448016026, ''),
+(9, 'mobilize', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_mobilize.xml', 1, 1448016026, ''),
+(10, 'pagebuilder', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_pagebuilder.xml', 1, 1448016026, ''),
+(11, 'easyslider', 'collection', 'http://www.joomlashine.com/versioning/extensions/com_easyslider.xml', 1, 1448016026, ''),
 (12, 'Hikashop', 'extension', 'http://www.hikashop.com/component/updateme/updatexml/component-hikashop/level-Starter/file-extension.xml', 0, 0, ''),
-(13, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1448011986, ''),
-(14, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1448011986, '');
+(13, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1448016026, ''),
+(14, 'Community Builder Package Update Site', 'collection', 'http://update.joomlapolis.net/versions/pkg-communitybuilder-list.xml', 1, 1448016026, '');
 
 -- --------------------------------------------------------
 
@@ -15125,8 +15132,8 @@ CREATE TABLE IF NOT EXISTS `jt_users` (
 --
 
 INSERT INTO `jt_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`, `otpKey`, `otep`, `requireReset`) VALUES
-(326, 'Super User', 'admin', 'adriandean12@gmail.com', '$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne', 0, 1, '2015-10-31 06:00:43', '2015-11-20 08:35:33', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
-(327, 'albert landayan', 'albertlandayan', 'albert.landayan.14@gmail.com', '$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki', 0, 0, '2015-11-02 13:07:04', '2015-11-19 03:48:17', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
+(326, 'Super User', 'admin', 'adriandean12@gmail.com', '$2y$10$0ePoGm4C/Jq2YoCxflNrb.l6H6rzkWX5KRv8SkZo9DtQhEgKKazne', 0, 1, '2015-10-31 06:00:43', '2015-11-20 10:39:57', '0', '', '0000-00-00 00:00:00', 0, '', '', 0),
+(327, 'albert landayan', 'albertlandayan', 'albert.landayan.14@gmail.com', '$2y$10$qgxbyhQjwkB5G.DP2SgUp.dPIY.CZ.gmrH11A.DKUCnPOhM.POwki', 0, 0, '2015-11-02 13:07:04', '2015-11-20 10:46:03', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0),
 (328, 'NewsAdmin', 'NewsAdmin', 'nlpaguntalan@mymail.mapua.edu.ph', '$2y$10$cJo6D.PomWGbRbnv1iT6Me9JmA1FjM71o2oHkY7djGi1ix9PsisxO', 0, 0, '2015-11-19 03:39:27', '2015-11-19 03:47:45', '', '{"admin_style":"","admin_language":"","language":"","editor":"","helpsite":"","timezone":""}', '0000-00-00 00:00:00', 0, '', '', 0);
 
 -- --------------------------------------------------------
@@ -15287,79 +15294,122 @@ INSERT INTO `jt_weblinks` (`id`, `catid`, `title`, `alias`, `url`, `description`
 -- Indexes for table `jt_assets`
 --
 ALTER TABLE `jt_assets`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_asset_name` (`name`), ADD KEY `idx_lft_rgt` (`lft`,`rgt`), ADD KEY `idx_parent_id` (`parent_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_asset_name` (`name`),
+  ADD KEY `idx_lft_rgt` (`lft`,`rgt`),
+  ADD KEY `idx_parent_id` (`parent_id`);
 
 --
 -- Indexes for table `jt_associations`
 --
 ALTER TABLE `jt_associations`
-  ADD PRIMARY KEY (`context`,`id`), ADD KEY `idx_key` (`key`);
+  ADD PRIMARY KEY (`context`,`id`),
+  ADD KEY `idx_key` (`key`);
 
 --
 -- Indexes for table `jt_banners`
 --
 ALTER TABLE `jt_banners`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_state` (`state`), ADD KEY `idx_own_prefix` (`own_prefix`), ADD KEY `idx_metakey_prefix` (`metakey_prefix`), ADD KEY `idx_banner_catid` (`catid`), ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_state` (`state`),
+  ADD KEY `idx_own_prefix` (`own_prefix`),
+  ADD KEY `idx_metakey_prefix` (`metakey_prefix`),
+  ADD KEY `idx_banner_catid` (`catid`),
+  ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_banner_clients`
 --
 ALTER TABLE `jt_banner_clients`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_own_prefix` (`own_prefix`), ADD KEY `idx_metakey_prefix` (`metakey_prefix`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_own_prefix` (`own_prefix`),
+  ADD KEY `idx_metakey_prefix` (`metakey_prefix`);
 
 --
 -- Indexes for table `jt_banner_tracks`
 --
 ALTER TABLE `jt_banner_tracks`
-  ADD PRIMARY KEY (`track_date`,`track_type`,`banner_id`), ADD KEY `idx_track_date` (`track_date`), ADD KEY `idx_track_type` (`track_type`), ADD KEY `idx_banner_id` (`banner_id`);
+  ADD PRIMARY KEY (`track_date`,`track_type`,`banner_id`),
+  ADD KEY `idx_track_date` (`track_date`),
+  ADD KEY `idx_track_type` (`track_type`),
+  ADD KEY `idx_banner_id` (`banner_id`);
 
 --
 -- Indexes for table `jt_categories`
 --
 ALTER TABLE `jt_categories`
-  ADD PRIMARY KEY (`id`), ADD KEY `cat_idx` (`extension`,`published`,`access`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_path` (`path`), ADD KEY `idx_left_right` (`lft`,`rgt`), ADD KEY `idx_alias` (`alias`), ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cat_idx` (`extension`,`published`,`access`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_path` (`path`),
+  ADD KEY `idx_left_right` (`lft`,`rgt`),
+  ADD KEY `idx_alias` (`alias`),
+  ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_comprofiler`
 --
 ALTER TABLE `jt_comprofiler`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `user_id` (`user_id`), ADD KEY `apprconfbanid` (`approved`,`confirmed`,`banned`,`id`), ADD KEY `avatappr_apr_conf_ban_avatar` (`avatarapproved`,`approved`,`confirmed`,`banned`,`avatar`(48)), ADD KEY `lastupdatedate` (`lastupdatedate`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`),
+  ADD KEY `apprconfbanid` (`approved`,`confirmed`,`banned`,`id`),
+  ADD KEY `avatappr_apr_conf_ban_avatar` (`avatarapproved`,`approved`,`confirmed`,`banned`,`avatar`(48)),
+  ADD KEY `lastupdatedate` (`lastupdatedate`);
 
 --
 -- Indexes for table `jt_comprofiler_fields`
 --
 ALTER TABLE `jt_comprofiler_fields`
-  ADD PRIMARY KEY (`fieldid`), ADD KEY `tabid_pub_prof_order` (`tabid`,`published`,`profile`,`ordering`), ADD KEY `readonly_published_tabid` (`readonly`,`published`,`tabid`), ADD KEY `registration_published_order` (`registration`,`published`,`ordering`);
+  ADD PRIMARY KEY (`fieldid`),
+  ADD KEY `tabid_pub_prof_order` (`tabid`,`published`,`profile`,`ordering`),
+  ADD KEY `readonly_published_tabid` (`readonly`,`published`,`tabid`),
+  ADD KEY `registration_published_order` (`registration`,`published`,`ordering`);
 
 --
 -- Indexes for table `jt_comprofiler_field_values`
 --
 ALTER TABLE `jt_comprofiler_field_values`
-  ADD PRIMARY KEY (`fieldvalueid`), ADD KEY `fieldid_ordering` (`fieldid`,`ordering`), ADD KEY `fieldtitle_id` (`fieldtitle`,`fieldid`), ADD KEY `fieldlabel_id` (`fieldlabel`,`fieldid`);
+  ADD PRIMARY KEY (`fieldvalueid`),
+  ADD KEY `fieldid_ordering` (`fieldid`,`ordering`),
+  ADD KEY `fieldtitle_id` (`fieldtitle`,`fieldid`),
+  ADD KEY `fieldlabel_id` (`fieldlabel`,`fieldid`);
 
 --
 -- Indexes for table `jt_comprofiler_lists`
 --
 ALTER TABLE `jt_comprofiler_lists`
-  ADD PRIMARY KEY (`listid`), ADD KEY `pub_ordering` (`published`,`ordering`), ADD KEY `default_published` (`default`,`published`);
+  ADD PRIMARY KEY (`listid`),
+  ADD KEY `pub_ordering` (`published`,`ordering`),
+  ADD KEY `default_published` (`default`,`published`);
 
 --
 -- Indexes for table `jt_comprofiler_members`
 --
 ALTER TABLE `jt_comprofiler_members`
-  ADD PRIMARY KEY (`referenceid`,`memberid`), ADD KEY `pamr` (`pending`,`accepted`,`memberid`,`referenceid`), ADD KEY `aprm` (`accepted`,`pending`,`referenceid`,`memberid`), ADD KEY `membrefid` (`memberid`,`referenceid`);
+  ADD PRIMARY KEY (`referenceid`,`memberid`),
+  ADD KEY `pamr` (`pending`,`accepted`,`memberid`,`referenceid`),
+  ADD KEY `aprm` (`accepted`,`pending`,`referenceid`,`memberid`),
+  ADD KEY `membrefid` (`memberid`,`referenceid`);
 
 --
 -- Indexes for table `jt_comprofiler_plugin`
 --
 ALTER TABLE `jt_comprofiler_plugin`
-  ADD PRIMARY KEY (`id`), ADD KEY `element` (`element`), ADD KEY `folder` (`folder`), ADD KEY `idx_folder` (`published`,`client_id`,`viewaccesslevel`,`folder`), ADD KEY `type_pub_order` (`type`,`published`,`ordering`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `element` (`element`),
+  ADD KEY `folder` (`folder`),
+  ADD KEY `idx_folder` (`published`,`client_id`,`viewaccesslevel`,`folder`),
+  ADD KEY `type_pub_order` (`type`,`published`,`ordering`);
 
 --
 -- Indexes for table `jt_comprofiler_plugin_blogs`
 --
 ALTER TABLE `jt_comprofiler_plugin_blogs`
-  ADD PRIMARY KEY (`id`), ADD KEY `published` (`published`), ADD KEY `user` (`user`), ADD KEY `access` (`access`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `published` (`published`),
+  ADD KEY `user` (`user`),
+  ADD KEY `access` (`access`);
 
 --
 -- Indexes for table `jt_comprofiler_ratings`
@@ -15371,43 +15421,73 @@ ALTER TABLE `jt_comprofiler_ratings`
 -- Indexes for table `jt_comprofiler_sessions`
 --
 ALTER TABLE `jt_comprofiler_sessions`
-  ADD PRIMARY KEY (`session_id`), ADD KEY `expiry_time` (`expiry_time`), ADD KEY `userid` (`userid`);
+  ADD PRIMARY KEY (`session_id`),
+  ADD KEY `expiry_time` (`expiry_time`),
+  ADD KEY `userid` (`userid`);
 
 --
 -- Indexes for table `jt_comprofiler_tabs`
 --
 ALTER TABLE `jt_comprofiler_tabs`
-  ADD PRIMARY KEY (`tabid`), ADD KEY `pluginclass` (`pluginclass`), ADD KEY `enabled_position_ordering` (`enabled`,`position`,`ordering`), ADD KEY `orderreg_enabled_pos_order` (`enabled`,`ordering_register`,`position`,`ordering`);
+  ADD PRIMARY KEY (`tabid`),
+  ADD KEY `pluginclass` (`pluginclass`),
+  ADD KEY `enabled_position_ordering` (`enabled`,`position`,`ordering`),
+  ADD KEY `orderreg_enabled_pos_order` (`enabled`,`ordering_register`,`position`,`ordering`);
 
 --
 -- Indexes for table `jt_comprofiler_userreports`
 --
 ALTER TABLE `jt_comprofiler_userreports`
-  ADD PRIMARY KEY (`reportid`), ADD KEY `status_user_date` (`reportedstatus`,`reporteduser`,`reportedondate`), ADD KEY `reportedbyuser_ondate` (`reportedbyuser`,`reportedondate`);
+  ADD PRIMARY KEY (`reportid`),
+  ADD KEY `status_user_date` (`reportedstatus`,`reporteduser`,`reportedondate`),
+  ADD KEY `reportedbyuser_ondate` (`reportedbyuser`,`reportedondate`);
 
 --
 -- Indexes for table `jt_comprofiler_views`
 --
 ALTER TABLE `jt_comprofiler_views`
-  ADD PRIMARY KEY (`viewer_id`,`profile_id`,`lastip`), ADD KEY `lastview` (`lastview`), ADD KEY `profile_id_lastview` (`profile_id`,`lastview`,`viewer_id`);
+  ADD PRIMARY KEY (`viewer_id`,`profile_id`,`lastip`),
+  ADD KEY `lastview` (`lastview`),
+  ADD KEY `profile_id_lastview` (`profile_id`,`lastview`,`viewer_id`);
 
 --
 -- Indexes for table `jt_contact_details`
 --
 ALTER TABLE `jt_contact_details`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`published`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_featured_catid` (`featured`,`catid`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_state` (`published`),
+  ADD KEY `idx_catid` (`catid`),
+  ADD KEY `idx_createdby` (`created_by`),
+  ADD KEY `idx_featured_catid` (`featured`,`catid`),
+  ADD KEY `idx_language` (`language`),
+  ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- Indexes for table `jt_content`
 --
 ALTER TABLE `jt_content`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`state`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_featured_catid` (`featured`,`catid`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_state` (`state`),
+  ADD KEY `idx_catid` (`catid`),
+  ADD KEY `idx_createdby` (`created_by`),
+  ADD KEY `idx_featured_catid` (`featured`,`catid`),
+  ADD KEY `idx_language` (`language`),
+  ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- Indexes for table `jt_contentitem_tag_map`
 --
 ALTER TABLE `jt_contentitem_tag_map`
-  ADD UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`), ADD KEY `idx_tag_type` (`tag_id`,`type_id`), ADD KEY `idx_date_id` (`tag_date`,`tag_id`), ADD KEY `idx_tag` (`tag_id`), ADD KEY `idx_type` (`type_id`), ADD KEY `idx_core_content_id` (`core_content_id`);
+  ADD UNIQUE KEY `uc_ItemnameTagid` (`type_id`,`content_item_id`,`tag_id`),
+  ADD KEY `idx_tag_type` (`tag_id`,`type_id`),
+  ADD KEY `idx_date_id` (`tag_date`,`tag_id`),
+  ADD KEY `idx_tag` (`tag_id`),
+  ADD KEY `idx_type` (`type_id`),
+  ADD KEY `idx_core_content_id` (`core_content_id`);
 
 --
 -- Indexes for table `jt_content_frontpage`
@@ -15425,13 +15505,17 @@ ALTER TABLE `jt_content_rating`
 -- Indexes for table `jt_content_types`
 --
 ALTER TABLE `jt_content_types`
-  ADD PRIMARY KEY (`type_id`), ADD KEY `idx_alias` (`type_alias`);
+  ADD PRIMARY KEY (`type_id`),
+  ADD KEY `idx_alias` (`type_alias`);
 
 --
 -- Indexes for table `jt_extensions`
 --
 ALTER TABLE `jt_extensions`
-  ADD PRIMARY KEY (`extension_id`), ADD KEY `element_clientid` (`element`,`client_id`), ADD KEY `element_folder_clientid` (`element`,`folder`,`client_id`), ADD KEY `extension` (`type`,`element`,`folder`,`client_id`);
+  ADD PRIMARY KEY (`extension_id`),
+  ADD KEY `element_clientid` (`element`,`client_id`),
+  ADD KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
+  ADD KEY `extension` (`type`,`element`,`folder`,`client_id`);
 
 --
 -- Indexes for table `jt_finder_filters`
@@ -15443,151 +15527,205 @@ ALTER TABLE `jt_finder_filters`
 -- Indexes for table `jt_finder_links`
 --
 ALTER TABLE `jt_finder_links`
-  ADD PRIMARY KEY (`link_id`), ADD KEY `idx_type` (`type_id`), ADD KEY `idx_title` (`title`), ADD KEY `idx_md5` (`md5sum`), ADD KEY `idx_url` (`url`(75)), ADD KEY `idx_published_list` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`list_price`), ADD KEY `idx_published_sale` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`sale_price`);
+  ADD PRIMARY KEY (`link_id`),
+  ADD KEY `idx_type` (`type_id`),
+  ADD KEY `idx_title` (`title`),
+  ADD KEY `idx_md5` (`md5sum`),
+  ADD KEY `idx_url` (`url`(75)),
+  ADD KEY `idx_published_list` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`list_price`),
+  ADD KEY `idx_published_sale` (`published`,`state`,`access`,`publish_start_date`,`publish_end_date`,`sale_price`);
 
 --
 -- Indexes for table `jt_finder_links_terms0`
 --
 ALTER TABLE `jt_finder_links_terms0`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms1`
 --
 ALTER TABLE `jt_finder_links_terms1`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms2`
 --
 ALTER TABLE `jt_finder_links_terms2`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms3`
 --
 ALTER TABLE `jt_finder_links_terms3`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms4`
 --
 ALTER TABLE `jt_finder_links_terms4`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms5`
 --
 ALTER TABLE `jt_finder_links_terms5`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms6`
 --
 ALTER TABLE `jt_finder_links_terms6`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms7`
 --
 ALTER TABLE `jt_finder_links_terms7`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms8`
 --
 ALTER TABLE `jt_finder_links_terms8`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_terms9`
 --
 ALTER TABLE `jt_finder_links_terms9`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsa`
 --
 ALTER TABLE `jt_finder_links_termsa`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsb`
 --
 ALTER TABLE `jt_finder_links_termsb`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsc`
 --
 ALTER TABLE `jt_finder_links_termsc`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsd`
 --
 ALTER TABLE `jt_finder_links_termsd`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termse`
 --
 ALTER TABLE `jt_finder_links_termse`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_links_termsf`
 --
 ALTER TABLE `jt_finder_links_termsf`
-  ADD PRIMARY KEY (`link_id`,`term_id`), ADD KEY `idx_term_weight` (`term_id`,`weight`), ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
+  ADD PRIMARY KEY (`link_id`,`term_id`),
+  ADD KEY `idx_term_weight` (`term_id`,`weight`),
+  ADD KEY `idx_link_term_weight` (`link_id`,`term_id`,`weight`);
 
 --
 -- Indexes for table `jt_finder_taxonomy`
 --
 ALTER TABLE `jt_finder_taxonomy`
-  ADD PRIMARY KEY (`id`), ADD KEY `parent_id` (`parent_id`), ADD KEY `state` (`state`), ADD KEY `ordering` (`ordering`), ADD KEY `access` (`access`), ADD KEY `idx_parent_published` (`parent_id`,`state`,`access`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_id` (`parent_id`),
+  ADD KEY `state` (`state`),
+  ADD KEY `ordering` (`ordering`),
+  ADD KEY `access` (`access`),
+  ADD KEY `idx_parent_published` (`parent_id`,`state`,`access`);
 
 --
 -- Indexes for table `jt_finder_taxonomy_map`
 --
 ALTER TABLE `jt_finder_taxonomy_map`
-  ADD PRIMARY KEY (`link_id`,`node_id`), ADD KEY `link_id` (`link_id`), ADD KEY `node_id` (`node_id`);
+  ADD PRIMARY KEY (`link_id`,`node_id`),
+  ADD KEY `link_id` (`link_id`),
+  ADD KEY `node_id` (`node_id`);
 
 --
 -- Indexes for table `jt_finder_terms`
 --
 ALTER TABLE `jt_finder_terms`
-  ADD PRIMARY KEY (`term_id`), ADD UNIQUE KEY `idx_term` (`term`), ADD KEY `idx_term_phrase` (`term`,`phrase`), ADD KEY `idx_stem_phrase` (`stem`,`phrase`), ADD KEY `idx_soundex_phrase` (`soundex`,`phrase`);
+  ADD PRIMARY KEY (`term_id`),
+  ADD UNIQUE KEY `idx_term` (`term`),
+  ADD KEY `idx_term_phrase` (`term`,`phrase`),
+  ADD KEY `idx_stem_phrase` (`stem`,`phrase`),
+  ADD KEY `idx_soundex_phrase` (`soundex`,`phrase`);
 
 --
 -- Indexes for table `jt_finder_terms_common`
 --
 ALTER TABLE `jt_finder_terms_common`
-  ADD KEY `idx_word_lang` (`term`,`language`), ADD KEY `idx_lang` (`language`);
+  ADD KEY `idx_word_lang` (`term`,`language`),
+  ADD KEY `idx_lang` (`language`);
 
 --
 -- Indexes for table `jt_finder_tokens`
 --
 ALTER TABLE `jt_finder_tokens`
-  ADD KEY `idx_word` (`term`), ADD KEY `idx_context` (`context`);
+  ADD KEY `idx_word` (`term`),
+  ADD KEY `idx_context` (`context`);
 
 --
 -- Indexes for table `jt_finder_tokens_aggregate`
 --
 ALTER TABLE `jt_finder_tokens_aggregate`
-  ADD KEY `token` (`term`), ADD KEY `keyword_id` (`term_id`);
+  ADD KEY `token` (`term`),
+  ADD KEY `keyword_id` (`term_id`);
 
 --
 -- Indexes for table `jt_finder_types`
 --
 ALTER TABLE `jt_finder_types`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `title` (`title`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `title` (`title`);
 
 --
 -- Indexes for table `jt_hikashop_address`
 --
 ALTER TABLE `jt_hikashop_address`
-  ADD PRIMARY KEY (`address_id`), ADD KEY `address_user_id` (`address_user_id`);
+  ADD PRIMARY KEY (`address_id`),
+  ADD KEY `address_user_id` (`address_user_id`);
 
 --
 -- Indexes for table `jt_hikashop_badge`
@@ -15605,19 +15743,23 @@ ALTER TABLE `jt_hikashop_banner`
 -- Indexes for table `jt_hikashop_cart`
 --
 ALTER TABLE `jt_hikashop_cart`
-  ADD PRIMARY KEY (`cart_id`), ADD KEY `user_id` (`user_id`), ADD KEY `session_id` (`session_id`);
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `session_id` (`session_id`);
 
 --
 -- Indexes for table `jt_hikashop_cart_product`
 --
 ALTER TABLE `jt_hikashop_cart_product`
-  ADD PRIMARY KEY (`cart_product_id`), ADD KEY `cart_id` (`cart_id`);
+  ADD PRIMARY KEY (`cart_product_id`),
+  ADD KEY `cart_id` (`cart_id`);
 
 --
 -- Indexes for table `jt_hikashop_category`
 --
 ALTER TABLE `jt_hikashop_category`
-  ADD PRIMARY KEY (`category_id`), ADD UNIQUE KEY `category_namekey` (`category_namekey`);
+  ADD PRIMARY KEY (`category_id`),
+  ADD UNIQUE KEY `category_namekey` (`category_namekey`);
 
 --
 -- Indexes for table `jt_hikashop_characteristic`
@@ -15629,7 +15771,8 @@ ALTER TABLE `jt_hikashop_characteristic`
 -- Indexes for table `jt_hikashop_click`
 --
 ALTER TABLE `jt_hikashop_click`
-  ADD PRIMARY KEY (`click_id`), ADD KEY `click_partner_id` (`click_partner_id`);
+  ADD PRIMARY KEY (`click_id`),
+  ADD KEY `click_partner_id` (`click_partner_id`);
 
 --
 -- Indexes for table `jt_hikashop_config`
@@ -15641,13 +15784,15 @@ ALTER TABLE `jt_hikashop_config`
 -- Indexes for table `jt_hikashop_currency`
 --
 ALTER TABLE `jt_hikashop_currency`
-  ADD PRIMARY KEY (`currency_id`), ADD UNIQUE KEY `currency_code` (`currency_code`);
+  ADD PRIMARY KEY (`currency_id`),
+  ADD UNIQUE KEY `currency_code` (`currency_code`);
 
 --
 -- Indexes for table `jt_hikashop_discount`
 --
 ALTER TABLE `jt_hikashop_discount`
-  ADD PRIMARY KEY (`discount_id`), ADD UNIQUE KEY `discount_code` (`discount_code`);
+  ADD PRIMARY KEY (`discount_id`),
+  ADD UNIQUE KEY `discount_code` (`discount_code`);
 
 --
 -- Indexes for table `jt_hikashop_download`
@@ -15665,37 +15810,43 @@ ALTER TABLE `jt_hikashop_email_log`
 -- Indexes for table `jt_hikashop_entry`
 --
 ALTER TABLE `jt_hikashop_entry`
-  ADD PRIMARY KEY (`entry_id`), ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`entry_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `jt_hikashop_field`
 --
 ALTER TABLE `jt_hikashop_field`
-  ADD PRIMARY KEY (`field_id`), ADD UNIQUE KEY `field_namekey` (`field_namekey`);
+  ADD PRIMARY KEY (`field_id`),
+  ADD UNIQUE KEY `field_namekey` (`field_namekey`);
 
 --
 -- Indexes for table `jt_hikashop_file`
 --
 ALTER TABLE `jt_hikashop_file`
-  ADD PRIMARY KEY (`file_id`), ADD KEY `file_type` (`file_type`);
+  ADD PRIMARY KEY (`file_id`),
+  ADD KEY `file_type` (`file_type`);
 
 --
 -- Indexes for table `jt_hikashop_filter`
 --
 ALTER TABLE `jt_hikashop_filter`
-  ADD PRIMARY KEY (`filter_id`), ADD UNIQUE KEY `filter_namekey` (`filter_namekey`);
+  ADD PRIMARY KEY (`filter_id`),
+  ADD UNIQUE KEY `filter_namekey` (`filter_namekey`);
 
 --
 -- Indexes for table `jt_hikashop_geolocation`
 --
 ALTER TABLE `jt_hikashop_geolocation`
-  ADD PRIMARY KEY (`geolocation_id`), ADD KEY `geolocation_type` (`geolocation_type`,`geolocation_ref_id`);
+  ADD PRIMARY KEY (`geolocation_id`),
+  ADD KEY `geolocation_type` (`geolocation_type`,`geolocation_ref_id`);
 
 --
 -- Indexes for table `jt_hikashop_history`
 --
 ALTER TABLE `jt_hikashop_history`
-  ADD PRIMARY KEY (`history_id`), ADD KEY `history_order_id` (`history_order_id`);
+  ADD PRIMARY KEY (`history_id`),
+  ADD KEY `history_order_id` (`history_order_id`);
 
 --
 -- Indexes for table `jt_hikashop_limit`
@@ -15707,19 +15858,22 @@ ALTER TABLE `jt_hikashop_limit`
 -- Indexes for table `jt_hikashop_massaction`
 --
 ALTER TABLE `jt_hikashop_massaction`
-  ADD PRIMARY KEY (`massaction_id`), ADD KEY `massaction_table` (`massaction_table`);
+  ADD PRIMARY KEY (`massaction_id`),
+  ADD KEY `massaction_table` (`massaction_table`);
 
 --
 -- Indexes for table `jt_hikashop_order`
 --
 ALTER TABLE `jt_hikashop_order`
-  ADD PRIMARY KEY (`order_id`), ADD KEY `order_user_id` (`order_user_id`);
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `order_user_id` (`order_user_id`);
 
 --
 -- Indexes for table `jt_hikashop_order_product`
 --
 ALTER TABLE `jt_hikashop_order_product`
-  ADD PRIMARY KEY (`order_product_id`), ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`order_product_id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- Indexes for table `jt_hikashop_payment`
@@ -15737,19 +15891,25 @@ ALTER TABLE `jt_hikashop_plugin`
 -- Indexes for table `jt_hikashop_price`
 --
 ALTER TABLE `jt_hikashop_price`
-  ADD PRIMARY KEY (`price_id`), ADD KEY `price_product_id` (`price_product_id`);
+  ADD PRIMARY KEY (`price_id`),
+  ADD KEY `price_product_id` (`price_product_id`);
 
 --
 -- Indexes for table `jt_hikashop_product`
 --
 ALTER TABLE `jt_hikashop_product`
-  ADD PRIMARY KEY (`product_id`), ADD UNIQUE KEY `product_code` (`product_code`), ADD KEY `product_parent_id` (`product_parent_id`), ADD KEY `product_main_index` (`product_type`,`product_quantity`,`product_published`);
+  ADD PRIMARY KEY (`product_id`),
+  ADD UNIQUE KEY `product_code` (`product_code`),
+  ADD KEY `product_parent_id` (`product_parent_id`),
+  ADD KEY `product_main_index` (`product_type`,`product_quantity`,`product_published`);
 
 --
 -- Indexes for table `jt_hikashop_product_category`
 --
 ALTER TABLE `jt_hikashop_product_category`
-  ADD PRIMARY KEY (`product_category_id`), ADD UNIQUE KEY `category_id` (`category_id`,`product_id`), ADD KEY `product_id` (`product_id`);
+  ADD PRIMARY KEY (`product_category_id`),
+  ADD UNIQUE KEY `category_id` (`category_id`,`product_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `jt_hikashop_product_related`
@@ -15785,13 +15945,16 @@ ALTER TABLE `jt_hikashop_taxation`
 -- Indexes for table `jt_hikashop_user`
 --
 ALTER TABLE `jt_hikashop_user`
-  ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `user_email` (`user_email`), ADD KEY `user_cms_id` (`user_cms_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `user_email` (`user_email`),
+  ADD KEY `user_cms_id` (`user_cms_id`);
 
 --
 -- Indexes for table `jt_hikashop_variant`
 --
 ALTER TABLE `jt_hikashop_variant`
-  ADD PRIMARY KEY (`variant_characteristic_id`,`variant_product_id`), ADD KEY `variant_product_id` (`variant_product_id`);
+  ADD PRIMARY KEY (`variant_characteristic_id`,`variant_product_id`),
+  ADD KEY `variant_product_id` (`variant_product_id`);
 
 --
 -- Indexes for table `jt_hikashop_vote`
@@ -15821,7 +15984,9 @@ ALTER TABLE `jt_hikashop_widget`
 -- Indexes for table `jt_hikashop_zone`
 --
 ALTER TABLE `jt_hikashop_zone`
-  ADD PRIMARY KEY (`zone_id`), ADD UNIQUE KEY `zone_namekey` (`zone_namekey`), ADD KEY `zone_code_3` (`zone_code_3`);
+  ADD PRIMARY KEY (`zone_id`),
+  ADD UNIQUE KEY `zone_namekey` (`zone_namekey`),
+  ADD KEY `zone_code_3` (`zone_code_3`);
 
 --
 -- Indexes for table `jt_hikashop_zone_link`
@@ -15923,7 +16088,8 @@ ALTER TABLE `jt_jsn_easyslider_item_templates`
 -- Indexes for table `jt_jsn_easyslider_messages`
 --
 ALTER TABLE `jt_jsn_easyslider_messages`
-  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`),
+  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_easyslider_sliders`
@@ -15965,7 +16131,8 @@ ALTER TABLE `jt_jsn_mobilize_design`
 -- Indexes for table `jt_jsn_mobilize_messages`
 --
 ALTER TABLE `jt_jsn_mobilize_messages`
-  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`),
+  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_mobilize_os`
@@ -16001,7 +16168,8 @@ ALTER TABLE `jt_jsn_pagebuilder_content_custom_css`
 -- Indexes for table `jt_jsn_pagebuilder_messages`
 --
 ALTER TABLE `jt_jsn_pagebuilder_messages`
-  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`),
+  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_poweradmin_config`
@@ -16031,19 +16199,22 @@ ALTER TABLE `jt_jsn_uniform_config`
 -- Indexes for table `jt_jsn_uniform_data`
 --
 ALTER TABLE `jt_jsn_uniform_data`
-  ADD PRIMARY KEY (`data_id`), ADD KEY `fk_uniform_data_forms` (`form_id`);
+  ADD PRIMARY KEY (`data_id`),
+  ADD KEY `fk_uniform_data_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_emails`
 --
 ALTER TABLE `jt_jsn_uniform_emails`
-  ADD PRIMARY KEY (`email_id`), ADD KEY `fk_uniform_emails_forms` (`form_id`);
+  ADD PRIMARY KEY (`email_id`),
+  ADD KEY `fk_uniform_emails_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_fields`
 --
 ALTER TABLE `jt_jsn_uniform_fields`
-  ADD PRIMARY KEY (`field_id`), ADD KEY `fk_uniform_fields_forms` (`form_id`);
+  ADD PRIMARY KEY (`field_id`),
+  ADD KEY `fk_uniform_fields_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_forms`
@@ -16061,7 +16232,8 @@ ALTER TABLE `jt_jsn_uniform_form_pages`
 -- Indexes for table `jt_jsn_uniform_messages`
 --
 ALTER TABLE `jt_jsn_uniform_messages`
-  ADD PRIMARY KEY (`msg_id`), ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
+  ADD PRIMARY KEY (`msg_id`),
+  ADD UNIQUE KEY `message` (`msg_screen`,`ordering`);
 
 --
 -- Indexes for table `jt_jsn_uniform_submissions`
@@ -16073,37 +16245,56 @@ ALTER TABLE `jt_jsn_uniform_submissions`
 -- Indexes for table `jt_jsn_uniform_submission_data`
 --
 ALTER TABLE `jt_jsn_uniform_submission_data`
-  ADD PRIMARY KEY (`submission_data_id`), ADD KEY `submission_data_id` (`submission_data_id`), ADD KEY `submission_id` (`submission_id`), ADD KEY `form_id` (`form_id`), ADD KEY `field_id` (`field_id`);
+  ADD PRIMARY KEY (`submission_data_id`),
+  ADD KEY `submission_data_id` (`submission_data_id`),
+  ADD KEY `submission_id` (`submission_id`),
+  ADD KEY `form_id` (`form_id`),
+  ADD KEY `field_id` (`field_id`);
 
 --
 -- Indexes for table `jt_jsn_uniform_templates`
 --
 ALTER TABLE `jt_jsn_uniform_templates`
-  ADD PRIMARY KEY (`template_id`), ADD KEY `fk_uniform_templates_forms` (`form_id`);
+  ADD PRIMARY KEY (`template_id`),
+  ADD KEY `fk_uniform_templates_forms` (`form_id`);
 
 --
 -- Indexes for table `jt_languages`
 --
 ALTER TABLE `jt_languages`
-  ADD PRIMARY KEY (`lang_id`), ADD UNIQUE KEY `idx_sef` (`sef`), ADD UNIQUE KEY `idx_image` (`image`), ADD UNIQUE KEY `idx_langcode` (`lang_code`), ADD KEY `idx_ordering` (`ordering`), ADD KEY `idx_access` (`access`);
+  ADD PRIMARY KEY (`lang_id`),
+  ADD UNIQUE KEY `idx_sef` (`sef`),
+  ADD UNIQUE KEY `idx_image` (`image`),
+  ADD UNIQUE KEY `idx_langcode` (`lang_code`),
+  ADD KEY `idx_ordering` (`ordering`),
+  ADD KEY `idx_access` (`access`);
 
 --
 -- Indexes for table `jt_menu`
 --
 ALTER TABLE `jt_menu`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`,`language`), ADD KEY `idx_componentid` (`component_id`,`menutype`,`published`,`access`), ADD KEY `idx_menutype` (`menutype`), ADD KEY `idx_left_right` (`lft`,`rgt`), ADD KEY `idx_alias` (`alias`), ADD KEY `idx_path` (`path`(255)), ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_client_id_parent_id_alias_language` (`client_id`,`parent_id`,`alias`,`language`),
+  ADD KEY `idx_componentid` (`component_id`,`menutype`,`published`,`access`),
+  ADD KEY `idx_menutype` (`menutype`),
+  ADD KEY `idx_left_right` (`lft`,`rgt`),
+  ADD KEY `idx_alias` (`alias`),
+  ADD KEY `idx_path` (`path`(255)),
+  ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_menu_types`
 --
 ALTER TABLE `jt_menu_types`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_menutype` (`menutype`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_menutype` (`menutype`);
 
 --
 -- Indexes for table `jt_messages`
 --
 ALTER TABLE `jt_messages`
-  ADD PRIMARY KEY (`message_id`), ADD KEY `useridto_state` (`user_id_to`,`state`);
+  ADD PRIMARY KEY (`message_id`),
+  ADD KEY `useridto_state` (`user_id_to`,`state`);
 
 --
 -- Indexes for table `jt_messages_cfg`
@@ -16115,7 +16306,10 @@ ALTER TABLE `jt_messages_cfg`
 -- Indexes for table `jt_modules`
 --
 ALTER TABLE `jt_modules`
-  ADD PRIMARY KEY (`id`), ADD KEY `published` (`published`,`access`), ADD KEY `newsfeeds` (`module`,`published`), ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `published` (`published`,`access`),
+  ADD KEY `newsfeeds` (`module`,`published`),
+  ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_modules_menu`
@@ -16127,7 +16321,14 @@ ALTER TABLE `jt_modules_menu`
 -- Indexes for table `jt_newsfeeds`
 --
 ALTER TABLE `jt_newsfeeds`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`published`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_state` (`published`),
+  ADD KEY `idx_catid` (`catid`),
+  ADD KEY `idx_createdby` (`created_by`),
+  ADD KEY `idx_language` (`language`),
+  ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- Indexes for table `jt_overrider`
@@ -16145,7 +16346,9 @@ ALTER TABLE `jt_postinstall_messages`
 -- Indexes for table `jt_redirect_links`
 --
 ALTER TABLE `jt_redirect_links`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_link_old` (`old_url`), ADD KEY `idx_link_modifed` (`modified_date`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_link_old` (`old_url`),
+  ADD KEY `idx_link_modifed` (`modified_date`);
 
 --
 -- Indexes for table `jt_schemas`
@@ -16157,37 +16360,65 @@ ALTER TABLE `jt_schemas`
 -- Indexes for table `jt_session`
 --
 ALTER TABLE `jt_session`
-  ADD PRIMARY KEY (`session_id`), ADD KEY `userid` (`userid`), ADD KEY `time` (`time`);
+  ADD PRIMARY KEY (`session_id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `time` (`time`);
 
 --
 -- Indexes for table `jt_tags`
 --
 ALTER TABLE `jt_tags`
-  ADD PRIMARY KEY (`id`), ADD KEY `tag_idx` (`published`,`access`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_path` (`path`), ADD KEY `idx_left_right` (`lft`,`rgt`), ADD KEY `idx_alias` (`alias`), ADD KEY `idx_language` (`language`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tag_idx` (`published`,`access`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_path` (`path`),
+  ADD KEY `idx_left_right` (`lft`,`rgt`),
+  ADD KEY `idx_alias` (`alias`),
+  ADD KEY `idx_language` (`language`);
 
 --
 -- Indexes for table `jt_template_styles`
 --
 ALTER TABLE `jt_template_styles`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_template` (`template`), ADD KEY `idx_home` (`home`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_template` (`template`),
+  ADD KEY `idx_home` (`home`);
 
 --
 -- Indexes for table `jt_ucm_base`
 --
 ALTER TABLE `jt_ucm_base`
-  ADD PRIMARY KEY (`ucm_id`), ADD KEY `idx_ucm_item_id` (`ucm_item_id`), ADD KEY `idx_ucm_type_id` (`ucm_type_id`), ADD KEY `idx_ucm_language_id` (`ucm_language_id`);
+  ADD PRIMARY KEY (`ucm_id`),
+  ADD KEY `idx_ucm_item_id` (`ucm_item_id`),
+  ADD KEY `idx_ucm_type_id` (`ucm_type_id`),
+  ADD KEY `idx_ucm_language_id` (`ucm_language_id`);
 
 --
 -- Indexes for table `jt_ucm_content`
 --
 ALTER TABLE `jt_ucm_content`
-  ADD PRIMARY KEY (`core_content_id`), ADD KEY `tag_idx` (`core_state`,`core_access`), ADD KEY `idx_access` (`core_access`), ADD KEY `idx_alias` (`core_alias`), ADD KEY `idx_language` (`core_language`), ADD KEY `idx_title` (`core_title`), ADD KEY `idx_modified_time` (`core_modified_time`), ADD KEY `idx_created_time` (`core_created_time`), ADD KEY `idx_content_type` (`core_type_alias`), ADD KEY `idx_core_modified_user_id` (`core_modified_user_id`), ADD KEY `idx_core_checked_out_user_id` (`core_checked_out_user_id`), ADD KEY `idx_core_created_user_id` (`core_created_user_id`), ADD KEY `idx_core_type_id` (`core_type_id`);
+  ADD PRIMARY KEY (`core_content_id`),
+  ADD KEY `tag_idx` (`core_state`,`core_access`),
+  ADD KEY `idx_access` (`core_access`),
+  ADD KEY `idx_alias` (`core_alias`),
+  ADD KEY `idx_language` (`core_language`),
+  ADD KEY `idx_title` (`core_title`),
+  ADD KEY `idx_modified_time` (`core_modified_time`),
+  ADD KEY `idx_created_time` (`core_created_time`),
+  ADD KEY `idx_content_type` (`core_type_alias`),
+  ADD KEY `idx_core_modified_user_id` (`core_modified_user_id`),
+  ADD KEY `idx_core_checked_out_user_id` (`core_checked_out_user_id`),
+  ADD KEY `idx_core_created_user_id` (`core_created_user_id`),
+  ADD KEY `idx_core_type_id` (`core_type_id`);
 
 --
 -- Indexes for table `jt_ucm_history`
 --
 ALTER TABLE `jt_ucm_history`
-  ADD PRIMARY KEY (`version_id`), ADD KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`), ADD KEY `idx_save_date` (`save_date`);
+  ADD PRIMARY KEY (`version_id`),
+  ADD KEY `idx_ucm_item_id` (`ucm_type_id`,`ucm_item_id`),
+  ADD KEY `idx_save_date` (`save_date`);
 
 --
 -- Indexes for table `jt_updates`
@@ -16211,25 +16442,39 @@ ALTER TABLE `jt_update_sites_extensions`
 -- Indexes for table `jt_usergroups`
 --
 ALTER TABLE `jt_usergroups`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`), ADD KEY `idx_usergroup_title_lookup` (`title`), ADD KEY `idx_usergroup_adjacency_lookup` (`parent_id`), ADD KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE;
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_usergroup_parent_title_lookup` (`parent_id`,`title`),
+  ADD KEY `idx_usergroup_title_lookup` (`title`),
+  ADD KEY `idx_usergroup_adjacency_lookup` (`parent_id`),
+  ADD KEY `idx_usergroup_nested_set_lookup` (`lft`,`rgt`) USING BTREE;
 
 --
 -- Indexes for table `jt_users`
 --
 ALTER TABLE `jt_users`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_name` (`name`), ADD KEY `idx_block` (`block`), ADD KEY `username` (`username`), ADD KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_name` (`name`),
+  ADD KEY `idx_block` (`block`),
+  ADD KEY `username` (`username`),
+  ADD KEY `email` (`email`);
 
 --
 -- Indexes for table `jt_user_keys`
 --
 ALTER TABLE `jt_user_keys`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `series` (`series`), ADD UNIQUE KEY `series_2` (`series`), ADD UNIQUE KEY `series_3` (`series`), ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `series` (`series`),
+  ADD UNIQUE KEY `series_2` (`series`),
+  ADD UNIQUE KEY `series_3` (`series`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `jt_user_notes`
 --
 ALTER TABLE `jt_user_notes`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_user_id` (`user_id`), ADD KEY `idx_category_id` (`catid`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_user_id` (`user_id`),
+  ADD KEY `idx_category_id` (`catid`);
 
 --
 -- Indexes for table `jt_user_profiles`
@@ -16247,13 +16492,22 @@ ALTER TABLE `jt_user_usergroup_map`
 -- Indexes for table `jt_viewlevels`
 --
 ALTER TABLE `jt_viewlevels`
-  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `idx_assetgroup_title_lookup` (`title`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `idx_assetgroup_title_lookup` (`title`);
 
 --
 -- Indexes for table `jt_weblinks`
 --
 ALTER TABLE `jt_weblinks`
-  ADD PRIMARY KEY (`id`), ADD KEY `idx_access` (`access`), ADD KEY `idx_checkout` (`checked_out`), ADD KEY `idx_state` (`state`), ADD KEY `idx_catid` (`catid`), ADD KEY `idx_createdby` (`created_by`), ADD KEY `idx_featured_catid` (`featured`,`catid`), ADD KEY `idx_language` (`language`), ADD KEY `idx_xreference` (`xreference`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idx_access` (`access`),
+  ADD KEY `idx_checkout` (`checked_out`),
+  ADD KEY `idx_state` (`state`),
+  ADD KEY `idx_catid` (`catid`),
+  ADD KEY `idx_createdby` (`created_by`),
+  ADD KEY `idx_featured_catid` (`featured`,`catid`),
+  ADD KEY `idx_language` (`language`),
+  ADD KEY `idx_xreference` (`xreference`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -16298,7 +16552,7 @@ ALTER TABLE `jt_comprofiler_lists`
 -- AUTO_INCREMENT for table `jt_comprofiler_plugin`
 --
 ALTER TABLE `jt_comprofiler_plugin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_plugin_blogs`
 --
@@ -16313,7 +16567,7 @@ ALTER TABLE `jt_comprofiler_ratings`
 -- AUTO_INCREMENT for table `jt_comprofiler_tabs`
 --
 ALTER TABLE `jt_comprofiler_tabs`
-  MODIFY `tabid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `tabid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `jt_comprofiler_userreports`
 --
@@ -16338,7 +16592,7 @@ ALTER TABLE `jt_content_types`
 -- AUTO_INCREMENT for table `jt_extensions`
 --
 ALTER TABLE `jt_extensions`
-  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10158;
+  MODIFY `extension_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10159;
 --
 -- AUTO_INCREMENT for table `jt_finder_filters`
 --
@@ -16368,7 +16622,7 @@ ALTER TABLE `jt_finder_types`
 -- AUTO_INCREMENT for table `jt_hikashop_address`
 --
 ALTER TABLE `jt_hikashop_address`
-  MODIFY `address_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `address_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_badge`
 --
@@ -16383,12 +16637,12 @@ ALTER TABLE `jt_hikashop_banner`
 -- AUTO_INCREMENT for table `jt_hikashop_cart`
 --
 ALTER TABLE `jt_hikashop_cart`
-  MODIFY `cart_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `cart_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_cart_product`
 --
 ALTER TABLE `jt_hikashop_cart_product`
-  MODIFY `cart_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
+  MODIFY `cart_product_id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `jt_hikashop_category`
 --
@@ -16728,7 +16982,7 @@ ALTER TABLE `jt_languages`
 -- AUTO_INCREMENT for table `jt_menu`
 --
 ALTER TABLE `jt_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1996;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2005;
 --
 -- AUTO_INCREMENT for table `jt_menu_types`
 --
