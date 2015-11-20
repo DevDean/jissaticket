@@ -808,13 +808,21 @@ Registration Functions
 		$moduleFile					=	$_CB_framework->getCfg( 'absolute_path' ) . '/modules/' . ( checkJversion() > 0 ? 'mod_cblogin/' : '' ) . 'mod_cblogin.php';
 
 		if ( file_exists( $moduleFile ) ) {
+			$language				=	CBuser::getMyUserDataInstance()->getUserLanguage();
+
+			if ( ! $language ) {
+				$language			=	Application::Cms()->getLanguageTag();
+			}
+
 			define( '_UE_LOGIN_FROM', 'loginform' );
 
 			$query					=	'SELECT *'
 									.	"\n FROM " . $_CB_database->NameQuote( '#__modules' )
 									.	"\n WHERE " . $_CB_database->NameQuote( 'module' ) . " = " . $_CB_database->Quote( 'mod_cblogin' )
 									.	"\n AND " . $_CB_database->NameQuote( 'published' ) . " = 1"
-									.	"\n ORDER BY " . $_CB_database->NameQuote( 'ordering' );
+									.	"\n AND " . $_CB_database->NameQuote( 'access' ) . " IN " . $_CB_database->safeArrayOfIntegers( Application::MyUser()->getAuthorisedViewLevels() )
+									.	"\n AND " . $_CB_database->NameQuote( 'language' ) . " IN ( " . $_CB_database->Quote( $language ) . ", " . $_CB_database->Quote( '*' ) . ", " . $_CB_database->Quote( '' ) . " )"
+									.	"\n ORDER BY " . $_CB_database->NameQuote( 'position' ) . ", " . $_CB_database->NameQuote( 'ordering' );
 			$_CB_database->setQuery( $query, 0, 1 );
 			$module					=	null;
 			$_CB_database->loadObject( $module );
@@ -1192,7 +1200,7 @@ static function manageConnections( $connections, $actions, $total, &$connMgmtTab
 			$cbUser				=	CBuser::getInstance( (int) $action->id, false );
 
 			$tipField			=	'<b>' . CBTxt::Th( 'UE_CONNECTIONREQUIREDON', 'Connection Required on' ) . '</b>: '
-								. $_CB_framework->getUTCDate( array( $ueConfig['date_format'], 'Y-m-d' ),  $action->membersince );
+								.	cbFormatDate( $action->membersince, true, false );
 
 			if ( $action->reason != null ) {
 				$tipField		.=	'<br /><b>' . CBTxt::Th( 'UE_CONNECTIONMESSAGE', 'Personal message included' ) . '</b>: <br />' . htmlspecialchars( $action->reason, ENT_QUOTES );
@@ -1252,7 +1260,7 @@ static function manageConnections( $connections, $actions, $total, &$connMgmtTab
 			$cbUser				=	CBuser::getInstance( (int) $connection->id, false );
 
 			$tipField			=	'<b>' .CBTxt::Th( 'UE_CONNECTEDSINCE', 'Connected Since' ) . '</b>: '
-								.	 $_CB_framework->getUTCDate( array( $ueConfig['date_format'], 'Y-m-d' ),  $connection->membersince );
+								.	cbFormatDate( $connection->membersince, true, false );
 
 			if ( $connection->type != null ) {
 				$tipField		.=	'<br /><b>' . CBTxt::Th( 'UE_CONNECTIONTYPE', 'Type' ) . '</b>: ' . getConnectionTypes( $connection->type );
@@ -1346,7 +1354,7 @@ static function manageConnections( $connections, $actions, $total, &$connMgmtTab
 				$cbUser			=	CBuser::getInstance( (int) $connected->id, false );
 
 				$tipField		=	'<b>' .CBTxt::Th( 'UE_CONNECTEDSINCE', 'Connected Since' ) . '</b>: '
-								.	 $_CB_framework->getUTCDate( array( $ueConfig['date_format'], 'Y-m-d' ),  $connected->membersince );
+								.	cbFormatDate( $connected->membersince, true, false );
 
 				if ( $connected->type != null ) {
 					$tipField	.=	'<br /><b>' . CBTxt::Th( 'UE_CONNECTIONTYPE', 'Type' ) . '</b>: ' . getConnectionTypes( $connected->type );

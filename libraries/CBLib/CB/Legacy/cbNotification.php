@@ -359,7 +359,7 @@ class cbNotification
 			CBTxt::setLanguage( $savedLanguage );
 		}
 
-		$subject					=	$_CB_framework->getCfg( 'sitename' ) . ' - ' . $subject;
+		$subject					=	CBTxt::T( 'EMAIL_NOTE_SITENAME_SUBJECT', '[sitename] - [subject]', array( '[sitename]' => $_CB_framework->getCfg( 'sitename' ), '[subject]' => $subject ) );
 
 		// Lets fix linebreaks encase the message was sent as a plain string:
 		$message					=	str_replace( array( '\r\n', '\n' ), array( "\r\n", "\n" ), $message );

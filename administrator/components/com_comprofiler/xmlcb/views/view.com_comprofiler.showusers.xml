@@ -20,6 +20,7 @@
 				<quicksearchfields placeholder="Search Users..." size="30">
 					<field name="username" />
 					<field name="name" />
+					<field name="email" />
 					<field name="id" valuetype="const:int" />
 				</quicksearchfields>
 				<filters>

@@ -19,7 +19,7 @@ use CBLib\Language\TranslationsLogger;
 use CBLib\Output\Output;
 use CBLib\Date\Date;
 
-define( 'CBLIB', '2.0.11' );	// IMPORTANT: when changing version here also change in the 8 XML installation files and in libraries/CBLib/CB/Legacy/cbInstallerPlugin.php and build.xml
+define( 'CBLIB', '2.0.12' );	// IMPORTANT: when changing version here also change in the 8 XML installation files and in libraries/CBLib/CB/Legacy/cbInstallerPlugin.php and build.xml
 
 include_once __DIR__ . '/AutoLoader.php';
 

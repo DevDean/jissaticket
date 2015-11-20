@@ -265,7 +265,7 @@ class cbCalendars
 			}
 
 			if ( in_array( $this->calendarType, array( 2, 3 ) ) ) {
-				$tooltipTarget				=	'#' . htmlspecialchars( $inputId ) . ' + .combodate';
+				$tooltipTarget				=	'#' . htmlspecialchars( $inputId ) . 'Picker + .combodate';
 
 				$attributes					.=	' data-cbtooltip-open-target="' . $tooltipTarget . '" data-cbtooltip-close-target="' . $tooltipTarget . '" data-cbtooltip-position-target="' . $tooltipTarget . '"'
 											.	' data-cbdatepicker-format="' . htmlspecialchars( $this->dateFormat[2][2] . ( $showTime ? ' ' . $this->timeFormat[2][2] : null ) ) . '"'

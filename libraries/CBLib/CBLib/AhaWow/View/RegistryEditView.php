@@ -4411,6 +4411,11 @@ class RegistryEditView {
 			} elseif ( count( $options ) >= ( $multiple ? 30 : 15 ) ) {
 				$select2		=	true;
 			}
+
+			if ( $select2 && ( count( $options ) >= 150 ) ) {
+				// Very large lists cause too much of a performance hit so force select2 off:
+				$select2		=	false;
+			}
 		}
 
 		if ( $select2 ) {

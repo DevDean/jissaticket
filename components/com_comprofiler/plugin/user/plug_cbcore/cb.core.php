@@ -3435,11 +3435,15 @@ class CBfield_image extends cbFieldHandler {
 				$termsDisplay					=	$field->params->get( 'terms_display', 'modal' );
 				$termsURL						=	$field->params->get( 'terms_url', null );
 				$termsText						=	$field->params->get( 'terms_text', null );
-				$termsWidth						=	(int) $field->params->get( 'terms_width', 400 );
-				$termsHeight					=	(int) $field->params->get( 'terms_height', 200 );
+				$termsWidth						=	$field->params->get( 'terms_width', 400 );
+				$termsHeight					=	$field->params->get( 'terms_height', 200 );
 
 				if ( ! $termsType ) {
 					$termsType					=	CBTxt::T( 'TERMS_AND_CONDITIONS', 'Terms and Conditions' );
+				}
+
+				if ( ! $termsWidth ) {
+					$termsWidth					=	400;
 				}
 
 				if ( ! $termsHeight ) {
@@ -3448,14 +3452,24 @@ class CBfield_image extends cbFieldHandler {
 
 				if ( ( ( $termsOutput == 'url' ) && $termsURL ) || ( ( $termsOutput == 'text' ) && $termsText ) ) {
 					if ( $termsDisplay == 'iframe' ) {
-						if ( $termsOutput == 'url' ) {
-							$return				.=			'<iframe class="cbTermsFrameURL" height="' . $termsHeight . '" width="' . ( $termsWidth ? $termsWidth : '100%' ) . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
-						} else {
-							$return				.=			'<div class="cbTermsFrameText" style="height:' . $termsHeight . 'px;width:' . ( $termsWidth ? $termsWidth . 'px' : '100%' ) . ';overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+						if ( is_numeric( $termsHeight ) ) {
+							$termsHeight		.=	'px';
 						}
-					}
 
-					if ( $termsDisplay != 'iframe' ) {
+						if ( is_numeric( $termsWidth ) ) {
+							$termsWidth			.=	'px';
+						}
+
+						if ( $termsOutput == 'url' ) {
+							$return				.=	'<div class="embed-responsive cbTermsFrameContainer" style="padding-bottom: ' . htmlspecialchars( $termsHeight ) . ';">'
+												.		'<iframe class="embed-responsive-item cbTermsFrameURL" style="width: ' . htmlspecialchars( $termsWidth ) . ';" src="' . htmlspecialchars( $termsURL ) . '"></iframe>'
+												.	'</div>';
+						} else {
+							$return				.=	'<div class="cbTermsFrameText" style="height:' . htmlspecialchars( $termsHeight ) . ';width:' . htmlspecialchars( $termsWidth ) . ';overflow:auto;">' . $termsText . '</div>';
+						}
+
+						$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_IMAGE_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this image and that it does not violate the above [type].', array( '[type]' => $termsType ) );
+					} else {
 						$attributes				=	' class="cbTermsLink"';
 
 						if ( ( $termsOutput == 'text' ) && ( $termsDisplay == 'window' ) ) {
@@ -3463,28 +3477,23 @@ class CBfield_image extends cbFieldHandler {
 						}
 
 						if ( $termsDisplay == 'modal' ) {
-							if ( ! $termsWidth ) {
-								$termsWidth		=	400;
-							}
+							// Tooltip height percentage would be based off window height (including scrolling); lets change it to be based off the viewport height:
+							$termsHeight		=	( substr( $termsHeight, -1 ) == '%' ? (int) substr( $termsHeight, 0, -1 ) . 'vh' : $termsHeight );
 
 							if ( $termsOutput == 'url' ) {
-								$tooltip		=	'<iframe class="cbTermsModalURL" height="' . $termsHeight . '" width="' . $termsWidth . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
+								$tooltip		=	'<iframe class="cbTermsModalURL" height="100%" width="100%" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
 							} else {
-								$tooltip		=	'<div class="cbTermsModalText" style="height:' . $termsHeight . 'px;width:' . $termsWidth . 'px;overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+								$tooltip		=	'<div class="cbTermsModalText" style="height:100%;width:100%;overflow:auto;">' . $termsText . '</div>';
 							}
 
 							$url				=	'javascript:void(0);';
-							$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, 'auto', null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
+							$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, array( $termsWidth, $termsHeight ), null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
 						} else {
 							$url				=	htmlspecialchars( $termsURL );
 							$attributes			.=	' target="_blank"';
 						}
 
-						$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_IMAGE_FILE_URL_TERMS', 'By uploading, you certify that you have the right to distribute this image and that it does not violate the <a href="[url]"[attributes]>[type]</a>',
-																		  array( '[url]' => $url, '[attributes]' => $attributes, '[type]' => $termsType )
-																		);
-					} else {
-						$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_IMAGE_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this image and that it does not violate the above [type].', array( '[type]' => $termsType ) );
+						$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_IMAGE_FILE_URL_TERMS', 'By uploading, you certify that you have the right to distribute this image and that it does not violate the <a href="[url]"[attributes]>[type]</a>', array( '[url]' => $url, '[attributes]' => $attributes, '[type]' => $termsType ) );
 					}
 				} else {
 					$return						.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_IMAGE_FILE', 'By uploading, you certify that you have the right to distribute this image.' );
@@ -5281,11 +5290,15 @@ class CBfield_file extends cbFieldHandler {
 			$termsDisplay					=	$field->params->get( 'terms_display', 'modal' );
 			$termsURL						=	$field->params->get( 'terms_url', null );
 			$termsText						=	$field->params->get( 'terms_text', null );
-			$termsWidth						=	(int) $field->params->get( 'terms_width', 400 );
-			$termsHeight					=	(int) $field->params->get( 'terms_height', 200 );
+			$termsWidth						=	$field->params->get( 'terms_width', 400 );
+			$termsHeight					=	$field->params->get( 'terms_height', 200 );
 
 			if ( ! $termsType ) {
 				$termsType					=	CBTxt::T( 'TERMS_AND_CONDITIONS', 'Terms and Conditions' );
+			}
+
+			if ( ! $termsWidth ) {
+				$termsWidth					=	400;
 			}
 
 			if ( ! $termsHeight ) {
@@ -5294,14 +5307,24 @@ class CBfield_file extends cbFieldHandler {
 
 			if ( ( ( $termsOutput == 'url' ) && $termsURL ) || ( ( $termsOutput == 'text' ) && $termsText ) ) {
 				if ( $termsDisplay == 'iframe' ) {
-					if ( $termsOutput == 'url' ) {
-						$return				.=			'<iframe class="cbTermsFrameURL" height="' . $termsHeight . '" width="' . ( $termsWidth ? $termsWidth : '100%' ) . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
-					} else {
-						$return				.=			'<div class="cbTermsFrameText" style="height:' . $termsHeight . 'px;width:' . ( $termsWidth ? $termsWidth . 'px' : '100%' ) . ';overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+					if ( is_numeric( $termsHeight ) ) {
+						$termsHeight		.=	'px';
 					}
-				}
 
-				if ( $termsDisplay != 'iframe' ) {
+					if ( is_numeric( $termsWidth ) ) {
+						$termsWidth			.=	'px';
+					}
+
+					if ( $termsOutput == 'url' ) {
+						$return				.=	'<div class="embed-responsive cbTermsFrameContainer" style="padding-bottom: ' . htmlspecialchars( $termsHeight ) . ';">'
+											.		'<iframe class="embed-responsive-item cbTermsFrameURL" style="width: ' . htmlspecialchars( $termsWidth ) . ';" src="' . htmlspecialchars( $termsURL ) . '"></iframe>'
+											.	'</div>';
+					} else {
+						$return				.=	'<div class="cbTermsFrameText" style="height:' . htmlspecialchars( $termsHeight ) . ';width:' . htmlspecialchars( $termsWidth ) . ';overflow:auto;">' . $termsText . '</div>';
+					}
+
+					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this file and that it does not violate the above [type].', array( '[type]' => $termsType ) );
+				} else {
 					$attributes				=	' class="cbTermsLink"';
 
 					if ( ( $termsOutput == 'text' ) && ( $termsDisplay == 'window' ) ) {
@@ -5309,30 +5332,23 @@ class CBfield_file extends cbFieldHandler {
 					}
 
 					if ( $termsDisplay == 'modal' ) {
-						if ( ! $termsWidth ) {
-							$termsWidth		=	400;
-						}
+						// Tooltip height percentage would be based off window height (including scrolling); lets change it to be based off the viewport height:
+						$termsHeight		=	( substr( $termsHeight, -1 ) == '%' ? (int) substr( $termsHeight, 0, -1 ) . 'vh' : $termsHeight );
 
 						if ( $termsOutput == 'url' ) {
-							$tooltip		=	'<iframe class="cbTermsModalURL" height="' . $termsHeight . '" width="' . $termsWidth . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
+							$tooltip		=	'<iframe class="cbTermsModalURL" height="100%" width="100%" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
 						} else {
-							$tooltip		=	'<div class="cbTermsModalText" style="height:' . $termsHeight . 'px;width:' . $termsWidth . 'px;overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+							$tooltip		=	'<div class="cbTermsModalText" style="height:100%;width:100%;overflow:auto;">' . $termsText . '</div>';
 						}
 
 						$url				=	'javascript:void(0);';
-						$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, 'auto', null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
+						$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, array( $termsWidth, $termsHeight ), null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
 					} else {
 						$url				=	htmlspecialchars( $termsURL );
 						$attributes			.=	' target="_blank"';
 					}
 
-					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_FILE_URL_TERMS', 'By uploading, you certify that you have the right to distribute this file and that it does not violate the <a href="[url]"[attributes]>[type]</a>',
-																	   array( '[url]' => $url, '[attributes]' => $attributes, '[type]' => $termsType )
-																	 );
-				} else {
-					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this file and that it does not violate the above [type].',
-																	   array( '[type]' => $termsType )
-																	 );
+					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_FILE_URL_TERMS', 'By uploading, you certify that you have the right to distribute this file and that it does not violate the <a href="[url]"[attributes]>[type]</a>', array( '[url]' => $url, '[attributes]' => $attributes, '[type]' => $termsType ) );
 				}
 			} else {
 				$return						.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_FILE', 'By uploading, you certify that you have the right to distribute this file.' );
@@ -5662,11 +5678,15 @@ class CBfield_video extends CBfield_text {
 			$termsDisplay					=	$field->params->get( 'terms_display', 'modal' );
 			$termsURL						=	$field->params->get( 'terms_url', null );
 			$termsText						=	$field->params->get( 'terms_text', null );
-			$termsWidth						=	(int) $field->params->get( 'terms_width', 400 );
-			$termsHeight					=	(int) $field->params->get( 'terms_height', 200 );
+			$termsWidth						=	$field->params->get( 'terms_width', 400 );
+			$termsHeight					=	$field->params->get( 'terms_height', 200 );
 
 			if ( ! $termsType ) {
 				$termsType					=	CBTxt::T( 'TERMS_AND_CONDITIONS', 'Terms and Conditions' );
+			}
+
+			if ( ! $termsWidth ) {
+				$termsWidth					=	400;
 			}
 
 			if ( ! $termsHeight ) {
@@ -5675,14 +5695,24 @@ class CBfield_video extends CBfield_text {
 
 			if ( ( ( $termsOutput == 'url' ) && $termsURL ) || ( ( $termsOutput == 'text' ) && $termsText ) ) {
 				if ( $termsDisplay == 'iframe' ) {
-					if ( $termsOutput == 'url' ) {
-						$return				.=			'<iframe class="cbTermsFrameURL" height="' . $termsHeight . '" width="' . ( $termsWidth ? $termsWidth : '100%' ) . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
-					} else {
-						$return				.=			'<div class="cbTermsFrameText" style="height:' . $termsHeight . 'px;width:' . ( $termsWidth ? $termsWidth . 'px' : '100%' ) . ';overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+					if ( is_numeric( $termsHeight ) ) {
+						$termsHeight		.=	'px';
 					}
-				}
 
-				if ( $termsDisplay != 'iframe' ) {
+					if ( is_numeric( $termsWidth ) ) {
+						$termsWidth			.=	'px';
+					}
+
+					if ( $termsOutput == 'url' ) {
+						$return				.=	'<div class="embed-responsive cbTermsFrameContainer" style="padding-bottom: ' . htmlspecialchars( $termsHeight ) . ';">'
+											.		'<iframe class="embed-responsive-item cbTermsFrameURL" style="width: ' . htmlspecialchars( $termsWidth ) . ';" src="' . htmlspecialchars( $termsURL ) . '"></iframe>'
+											.	'</div>';
+					} else {
+						$return				.=	'<div class="cbTermsFrameText" style="height:' . htmlspecialchars( $termsHeight ) . ';width:' . htmlspecialchars( $termsWidth ) . ';overflow:auto;">' . $termsText . '</div>';
+					}
+
+					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_VIDEO_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this video file and that it does not violate the above [type].', array( '[type]' => $termsType ) );
+				} else {
 					$attributes				=	' class="cbTermsLink"';
 
 					if ( ( $termsOutput == 'text' ) && ( $termsDisplay == 'window' ) ) {
@@ -5690,26 +5720,23 @@ class CBfield_video extends CBfield_text {
 					}
 
 					if ( $termsDisplay == 'modal' ) {
-						if ( ! $termsWidth ) {
-							$termsWidth		=	400;
-						}
+						// Tooltip height percentage would be based off window height (including scrolling); lets change it to be based off the viewport height:
+						$termsHeight		=	( substr( $termsHeight, -1 ) == '%' ? (int) substr( $termsHeight, 0, -1 ) . 'vh' : $termsHeight );
 
 						if ( $termsOutput == 'url' ) {
-							$tooltip		=	'<iframe class="cbTermsModalURL" height="' . $termsHeight . '" width="' . $termsWidth . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
+							$tooltip		=	'<iframe class="cbTermsModalURL" height="100%" width="100%" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
 						} else {
-							$tooltip		=	'<div class="cbTermsModalText" style="height:' . $termsHeight . 'px;width:' . $termsWidth . 'px;overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+							$tooltip		=	'<div class="cbTermsModalText" style="height:100%;width:100%;overflow:auto;">' . $termsText . '</div>';
 						}
 
 						$url				=	'javascript:void(0);';
-						$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, 'auto', null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
+						$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, array( $termsWidth, $termsHeight ), null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
 					} else {
 						$url				=	htmlspecialchars( $termsURL );
 						$attributes			.=	' target="_blank"';
 					}
 
 					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_VIDEO_FILE_URL_TERMS', 'By uploading, you certify that you have the right to distribute this video file and that it does not violate the <a href="[url]"[attributes]>[type]</a>', array( '[url]' => $url, '[attributes]' => $attributes, '[type]' => $termsType ) );
-				} else {
-					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_VIDEO_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this video file and that it does not violate the above [type].', array( '[type]' => $termsType ) );
 				}
 			} else {
 				$return						.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_VIDEO_FILE', 'By uploading, you certify that you have the right to distribute this video file.' );
@@ -6392,20 +6419,34 @@ class CBfield_audio extends CBfield_text {
 				$termsType					=	CBTxt::T( 'TERMS_AND_CONDITIONS', 'Terms and Conditions' );
 			}
 
+			if ( ! $termsWidth ) {
+				$termsWidth					=	400;
+			}
+
 			if ( ! $termsHeight ) {
 				$termsHeight				=	200;
 			}
 
 			if ( ( ( $termsOutput == 'url' ) && $termsURL ) || ( ( $termsOutput == 'text' ) && $termsText ) ) {
 				if ( $termsDisplay == 'iframe' ) {
-					if ( $termsOutput == 'url' ) {
-						$return				.=			'<iframe class="cbTermsFrameURL" height="' . $termsHeight . '" width="' . ( $termsWidth ? $termsWidth : '100%' ) . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
-					} else {
-						$return				.=			'<div class="cbTermsFrameText" style="height:' . $termsHeight . 'px;width:' . ( $termsWidth ? $termsWidth . 'px' : '100%' ) . ';overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+					if ( is_numeric( $termsHeight ) ) {
+						$termsHeight		.=	'px';
 					}
-				}
 
-				if ( $termsDisplay != 'iframe' ) {
+					if ( is_numeric( $termsWidth ) ) {
+						$termsWidth			.=	'px';
+					}
+
+					if ( $termsOutput == 'url' ) {
+						$return				.=	'<div class="embed-responsive cbTermsFrameContainer" style="padding-bottom: ' . htmlspecialchars( $termsHeight ) . ';">'
+											.		'<iframe class="embed-responsive-item cbTermsFrameURL" style="width: ' . htmlspecialchars( $termsWidth ) . ';" src="' . htmlspecialchars( $termsURL ) . '"></iframe>'
+											.	'</div>';
+					} else {
+						$return				.=	'<div class="cbTermsFrameText" style="height:' . htmlspecialchars( $termsHeight ) . ';width:' . htmlspecialchars( $termsWidth ) . ';overflow:auto;">' . $termsText . '</div>';
+					}
+
+					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_AUDIO_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this audio file and that it does not violate the above [type].', array( '[type]' => $termsType ) );
+				} else {
 					$attributes				=	' class="cbTermsLink"';
 
 					if ( ( $termsOutput == 'text' ) && ( $termsDisplay == 'window' ) ) {
@@ -6413,26 +6454,23 @@ class CBfield_audio extends CBfield_text {
 					}
 
 					if ( $termsDisplay == 'modal' ) {
-						if ( ! $termsWidth ) {
-							$termsWidth		=	400;
-						}
+						// Tooltip height percentage would be based off window height (including scrolling); lets change it to be based off the viewport height:
+						$termsHeight		=	( substr( $termsHeight, -1 ) == '%' ? (int) substr( $termsHeight, 0, -1 ) . 'vh' : $termsHeight );
 
 						if ( $termsOutput == 'url' ) {
-							$tooltip		=	'<iframe class="cbTermsModalURL" height="' . $termsHeight . '" width="' . $termsWidth . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
+							$tooltip		=	'<iframe class="cbTermsModalURL" height="100%" width="100%" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
 						} else {
-							$tooltip		=	'<div class="cbTermsModalText" style="height:' . $termsHeight . 'px;width:' . $termsWidth . 'px;overflow:auto;">' . CBTxt::T( $termsText ) . '</div>';
+							$tooltip		=	'<div class="cbTermsModalText" style="height:100%;width:100%;overflow:auto;">' . $termsText . '</div>';
 						}
 
 						$url				=	'javascript:void(0);';
-						$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, 'auto', null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
+						$attributes			.=	' ' . cbTooltip( $_CB_framework->getUi(), $tooltip, $termsType, array( $termsWidth, $termsHeight ), null, null, null, 'data-hascbtooltip="true" data-cbtooltip-modal="true"' );
 					} else {
 						$url				=	htmlspecialchars( $termsURL );
 						$attributes			.=	' target="_blank"';
 					}
 
 					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_AUDIO_FILE_URL_TERMS', 'By uploading, you certify that you have the right to distribute this audio file and that it does not violate the <a href="[url]"[attributes]>[type]</a>', array( '[url]' => $url, '[attributes]' => $attributes, '[type]' => $termsType ) );
-				} else {
-					$return					.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_AUDIO_FILE_TERMS', 'By uploading, you certify that you have the right to distribute this audio file and that it does not violate the above [type].', array( '[type]' => $termsType ) );
 				}
 			} else {
 				$return						.=			CBTxt::Th( 'BY_UPLOADING_YOU_CERTIFY_THAT_YOU_HAVE_THE_RIGHT_TO_DISTRIBUTE_THIS_AUDIO_FILE', 'By uploading, you certify that you have the right to distribute this audio file.' );
@@ -7950,17 +7988,19 @@ class CBfield_terms extends CBfield_checkbox
 			}
 
 			if ( $termsDisplay == 'iframe' ) {
+				if ( is_numeric( $termsHeight ) ) {
+					$termsHeight		.=	'px';
+				}
+
+				if ( is_numeric( $termsWidth ) ) {
+					$termsWidth			.=	'px';
+				}
+
 				if ( $termsOutput == 'url' ) {
-					$return				.=	'<iframe class="cbTermsFrameURL" height="' . htmlspecialchars( $termsHeight ) . '" width="' . htmlspecialchars( $termsWidth ) . '" src="' . htmlspecialchars( $termsURL ) . '"></iframe>';
+					$return				.=	'<div class="embed-responsive cbTermsFrameContainer" style="padding-bottom: ' . htmlspecialchars( $termsHeight ) . ';">'
+										.		'<iframe class="embed-responsive-item cbTermsFrameURL" style="width: ' . htmlspecialchars( $termsWidth ) . ';" src="' . htmlspecialchars( $termsURL ) . '"></iframe>'
+										.	'</div>';
 				} else {
-					if ( is_numeric( $termsHeight ) ) {
-						$termsHeight	.=	'px';
-					}
-
-					if ( is_numeric( $termsWidth ) ) {
-						$termsWidth		.=	'px';
-					}
-
 					$return				.=	'<div class="cbTermsFrameText" style="height:' . htmlspecialchars( $termsHeight ) . ';width:' . htmlspecialchars( $termsWidth ) . ';overflow:auto;">' . $termsText . '</div>';
 				}
 

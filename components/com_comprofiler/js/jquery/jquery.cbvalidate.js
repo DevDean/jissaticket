@@ -288,13 +288,13 @@
 				});
 
 				// Bind to the change event so we can validate on change
-				cbvalidate.element.validateDelegate( 'input,select,textarea', 'change', function( event ) {
-					var validator = $.data( this[0].form, 'validator' );
-					var eventType = 'on' + event.type.replace( /^validate/, '' );
+				cbvalidate.element.on( 'change.validate', 'input,select,textarea', function( event ) {
+					var validator = $.data( this.form, 'validator' );
+					var eventType = 'on' + event.type.replace( /^validate/, "" );
 					var settings = validator.settings;
 
-					if ( settings[eventType] && ( ! this.is( settings.ignore ) ) ) {
-						settings[eventType].call( validator, this[0], event );
+					if ( settings[eventType] && ( ! $( this ).is( settings.ignore ) ) ) {
+						settings[eventType].call( validator, this, event );
 					}
 				});
 
@@ -460,6 +460,17 @@
 			cbvalidate.element.triggerHandler( 'cbvalidate.errors', [cbvalidate, errors] );
 
 			return errors;
+		},
+		destroy: function() {
+			var cbvalidate = $( this ).data( 'cbvalidate' );
+
+			if ( ! cbvalidate ) {
+				return this;
+			}
+
+			cbvalidate.validate.destroy();
+
+			return this;
 		},
 		instances: function() {
 			return instances;
@@ -633,7 +644,7 @@
 	$.validator.addMethod( 'extension', function( value, element, params ) {
 		params = ( typeof params === 'string' ? params.replace( /,/g, '|' ) : 'png|jpe?g|gif' );
 
-		return this.optional( element ) || value.match( new RegExp( '.(' + params + ')$', 'i' ) );
+		return this.optional( element ) || value.match( new RegExp( '\\.(' + params + ')$', 'i' ) );
 	}, $.validator.format( 'Please enter a value with a valid extension.' ) );
 
 	// maximum word count
@@ -661,12 +672,12 @@
 		}
 
 		if ( typeof params === 'string' ) {
+			params = decodeURIComponent( params );
+
 			var delimiter = params.substr( 0, 1 );
 			var end = params.lastIndexOf( delimiter );
 			var pattern = params.slice( 1, end );
 			var modifiers = params.substr( ( end + 1 ) );
-
-			pattern = pattern.replace( ( delimiter + delimiter ), delimiter );
 
 			params = new RegExp( pattern, modifiers );
 		}
@@ -681,7 +692,7 @@
 
 	// same as pattern, but tests specifically for a valid Joomla/CB username
 	$.validator.addMethod( 'cbusername', function( value, element ) {
-		return this.optional( element ) || ! /^\s+|[<>"'%;()&\\]|\.\.\/|\s+$/i.test( value );
+		return this.optional( element ) || ( ! /^\s+|[<>"'%;()&\\]|\.\.\/|\s+$/i.test( value ) );
 	}, 'Please enter a valid username with no space at beginning or end and must not contain the following characters: < > \\ " \' % ; ( ) &' );
 
 	// tests password strength; result is always true and is for display purposes only
@@ -809,6 +820,11 @@
 
 		return bytes;
 	}
+
+	// ensure 1 value doesn't match another (opposite of equal to validator)
+	$.validator.addMethod( 'notEqualTo', function( value, element, param ) {
+		return this.optional( element ) || ( ! $.validator.methods.equalTo.call( this, value, element, param ) );
+	}, 'Please enter a different value, values must not be the same.' );
 
 	$.fn.cbvalidate = function( options ) {
 		if ( methods[options] ) {

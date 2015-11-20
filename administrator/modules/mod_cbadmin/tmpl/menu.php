@@ -39,7 +39,7 @@ if ( Application::MyUser()->isAuthorizedToPerformActionOnAsset( 'core.manage', '
 													array(	'title' => CBTxt::Th( 'Credits' ), 'link' => $_CB_framework->backendViewUrl( 'credits', true, array( 'cbprevstate' => base64_encode( $prevStateBase ) ) ), 'icon' => 'cb-credits' )
 												);
 
-		$menu[]							=	$cbMenu;
+		$menu['cb']						=	$cbMenu;
 	}
 
 	if ( $params->get( 'menu_cbsubs', 1 ) && file_exists( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/user/plug_cbpaidsubscriptions' ) ) {
@@ -117,22 +117,26 @@ if ( Application::MyUser()->isAuthorizedToPerformActionOnAsset( 'core.manage', '
 												);
 			}
 
-			$menu[]						=	$cbsubsMenu;
+			$menu['cbsubs']				=	$cbsubsMenu;
 		}
 	}
 
+	$forcePlugins						=	false;
+
 	if ( $params->get( 'menu_cbgj', 1 ) && file_exists( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/user/plug_cbgroupjive' ) ) {
-		$query							=	'SELECT ' . $_CB_database->NameQuote( 'id' )
+		if ( file_exists( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/user/plug_cbgroupjive/cbgroupjive.class.php' ) ) {
+			// CB GroupJive 2.7
+			$query						=	'SELECT ' . $_CB_database->NameQuote( 'id' )
 										.	"\n FROM " . $_CB_database->NameQuote( '#__comprofiler_plugin' )
 										.	"\n WHERE " . $_CB_database->NameQuote( 'element' )	. ' = ' . $_CB_database->Quote( 'cbgroupjive' );
-		$_CB_database->setQuery( $query, 0, 1 );
-		$pluginId						=	$_CB_database->loadResult();
+			$_CB_database->setQuery( $query, 0, 1 );
+			$pluginId					=	$_CB_database->loadResult();
 
-		if ( $pluginId ) {
-			$gjMenu						=	array();
+			if ( $pluginId ) {
+				$gjMenu					=	array();
 
-			$gjMenu['component']		=	array(	'title' => CBTxt::Th( 'GroupJive' ) );
-			$gjMenu['menu']				=	array(	array(	'title' => CBTxt::Th( 'Plugin' ), 'link' => $_CB_framework->backendViewUrl( 'editPlugin', true, array( 'cid' => $pluginId ) ), 'icon' => 'cbgj-plugin' ),
+				$gjMenu['component']	=	array(	'title' => CBTxt::Th( 'GroupJive' ) );
+				$gjMenu['menu']			=	array(	array(	'title' => CBTxt::Th( 'Plugin' ), 'link' => $_CB_framework->backendViewUrl( 'editPlugin', true, array( 'cid' => $pluginId ) ), 'icon' => 'cbgj-plugin' ),
 													array(	'title' => CBTxt::Th( 'Categories' ), 'link' => $_CB_framework->backendViewUrl( 'editPlugin', true, array( 'cid' => $pluginId, 'action' => 'categories' ) ), 'icon' => 'cbgj-categories',
 															'submenu' => array( array( 'title' => CBTxt::Th( 'Add New Category' ), 'link' => $_CB_framework->backendViewUrl( 'editPlugin', true, array( 'cid' => $pluginId, 'action' => 'categories.new' ) ), 'icon' => 'cb-new' ) )
 													),
@@ -149,15 +153,19 @@ if ( Application::MyUser()->isAuthorizedToPerformActionOnAsset( 'core.manage', '
 													array(	'title' => CBTxt::Th( 'Menus' ), 'link' => $_CB_framework->backendViewUrl( 'editPlugin', true, array( 'cid' => $pluginId, 'action' => 'menus' ) ), 'icon' => 'cbgj-menus' )
 												);
 
-			if ( file_exists( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/user/plug_cbgroupjive/plugins/cbgroupjiveauto' ) ) {
-				$gjMenu['menu'][]		=	array( 'title' => CBTxt::Th( 'Auto' ), 'link' => $_CB_framework->backendViewUrl( 'editPlugin', true, array( 'cid' => $pluginId, 'action' => 'plugin.auto' ) ), 'icon' => 'cbgj-auto' );
-			}
+				if ( file_exists( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/user/plug_cbgroupjive/plugins/cbgroupjiveauto' ) ) {
+					$gjMenu['menu'][]	=	array( 'title' => CBTxt::Th( 'Auto' ), 'link' => $_CB_framework->backendViewUrl( 'editPlugin', true, array( 'cid' => $pluginId, 'action' => 'plugin.auto' ) ), 'icon' => 'cbgj-auto' );
+				}
 
-			$menu[]						=	$gjMenu;
+				$menu['gj']				=	$gjMenu;
+			}
+		} else {
+			// CB GroupJive 3.0
+			$forcePlugins				=	true;
 		}
 	}
 
-	if ( $params->get( 'menu_plugins', 1 ) ) {
+	if ( $params->get( 'menu_plugins', 1 ) || $forcePlugins ) {
 		$_PLUGINS->loadPluginGroup( 'user' );
 
 		$_PLUGINS->trigger( 'mod_onCBAdminMenu', array( &$menu, $disabled ) );

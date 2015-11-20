@@ -234,6 +234,10 @@ class FieldTable extends OrderedTable
 		$_PLUGINS->loadPluginGroup( 'user' );
 
 		$fieldHandler			=	new cbFieldHandler();
+
+		// Reset the plugin id so it can be updated by _loadFieldXML
+		$this->pluginid			=	null;
+
 		$fieldXML				=	$fieldHandler->_loadFieldXML( $this );
 
 		// Rename non-system, non-calcualted, non-unique fields to ensure proper DB name structure:

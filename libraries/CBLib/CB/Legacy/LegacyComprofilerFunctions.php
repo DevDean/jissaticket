@@ -804,10 +804,14 @@ namespace
 	 * @param  null|string      $dateFormatOverride  Format override for date display
 	 * @param  null|string      $timeFormatOverride  Format override for time display
 	 * @param  null|string|int  $offsetOverride      Offset override for time display
-	 * @return string
+	 * @return null|string
 	 */
 	function cbFormatDate( $date, $serverTimeOffset = true, $showTime = true, $dateFormatOverride = null, $timeFormatOverride = null, $offsetOverride = null ) {
 		global $_CB_framework, $ueConfig;
+
+		if ( ( $date == '' ) || ( $date == '0000-00-00 00:00:00' ) || ( $date == '0000-00-00' ) ) {
+			return null;
+		}
 
 		$dateTime				=	Application::Date( $date, ( $serverTimeOffset ? ( $offsetOverride ? $offsetOverride : null ) : 'UTC' ) );
 

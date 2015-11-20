@@ -71,7 +71,7 @@ class cbValidator
 		} elseif ( is_array( $params ) || is_object( $params ) ) {
 			$params			=	json_encode( $params );
 		} elseif ( $rule == 'pattern' ) {
-			$params			=	addslashes( $params );
+			$params			=	urlencode( $params );
 		}
 
 		$attributes			=	' data-rule-' . htmlspecialchars( $rule ) . '="' . htmlspecialchars( $params ) . '"';
@@ -149,6 +149,7 @@ class cbValidator
 													'digits' => addslashes( CBTxt::T( 'VALIDATION_ERROR_FIELD_DIGITS_ONLY', 'Please enter only digits.' ) ),
 													'creditcard' => addslashes( CBTxt::T( 'VALIDATION_ERROR_FIELD_CREDIT_CARD_NUMBER', 'Please enter a valid credit card number.' ) ),
 													'equalTo' => addslashes( CBTxt::T( 'VALIDATION_ERROR_FIELD_SAME_VALUE_AGAIN', 'Please enter the same value again.' ) ),
+													'notEqualTo' => addslashes( CBTxt::T( 'VALIDATION_ERROR_FIELD_DIFFERENT_VALUE', 'Please enter a different value, values must not be the same.' ) ),
 													'accept' => addslashes( CBTxt::T( 'VALIDATION_ERROR_FIELD_EXTENSION', 'Please enter a value with a valid extension.' ) ),
 													'maxlength' => addslashes( CBTxt::T( 'VALIDATION_ERROR_FIELD_MORE_THAN_CHARS', 'Please enter no more than {0} characters.' ) ),
 													'minlength' => addslashes( CBTxt::T( 'VALIDATION_ERROR_FIELD_LEAST_CHARS', 'Please enter at least {0} characters.' ) ),

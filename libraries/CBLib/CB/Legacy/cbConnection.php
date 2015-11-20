@@ -220,6 +220,7 @@ class cbConnection
 	{
 		global $_CB_database, $ueConfig;
 
+		$now				=	$_CB_database->getUtcDateTime();
 		$accepted			=	1;
 		$pending			=	0;
 
@@ -233,7 +234,7 @@ class cbConnection
 							.		(int) $connectionId . ', '
 							.		(int) $accepted . ', '
 							.		(int) $pending . ', '
-							.		'CURDATE(), '
+							.		$_CB_database->Quote( $now ) . ', '
 							.		$_CB_database->Quote( $userMessage )
 							.	')';
 
@@ -255,7 +256,7 @@ class cbConnection
 							.		(int) $referenceId . ', '
 							.		(int) $accepted . ', '
 							.		(int) $pending . ', '
-							.		'CURDATE(), '
+							.		$_CB_database->Quote( $now ) . ', '
 							.		$_CB_database->Quote( $userMessage )
 							.	')';
 
@@ -451,12 +452,14 @@ class cbConnection
 	{
 		global $_CB_database, $ueConfig;
 
-		$sql		=	'UPDATE #__comprofiler_members SET accepted=1, pending=0, membersince=CURDATE() WHERE referenceid=' . (int) $connectionId.' AND memberid=' . (int) $userId;
+		$now		=	$_CB_database->getUtcDateTime();
+
+		$sql		=	'UPDATE #__comprofiler_members SET accepted=1, pending=0, membersince=' . $_CB_database->Quote( $now ) . ' WHERE referenceid=' . (int) $connectionId.' AND memberid=' . (int) $userId;
 		$_CB_database->SetQuery( $sql );
 		$_CB_database->query();		// throws Exception on database error
 
 		if($ueConfig['autoAddConnections']) {
-			$sql	=	'UPDATE #__comprofiler_members SET accepted=1, pending=0, membersince=CURDATE() WHERE referenceid=' . (int) $userId.' AND memberid=' . (int) $connectionId;
+			$sql	=	'UPDATE #__comprofiler_members SET accepted=1, pending=0, membersince=' . $_CB_database->Quote( $now ) . ' WHERE referenceid=' . (int) $userId.' AND memberid=' . (int) $connectionId;
 			$_CB_database->SetQuery( $sql );
 			$_CB_database->query();		// throws Exception on database error
 		}

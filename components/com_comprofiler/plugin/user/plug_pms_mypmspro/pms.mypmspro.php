@@ -381,7 +381,13 @@ class getmypmsproTab extends cbPMSHandler
 		$string		=	preg_replace( '%<span style="color: #(.{1,6}?)">(.*?)</span>%i', '[color=#$1]$2[/color]', $string );
 
 		// Links:
-		$string		=	preg_replace( '%<a[^>]*href="(.*?)"[^>]*>(.*?)</a>%i', '[url=$1]$2[/url]', $string );
+		$string		=	preg_replace_callback( '%<a[^>]*href="(.*?)"[^>]*>(.*?)</a>%i', function( array $matches ) {
+							if ( JUri::isInternal( $matches[1] ) ) {
+								return '[topurl=' . $matches[1] . ']' . $matches[2] . '[/topurl]';
+							} else {
+								return '[url=' . $matches[1] . ']' . $matches[2] . '[/url]';
+							}
+						}, $string );
 
 		// Images:
 		$string		=	preg_replace( '%<img[^>]*src="(.*?)"[^>]*width="([0-9]*?)"[^>]*/>%i', '[img size=$2]$1[/img]', $string );

@@ -87,11 +87,11 @@ class getConnectionPathsTab extends cbTabHandler
 				$tooltip					=	null;
 			}
 
-			$connected						=	'<div class="cbConnectionPaths alert alert-info">'
+			$connected						=	'<div class="cbConnectionPaths cbConnectionPathsConnected alert alert-info">'
 											.		CBTxt::Th( 'CONNECTIONS_YOU_ARE_DIRECTLY_CONNECTED_WITH_USER', 'You are directly connected with [user]', array( '[user]' => $myAvatar ) )
 											.	'</div>';
 
-			$requestConnection				=	'<div class="cbConnectionPaths alert alert-info clearfix">'
+			$requestConnection				=	'<div class="cbConnectionPaths cbConnectionPathsRequest alert alert-info clearfix">'
 											.		'<div class="cbConnPathMessage col-sm-8">'
 											.			CBTxt::Th( 'CONNECTIONS_YOU_HAVE_NO_CONNECTION_WITH_USER', 'You have no established connection with [user]', array( '[user]' => $myAvatar ) )
 											.		'</div>'
@@ -100,7 +100,7 @@ class getConnectionPathsTab extends cbTabHandler
 											.		'</div>'
 											.	'</div>';
 
-			$cancelRequest					=	'<div class="cbConnectionPaths alert alert-info clearfix">'
+			$cancelRequest					=	'<div class="cbConnectionPaths cbConnectionPathsCancel alert alert-info clearfix">'
 											.		'<div class="cbConnPathMessage col-sm-8">'
 											.			CBTxt::Th( 'CONNECTIONS_YOUR_CONNECTION_REQUEST_WITH_USER_IS_PENDING', 'Your connection request with [user] is pending acceptance', array( '[user]' => $myAvatar ) )
 											.		'</div>'
@@ -109,7 +109,7 @@ class getConnectionPathsTab extends cbTabHandler
 											.		'</div>'
 											.	'</div>';
 
-			$acceptDenyRequest				=	'<div class="cbConnectionPaths alert alert-info clearfix">'
+			$acceptDenyRequest				=	'<div class="cbConnectionPaths cbConnectionPathsAccept alert alert-info clearfix">'
 											.		'<div class="cbConnPathMessage col-sm-8">'
 											.			CBTxt::Th( 'CONNECTIONS_THE_CONNECTION_WITH_USER_IS_PENDING_YOUR_ACCEPTANCE', 'The connection with [user] is pending your acceptance', array( '[user]' => $myAvatar ) )
 											.		'</div>'
@@ -136,7 +136,7 @@ class getConnectionPathsTab extends cbTabHandler
 				$prevConName				=	null;
 
 				if ( isset( $connections[$user->id] ) ) {
-					$return					.=	'<div class="cbConnectionPaths alert alert-info">'
+					$return					.=	'<div class="cbConnectionPaths cbConnectionPathsDegrees alert alert-info">'
 											.		CBTxt::Th( 'CONNECTIONS_YOUR_CONNECTION_PATH_TO_USER_OF_DEGREE_IS', 'Your connection path to [user] of [degrees] degrees is ', array( '[user]' => $myAvatar, '[degrees]' => $cbCon->getDegreeOfSep() ) );
 
 					foreach ( $conGroups as $conGroup ) {
@@ -443,7 +443,7 @@ class getConnectionTab extends cbTabHandler
 	 */
 	public static function renderConnectionToolTip( $connection )
 	{
-		$tipField		=	CBTxt::Th( 'CONNECTION_TIP_CONNECTED_SINCE_CONNECTION_DATE', 'Connected Since [CONNECTION_DATE]', array( '[CONNECTION_DATE]' => cbFormatDate( $connection->membersince ) ) );
+		$tipField		=	CBTxt::Th( 'CONNECTION_TIP_CONNECTED_SINCE_CONNECTION_DATE', 'Connected Since [CONNECTION_DATE]', array( '[CONNECTION_DATE]' => cbFormatDate( $connection->membersince, true, false ) ) );
 
 		if ( $connection->type != null ) {
 			$tipField	.=	'<br />' . CBTxt::Th( 'CONNECTION_TIP_TYPES_LIST', '{1} Type: [CONNECTIONS_TYPES]|]1,Inf] Types: [CONNECTIONS_TYPES]|%%COUNT%%', array( '%%COUNT%%' => count( explode( "|*|", $connection->type ) ), '[CONNECTIONS_TYPES]' => getConnectionTypes( $connection->type ) ) );

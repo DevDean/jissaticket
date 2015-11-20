@@ -196,6 +196,7 @@ class cbblogsBlogTable extends OrderedTable
 			$_PLUGINS->trigger( 'cbblogs_onBeforeUpdateBlog', array( &$this, &$article, $user, $plugin ) );
 		} else {
 			$article->set( 'created', $_CB_framework->getUTCDate() );
+			$article->set( 'publish_up', $_CB_framework->getUTCDate() );
 
 			$_PLUGINS->trigger( 'cbblogs_onBeforeCreateBlog', array( &$this, &$article, $user, $plugin ) );
 		}

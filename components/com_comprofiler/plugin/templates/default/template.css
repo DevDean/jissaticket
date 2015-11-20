@@ -940,8 +940,9 @@
 .cb_template span.alert {
   display: inline-block;
 }
-.cb_template .cbTermsFrameURL {
+.cb_template .cbTermsFrameContainer .cbTermsFrameURL {
   display: block;
+  border: 1px solid #dddddd;
 }
 .cb_template .cbTermsFrameText {
   padding: 15px;

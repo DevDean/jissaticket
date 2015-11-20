@@ -86,7 +86,7 @@ class cbInstallerPlugin extends cbInstaller
 		// check version
 		$v						=	$cbInstallXML->getElementByPath( 'version' );
 		$version				=	$v->data();
-		$THISCBVERSION			=	'2.0.11';
+		$THISCBVERSION			=	'2.0.12';
 		if ( ( $version == $ueConfig['version'] ) || ( $version == $THISCBVERSION ) || ( version_compare( $version, $ueConfig['version'], '<=' ) && version_compare( $version, '1.0', '>=' ) ) ) {
 			;
 		} else {
@@ -338,7 +338,10 @@ class cbInstallerPlugin extends cbInstaller
 				// Copy files from library package:
 				$savePackage						=	$this->i_xmldocument;
 				$subFolder							=	$library->attributes( 'name' );
-				$saveElement						=	$this->elementDir( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/libraries/' . ( $subFolder ? $subFolder . '/' : null ) );
+				$saveElement						=	$this->elementDir();
+
+				$this->elementDir( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/libraries/' . ( $subFolder ? $subFolder . '/' : null ) );
+
 				$this->i_xmldocument				=	$library;
 
 				if ( ! file_exists( $this->elementDir() ) && ! $this->createDirectoriesForPath( $this->elementDir() ) ) {
@@ -857,7 +860,10 @@ class cbInstallerPlugin extends cbInstaller
 						// Delete files from library package:
 						$savePackage			=	$this->i_xmldocument;
 						$subFolder				=	$library->attributes( 'name' );
-						$saveElement			=	$this->elementDir( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/libraries/' . ( $subFolder ? $subFolder . '/' : null ) );
+						$saveElement			=	$this->elementDir();
+
+						$this->elementDir( $_CB_framework->getCfg( 'absolute_path' ) . '/components/com_comprofiler/plugin/libraries/' . ( $subFolder ? $subFolder . '/' : null ) );
+
 						$this->i_xmldocument	=	$library;
 
 						$this->deleteFiles( $library->getElementByPath( 'files' ), $adminFS, null );

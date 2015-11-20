@@ -62,7 +62,7 @@ class Date
 		}
 
 		if ( ! $tz ) {
-			$tz					=	Application::CBFramework()->getCfg( 'offset' );
+			$tz					=	Application::CBFramework()->getCfg( 'user_timezone' );
 		}
 
 		$tzCache				=	date_default_timezone_get();
