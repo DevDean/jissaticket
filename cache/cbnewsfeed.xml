@@ -5,9 +5,49 @@
 		<title>Joomlapolis News</title>
 		<description>Joomla social networking and Subscription Management software. Community Builder is the top rated, best supported, most complete and reliable community system there is for Joomla!</description>
 		<link>http://www.joomlapolis.com:80/news</link>
-		<lastBuildDate>Mon, 02 Nov 2015 12:07:40 +0000</lastBuildDate>
+		<lastBuildDate>Fri, 20 Nov 2015 06:36:14 +0000</lastBuildDate>
 		<generator>Joomla! 1.5 - Open Source Content Management</generator>
 		<language>en-gb</language>
+		<item>
+			<title>GroupJive 3.0 RC 1 released</title>
+			<link>http://www.joomlapolis.com:80/news/18519-groupjive-30-rc-1-released</link>
+			<guid>http://www.joomlapolis.com:80/news/18519-groupjive-30-rc-1-released</guid>
+			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201511/gj30rc1_2.gif" alt="gj30rc1 2" width="489" height="432" /></p>
+<p style="text-align: center;">GroupJive 3.0 RC 1 can be <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=784">downloaded</a> by all <a href="http://www.joomlapolis.com:80/support/membership">paid members</a>.</p>
+<p>GroupJive 3.0 RC 1 is fully compatible with latest Community Builder 2.0.12 (required) and can be installed on live websites.</p>
+<p>All community feedback (thank you) and comments from our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18516:groupjive-30-beta-1-ready-for-testing&amp;catid=6:news&amp;Itemid=19">GroupJive 3.0 beta 1</a> testing round have been addressed and the GroupJive 3.0 RC 1 can be installed over GroupJive 2.7 environments. The built-in migration script will take care of everything and make all needed database conversions.</p>
+<p>The recommended process for installation is:</p>
+<ol>
+<li>Take backup of your website - always!</li>
+<li>Make sure you have Community Builder 2.0.12 or better installed. If not upgrade first amd take another backup.</li>
+<li><a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=784">Download</a> and unzip the GroupJive 3.0 RC1 package</li>
+<li>Install all elements (CB plugins, Joomla module, Joomla search plugin)</li>
+<li>If you are installing over GroupJive 2.7, test all frontend Joomla menus - everything should work as backwards compatibility is built-in. If something does not work you may have to create new Joomla menu items of type Community Builder -&gt; Plugins -&gt; CB GroupJive.</li>
+<li>If this is a clean (first time) install, then after installation you should publish all plugins and create any Joomla menu items needed fo access from frontend.</li>
+<li>Test everything</li>
+</ol>
+<p>We are also working on new documentation in the form of a GroupJive Primer book that should be ready for public release later this month. Video tutorials are also planned. Language projects have been added on Transifex and we have already pushed new CB 2.0.12 compatible language plugins with GroupJive 3.0 support.</p>
+<p>Finally, to integrate with the CB Activity add-on you will need that latest CB Auto Actions 6.3.2 release and the latest CB Activity nightly build. Both can be downloaded by Professional/Developer members from the CB 2.0 add-ons compatibility chart.</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231733-groupjive-30-rc-1-released">Discuss this on our forums</a>.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Thu, 05 Nov 2015 16:41:52 +0000</pubDate>
+		</item>
+		<item>
+			<title>CB 2.0.12 released and paving the way for GroupJive 3.0 RC</title>
+			<link>http://www.joomlapolis.com:80/news/18518-cb-2012-released-and-paving-the-way-for-groupjive-30-rc</link>
+			<guid>http://www.joomlapolis.com:80/news/18518-cb-2012-released-and-paving-the-way-for-groupjive-30-rc</guid>
+			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201511/cb2012_500.gif" alt="cb2012 500" width="500" height="179" />&nbsp;</p>
+<p style="text-align: center;"><a href="http://www.joomlapolis.com:80/community-builder">Community Builder 2.0.12</a> is here and is required for upcoming GroupJive 3.0 RC release<br /><a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=782&amp;Itemid=105">Download it now</a> - it's <strong>free</strong> and <strong>super stable</strong></p>
+<p><strong>Community Builder 2.0.12</strong> is a maintenance release that fixes <strong>14 bugs</strong> and adds <strong>4 new internal features</strong> (see forum discussion for full changelog) paving the way for the upcoming GroupJive 3.0 RC release.</p>
+<p>CB 2.0+ websites can be upgraded to latest CB 2.0.12 <strong>using the built-in Joomla upgrader</strong> or with a <strong>simple install over</strong> (precautionary backup always recommended) as all previous settings are kept.</p>
+<p>Community Builder 2.0.12 is released as a required upgrade for the upcoming GroupJive 3.0 RC release.</p>
+<p>The <a href="http://www.joomlapolis.com:80/component/docman/doc_details/753-cb-20-primer-book-101">CB Primer Book</a> is valid and the <a href="http://www.joomlapolis.com:80/cb-20-addon-status">CB 2.0 Add-on compatibility</a> chart has been updated. New CB 2.0.12 Language plugins are available in the <a href="http://www.joomlapolis.com:80/cb-solutions/languages">Language Download area</a>.</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231698-nov-2015-edit-cb-2012-released-and-paving-the-way-for-groupjive-30-rc">Discuss this on our forums</a> !</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Mon, 02 Nov 2015 02:16:21 +0000</pubDate>
+		</item>
 		<item>
 			<title>Critical Security Joomla 3.4.5 released</title>
 			<link>http://www.joomlapolis.com:80/news/18517-critical-security-joomla-345-released</link>
@@ -189,44 +229,6 @@
 			<author>nant@joomlapolis.com (Nick A.)</author>
 			<category>News</category>
 			<pubDate>Thu, 27 Aug 2015 10:20:31 +0000</pubDate>
-		</item>
-		<item>
-			<title>CB Activity 3.0 - new generation user engagement is here!</title>
-			<link>http://www.joomlapolis.com:80/news/18509-cb-activity-30-new-generation-user-engagement-is-here</link>
-			<guid>http://www.joomlapolis.com:80/news/18509-cb-activity-30-new-generation-user-engagement-is-here</guid>
-			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201507/cbactivity30.gif" alt="cbactivity30" width="500" height="480" /></p>
-<p style="text-align: center;">The next generation <strong>CB Activity 3.0 stable</strong> release is here<br />and <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=776">ready to download</a> for all paid-up Professional/Developer subscribers!</p>
-<h3>Watch the buzz effect appear right before your eyes on your website!</h3>
-<p>Users will just love the <strong>clean and engaging look</strong> of CB Activity and start <strong>sharing their feelings and thoughts</strong>. Friends will review movies they saw, music they heard, places they visited and anything interesting that happened to them.&nbsp;This will inspire commenting and online discussions.</p>
-<p>Just install and publish CB Activity 3.0 and see user participation explode on your website.</p>
-<p>Users can start conversations by posting their thoughts, emotions, experiences, links, etc. directly on the activity wall. These posts can be enhanced with <strong>@mentions</strong>, <strong>#hash-tags</strong>, <strong>Google map supported locations</strong> and <strong>emotion icons</strong>. The <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18506:cb-activity-30-rc4-a-step-closer-to-perfection&amp;catid=6:news&amp;Itemid=19">built-in features are just awesome</a> and you can extend them to suit your needs.</p>
-<h3>System Auto Actions for Activity Posting</h3>
-<p>You can also install <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=772">CB Auto Actions 6.3.1</a> and publish preconfigured system actions to start conversation about <strong>profile updates</strong>, <strong>user logins</strong>, <strong>blogs</strong>, <strong>gallery uploads</strong>, <strong>GroupJive actions</strong> and <strong>forum posts</strong> (Kunena). You can also create your own activity related auto actions for your specific use case need.</p>
-<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/230507-cb-activity-30-new-generation-user-engagement-is-here">Discuss this on our forums</a>.</p>]]></description>
-			<author>nant@joomlapolis.com (Nick A.)</author>
-			<category>News</category>
-			<pubDate>Thu, 16 Jul 2015 10:27:44 +0000</pubDate>
-		</item>
-		<item>
-			<title>CBSubs GPL 4.0.1 released</title>
-			<link>http://www.joomlapolis.com:80/news/18508-cbsubs-gpl-401-released</link>
-			<guid>http://www.joomlapolis.com:80/news/18508-cbsubs-gpl-401-released</guid>
-			<description><![CDATA[<p style="text-align: center;"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201507/cbsubs401.gif" alt="cbsubs401" width="500" height="183" />&nbsp;</p>
-<p style="text-align: center;"><strong>CBSubs GPL Paid Subscriptions 4.0.1</strong> is here and CB 2.0.10+ compatible!<br />It is available for <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=775">download</a> by all CBSubs/Dev subscribers.</p>
-<p>&nbsp;</p>
-<p>As promised in our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18499:cbsubs-gpl-40-stable-released&amp;catid=6:news&amp;Itemid=19">CBSubs GPL 4.0 release announcement</a> we have now switched processes and provide continuous integration (nightly builds) and quick maintenance releases.</p>
-<p>This is a maintenance release that <strong>fixes 11 bugs</strong> (see discussion thread for details) and also adds the following <strong>3 features</strong>:</p>
-<ul>
-<li>Better filtering with multi-select plan subscription selector in CB User Manager</li>
-<li>Existing subscriptions no longer display initial plan duration and only show expiration date</li>
-<li>More choices for plan durations</li>
-</ul>
-<p><strong>CBSubs GPL 4.0.1 requires CB 2.0.10+</strong> (<a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=773">nightly build of CB</a> is recommended) and the <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=767">CBSubs GPL 4.0 manual</a> is still valid.</p>
-<p>The <strong>upgrade process</strong> is a <strong>simple install over</strong> (take full backup first) of all needed elements. All your configuration settings are kept.</p>
-<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/230489-cbsubs-gpl-401-released">Discuss this release announcement on forums</a>.</p>]]></description>
-			<author>nant@joomlapolis.com (Nick A.)</author>
-			<category>News</category>
-			<pubDate>Tue, 14 Jul 2015 10:34:07 +0000</pubDate>
 		</item>
 	</channel>
 </rss>
