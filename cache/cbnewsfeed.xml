@@ -5,9 +5,41 @@
 		<title>Joomlapolis News</title>
 		<description>Joomla social networking and Subscription Management software. Community Builder is the top rated, best supported, most complete and reliable community system there is for Joomla!</description>
 		<link>http://www.joomlapolis.com:80/news</link>
-		<lastBuildDate>Sun, 22 Nov 2015 13:45:53 +0000</lastBuildDate>
+		<lastBuildDate>Wed, 25 Nov 2015 11:11:44 +0000</lastBuildDate>
 		<generator>Joomla! 1.5 - Open Source Content Management</generator>
 		<language>en-gb</language>
+		<item>
+			<title>GroupJive 3.0 Stable Released !</title>
+			<link>http://www.joomlapolis.com:80/news/18520-groupjive-30-stable-released-</link>
+			<guid>http://www.joomlapolis.com:80/news/18520-groupjive-30-stable-released-</guid>
+			<description><![CDATA[<p style="text-align: center;"><a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=791"><img src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201511/gj30.gif" alt="gj30" width="543" height="647" /></a></p>
+<p style="text-align: center;">GroupJive 3.0 can be <a href="http://www.joomlapolis.com:80/index.php?option=com_docman&amp;task=doc_details&amp;gid=791">downloaded</a> by all <a href="http://www.joomlapolis.com:80/support/membership">paid members</a>.</p>
+<p>GroupJive 3.0 is ready to <strong>empower your community members</strong> to create their own <strong>mini-communities</strong> with <strong>media sharing</strong>, <strong>group events</strong> and <strong>private discussions</strong>. And it looks great on all viewing devices (smart phones, tablets and desktops) with <strong>Community Builder 2.0.12+</strong> (required).</p>
+<p>GroupJive 3.0 has been totally rewritten for a completely fresh new intuitive user experience.</p>
+<p>The main features of GroupJive 3.0 are:</p>
+<ul>
+<li>Fully <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18463&amp;Itemid=198">CB 2.0 compatible</a> and <strong>fully responsive</strong> (smart phones, tablets, desktops)</li>
+<li>New canvas layout</li>
+<li>Simplified single level hierarchy of groups with <strong>group categories</strong></li>
+<li><strong>Joomla ACL support</strong> for Groups and Categories</li>
+<li>Groups can be of <strong>Open</strong>, <strong>Approval</strong> or <strong>Invite</strong> type</li>
+<li>Catgeories can restrict Group types</li>
+<li><strong>Photo, video and file sharing</strong></li>
+<li><strong>Invitations</strong> to increase group membership</li>
+<li><strong>Group Events</strong> with Google maps integration</li>
+<li><strong>Wall and private forum (Kunena) discussions</strong></li>
+<li><strong>Notifications</strong> and communications with email and private messaging (uddeIM)</li>
+<li>Joomla <strong>search support</strong> for group content</li>
+<li><strong>Showcase groups</strong> and <strong>categories</strong> with GroupJive module</li>
+<li><strong>Full integration with CB Activity</strong> and <strong>CB Auto Action</strong> for powerful workflow and activity streams</li>
+<li>Localization support using <a href="http://www.joomlapolis.com:80/cb-solutions/languages">CB Language plugins</a></li>
+</ul>
+<p>With this release we have reached a <strong>major milestone</strong> as we now have all our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=123&amp;Itemid=57">Professional add-ons</a>, our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=40&amp;Itemid=4">CBSubs GPL Paid Subscriptions Solution</a> and our <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=45&amp;Itemid=7">Joomla Templates</a> fully <a href="http://www.joomlapolis.com:80/index.php?option=com_content&amp;view=article&amp;id=18463&amp;Itemid=198">CB 2.0 compatible</a>&nbsp;!</p>
+<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/231922-groupjive-30-stable-released">Discuss this announcement on our forums</a>.</p>]]></description>
+			<author>nant@joomlapolis.com (Nick A.)</author>
+			<category>News</category>
+			<pubDate>Mon, 23 Nov 2015 11:47:32 +0000</pubDate>
+		</item>
 		<item>
 			<title>GroupJive 3.0 RC 1 released</title>
 			<link>http://www.joomlapolis.com:80/news/18519-groupjive-30-rc-1-released</link>
@@ -211,24 +243,6 @@
 			<author>nant@joomlapolis.com (Nick A.)</author>
 			<category>News</category>
 			<pubDate>Tue, 08 Sep 2015 07:50:09 +0000</pubDate>
-		</item>
-		<item>
-			<title>JoomlArt templates now supporting Community Builder 2.0</title>
-			<link>http://www.joomlapolis.com:80/news/18510-joomlart-templates-now-supporting-community-builder-20</link>
-			<guid>http://www.joomlapolis.com:80/news/18510-joomlart-templates-now-supporting-community-builder-20</guid>
-			<description><![CDATA[<p><img style="display: block; margin-left: auto; margin-right: auto;" src="http://www.joomlapolis.com:80/images/jpnewsletter/jpn201508/jasocial_580.gif" alt="jasocial 580" width="500" height="314" /></p>
-<p>More great news for Community Builder compatible Joomla templates.</p>
-<p>JoomlArt announces the release of JA Social II, a commercial Joomla template focused on communities that supports Community Builder 2.0. With this release JoomlArt now has two templates with full support for Community Builder and is committed to continue producing CB 2.0 compatible Joomla templates.</p>
-<p>Both templates are responsive, have RTL support and are powered by the Joomla T3 framework and Bootstrap 3.</p>
-<p>More information and template demos are available:</p>
-<ul>
-<li><a href="http://www.joomlart.com/joomla/templates/ja-social-ii%20" target="_blank">JA Social II info</a> | <a href="http://ja-social-ii.demo.joomlart.com/index.php/en/home-cb" target="_blank">demo</a></li>
-<li><a href="http://www.joomlart.com/joomla/templates/uber" target="_blank">UBER info</a> | <a href="http://uber.demo.joomlart.com/index.php/cb-userlist" target="_blank">demo</a></li>
-</ul>
-<p><a href="http://www.joomlapolis.com:80/forum/6-news-and-publicity/230976-joomlart-templates-now-supporting-community-builder-20">Discuss this great Joomla template CB 2.0 compatibility news on our forums</a>.</p>]]></description>
-			<author>nant@joomlapolis.com (Nick A.)</author>
-			<category>News</category>
-			<pubDate>Thu, 27 Aug 2015 10:20:31 +0000</pubDate>
 		</item>
 	</channel>
 </rss>
