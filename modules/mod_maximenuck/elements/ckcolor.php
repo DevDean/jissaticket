@@ -15,19 +15,20 @@ class JFormFieldCkcolor extends JFormField {
 
     protected function getInput() {
         $path = 'modules/mod_maximenuck/elements/jscolor/';
-        JHTML::_('script', 'jscolor.js', $path);
-        $class = $this->element['class'] ? $this->element['class'].' ' : '';
+        JHTML::_('script', $path.'jscolor.js');
         
-        $html = '<img src="' . $this->getPathToImages() . '/images/color.png" /><input class="'.$class.'color {';
+        $styles = ' style="width:150px;'.$this->element['styles'].'"';
+
+        $html = '<div style="display:inline-block;vertical-align:top;margin-top:4px;width:20px;"><img src="' . $this->getPathToElements() . '/images/color.png" style="margin-right:5px;" /></div><input class="'.$this->element['class'].' color {';
         $html.= 'required:false,';  // empty possible
         $html.= 'pickerPosition:\'top\',';    // or left / right / top
         $html.= 'pickerBorder:2,pickerInset:3,';    // or right / top
         $html.= 'hash:true';        // # behind value
-        $html.= '}" type="text" id="'.$this->id.'" value="' . $this->value . '" name="' . $this->name . '" style="width:100px;border-radius:3px;-moz-border-radius:3px;" />';
+        $html.= '}" type="text" id="' . $this->id . '" value="' . $this->value . '" name="' . $this->name . '"'.$styles.' />';
         return $html;
     }
 
-    protected function getPathToImages() {
+    protected function getPathToElements() {
         $localpath = dirname(__FILE__);
         $rootpath = JPATH_ROOT;
         $httppath = trim(JURI::root(), "/");
@@ -35,27 +36,57 @@ class JFormFieldCkcolor extends JFormField {
         return $pathtoimages;
     }
 
-    protected function getLabel() {
-        $label = '';
-        // Get the label text from the XML element, defaulting to the element name.
-        $text = $this->element['label'] ? (string) $this->element['label'] : (string) $this->element['name'];
-        $text = JText::_($text);
+    /**
+	 * Method to get the field label markup.
+	 *
+	 * @return  string  The field label markup.
+	 *
+	 * @since   11.1
+	 */
+	protected function getLabel()
+	{
+		$label = '';
 
-        // Build the class for the label.
-        $class = !empty($this->description) ? 'hasTip' : '';
+		if ($this->hidden)
+		{
+			return $label;
+		}
 
-        $label .= '<label id="' . $this->id . '-lbl" for="' . $this->id . '" class="' . $class . '"';
+		// Get the label text from the XML element, defaulting to the element name.
+		$text = $this->element['label'] ? (string) $this->element['label'] : (string) $this->element['name'];
+		$text = $this->translateLabel ? JText::_($text) : $text;
 
-        // If a description is specified, use it to build a tooltip.
-        if (!empty($this->description)) {
-            $label .= ' title="' . htmlspecialchars(trim($text, ':') . '::' .
-                            JText::_($this->description), ENT_COMPAT, 'UTF-8') . '"';
-        }
+		// Build the class for the label.
+		$class = !empty($this->description) ? 'hasTip' : '';
+		$class = $this->required == true ? $class . ' required' : $class;
+		$class = !empty($this->labelClass) ? $class . ' ' . $this->labelClass : $class;
 
-        $label .= ' style="min-width:150px;max-width:150px;width:150px;display:block;float:left;padding:1px;">' . $text . '</label>';
+		// Add the opening label tag and main attributes attributes.
+		$label .= '<label id="' . $this->id . '-lbl" for="' . $this->id . '" class="' . $class . '"';
 
-        return $label;
-    }
+		// If a description is specified, use it to build a tooltip.
+		if (!empty($this->description))
+		{
+			$label .= ' title="'
+				. htmlspecialchars(
+				trim($text, ':') . '::' . ($this->translateDescription ? JText::_($this->description) : $this->description),
+				ENT_COMPAT, 'UTF-8'
+			) . '"';
+		}
+        $width = $this->element['labelwidth'] ? $this->element['labelwidth'] : '150px';
+        $styles = ' style="min-width:'.$width.';max-width:'.$width.';width:'.$width.';"';
+		// Add the label text and closing tag.
+		if ($this->required)
+		{
+			$label .= $styles.'>' . $text . '<span class="star">&#160;*</span></label>';
+		}
+		else
+		{
+			$label .= $styles.'>' . $text . '</label>';
+		}
+
+		return $label;
+	}
 
 }
 

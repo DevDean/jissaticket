@@ -3,7 +3,6 @@
 /**
  * @copyright	Copyright (C) 2011 Cedric KEIFLIN alias ced1870
  * http://www.joomlack.fr
- * Module Maximenu CK
  * @license		GNU/GPL
  * */
 defined('JPATH_PLATFORM') or die;
@@ -16,12 +15,11 @@ jimport('joomla.form.helper');
 
 class JFormFieldCkmoduleLayout extends JFormField {
 
-    protected $type = 'ckmoduleLayout';
+    protected $type = 'CkmoduleLayout';
 
     protected function getInput() {
         // Initialize variables.
         $icon = $this->element['icon'];
-        $suffix = $this->element['suffixck'];
 
         // Get the client id.
         $clientName = $this->element['client_id'];
@@ -159,7 +157,7 @@ class JFormFieldCkmoduleLayout extends JFormField {
             }
             // Compute attributes for the grouped list
             $attr = $this->element['size'] ? ' size="' . (int) $this->element['size'] . '"' : '';
-            $attr .= 'style="width:105px;border-radius:3px;-moz-border-radius:3px;padding:1px;"';
+            $attr .= ' style="width:150px;'.$this->element['styles'].'"';
 
             // Prepare HTML code
             $html = array();
@@ -168,7 +166,7 @@ class JFormFieldCkmoduleLayout extends JFormField {
             $selected = array($this->value);
 
             // Add a grouped list
-            $html[] = $icon ? '<img src="' . $this->getPathToImages() . '/images/' . $icon . '" style="margin-right:5px;" />' : '<div style="float:left;width:15px;margin-right:5px;">&nbsp;</div>';
+            $html[] = $icon ? '<div style="display:inline-block;vertical-align:top;margin-top:5px;width:20px;"><img src="' . $this->getPathToElements() . '/images/' . $icon . '" style="margin-right:5px;" /></div>' : '<div style="display:inline-block;width:20px;"></div>';
             $html[] = JHtml::_('select.groupedlist', $groups, $this->name, array('id' => $this->id, 'group.id' => 'id', 'list.attr' => $attr, 'list.select' => $selected));
 
             return implode($html);
@@ -178,12 +176,64 @@ class JFormFieldCkmoduleLayout extends JFormField {
         }
     }
 
-    protected function getPathToImages() {
+    protected function getPathToElements() {
         $localpath = dirname(__FILE__);
         $rootpath = JPATH_ROOT;
         $httppath = trim(JURI::root(), "/");
-        $pathtoimages = str_replace("\\", "/", str_replace($rootpath, $httppath, $localpath));
-        return $pathtoimages;
+        $pathtoelements = str_replace("\\", "/", str_replace($rootpath, $httppath, $localpath));
+        return $pathtoelements;
     }
+    
+    /**
+	 * Method to get the field label markup.
+	 *
+	 * @return  string  The field label markup.
+	 *
+	 * @since   11.1
+	 */
+	protected function getLabel()
+	{
+		$label = '';
+
+		if ($this->hidden)
+		{
+			return $label;
+		}
+
+		// Get the label text from the XML element, defaulting to the element name.
+		$text = $this->element['label'] ? (string) $this->element['label'] : (string) $this->element['name'];
+		$text = $this->translateLabel ? JText::_($text) : $text;
+
+		// Build the class for the label.
+		$class = !empty($this->description) ? 'hasTip' : '';
+		$class = $this->required == true ? $class . ' required' : $class;
+		$class = !empty($this->labelClass) ? $class . ' ' . $this->labelClass : $class;
+
+		// Add the opening label tag and main attributes attributes.
+		$label .= '<label id="' . $this->id . '-lbl" for="' . $this->id . '" class="' . $class . '"';
+
+		// If a description is specified, use it to build a tooltip.
+		if (!empty($this->description))
+		{
+			$label .= ' title="'
+				. htmlspecialchars(
+				trim($text, ':') . '::' . ($this->translateDescription ? JText::_($this->description) : $this->description),
+				ENT_COMPAT, 'UTF-8'
+			) . '"';
+		}
+        $width = $this->element['labelwidth'] ? $this->element['labelwidth'] : '150px';
+        $styles = ' style="min-width:'.$width.';max-width:'.$width.';width:'.$width.';"';
+		// Add the label text and closing tag.
+		if ($this->required)
+		{
+			$label .= $styles.'>' . $text . '<span class="star">&#160;*</span></label>';
+		}
+		else
+		{
+			$label .= $styles.'>' . $text . '</label>';
+		}
+
+		return $label;
+	}
 
 }

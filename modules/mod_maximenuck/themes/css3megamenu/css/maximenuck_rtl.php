@@ -422,7 +422,8 @@ div#<?php echo $id; ?> div.floatck {
 	border-radius: 5px 0px 5px 5px;
 	filter: none;
 	width: inherit;
-	z-index:9999
+	z-index:9999;
+	cursor: auto;
 }
 
 div#<?php echo $id; ?> div.maxidrop-main {

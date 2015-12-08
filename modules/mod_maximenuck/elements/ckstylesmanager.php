@@ -27,15 +27,12 @@ class JFormFieldCkstylesmanager extends JFormField {
 		echo '<div id="ckpopup_' . $identifier . '" style="display:none;" class="ckpopup">';
 		echo '<div id="ckpopup_' . $identifier . '_title" class="ckpopup_title">' . $text . '</div>';
 		echo '<div id="ckpopup_' . $identifier . '_save" class="ckpopup_save ckpopup_button" style="" onclick="javascript:saveStylesCK(this.getParent(), \'' . $fieldName . '\', \'' . $identifier . '\');">SAVE</div>';
-		echo '<div id="ckpopup_' . $identifier . '_cancel" class="ckpopup_cancel ckpopup_button" style="" onclick="javascript:this.getParent().setStyle(\'display\',\'none\');">CANCEL</div>';
+		echo '<div id="ckpopup_' . $identifier . '_cancel" class="ckpopup_cancel ckpopup_button" style="" onclick="javascript:closeStylesCK(this.getParent());this.getParent().setStyle(\'display\',\'none\');">CANCEL</div>';
 		foreach ($fields as $key => $field) {
-			// var_dump( $key);
-
+			echo '<div class="ckpopup_row">';
 			echo $form->getLabel(str_replace($identifier . "_", "", $key), $identifier);
 			echo $form->getInput(str_replace($identifier . "_", "", $key), $identifier);
-
-			// echo $test;
-			// var_dump( $key );
+			echo '</div>';
 		}
 		echo '</div>';
 	}
@@ -43,14 +40,9 @@ class JFormFieldCkstylesmanager extends JFormField {
 	protected function getInput() {
 
 		$identifier = $this->element['identifier'];
-		$html = '';
+
 		$form = new JForm($identifier);
-		if (JFolder::exists(JPATH_SITE . '/plugins/system/maximenuckparams/elements/ckstylesmanager')) {
-			JForm::addFormPath(JPATH_SITE . '/plugins/system/maximenuckparams/elements/ckstylesmanager');
-		} else {
-			JForm::addFormPath(JPATH_SITE . '/modules/mod_maximenuck/elements/ckstylesmanager');
-			$html .= 'Warning : You should upgrade your plugin Maximenu params.';
-		}
+		JForm::addFormPath(JPATH_SITE . '/plugins/system/maximenuckparams/elements/ckstylesmanager');
 		// $form->load('test.xml');
 		if (!$formexists = $form->loadFile($identifier, false)) {
 			echo '<p style="color:red">' . JText::_('Problem loading the file : ' . $identifier . '.xml') . '</p>';
@@ -63,18 +55,12 @@ class JFormFieldCkstylesmanager extends JFormField {
 
 		$document = JFactory::getDocument();
 		$document->addScriptDeclaration("JURI='" . JURI::root() . "';");
-//        $path = 'plugins/system/maximenuckparams/elements/ckstylesmanager/';
-		if (JFolder::exists(JPATH_SITE . '/plugins/system/maximenuckparams/elements/ckstylesmanager')) {
-			$path = 'plugins/system/maximenuckparams/elements/ckstylesmanager/';
-		} else {
-			$path = 'modules/mod_maximenuck/elements/ckstylesmanager/';
-		}
-//		$path = 'plugins/system/maximenuckparams/elements/ckstylesmanager/';
+		$path = 'plugins/system/maximenuckparams/elements/ckstylesmanager/';
 		JHTML::_('behavior.modal');
 		JHTML::_('script', $path . 'ckstylesmanager.js');
 		JHTML::_('stylesheet', $path . 'ckstylesmanager.css');
 
-		$html .= '<input name="' . $this->name . '" id="' . $this->id . '" type="hidden" value="' . $this->value . '" />'
+		$html = '<input name="' . $this->name . '" id="' . $this->id . '" type="hidden" value="' . $this->value . '" />'
 				. '<input name="' . $this->name . '_button" id="' . $this->id . '_button" class="ckstylesmanager_button" type="button" value="' . JText::_('MOD_MAXIMENUCK_CKSTYLESEDIT_' . strtoupper($identifier)) . '" onclick="javascript:loadStylesCK($(\'ckpopup_' . $identifier . '\'),$(\'' . $this->id . '\'));"/>'
 		//.'<input name="ckaddfromfolder" id="ckaddfromfolder" type="button" value="Import from a folder" onclick="javascript:addfromfolderck();"/>'
 		//.'<input name="ckstoreslide" id="ckstoreslide" type="button" value="Save" onclick="javascript:storeslideck();"/>'

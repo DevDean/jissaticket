@@ -1,4 +1,8 @@
 <?php
+$currUser = JFactory::getUser();
+if(!in_array('2',$currUser->groups)) return false;
+?>
+<?php
 /**
  * @package	HikaShop for Joomla!
  * @version	2.6.0

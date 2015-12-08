@@ -49,25 +49,26 @@ foreach ($items as $i => &$item) {
 		$opentag = (isset($item->tagcoltitle) AND $item->tagcoltitle != 'none') ? '<'.$item->tagcoltitle.$classcoltitle.'>' : '';
 		$closetag = (isset($item->tagcoltitle) AND $item->tagcoltitle != 'none') ? '</'.$item->tagcoltitle.'>' : '';
 
+						$linkrollover = '';
 		// manage image
 		if ($item->menu_image) {
 			// manage image rollover
 			$menu_image_split = explode('.', $item->menu_image);
-			$imagerollover = '';
+
 			if (isset($menu_image_split[1])) {
-                                // manage active image
-                                if (isset($item->active) AND $item->active) {
-                                    $menu_image_active = $menu_image_split[0] . $params->get('imageactiveprefix', '_active') . '.' . $menu_image_split[1];
-                                    if (JFile::exists(JPATH_ROOT . '/' . $menu_image_active)) {
-					$item->menu_image = $menu_image_active;
-                                    }
-                                }
-                                // manage hover image
-                                $menu_image_hover = $menu_image_split[0] . $params->get('imagerollprefix', '_hover') . '.' . $menu_image_split[1];
+				// manage active image
+				if (isset($item->active) AND $item->active) {
+					$menu_image_active = $menu_image_split[0] . $params->get('imageactiveprefix', '_active') . '.' . $menu_image_split[1];
+					if (JFile::exists(JPATH_ROOT . '/' . $menu_image_active)) {
+						$item->menu_image = $menu_image_active;
+					}
+				}
+				// manage hover image
+				$menu_image_hover = $menu_image_split[0] . $params->get('imagerollprefix', '_hover') . '.' . $menu_image_split[1];
 				if (isset($item->active) AND $item->active AND JFile::exists(JPATH_ROOT . '/' . $menu_image_split[0] . $params->get('imageactiveprefix', '_active') . $params->get('imagerollprefix', '_hover') . '.' . $menu_image_split[1])) {
-					$imagerollover = ' onmouseover="javascript:this.src=\'' . JURI::base(true) . '/' . $menu_image_split[0] . $params->get('imageactiveprefix', '_active') . $params->get('imagerollprefix', '_hover') . '.' . $menu_image_split[1] . '\'" onmouseout="javascript:this.src=\'' . JURI::base(true) . '/' . $item->menu_image . '\'"';
+									$linkrollover = ' onmouseover="javascript:this.querySelector(\'img\').src=\'' . JURI::base(true) . '/' . $menu_image_split[0] . $params->get('imageactiveprefix', '_active') . $params->get('imagerollprefix', '_hover') . '.' . $menu_image_split[1] . '\'" onmouseout="javascript:this.querySelector(\'img\').src=\'' . JURI::base(true) . '/' . $item->menu_image . '\'"';
 				} else if (JFile::exists(JPATH_ROOT . '/' . $menu_image_hover)) {
-					$imagerollover = ' onmouseover="javascript:this.src=\'' . JURI::base(true) . '/' . $menu_image_hover . '\'" onmouseout="javascript:this.src=\'' . JURI::base(true) . '/' . $item->menu_image . '\'"';
+									$linkrollover = ' onmouseover="javascript:this.querySelector(\'img\').src=\'' . JURI::base(true) . '/' . $menu_image_hover . '\'" onmouseout="javascript:this.querySelector(\'img\').src=\'' . JURI::base(true) . '/' . $item->menu_image . '\'"';
 				}
 			}
 
@@ -76,72 +77,74 @@ foreach ($items as $i => &$item) {
 			if ($item->params->get('menu_text', 1) AND !$params->get('imageonly', '0')) {
 				switch ($imagesalign) :
 					default:
-                                        case 'default':
-                                            $linktype = '<img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" align="left"'.$imagerollover . $image_dimensions.'/><span class="titreck">'.$item->ftitle.$description.'</span> ' ;
-                                        break;
-                                        case 'bottom':
-						$linktype = '<span class="titreck">'.$item->ftitle.$description.'</span><img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" style="display: block; margin: 0 auto;"'.$imagerollover . $image_dimensions.' /> ' ;
+					case 'default':
+										$linktype = '<img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" align="left"' . $image_dimensions . '/><span class="titreck">' . $item->ftitle . $description . '</span> ';
+					break;
+					case 'bottom':
+										$linktype = '<span class="titreck">' . $item->ftitle . $description . '</span><img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" style="display: block; margin: 0 auto;"' . $image_dimensions . ' /> ';
 					break;
 					case 'top':
-						$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" style="display: block; margin: 0 auto;"'.$imagerollover . $image_dimensions.' /><span class="titreck">'.$item->ftitle.$description.'</span> ' ;
+										$linktype = '<img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" style="display: block; margin: 0 auto;"' . $image_dimensions . ' /><span class="titreck">' . $item->ftitle . $description . '</span> ';
 					break;
 					case 'rightbottom':
-						$linktype = '<span class="titreck">'.$item->ftitle.$description.'</span><img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" align="top"'.$imagerollover . $image_dimensions.'/> ' ;
+										$linktype = '<span class="titreck">' . $item->ftitle . $description . '</span><img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" align="top"' . $image_dimensions . '/> ';
 					break;
 					case 'rightmiddle':
-						$linktype = '<span class="titreck">'.$item->ftitle.$description.'</span><img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" align="middle"'.$imagerollover . $image_dimensions.'/> ' ;
+										$linktype = '<span class="titreck">' . $item->ftitle . $description . '</span><img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" align="middle"' . $image_dimensions . '/> ';
 					break;
 					case 'righttop':
-						$linktype = '<span class="titreck">'.$item->ftitle.$description.'</span><img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" align="bottom"'.$imagerollover . $image_dimensions.'/> ' ;
+										$linktype = '<span class="titreck">' . $item->ftitle . $description . '</span><img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" align="bottom"' . $image_dimensions . '/> ';
 					break;
 					case 'leftbottom':
-						$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" align="top"'.$imagerollover . $image_dimensions.'/><span class="titreck">'.$item->ftitle.$description.'</span> ' ;
+										$linktype = '<img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" align="top"' . $image_dimensions . '/><span class="titreck">' . $item->ftitle . $description . '</span> ';
 					break;
 					case 'leftmiddle':
-						$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" align="middle"'.$imagerollover . $image_dimensions.'/><span class="titreck">'.$item->ftitle.$description.'</span> ' ;
+										$linktype = '<img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" align="middle"' . $image_dimensions . '/><span class="titreck">' . $item->ftitle . $description . '</span> ';
 					break;
 					case 'lefttop':
-						$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->ftitle.'" align="bottom"'.$imagerollover . $image_dimensions.'/><span class="titreck">'.$item->ftitle.$description.'</span> ' ;
+										$linktype = '<img src="' . $item->menu_image . '" alt="' . $item->ftitle . '" align="bottom"' . $image_dimensions . '/><span class="titreck">' . $item->ftitle . $description . '</span> ';
 					break;
 				endswitch;
 			} else {
-				$linktype = '<img src="'.$item->menu_image.'" alt="'.$item->ftitle.'"'.$imagerollover . $image_dimensions.'/>' ;
+								$linktype = '<img src="' . $item->menu_image . '" alt="' . $item->ftitle . '"' . $image_dimensions . '/>';
 			}
 		}
 		else {
 			$linktype = '<span class="titreck">'.$item->ftitle.$description.'</span>';
 		}
 
-        if ($params->get('imageonly', '0') == '1')
-            $item->ftitle = '';
-        echo '<li class="maximenuck maximenuflatlistck '. $item->classe . ' level' . $itemlevel .' '.$item->liclass . '" style="z-index : ' . $zindex . ';" data-level="' . $itemlevel . '" ' . $item->mobile_data . '>';
-        switch ($item->type) :
-            default:
-                echo $opentag.'<a class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '"' . $title . $item->rel . '>' . $linktype . '</a>'.$closetag;
-                break;
-            case 'separator':
-                echo $opentag.'<span class="separator ' . $item->anchor_css . '">' . $linktype . '</span>'.$closetag;
-                break;
-            case 'url':
-            case 'component':
-                switch ($item->browserNav) :
-                    default:
-                    case 0:
-                        echo $opentag.'<a class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '"' . $title . $item->rel . '>' . $linktype . '</a>'.$closetag;
-                        break;
-                    case 1:
-                        // _blank
-                        echo $opentag.'<a class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '" target="_blank" ' .$title . $item->rel . '>' . $linktype . '</a>'.$closetag;
-                        break;
-                    case 2:
-                        // window.open
-                        //$attribs = 'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,'.$this->_params->get('window_open');
-                        echo $opentag.'<a class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '&tmpl=component" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes\');return false;" ' . $title . $item->rel . '>' . $linktype . '</a>'.$closetag;
-                        break;
-                endswitch;
-                break;
-        endswitch;
-    }
+		if ($params->get('imageonly', '0') == '1')
+			$item->ftitle = '';
+		echo '<li class="maximenuck maximenuflatlistck '. $item->classe . ' level' . $itemlevel .' '.$item->liclass . '" style="z-index : ' . $zindex . ';" data-level="' . $itemlevel . '" ' . $item->mobile_data . '>';
+		switch ($item->type) :
+			default:
+								echo $opentag . '<a' . $linkrollover . ' class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '"' . $title . $item->rel . '>' . $linktype . '</a>' . $closetag;
+				break;
+			case 'separator':
+								echo $opentag . '<span' . $linkrollover . ' class="separator ' . $item->anchor_css . '">' . $linktype . '</span>' . $closetag;
+				break;
+			case 'heading':
+				echo $opentag . '<span' . $linkrollover . ' class="nav-header ' . $item->anchor_css . '">' . $linktype . '</span>' . $closetag;
+				break;
+			case 'url':
+			case 'component':
+				switch ($item->browserNav) :
+					default:
+					case 0:
+										echo $opentag . '<a' . $linkrollover . ' class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '"' . $title . $item->rel . '>' . $linktype . '</a>' . $closetag;
+						break;
+					case 1:
+						// _blank
+										echo $opentag . '<a' . $linkrollover . ' class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '" target="_blank" ' . $title . $item->rel . '>' . $linktype . '</a>' . $closetag;
+						break;
+					case 2:
+						// window.open
+										echo $opentag . '<a' . $linkrollover . ' class="maximenuck ' . $item->anchor_css . '" href="' . $item->flink . '" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes\');return false;" ' . $title . $item->rel . '>' . $linktype . '</a>' . $closetag;
+						break;
+				endswitch;
+				break;
+		endswitch;
+	}
 
     /*if ($item->deeper) {
 

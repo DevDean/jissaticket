@@ -2504,7 +2504,7 @@ body.jsn-homepage #jsn-mainbody {
 	display: block;
 }
 body.jsn-homepage #jsn-mainbody-content.jsn-hasmainbody {
-	background: none;
+	background: whitesmoke;
 	border: none;
 }
 div.galery {

@@ -22,6 +22,7 @@ class JFormFieldCkmaximenuwizard extends JFormField {
 			// return false;
 		$identifier = 'ckmaximenuwizard';
 		?>
+		<div class="ckoverlay" style="display:none;"></div>
 		<div id="ckpopupwizard" style="display:none;" class="ckpopupwizard">
 		<div id="ckpopupwizard_save" class="ckpopupwizard_save ckpopupwizard_button" style="" onclick="javascript:saveWizardCK(this.getParent(), '<?php echo $this->name ?>', 'ckmaximenuwizard');"><?php echo JText::_('SAVE') ?></div>
 		<div id="ckpopupwizard_cancel" class="ckpopupwizard_cancel ckpopupwizard_button" style="" onclick="javascript:closeWizardCK(this.getParent());this.getParent().setStyle('display','none');"><?php echo JText::_('CANCEL') ?></div>
@@ -144,22 +145,22 @@ class JFormFieldCkmaximenuwizard extends JFormField {
 			</div>
 			<div class="ckpopupwizard_options_area">
 				<div id="ckpopupwizard_typeoflayout_default">
-					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/default_layout.jpg" width="380" height="142" />
+					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/default_layout.jpg" width="450" height="142" />
 				</div>
 				<div id="ckpopupwizard_typeoflayout_pushdown">
-					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/pushdown_layout.jpg" width="380" height="142" />
+					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/pushdown_layout.jpg" width="450" height="142" />
 				</div>
 				<div id="ckpopupwizard_typeoflayout_nativejoomla">
-					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/nativejoomla_layout.jpg" width="380" height="198" />
+					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/nativejoomla_layout.jpg" width="450" height="198" />
 				</div>
 				<div id="ckpopupwizard_typeoflayout_dropselect">
-					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/dropselect_layout.jpg" width="380" height="142" />
+					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/dropselect_layout.jpg" width="400" height="142" />
 				</div>
 				<div id="ckpopupwizard_typeoflayout_flatlist">
-					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/flatlist_layout.jpg" width="380" height="142" />
+					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/flatlist_layout.jpg" width="450" height="142" />
 				</div>
 				<div id="ckpopupwizard_typeoflayout_fullwidth">
-					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/fullwidth_layout.jpg" width="380" height="142" />
+					<img src="<?php echo $this->getPathToElements() ?>/ckmaximenuwizard/fullwidth_layout.jpg" width="450" height="142" />
 				</div>
 			</div>
 		</div>
@@ -300,10 +301,9 @@ class JFormFieldCkmaximenuwizard extends JFormField {
 
 		$document = JFactory::getDocument();
 		$document->addScriptDeclaration("JURI='" . JURI::root() . "';");
-		$path = "modules/mod_maximenuck/elements/ckmaximenuwizard/";
+		$path = 'modules/mod_maximenuck/elements/ckmaximenuwizard/';
 		// JHtml::_('behavior.modal');
 		// var_dump($path . 'ckmaximenuwizard.js');
-		JHtml::_('script', 'https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js');
 		JHtml::_('script', $path . 'ckmaximenuwizard.js');
 		JHtml::_('stylesheet', $path . 'ckmaximenuwizard.css');
 
@@ -324,7 +324,19 @@ class JFormFieldCkmaximenuwizard extends JFormField {
 	}
 
 	protected function getLabel() {
+
 		return '';
 	}
+
+	// protected function getArticlesList() {
+		// $db = & JFactory::getDBO();
+
+		// $query = "SELECT id, title FROM #__content WHERE state = 1 LIMIT 2;";
+		// $db->setQuery($query);
+		// $row = $db->loadObjectList('id');
+		// var_dump($row);
+		// return json_encode($row);
+	// }
+
 }
 

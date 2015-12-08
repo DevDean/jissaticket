@@ -10,7 +10,7 @@ div.fc_image_inner {text-align: center;}
 .fc_inactive       {border:2px solid transparent;}
 .fc_active         {border:2px solid red; border-radius:5px;}
 
-form.fc_form input, form.fc_form textarea {width: 60% !important;}
+form.fc_form input, form.fc_form textarea {width: 50% !important;}
 form.fc_form input[type="checkbox"]       {vertical-align:top;}
 
 input.fc_button    {background-color:#0079C1; border:1px solid #2F5BB7; border-radius:3px;

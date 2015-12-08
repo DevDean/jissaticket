@@ -322,7 +322,8 @@ div#<?php echo $id; ?> div.floatck {
 	/*width : 180px;*/ /* default width */
 	text-align:right;
 	width: auto;
-	z-index:9999
+	z-index:9999;
+	cursor: auto;
 }
 
 div#<?php echo $id; ?> div.maxidrop-main {

@@ -155,7 +155,7 @@ class JFormFieldCkgroupedList extends JFormField
 		$attr .= $this->autofocus ? ' autofocus' : '';
 
 		// Initialize JavaScript field attributes.
-		$attr .= 'style="width:105px;border-radius:3px;-moz-border-radius:3px;padding:1px;"';
+		$attr .= ' style="width:150px;' . $this->element['styles'] . '"';
 		$attr .= !empty($this->onchange) ? ' onchange="' . $this->onchange . '"' : '';
 
 		// Get the field groups.
@@ -178,7 +178,7 @@ class JFormFieldCkgroupedList extends JFormField
 		// Create a regular list.
 		else
 		{
-			$html[] = $icon ? '<img src="' .$this->getPathToElements() . '/images/' . $icon . '" style="margin-right:5px;" />' : '<div style="float:left;width:15px;margin-right:5px;">&nbsp;</div>';
+			$html[] = $icon ? '<div style="display:inline-block;vertical-align:top;width:20px;"><img src="' . $this->getPathToElements() . '/images/' . $icon . '" style="margin-right:5px;" /></div>' : '<div style="display:inline-block;width:20px;"></div>';
 			$html[] = JHtml::_(
 				'select.groupedlist', $groups, $this->name,
 				array(

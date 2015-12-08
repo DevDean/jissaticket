@@ -5,13 +5,16 @@
  * @license		GNU/GPL
  * */
 
+//function addfromfolderck() {
+//
+//}
 var $ck = jQuery.noConflict();
 
 function showWizardPopupCK(popup) {
-//	if (popup.getParent('.accordion-body'))
-//		popup.getParent('.accordion-body').setStyle('overflow', 'visible');
+	if (popup.getParent('.accordion-body'))
+		popup.getParent('.accordion-body').setStyle('overflow', 'visible');
 	popup.setStyle('display', 'block');
-	
+	$ck('.ckoverlay').fadeIn();
 	// load the menu description
 	$ck('#ckpopupwizard_select_desc_area').empty().text($ck('.ckpopupwizard_select.active > .ckpopupwizard_select_desc').text());
 	$ck('.ckpopupwizard_select.active').each(function(i, button) {
@@ -104,6 +107,7 @@ function initFieldsValues() {
 
 function saveWizardCK(popup, fieldName, identifier) {
 	popup.setStyle('display', 'none');
+	$ck('.ckoverlay').fadeOut();
 	if (popup.getParent('.accordion-body'))
 		popup.getParent('.accordion-body').setStyle('overflow', '');
 	// to store the values into the hidden field (not needed for now)
@@ -173,6 +177,7 @@ function updateRadiobuttonState(targetEl) {
 
 function closeWizardCK(popup) {
 	popup.setStyle('display', 'none');
+	$ck('.ckoverlay').fadeOut();
 	if (popup.getParent('.accordion-body'))
 		popup.getParent('.accordion-body').setStyle('overflow', '');
 }
@@ -231,5 +236,10 @@ jQuery(document).ready(function (){
 	document.body.appendChild(script);*/
 	$ck(document.body).append($ck('#ckpopupwizard'));
 	// if ($ck('#jform[params][maximenuwizard]').val() != 1) showWizardPopupCK($('ckpopupwizard'));
-//	$ck('.hasTip').tooltip({"html": true,"container": "body"});
+	$ck('.hasTip').tooltip({"html": true,"container": "body"});
 });
+
+
+
+
+    

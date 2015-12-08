@@ -379,7 +379,7 @@ class modMaximenuckHelper {
 	 *
 	 * @return Array
 	 */
-	static function createCss($menuID, $params, $prefix = 'menu', $important = false, $itemid = '') {
+	static function createCss($menuID, $params, $prefix = 'menu', $important = false, $itemid = '', $use_svggradient = true) {
 		$css = Array();
 		$important = ($important == true ) ? ' !important' : '';
 		$csspaddingtop = ($params->get($prefix . 'paddingtop') != '') ? 'padding-top: ' . self::testUnit($params->get($prefix . 'paddingtop', '0')) . $important . ';' : '';
@@ -399,13 +399,16 @@ class modMaximenuckHelper {
 		$css['background'] .= ( $params->get($prefix . 'bgimage')) ? 'background-repeat: ' . $params->get($prefix . 'bgimagerepeat') . $important . ';' : '';
 		$css['background'] .= ( $params->get($prefix . 'bgimage')) ? 'background-position: ' . ($params->get($prefix . 'bgpositionx')) . ' ' . ($params->get($prefix . 'bgpositiony')) . $important . ';' : '';
 
-		$bgcolor2 = ($params->get($prefix . 'bgcolor2') && $params->get($prefix . 'bgopacity') !== '') ? self::hex2RGB($params->get($prefix . 'bgcolor2'), $params->get($prefix . 'bgopacity')) : $params->get($prefix . 'bgcolor2');
+		$bgcolor2 = ($params->get($prefix . 'bgcolor2') && $params->get($prefix . 'bgopacity') && $params->get($prefix . 'bgopacity') !== '') ? self::hex2RGB($params->get($prefix . 'bgcolor2'), $params->get($prefix . 'bgopacity')) : $params->get($prefix . 'bgcolor2');
 		// manage gradient svg for ie9
-		$svggradientfile = '';
-		if ($css['background'] AND $params->get($prefix . 'bgcolor2')) {
-			$svggradientfile = self::createSvgGradient($menuID, $prefix . $itemid, $params->get($prefix . 'bgcolor1', ''), $params->get($prefix . 'bgcolor2', ''));
+		$svggradient = '';
+		if ($use_svggradient) {
+			$svggradientfile = '';
+			if ($css['background'] AND $params->get($prefix . 'bgcolor2')) {
+				$svggradientfile = self::createSvgGradient($menuID, $prefix . $itemid, $params->get($prefix . 'bgcolor1', ''), $params->get($prefix . 'bgcolor2', ''));
+			}
+			$svggradient = $svggradientfile ? "background-image: url(\"" . $svggradientfile . "\")" . $important . ";" : "";
 		}
-		$svggradient = $svggradientfile ? "background-image: url(\"" . $svggradientfile . "\")" . $important . ";" : "";
 		$css['gradient'] = ($css['background'] AND $params->get($prefix . 'bgcolor2')) ?
 				$svggradient
 				. "background: -moz-linear-gradient(top,  " . $bgcolor1 . " 0%, " . $bgcolor2 . " 100%)" . $important . ";"
@@ -451,6 +454,10 @@ class modMaximenuckHelper {
 				(($params->get($prefix . 'textshadowblur') == '0') ? 'text-shadow: none' . $important . ';' : '');
 		$css['text-align'] = $params->get($prefix . 'textalign') ? 'text-align: ' . $params->get($prefix . 'textalign') . $important . ';' : ''; '';
 		$css['text-transform'] = ($params->get($prefix . 'texttransform') && $params->get($prefix . 'texttransform') != 'default') ? 'text-transform: ' . $params->get($prefix . 'texttransform') . $important . ';' : ''; '';
+		$css['text-indent'] = ($params->get($prefix . 'textindent') && $params->get($prefix . 'textindent') != 'default') ? 'text-indent: ' . self::testUnit($params->get($prefix . 'textindent')) . $important . ';' : ''; '';
+		$css['line-height'] = ($params->get($prefix . 'lineheight') && $params->get($prefix . 'lineheight') != 'default') ? 'line-height: ' . self::testUnit($params->get($prefix . 'lineheight')) . $important . ';' : ''; '';
+		$css['height'] = ($params->get($prefix . 'height') && $params->get($prefix . 'height') != '') ? 'height: ' . self::testUnit($params->get($prefix . 'height')) . $important . ';' : ''; '';
+		$css['width'] = ($params->get($prefix . 'width') && $params->get($prefix . 'width') != '') ? 'width: ' . self::testUnit($params->get($prefix . 'width')) . $important . ';' : ''; '';
 
 		self::retrocompatibility_beforev8($css, $params, $prefix);
 		return $css;
@@ -551,8 +558,8 @@ class modMaximenuckHelper {
 			$itemcss .= "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . " > a:after, div#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . " > span.separator:after { "
 					// . ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $itemnormalstylesparentarrowcolor . ";" : "border-top-color: " . $itemnormalstylesparentarrowcolor . ";" )
 					. "border: none;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($item->params->get('itemnormalstylesparentitemimage', '') != '') ? "background-image: url(" . JUri::root(true) . "/" . $item->params->get('itemnormalstylesparentitemimage', '') . ") !important;" : "")
 					. (($item->params->get('itemnormalstylesparentitemimagepositionx', '') != '' && $item->params->get('itemnormalstylesparentitemimagepositiony', '') != '') ? "background-position: " . $item->params->get('itemnormalstylesparentitemimagepositionx', '') . " " . $item->params->get('itemnormalstylesparentitemimagepositiony', '') . " !important;" : "")
 					. (($item->params->get('itemnormalstylesparentitemimagerepeat', '') != '') ? "background-repeat: " . $item->params->get('itemnormalstylesparentitemimagerepeat', '') . " !important;" : "")
@@ -572,8 +579,8 @@ class modMaximenuckHelper {
 				$itemcss .= "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . " > a:after, div#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . " > span.separator:after { " 
 					. ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $itemnormalstylesparentarrowcolor . " !important;" : ( $itemlevel == 1 ? "border-top-color: " . $itemnormalstylesparentarrowcolor . " !important;" : "border-left-color: " . $itemnormalstylesparentarrowcolor . " !important;") )
 					. "color: " . $itemnormalstylesparentarrowcolor . " !important;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($item->params->get('itemnormalstylesparentarrowmargintop', '') != '') ? "margin-top: " . self::testUnit($item->params->get('itemnormalstylesparentarrowmargintop', '')) . " !important;" : "")
 					. (($item->params->get('itemnormalstylesparentarrowmarginright', '') != '') ? "margin-right: " . self::testUnit($item->params->get('itemnormalstylesparentarrowmarginright', '')) . " !important;" : "")
 					. (($item->params->get('itemnormalstylesparentarrowmarginbottom', '') != '') ? "margin-bottom: " . self::testUnit($item->params->get('itemnormalstylesparentarrowmarginbottom', '')) . " !important;" : "")
@@ -592,8 +599,8 @@ class modMaximenuckHelper {
 			$itemcss .= "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ":hover > a:after, div#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ":hover > span.separator:after { "
 					// . ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $itemhoverstylesparentarrowcolor . ";" : "border-top-color: " . $itemhoverstylesparentarrowcolor . ";" )
 					. "border: none;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($item->params->get('itemhoverstylesparentitemimage', '') != '') ? "background-image: url(" . JUri::root(true) . "/" . $item->params->get('itemhoverstylesparentitemimage', '') . ") !important;" : "")
 					. (($item->params->get('itemhoverstylesparentitemimagepositionx', '') != '' && $item->params->get('itemhoverstylesparentitemimagepositiony', '') != '') ? "background-position: " . $item->params->get('itemhoverstylesparentitemimagepositionx', '') . " " . $item->params->get('itemhoverstylesparentitemimagepositiony', '') . " !important;" : "")
 					. (($item->params->get('itemhoverstylesparentitemimagerepeat', '') != '') ? "background-repeat: " . $item->params->get('itemhoverstylesparentitemimagerepeat', '') . " !important;" : "")
@@ -613,8 +620,8 @@ class modMaximenuckHelper {
 				$itemcss .= "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ":hover > a:after, div#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ":hover > span.separator:after { " 
 					. ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $itemhoverstylesparentarrowcolor . " !important;" : ( $itemlevel == 1 ? "border-top-color: " . $itemhoverstylesparentarrowcolor . " !important;" : "border-left-color: " . $itemhoverstylesparentarrowcolor . " !important;") )
 					. "color: " . $itemhoverstylesparentarrowcolor . " !important;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($item->params->get('itemhoverstylesparentarrowmargintop', '') != '') ? "margin-top: " . self::testUnit($item->params->get('itemhoverstylesparentarrowmargintop', '')) . " !important;" : "")
 					. (($item->params->get('itemhoverstylesparentarrowmarginright', '') != '') ? "margin-right: " . self::testUnit($item->params->get('itemhoverstylesparentarrowmarginright', '')) . " !important;" : "")
 					. (($item->params->get('itemhoverstylesparentarrowmarginbottom', '') != '') ? "margin-bottom: " . self::testUnit($item->params->get('itemhoverstylesparentarrowmarginbottom', '')) . " !important;" : "")
@@ -633,8 +640,8 @@ class modMaximenuckHelper {
 			$itemcss .= "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ".active > a:after, div#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ".active > span.separator:after { "
 					// . ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $itemactivestylesparentarrowcolor . ";" : "border-top-color: " . $itemactivestylesparentarrowcolor . ";" )
 					. "border: none;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($item->params->get('itemactivestylesparentitemimage', '') != '') ? "background-image: url(" . JUri::root(true) . "/" . $item->params->get('itemactivestylesparentitemimage', '') . ") !important;" : "")
 					. (($item->params->get('itemactivestylesparentitemimagepositionx', '') != '' && $item->params->get('itemactivestylesparentitemimagepositiony', '') != '') ? "background-position: " . $item->params->get('itemactivestylesparentitemimagepositionx', '') . " " . $item->params->get('itemactivestylesparentitemimagepositiony', '') . " !important;" : "")
 					. (($item->params->get('itemactivestylesparentitemimagerepeat', '') != '') ? "background-repeat: " . $item->params->get('itemactivestylesparentitemimagerepeat', '') . " !important;" : "")
@@ -654,8 +661,8 @@ class modMaximenuckHelper {
 				$itemcss .= "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ".active > a:after, div#" . $menuID . " ul.maximenuck li.maximenuck.parent.item" . $item->id . ".active > span.separator:after { " 
 					. ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $itemactivestylesparentarrowcolor . " !important;" : ( $itemlevel == 1 ? "border-top-color: " . $itemactivestylesparentarrowcolor . " !important;" : "border-left-color: " . $itemactivestylesparentarrowcolor . " !important;") )
 					. "color: " . $itemactivestylesparentarrowcolor . " !important;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($item->params->get('itemactivestylesparentarrowmargintop', '') != '') ? "margin-top: " . self::testUnit($item->params->get('itemactivestylesparentarrowmargintop', '')) . " !important;" : "")
 					. (($item->params->get('itemactivestylesparentarrowmarginright', '') != '') ? "margin-right: " . self::testUnit($item->params->get('itemactivestylesparentarrowmarginright', '')) . " !important;" : "")
 					. (($item->params->get('itemactivestylesparentarrowmarginbottom', '') != '') ? "margin-bottom: " . self::testUnit($item->params->get('itemactivestylesparentarrowmarginbottom', '')) . " !important;" : "")
@@ -853,8 +860,8 @@ div#" . $menuID . " .maxipushdownck div.floatck.submenuck" . $item->id . " { " .
 				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1.parent > a:after, div#" . $menuCSSID . " li.maximenuck.level1.parent > span.separator:after { " 
 					. ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $level1itemnormalstylesparentarrowcolor . ";" : "border-top-color: " . $level1itemnormalstylesparentarrowcolor . ";" )
 					. "color: " . $level1itemnormalstylesparentarrowcolor . ";"
-						. "dislay:block;"
-						. "position:aboslute;"
+						. "display:block;"
+						. "position:absolute;"
 					. (($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentarrowmargintop', '') != '') ? "margin-top: " . self::testUnit($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentarrowmargintop', '')) . ";" : "")
 					. (($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentarrowmarginright', '') != '') ? "margin-right: " . self::testUnit($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentarrowmarginright', '')) . ";" : "")
 					. (($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentarrowmarginbottom', '') != '') ? "margin-bottom: " . self::testUnit($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentarrowmarginbottom', '')) . ";" : "")
@@ -879,8 +886,8 @@ div#" . $menuID . " .maxipushdownck div.floatck.submenuck" . $item->id . " { " .
 			$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1.parent > a:after, div#" . $menuCSSID . " li.maximenuck.level1.parent > span.separator:after { " 
 					// . ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $level1itemnormalstylesparentarrowcolor . ";" : "border-top-color: " . $level1itemnormalstylesparentarrowcolor . ";" )
 					. "border: none;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimage', '') != '') ? "background-image: url(" . JUri::root(true) . "/" . $fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimage', '') . ");" : "")
 					. (($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimagepositionx', '') != '' && $fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimagepositiony', '') != '') ? "background-position: " . $fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimagepositionx', '') . " " . $fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimagepositiony', '') . ";" : "")
 					. (($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimagerepeat', '') != '') ? "background-repeat: " . $fields['level1itemnormalstyles']->get('level1itemnormalstylesparentitemimagerepeat', '') . ";" : "")
@@ -904,6 +911,10 @@ div#" . $menuID . " .maxipushdownck div.floatck.submenuck" . $item->id . " { " .
 					. (($fields['level1itemhoverstyles']->get('level1itemhoverstylesparentitemimagerepeat', '') != '') ? "background-repeat: " . $fields['level1itemhoverstyles']->get('level1itemhoverstylesparentitemimagerepeat', '') . ";" : "")
 					. "} ";
 			}
+		} else if ($fields['level1itemnormalstyles']->get('level1itemnormalstylesparentarrowtype', '') == 'none') {
+				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1.parent > a:after, div#" . $menuCSSID . " li.maximenuck.level1.parent > span.separator:after { " 
+					. "display: none;"
+					. "}";
 		}
 
 		if ($fields['level2itemnormalstyles']->get('level2itemnormalstylesparentarrowtype', '') == 'triangle') {
@@ -936,8 +947,8 @@ div#" . $menuID . " .maxipushdownck div.floatck.submenuck" . $item->id . " { " .
 	div#" . $menuID . " .maxipushdownck li.maximenuck.parent > a:after, div#" . $menuID . " .maxipushdownck li.maximenuck.parent > span.separator:after { " 
 					// . ( $params->get('orientation', 'horizontal') === 'vertical'  ? "border-left-color: " . $level2itemnormalstylesparentarrowcolor . ";" : "border-top-color: " . $level2itemnormalstylesparentarrowcolor . ";" )
 					. "border: none;"
-					. "dislay:block;"
-					. "position:aboslute;"
+					. "display:block;"
+					. "position:absolute;"
 					. (($fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimage', '') != '') ? "background-image: url(" . JUri::root(true) . "/" . $fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimage', '') . ");" : "")
 					. (($fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimagepositionx', '') != '' && $fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimagepositiony', '') != '') ? "background-position: " . $fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimagepositionx', '') . " " . $fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimagepositiony', '') . ";" : "")
 					. (($fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimagerepeat', '') != '') ? "background-repeat: " . $fields['level2itemnormalstyles']->get('level2itemnormalstylesparentitemimagerepeat', '') . ";" : "")
@@ -961,6 +972,11 @@ div#" . $menuID . " .maxipushdownck div.floatck.submenuck" . $item->id . " { " .
 					. (($fields['level2itemhoverstyles']->get('level2itemhoverstylesparentitemimagerepeat', '') != '') ? "background-repeat: " . $fields['level2itemhoverstyles']->get('level2itemhoverstylesparentitemimagerepeat', '') . ";" : "")
 					. "} ";
 			}
+		} else if ($fields['level2itemnormalstyles']->get('level2itemnormalstylesparentarrowtype', '') == 'none') {
+				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck.parent > a:after, div#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck.parent > span.separator:after,
+	div#" . $menuID . " .maxipushdownck li.maximenuck.parent > a:after, div#" . $menuID . " .maxipushdownck li.maximenuck.parent > span.separator:after { " 
+					. "display: none;"
+					. "}";
 		}
 
 		// root styles
@@ -985,7 +1001,8 @@ div#" . $menuID . " .maxipushdownck li.maximenuck > a span.descck, div#" . $menu
 		if (isset($css->level1itemnormalstyles)) {
 			if ($css->level1itemnormalstyles['padding'] || $css->level1itemnormalstyles['margin'] || $css->level1itemnormalstyles['background'] || $css->level1itemnormalstyles['gradient'] || $css->level1itemnormalstyles['borderradius'] || $css->level1itemnormalstyles['shadow'] || $css->level1itemnormalstyles['border']
 			) {
-				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1, div#" . $menuCSSID . " li.maximenuck.level1.parent { " . $css->level1itemnormalstyles['padding'] . $css->level1itemnormalstyles['margin'] . $css->level1itemnormalstyles['background'] . $css->level1itemnormalstyles['gradient'] . $css->level1itemnormalstyles['borderradius'] . $css->level1itemnormalstyles['shadow'] . $css->level1itemnormalstyles['border'] . " } ";
+				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1, div#" . $menuCSSID . " li.maximenuck.level1.parent { " . $css->level1itemnormalstyles['margin'] . $css->level1itemnormalstyles['background'] . $css->level1itemnormalstyles['gradient'] . $css->level1itemnormalstyles['borderradius'] . $css->level1itemnormalstyles['shadow'] . $css->level1itemnormalstyles['border'] . " } ";
+				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1 > a, div#" . $menuCSSID . " li.maximenuck.level1 > span.separator { " . $css->level1itemnormalstyles['padding'] . " } ";
 			}
 			if ($css->level1itemnormalstyles['fontcolor'] || $css->level1itemnormalstyles['fontsize'] || $css->level1itemnormalstyles['textshadow'] || $css->level1itemnormalstyles['text-transform']
 			) {
@@ -1000,17 +1017,20 @@ div#" . $menuID . " .maxipushdownck li.maximenuck > a span.descck, div#" . $menu
 		// level1 hover items styles
 		if (isset($fields['level1itemactivestyles']) && $fields['level1itemactivestyles']->get('level1itemactivestylesidemhover') == '1') {
 			$level1active_li = "\ndiv#" . $menuCSSID . " li.maximenuck.level1.active, div#" . $menuCSSID . " li.maximenuck.level1.parent.active, ";
+			$level1active_li_a = "\ndiv#" . $menuCSSID . " li.maximenuck.level1.active > a, div#" . $menuCSSID . " li.maximenuck.level1.active > span, ";
 			$level1active_titreck = "\ndiv#" . $menuCSSID . " li.maximenuck.level1.active > a span.titreck, div#" . $menuCSSID . " li.maximenuck.level1.active > span.separator span.titreck, ";
 			$level1active_descck = "\ndiv#" . $menuCSSID . " li.maximenuck.level1.active > a span.descck, div#" . $menuCSSID . " li.maximenuck.level1.active > span.separator span.descck, ";
 		} else {
 			$level1active_li = "";
+			$level1active_li_a = "";
 			$level1active_titreck = "";
 			$level1active_descck = "";
 		}
 		if (isset($css->level1itemhoverstyles)) {
 			if ($css->level1itemhoverstyles['padding'] || $css->level1itemhoverstyles['margin'] || $css->level1itemhoverstyles['background'] || $css->level1itemhoverstyles['gradient'] || $css->level1itemhoverstyles['borderradius'] || $css->level1itemhoverstyles['shadow'] || $css->level1itemhoverstyles['border']
 			) {
-				$csstoinject .= $level1active_li . "\ndiv#" . $menuCSSID . " li.maximenuck.level1:hover, div#" . $menuCSSID . " li.maximenuck.level1.parent:hover { " . $css->level1itemhoverstyles['padding'] . $css->level1itemhoverstyles['margin'] . $css->level1itemhoverstyles['background'] . $css->level1itemhoverstyles['gradient'] . $css->level1itemhoverstyles['borderradius'] . $css->level1itemhoverstyles['shadow'] . $css->level1itemhoverstyles['border'] . " } ";
+				$csstoinject .= $level1active_li . "\ndiv#" . $menuCSSID . " li.maximenuck.level1:hover, div#" . $menuCSSID . " li.maximenuck.level1.parent:hover { " . $css->level1itemhoverstyles['margin'] . $css->level1itemhoverstyles['background'] . $css->level1itemhoverstyles['gradient'] . $css->level1itemhoverstyles['borderradius'] . $css->level1itemhoverstyles['shadow'] . $css->level1itemhoverstyles['border'] . " } ";
+				$csstoinject .= $level1active_li_a . "\ndiv#" . $menuCSSID . " li.maximenuck.level1:hover > a, div#" . $menuCSSID . " li.maximenuck.level1:hover > span.separator { " . $css->level1itemhoverstyles['padding'] . " } ";
 			}
 			if ($css->level1itemhoverstyles['fontcolor'] || $css->level1itemhoverstyles['fontsize'] || $css->level1itemhoverstyles['textshadow']
 			) {
@@ -1027,7 +1047,8 @@ div#" . $menuID . " .maxipushdownck li.maximenuck > a span.descck, div#" . $menu
 			if (isset($css->level1itemactivestyles)) {
 				if ($css->level1itemactivestyles['padding'] || $css->level1itemactivestyles['margin'] || $css->level1itemactivestyles['background'] || $css->level1itemactivestyles['gradient'] || $css->level1itemactivestyles['borderradius'] || $css->level1itemactivestyles['shadow'] || $css->level1itemactivestyles['border']
 				) {
-					$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1.active { " . $css->level1itemactivestyles['padding'] . $css->level1itemactivestyles['margin'] . $css->level1itemactivestyles['background'] . $css->level1itemactivestyles['gradient'] . $css->level1itemactivestyles['borderradius'] . $css->level1itemactivestyles['shadow'] . $css->level1itemactivestyles['border'] . " } ";
+					$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1.active { " . $css->level1itemactivestyles['margin'] . $css->level1itemactivestyles['background'] . $css->level1itemactivestyles['gradient'] . $css->level1itemactivestyles['borderradius'] . $css->level1itemactivestyles['shadow'] . $css->level1itemactivestyles['border'] . " } ";
+					$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1.active > a, div#" . $menuCSSID . " li.maximenuck.level1.active > span.separator { " . $css->level1itemactivestyles['padding'] . " } ";
 				}
 				if ($css->level1itemactivestyles['fontcolor'] || $css->level1itemactivestyles['fontsize'] || $css->level1itemactivestyles['textshadow']
 				) {
@@ -1054,7 +1075,10 @@ div#" . $menuID . " .maxipushdownck div.floatck { " . $css->level2menustyles['pa
 			if ($css->level2itemnormalstyles['padding'] || $css->level2itemnormalstyles['margin'] || $css->level2itemnormalstyles['background'] || $css->level2itemnormalstyles['gradient'] || $css->level2itemnormalstyles['borderradius'] || $css->level2itemnormalstyles['shadow'] || $css->level2itemnormalstyles['border']
 			) {
 				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck:not(.headingck), div#" . $menuID . " li.maximenuck.maximenuflatlistck:not(.level1):not(.headingck),
-div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck) { " . $css->level2itemnormalstyles['padding'] . $css->level2itemnormalstyles['margin'] . $css->level2itemnormalstyles['background'] . $css->level2itemnormalstyles['gradient'] . $css->level2itemnormalstyles['borderradius'] . $css->level2itemnormalstyles['shadow'] . $css->level2itemnormalstyles['border'] . " } ";
+div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck) { " . $css->level2itemnormalstyles['margin'] . $css->level2itemnormalstyles['background'] . $css->level2itemnormalstyles['gradient'] . $css->level2itemnormalstyles['borderradius'] . $css->level2itemnormalstyles['shadow'] . $css->level2itemnormalstyles['border'] . " } ";
+				$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck:not(.headingck) > a, div#" . $menuID . " li.maximenuck.maximenuflatlistck:not(.level1):not(.headingck) > a,
+div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck) > a, ndiv#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck:not(.headingck) > span.separator, div#" . $menuID . " li.maximenuck.maximenuflatlistck:not(.level1):not(.headingck) > span.separator,
+div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck) > span.separator { " . $css->level2itemnormalstyles['padding'] . " } ";
 			}
 			if ($css->level2itemnormalstyles['fontcolor'] || $css->level2itemnormalstyles['fontsize'] || $css->level2itemnormalstyles['textshadow'] || $css->level2itemnormalstyles['text-transform']
 			) {
@@ -1071,10 +1095,12 @@ div#" . $menuID . " .maxipushdownck li.maximenuck > a span.descck, div#" . $menu
 		// level2 hover items styles
 		if (isset($fields['level2itemactivestyles']) && $fields['level2itemactivestyles']->get('level2itemactivestylesidemhover') == '1') {
 			$level2active_li = "\ndiv#" . $menuCSSID . " li.maximenuck.level2.active:not(.headingck), div#" . $menuCSSID . " li.maximenuck.level2.parent.active:not(.headingck), div#" . $menuID . " li.maximenuck.maximenuflatlistck.active:not(.level1):not(.headingck),";
+			$level2active_li_a = "\ndiv#" . $menuCSSID . " li.maximenuck.level2.active:not(.headingck), div#" . $menuCSSID . " li.maximenuck.level2.parent.active:not(.headingck), div#" . $menuID . " li.maximenuck.maximenuflatlistck.active:not(.level1):not(.headingck),";
 			$level2active_titreck = "\ndiv#" . $menuCSSID . " li.maximenuck.level2.active > a span.titreck, div#" . $menuCSSID . " li.maximenuck.level2.active > span.separator span.titreck, div#" . $menuID . " li.maximenuck.maximenuflatlistck.active:not(.level1) span.titreck,";
 			$level2active_descck = "\ndiv#" . $menuCSSID . " li.maximenuck.level2.active > a span.descck, div#" . $menuCSSID . " li.maximenuck.level2.active > span.separator span.descck, div#" . $menuID . " li.maximenuck.maximenuflatlistck.active:not(.level1) span.descck,";
 		} else {
 			$level2active_li = "";
+			$level2active_li_a = "";
 			$level2active_titreck = "";
 			$level2active_descck = "";
 		}
@@ -1082,7 +1108,10 @@ div#" . $menuID . " .maxipushdownck li.maximenuck > a span.descck, div#" . $menu
 			if ($css->level2itemhoverstyles['padding'] || $css->level2itemhoverstyles['margin'] || $css->level2itemhoverstyles['background'] || $css->level2itemhoverstyles['gradient'] || $css->level2itemhoverstyles['borderradius'] || $css->level2itemhoverstyles['shadow'] || $css->level2itemhoverstyles['border']
 			) {
 				$csstoinject .= $level2active_li . "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.level1 li.maximenuck:not(.headingck):hover, div#" . $menuID . " li.maximenuck.maximenuflatlistck:hover:not(.level1):not(.headingck):hover,
-div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck):hover { " . $css->level2itemhoverstyles['padding'] . $css->level2itemhoverstyles['margin'] . $css->level2itemhoverstyles['background'] . $css->level2itemhoverstyles['gradient'] . $css->level2itemhoverstyles['borderradius'] . $css->level2itemhoverstyles['shadow'] . $css->level2itemhoverstyles['border'] . " } ";
+div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck):hover { " . $css->level2itemhoverstyles['margin'] . $css->level2itemhoverstyles['background'] . $css->level2itemhoverstyles['gradient'] . $css->level2itemhoverstyles['borderradius'] . $css->level2itemhoverstyles['shadow'] . $css->level2itemhoverstyles['border'] . " } ";
+				$csstoinject .= $level2active_li_a . "\ndiv#" . $menuID . " ul.maximenuck li.maximenuck.level1 li.maximenuck:not(.headingck):hover > a, div#" . $menuID . " li.maximenuck.maximenuflatlistck:hover:not(.level1):not(.headingck):hover > a,
+div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck):hover > a, div#" . $menuID . " ul.maximenuck li.maximenuck.level1 li.maximenuck:not(.headingck):hover > span.separator, div#" . $menuID . " li.maximenuck.maximenuflatlistck:hover:not(.level1):not(.headingck):hover > span.separator,
+div#" . $menuID . " .maxipushdownck li.maximenuck:not(.headingck):hover > span.separator { " . $css->level2itemhoverstyles['padding'] . " } ";
 			}
 			if ($css->level2itemhoverstyles['fontcolor'] || $css->level2itemhoverstyles['fontsize'] || $css->level2itemhoverstyles['textshadow']
 			) {
@@ -1102,7 +1131,10 @@ div#" . $menuID . " .maxipushdownck li.maximenuck:hover > a span.descck, div#" .
 				if ($css->level2itemactivestyles['padding'] || $css->level2itemactivestyles['margin'] || $css->level2itemactivestyles['background'] || $css->level2itemactivestyles['gradient'] || $css->level2itemactivestyles['borderradius'] || $css->level2itemactivestyles['shadow'] || $css->level2itemactivestyles['border']
 				) {
 					$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck.active:not(.headingck),
-	div#" . $menuID . " .maxipushdownck li.maximenuck.active:not(.headingck) { " . $css->level2itemactivestyles['padding'] . $css->level2itemactivestyles['margin'] . $css->level2itemactivestyles['background'] . $css->level2itemactivestyles['gradient'] . $css->level2itemactivestyles['borderradius'] . $css->level2itemactivestyles['shadow'] . $css->level2itemactivestyles['border'] . " } ";
+	div#" . $menuID . " .maxipushdownck li.maximenuck.active:not(.headingck) { " . $css->level2itemactivestyles['margin'] . $css->level2itemactivestyles['background'] . $css->level2itemactivestyles['gradient'] . $css->level2itemactivestyles['borderradius'] . $css->level2itemactivestyles['shadow'] . $css->level2itemactivestyles['border'] . " } ";
+					$csstoinject .= "\ndiv#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck.active:not(.headingck) > a,
+	div#" . $menuID . " .maxipushdownck li.maximenuck.active:not(.headingck) > a, div#" . $menuCSSID . " li.maximenuck.level1 li.maximenuck.active:not(.headingck) > span.separator,
+	div#" . $menuID . " .maxipushdownck li.maximenuck.active:not(.headingck) > span.separator { " . $css->level2itemactivestyles['padding'] . " } ";
 				}
 				if ($css->level2itemactivestyles['fontcolor'] || $css->level2itemactivestyles['fontsize'] || $css->level2itemactivestyles['textshadow']
 				) {

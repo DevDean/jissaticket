@@ -358,7 +358,8 @@ div#<?php echo $id; ?> div.floatck {
 	background: #1a1a1a;
 	border: 1px solid #707070;
 	width: inherit !important;
-	z-index:9999
+	z-index:9999;
+	cursor: auto;
 }
 
 div#<?php echo $id; ?> div.maxidrop-main {
