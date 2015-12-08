@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+	<name>Bizkniz Twitter Feed Display</name>
+	<author>Lester Oon</author>
+	<creationDate>October, 2013</creationDate>
+	<copyright>Copyright - Bizkniz</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>admin@bizkniz.net</authorEmail>
+	<authorUrl>http://www.bizkniz.net/</authorUrl>
+	<version>1.0</version>
+	<description>Thanks for installing Bizkniz Twitter Feed Display</description> 
+	<files>
+		<folder>tmpl</folder>
+		<filename module="mod_bizkniztwitterfeeddisplay">mod_bizkniztwitterfeeddisplay.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_bizkniztwitterfeeddisplay.xml</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field 
+					name="userName"
+					type="text"
+					default="twitter"
+					label="Twitter Username" 
+					description="Your Twitter Username will be here" />
+				<field
+					name="widgetId"
+					type="text"
+					default="389243524765327360"
+					label="Widget Id"
+					description="Create twitter widget id and put here" />
+				<field
+					name="width"
+					type="text"
+					default="200"
+					label="Width"
+					description="Width of your module in px" />
+				<field
+					name="height"
+					type="text"
+					default="350"
+					label="Height"
+					description="Height of your module in px" />
+				<field
+					name="theme"
+					type="list"
+					default="light"
+					label="Twitter Theme"
+					description="Choose your theme">
+					<option value="light">Light</option>
+					<option value="dark">Dark</option>
+				</field>
+				<field
+					name="support"
+					type="list"
+					default="1"
+					label="Support Author"
+					description="Support the author yes / no">
+					<option value="1">Yes</option>
+					<option value="0">No</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					default=""
+					label="Module Suffix"
+					description="Module Suffix" />
+			</fieldset>
+		</fields>
+	</config>
+</extension>

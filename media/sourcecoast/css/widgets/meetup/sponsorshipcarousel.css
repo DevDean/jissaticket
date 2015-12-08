@@ -1,0 +1,276 @@
+.mup-wdgt-spnsr-carousel .mup-widget {
+    background: #1A1A1A;
+    color: #f2f2f2;
+    font-family: lucida grande, arial, verdana, san-serif;
+    font-size: 13px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd {
+    padding: 8px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd .mup-hd-info {
+    float:right;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd .mup-hd-info span.meetup {
+    color: #AAAAAA;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd .mup-hd-img {
+    float:left;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    display:table;
+    z-index: 10;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd .mup-hd-img {
+    z-index:1;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd a,
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd a:active,
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd a:visited {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-hd a:hover {
+    color: #f2f2f2;
+    text-decoration: underline;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-bd {
+    padding: 0 8px;
+    clear: left;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-ft {
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget a,
+.mup-wdgt-spnsr-carousel .mup-widget a:active,
+.mup-wdgt-spnsr-carousel .mup-widget a:visited {
+    color: #f2f2f2;
+    text-decoration: none;
+}
+.mup-wdgt-spnsr-carousel .mup-widget a:hover {
+    color: #f2f2f2;
+    text-decoration: underline;
+}
+.mup-wdgt-spnsr-carousel .mup-widget h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #AAA;
+}
+.mup-wdgt-spnsr-carousel .mup-widget h4 {
+    font-size: 13px;
+    color: #f2f2f2;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-list {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding:0;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-list li {
+    position: relative;
+    padding: 0 0 8px;
+    border-top-color: #1A1A1A;
+    border-top-style: solid;
+    border-top-width: 1px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-grp-name {
+    padding: 6px 8px;
+    background-color: #AAA;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#AAA), to(#666));
+    background: -moz-linear-gradient(0% 100% 90deg,#666, #AAA);
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 2px 4px #000;
+    -webkit-box-shadow: 0 2px 4px #000;
+    box-shadow: 0 2px 4px #000;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=90, Color='#000000')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=90, Color='#000000');
+    z-index: 100;
+    position: relative;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-ev-name a,
+.mup-wdgt-spnsr-carousel .mup-widget .mup-ev-name a:active,
+.mup-wdgt-spnsr-carousel .mup-widget .mup-ev-name a:visited {
+    color: #1A1A1A;
+    text-decoration: none;
+//font-weight: bold;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-ev-name a:hover {
+    color: #1A1A1A;
+    text-decoration: underline;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-list li:first-child {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-list li:last-child {
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 0;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-info {
+    margin: 0 5px;
+    padding: 6px 8px;
+    background: #333;
+    -webkit-border-bottom-right-radius: 3px;
+    -webkit-border-bottom-left-radius: 3px;
+    -moz-border-radius-bottomright: 3px;
+    -moz-border-radius-bottomleft: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    z-index: -1;
+    overflow: hidden;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-when,
+.mup-wdgt-spnsr-carousel .mup-widget .mup-where {
+    display: block;
+    z-index:auto;
+    margin-top: 3px;
+    margin-bottom: 6px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-when {
+//padding-bottom: 4px;
+    float: left;
+    padding-right: 6px;
+    width: 50px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-where {
+    border-left: 1px dotted #555;
+    margin-left: 56px;
+    padding-left: 6px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-date {
+    text-align: right;
+    padding-bottom: 2px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-time {
+    font-size: 10px;
+    text-align: right;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-city {
+//display: inline-block;
+    padding-bottom: 2px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-venue {
+    font-size: 10px;
+//display: inline-block;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-grp-name a,
+.mup-wdgt-spnsr-carousel .mup-widget .mup-grp-name a:active,
+.mup-wdgt-spnsr-carousel .mup-widget .mup-grp-name a:visited {
+    color: #AAA;
+    text-decoration: none;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-grp-name a:hover {
+    color: #AAA;
+    text-decoration: underline;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-badge{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 10px;
+    height: 14px;
+    color: #1A1A1A;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-badge .mup-badge-label {
+    font-size: 8px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-rsvpcount {
+    background: #2261A0;
+    color: #1A1A1A;
+    padding: 2px 4px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-rsvpcount-1 {
+    background: #2261A0;
+    padding: 2px 4px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-right-radius: 5px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-logo {
+    padding: 8px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-getwdgt {
+    border-top-color: #1A1A1A;
+    border-top-style: solid;
+    border-top-width: 1px;
+    padding: 3px;
+    font-size: 8px;
+    text-align: center;
+    background: #0A0A0A;
+    -webkit-border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.mup-wdgt-spnsr-carousel .mup-widget .mup-getwdgt a {
+    color: #f2f2f2;
+}
+#slider-code { height: 125px; overflow:hidden; }
+#slider-code .viewport { float: left; width: 566px; height: 125px; overflow: hidden; position: relative; }
+#slider-code .buttons {
+    display: block;
+    margin: 0 5px 0 0;
+    float: left;
+    width: 24px;
+    height: 125px;
+    line-height: 115px;
+    background: #333;
+    text-align: center;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;}
+#slider-code .next { margin: 0 0 0 5px;
+    -webkit-border-top-left-radius: 0;
+    -webkit-border-bottom-left-radius: 0;
+    -moz-border-radius-topleft: 0;
+    -moz-border-radius-bottomleft: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;}
+#slider-code .disable { visibility: hidden; }
+#slider-code .overview { list-style: none; position: absolute; padding: 0; margin: 0; left: 0; top: 0; }
+#slider-code .overview li{ float: left; margin: 0 9px 0 0; padding: 1px; height: 121px; border: 1px solid #dcdcdc; width: 180px; overflow:hidden;}
+#slider-code .overview li img {
+    max-width: 180px;
+}
+#slider-code .vp-wrap {
+    overflow: hidden;
+    background: #000;
+}

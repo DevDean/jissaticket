@@ -1586,7 +1586,11 @@ a.hikashop_filter_list_selected:hover { color:black; font-weight:bold; text-deco
 	margin-right: auto;
 	margin-left: auto;
 }
-
+.hikashop_product_page{
+padding-top: 20px;
+padding-left: 20px;
+padding-right: 20px;
+}
 .hikashop_categories_listing_main.row-fluid-10 [class*="span"],
 .hikashop_products .row-fluid-10 [class*="span"] {
 	display: block;

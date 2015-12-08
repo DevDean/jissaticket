@@ -1,0 +1,80 @@
+.socialstream .post {
+    margin-bottom: 5px;
+    border:solid 1px #aaa;
+    border-radius:5px;
+}
+
+.socialstream .author {
+    padding: 5px;
+}
+
+.socialstream .author span {
+    display:block;
+    font-weight: bold;
+    font-size: .9em;
+}
+
+.socialstream .author-image {
+    float:left;
+    margin-right:10px;
+}
+
+.socialstream .author-details {
+    float:left;
+}
+
+.socialstream .provider img {
+    width:20px;
+}
+.socialstream .provider {
+    float:right;
+}
+
+.socialstream .date {
+    color: #808080;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.socialstream .post .message {
+    margin: 0;
+    padding: 5px;
+    font-size:.9em;
+}
+
+.socialstream .preview {
+    margin-top: 10px;
+    padding: 10px 5px 0 5px;
+    border-top: 1px solid #999;
+}
+
+.socialstream .preview .title, .socialstream .preview .image {
+    text-align: center;
+}
+.socialstream .preview .title a {
+    font-weight:bold;
+    color: rgb(59,89,152);
+    text-decoration: none;
+    line-height: 14px;
+}
+
+.socialstream .preview .image img {
+    max-width: 60%;
+}
+
+.socialstream .preview .caption a,
+.socialstream .preview .description a {
+    text-decoration: none;
+    color: #808080;
+    font-size:11px;
+    line-height:14px;
+}
+
+.socialstream .preview .description {
+    margin-top: 5px;
+}
+
+/* Twitter */
+.socialstream .author-name {
+    color: #999;
+}
